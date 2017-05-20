@@ -1,0 +1,58 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Online.Web.Models
+
+@model RoleVM
+
+<link href="@Url.Content("~/Content/css/CardStyle.css")" rel="stylesheet">
+
+@{
+    Html.EnableClientValidation();
+}
+
+@using (Html.BeginForm("CreateOrEdit", "Role", FormMethod.Post))
+{
+    @Html.HiddenFor(m=>m.Id)
+    <div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+        <div class="container-fluid">
+
+            @Html.DevExpress().Button(s =>
+           {
+               s.Name = $"btnSave";
+               s.ClientEnabled = true;
+               s.Images.Image.Url = Url.Content("~/Content/img/wizard/save.png");
+               s.Images.Image.UrlHottracked = Url.Content("~/Content/img/wizard/save-white.png");
+               s.Images.Image.Height = 32;
+               s.Text = "Сохранить";
+               s.ToolTip = "Сохранение изменений";
+               s.Height = Unit.Pixel(60);
+               s.ControlStyle.CssClass = "btn";
+               s.UseSubmitBehavior = true;
+           }).GetHtml()
+
+            <table style="width:760px">
+                <tr>
+                    <td class="left-label">
+                        Роль:*
+                    </td>
+                    <td class="one-inrow-editor">
+                        @Html.DevExpress().TextBoxFor(m => m.Name, s =>
+                        {
+                            s.Width = Unit.Percentage(100);
+                            s.Name = nameof(RoleVM.Name);
+                        }).Bind(Model?.Name).GetHtml()
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-label">
+                        Права доступа:
+                    </td>
+                    <td class="one-inrow-editor">
+                        @Html.Action("PermissionsGridLookup", "Role", new { selected = Model.RolePermissionList })
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+}

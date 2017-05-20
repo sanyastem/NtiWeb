@@ -1,0 +1,17 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model Protocol
+@Html.DevExpress().RoundPanel(settings =>
+{
+    settings.Name = "ProtocolTariffs";
+    settings.Width = Unit.Percentage(100);
+    settings.AllowCollapsingByHeaderClick = true;
+    settings.ShowCollapseButton = true;
+    settings.HeaderText = "Тарифы";
+    settings.Collapsed = true;
+    settings.SetContent(() =>
+    {
+        Html.RenderAction("ProtocolTariffData", new { id = Model.Id });
+    });
+}).GetHtml()
+

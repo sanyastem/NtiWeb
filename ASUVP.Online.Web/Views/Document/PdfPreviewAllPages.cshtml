@@ -1,0 +1,26 @@
+﻿@using ASUVP.Online.Web.Models
+
+@model List<PdfPageModel>
+
+@{ Layout = null; }
+
+@Html.DevExpress().DataView(settings =>
+{
+    settings.Name = "PdfPreview";
+
+    settings.SettingsTableLayout.RowsPerPage = Model.Count;
+    settings.SettingsTableLayout.ColumnCount = 1;
+    settings.PagerSettings.AllButton.Visible = true;
+    settings.SetItemTemplateContent(c =>
+    {
+        PdfPageModel pageModel = c.DataItem as PdfPageModel;
+        Html.DevExpress().BinaryImage(imageSettings =>
+        {
+            imageSettings.Name = "bimPdfPage" + pageModel.PageNumber;
+        }).Bind(pageModel.GetPageImageBytes()).Render();
+    });
+}).Bind(Model).GetHtml()
+
+<script type="text/javascript">
+    window.print();
+</script>

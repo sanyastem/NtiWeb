@@ -1,0 +1,138 @@
+﻿    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #content-inner{
+        overflow-x: auto !important;
+    }
+
+    .container-fluid{
+        float:left;
+        max-width: 1600px;
+        min-width: 1100px;
+    }
+
+    .container-fluid td {
+        padding-top: .5em;
+        padding-bottom: .5em;
+    }
+
+    .numberEditor {
+        width: 70px;
+        min-width:70px;
+    }
+
+    .stationCode {
+        width: 70px;
+        min-width:70px;
+    }
+
+    .dateEditor{
+        width: 120px;
+        min-width:120px;
+    }
+
+    .datePeriod{
+        min-width:130px;
+        width: 235px;
+    }
+
+    .sumEditor {
+        width: 130px;
+        min-width:130px;
+    }
+
+    .currencyEditor {
+        width:160px;
+        min-width:160px;
+    }
+
+    .railWayEditor{
+        width: 50px;
+        min-width:50px;
+    }
+
+    .distanceEditor{
+        width: 70px;
+        min-width: 70px;
+    }
+
+    .daysEditor{
+        width: 50px;
+        min-width: 50px;
+    }
+
+    .weightEditor{
+        width: 90px;
+        min-width:90px;
+    }
+
+    .comboBoxEditor{
+       width: 25%;
+    }
+    .textBeforComboBoxEditor{
+        padding-left:20%;
+    }
+
+    .status{
+        padding-left:2%;
+        width:30%;
+    }
+    .textTableAuto1{
+        width:50px;
+        text-align: right;
+        padding-right: 1%;
+    }
+        .textTableAuto2{
+        width:150px;
+        text-align: right;
+        padding-right: 1%;
+    }
+    .textTable{
+        text-align: right;
+        padding-right: 1%;
+    }
+
+    .btnSave{
+        height: 60px;
+        background-color: white;
+        border-bottom: .75px solid #e7eaec;
+        border-right: .75px solid #e7eaec;
+        border-left: .75px solid #e7eaec;
+    }
+
+        .btnSave:hover{
+        background-color: #18a689;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+         
+    .next .dxrpCR td {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .next {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .right-ali {
+        text-align: right;
+    }   
+
+    .left-label {
+        text-align: left !important;
+        width: 160px;
+    }
+
+    .one-inrow-editor {
+        width: 600px;
+        max-width: 600px;
+    }
+
+.dxeTextBox_Moderno td.dxic{
+    padding: 7px 7px 6px 7px !important;
+}

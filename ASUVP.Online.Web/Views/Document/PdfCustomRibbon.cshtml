@@ -1,0 +1,52 @@
+﻿<script>
+    function OnCommandExecuted(s, e) {
+        var text = e.item.name;
+
+        if (text === 'rbiDownload')
+        {
+
+        }
+
+        if (text === 'rbiPrint')
+        {
+            window.location = ROOT_URL + "Document/PdfPreviewAllPages/";
+        }
+    }
+</script>
+
+@Html.DevExpress().Ribbon(
+    settings =>
+    {
+        settings.Name = $"CustomPdfRibbon";
+        settings.ShowFileTab = false;
+        settings.ShowTabs = true;
+        settings.ShowGroupLabels = false;
+
+        settings.ClientSideEvents.CommandExecuted = "OnCommandExecuted";
+
+        var actionTab = settings.Tabs.Add("Главная");
+        actionTab.Groups.Add(g =>
+        {
+            g.Name = "Commom";
+            g.Text = "Common";
+            g.ShowDialogBoxLauncher = false;
+
+            var rbiDownload = new RibbonButtonItem()
+            {
+                Name = "rbiDownload",
+                Text = "Скачать"
+            };
+            rbiDownload.LargeImage.SpriteProperties.CssClass = "dxWeb_reRibbonGWIcons_SaveAsLarge dxr-img32";
+            rbiDownload.Size = RibbonItemSize.Large;
+            g.Items.Add(rbiDownload);
+
+            var rbiPrint = new RibbonButtonItem()
+            {
+                Name = "rbiPrint",
+                Text = "Печать"
+            };
+            rbiPrint.LargeImage.SpriteProperties.CssClass = "dxWeb_reRibbonGWIcons_PrintDialogLarge dxr-img32";
+            rbiPrint.Size = RibbonItemSize.Large;
+            g.Items.Add(rbiPrint);
+        });
+    }).GetHtml()

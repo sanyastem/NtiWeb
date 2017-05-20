@@ -1,0 +1,9 @@
+F:\Job\ASUVP.Online\src\ASUVP.Core\bin\Debug\ASUVP.Core.dll
+F:\Job\ASUVP.Online\src\ASUVP.Core\bin\Debug\ASUVP.Core.pdb
+F:\Job\ASUVP.Online\src\ASUVP.Core\bin\Debug\Autofac.dll
+F:\Job\ASUVP.Online\src\ASUVP.Core\bin\Debug\log4net.dll
+F:\Job\ASUVP.Online\src\ASUVP.Core\bin\Debug\Autofac.xml
+F:\Job\ASUVP.Online\src\ASUVP.Core\bin\Debug\log4net.xml
+F:\Job\ASUVP.Online\src\ASUVP.Core\obj\Debug\ASUVP.Core.csprojResolveAssemblyReference.cache
+F:\Job\ASUVP.Online\src\ASUVP.Core\obj\Debug\ASUVP.Core.dll
+F:\Job\ASUVP.Online\src\ASUVP.Core\obj\Debug\ASUVP.Core.pdb

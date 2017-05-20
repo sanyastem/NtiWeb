@@ -1,0 +1,22 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@using DevExpress.Data
+@Html.DevExpress().GridLookup(settings =>
+{
+    settings.Name = "ContactId";
+    settings.KeyFieldName = nameof(ContactList.Id);
+    settings.Width = Unit.Percentage(100);
+    settings.GridViewProperties.CallbackRouteValues = new {Controller = "Contact", Action = "ContactGridLookup", selected = Model};
+    settings.Properties.SelectionMode = GridLookupSelectionMode.Single;
+    settings.Properties.TextFormatString = "{0} {1} {2}";
+
+    var column = settings.Columns.Add(nameof(ContactList.F), "Фамилия");
+    column.SortOrder = ColumnSortOrder.Ascending;
+    column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+    settings.Columns.Add(nameof(ContactList.I), "Имя").Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+    settings.Columns.Add(nameof(ContactList.O), "Отчество").Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+    settings.ApplyLayoutSettings();
+    settings.GridViewProperties.SetStatusBarTemplateContent(c => { Html.RenderPartial("_GridLookupFooter", "ContactId"); });
+}).BindList(ViewBag.Contacts).Bind(Model).GetHtml()

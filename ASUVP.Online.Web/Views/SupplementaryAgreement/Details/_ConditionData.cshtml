@@ -1,0 +1,38 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model List<DocumentCondition>
+
+@{
+    Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "DocumentConditionGrid";
+        settings.CallbackRouteValues = new
+        {
+            Controller = "SupplementaryAgreement",
+            Action = "ConditionData",
+            id = ViewBag.AgreementId
+        };
+        settings.Width = Unit.Percentage(100);
+        settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+        settings.Styles.Header.HorizontalAlign = HorizontalAlign.Center;
+
+        settings.SettingsBehavior.AllowFixedGroups = true;
+        settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+
+        settings.KeyFieldName = nameof(DocumentCondition.PositionValue);
+        settings.Columns.Add(nameof(DocumentCondition.Name), "Условие").Width = Unit.Percentage(33);
+        settings.Columns.Add(nameof(DocumentCondition.ValueString), "Значение").Width = Unit.Percentage(33);
+        settings.Columns.Add(nameof(DocumentCondition.ConditionLimitValue), "Примечание").Width = Unit.Percentage(33);
+        settings.Columns.Add(nameof(DocumentCondition.ConditionGroupName), "Группа").GroupIndex = 0;
+
+        settings.PreRender = (s, e) =>
+        {
+            MVCxGridView grid = s as MVCxGridView;
+            if (grid != null)
+                grid.ExpandAll();
+        };
+
+        settings.ApplyBasicLayout();
+
+    }).Bind(Model).GetHtml();
+}

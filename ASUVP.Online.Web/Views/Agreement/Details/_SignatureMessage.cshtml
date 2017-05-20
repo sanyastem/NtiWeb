@@ -1,0 +1,22 @@
+﻿@using System.Web.UI.WebControls
+@Html.DevExpress().PopupControl(settings =>
+{
+    settings.Name = "signatureMessage";
+    settings.ShowHeader = true;
+    settings.AllowDragging = false;
+    settings.AllowResize = false;
+    settings.CloseOnEscape = true;
+    settings.ShowCloseButton = true;
+    settings.PopupAnimationType = AnimationType.None;
+    settings.Modal = true;
+    settings.CloseAction = CloseAction.CloseButton;
+    settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+    settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+
+    settings.MinWidth = Unit.Pixel(600);
+    settings.HeaderText = "Информация";
+
+    settings.SetContent(() =>
+    { });
+}).GetHtml()
+

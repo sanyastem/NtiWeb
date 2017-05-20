@@ -1,0 +1,32 @@
+﻿@using ASUVP.Core.DataAccess.Model
+@using System.Web.UI.WebControls
+@using ASUVP.Online.Web.Tools
+
+@model DocumentAttach
+
+@Html.DevExpress().Spreadsheet(
+    settings =>
+    {
+        settings.Name = "spreadsheet";
+        settings.Width = Unit.Percentage(100);
+        settings.Height = Unit.Pixel(700);
+        settings.ActiveTabIndex = 0;
+        settings.ShowConfirmOnLosingChanges = false;
+        settings.RibbonMode = DevExpress.Web.ASPxSpreadsheet.SpreadsheetRibbonMode.Ribbon;
+
+        settings.PreRender = (s, e) =>
+        {
+            MVCxSpreadsheet spreadsheet = (MVCxSpreadsheet)s;
+            //spreadsheet.CreateDefaultRibbonTabs(true);
+        };
+
+        settings.RibbonTabs.Add(ExcelDocumentRibbonCustomizationHelper.GetCustomRibbonTab());
+    }
+).Open(Guid.NewGuid().ToString(), (DevExpress.Spreadsheet.DocumentFormat)ViewData["DocumentFormat"], () => Model.Content).GetHtml()
+
+<script type="text/javascript">
+    $("#spreadsheet_SSRC_T0G0I0").click(function () {
+        window.open(ROOT_URL + 'document/download' + '?id=' + '@Model.DocumentId', "_self");
+    });
+</script>
+

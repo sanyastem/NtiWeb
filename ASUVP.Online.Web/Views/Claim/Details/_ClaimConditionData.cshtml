@@ -1,0 +1,64 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model List<DocumentCondition>
+
+@{ 
+    Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "DocumentConditionGrid";
+        settings.CallbackRouteValues = new
+        {
+            Controller = "Claim",
+            Action = "ClaimConditionData",
+            id = ViewBag.ClaimId
+        };
+        settings.Width = Unit.Percentage(100);
+
+        settings.SettingsBehavior.AllowFixedGroups = true;
+        settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+        settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+        settings.Styles.Header.HorizontalAlign = HorizontalAlign.Center;
+
+        settings.KeyFieldName = nameof(DocumentCondition.PositionValue);
+
+        settings.Columns.Add(c => {
+            c.FieldName = nameof(DocumentCondition.Name);
+            c.Caption = "Условие";
+            c.Width = Unit.Percentage(33);
+            c.MinWidth = 300;
+        });
+
+        settings.Columns.Add(c =>
+        {
+            c.FieldName = nameof(DocumentCondition.ValueString);
+            c.Caption = "Значение";
+            c.Width = Unit.Percentage(33);
+            c.MinWidth = 300;
+        });
+
+        settings.Columns.Add(c =>
+        {
+            c.FieldName = nameof(DocumentCondition.ConditionLimitValue);
+            c.Caption = "Примечание";
+            c.Width = Unit.Percentage(33);
+            c.MinWidth = 300;
+        });
+
+        settings.Columns.Add(c =>
+        {
+            c.FieldName = nameof(DocumentCondition.ConditionGroupName);
+            c.Caption = "Группа";
+            c.GroupIndex = 0;
+        });
+
+        settings.PreRender = (s, e) =>
+        {
+            MVCxGridView grid = s as MVCxGridView;
+            if (grid != null)
+                grid.ExpandAll();
+        };
+
+        settings.ApplyBasicLayout();
+
+    }).Bind(Model).GetHtml();
+}

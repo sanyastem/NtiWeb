@@ -1,0 +1,16 @@
+﻿@using System.Web.UI.WebControls
+@model ASUVP.Core.DataAccess.Model.Claim
+@Html.DevExpress().RoundPanel(settings =>
+{
+    settings.Name = "RouteDetails";
+    settings.Width = Unit.Percentage(100);
+    settings.AllowCollapsingByHeaderClick = true;
+    settings.ShowCollapseButton = true;
+    settings.HeaderText = $"Детализация маршрута {Model.RouteName}";
+    settings.Collapsed = true;
+
+    settings.SetContent(() =>
+    {
+        Html.RenderAction("ClaimRouteDetailsData", new { stFrom = Model.StationFromId, stTo = Model.StationToId });
+    });
+}).GetHtml()

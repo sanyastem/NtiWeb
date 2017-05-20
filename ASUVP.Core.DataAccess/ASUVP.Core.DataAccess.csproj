@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4F7F0084-C261-4548-B75D-68F706228F04}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ASUVP.Core.DataAccess</RootNamespace>
+    <AssemblyName>ASUVP.Core.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.2.0\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutofacDataAccessModule.cs" />
+    <Compile Include="Configurations\AgreementConfiguration.cs" />
+    <Compile Include="Configurations\CompanyConfiguration.cs" />
+    <Compile Include="Configurations\ContactConfiguration.cs" />
+    <Compile Include="Configurations\DocumentConfiguration.cs" />
+    <Compile Include="Configurations\EmployeeConfiguration.cs" />
+    <Compile Include="Configurations\EntityBaseConfiguration.cs" />
+    <Compile Include="Configurations\EntityConfiguration.cs" />
+    <Compile Include="Configurations\PermissionConfiguration.cs" />
+    <Compile Include="Configurations\EmployeeRoleConfiguration.cs" />
+    <Compile Include="Configurations\RolePermissionConfiguration.cs" />
+    <Compile Include="Configurations\RoleConfiguration.cs" />
+    <Compile Include="Configurations\TemplateConfiguration.cs" />
+    <Compile Include="Configurations\TemplateGroupConfiguration.cs" />
+    <Compile Include="Configurations\UserConfiguration.cs" />
+    <Compile Include="Context\DataContext.cs" />
+    <Compile Include="Model\Account.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AccountDetails.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AccountList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Act.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ActDetails.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ActList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Agreement.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AgreementList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AgreementNumberList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ApprovalStatusList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Claim.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ClaimDetails.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ClaimList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ClaimLoadingSchedule.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ClaimRollingStock.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ClaimRouteDetails.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Clients.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Company.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContactDetails.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContactList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DocumentAttach.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DocumentAttachList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DocumentCondition.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DocumentConditionList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DocumentESignature.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Employee.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmployeeRolesList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Instruction.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\InstructionList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PermissionList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProcData.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProcData.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProcData.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProcData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProcData.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Protocol.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProtocolDetails.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ProtocolList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ReceivedMailList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ReportPeriodList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Role.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SigningStatusList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SupplementaryAgreement.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SupplementaryAgreementList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SupplementaryTemplate.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Template.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserDetailsList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserGet.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserMail.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserMailReceivedList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserMailSentList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserNotificationList.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Model\ProcData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProcData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="Model\ProcData.edmx.diagram">
+      <DependentUpon>ProcData.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ASUVP.Core.Domain\ASUVP.Core.Domain.csproj">
+      <Project>{B248D732-F863-4421-B5CA-4D8AB5DB36D5}</Project>
+      <Name>ASUVP.Core.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASUVP.Core\ASUVP.Core.csproj">
+      <Project>{909b4bd7-53d1-4514-b281-a0ab07c7e99e}</Project>
+      <Name>ASUVP.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\ProcData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProcData.edmx</DependentUpon>
+      <LastGenOutput>ProcData.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\ProcData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProcData.edmx</DependentUpon>
+      <LastGenOutput>ProcData.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

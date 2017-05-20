@@ -1,0 +1,116 @@
+﻿@using ASUVP.Core.DataAccess.Model
+@using System.Web.UI.WebControls
+@using ASUVP.Online.Web.Tools
+@model List<ProtocolDetails>
+
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "detailGrid_"; /* + ViewData["ProtocolId"];*/
+        settings.SettingsDetail.MasterGridName = "grid";
+        settings.CallbackRouteValues = new { Controller = "Protocol", Action = "ProtocolTariffData", id = ViewBag.ProtocolId };
+        settings.Width = Unit.Percentage(100);
+        settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+        settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
+
+        settings.KeyFieldName = nameof(ProtocolDetails.ServiceId);
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ProtocolDetails.ServiceName);
+            column.Caption = "Услуга";
+            column.Width = 220;
+            column.ToolTip = "Наименование Услуги";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ProtocolDetails.MeasureName);
+            column.Caption = "Ед. измерения";
+            column.Width = 160;
+            column.ToolTip = "Еденицы измерения";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ProtocolDetails.NDS);
+            column.Caption = "Ставка НДС";
+            column.Width = 130;
+            column.ToolTip = "Ставка НДС Услуги";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ProtocolDetails.Summa);
+            column.Caption = "Ставка без НДС";
+            column.Width = 160;
+            column.ToolTip = "Сумма Услуги без учета НДС";
+            column.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
+            column.PropertiesEdit.DisplayFormatString = DisplayFormatSettings.GetDisplayFormatString();
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ProtocolDetails.SummaNDS);
+            column.Caption = "НДС Ставки";
+            column.Width = 160;
+            column.ToolTip = "Сумма НДС Услуги";
+            column.PropertiesEdit.DisplayFormatString = DisplayFormatSettings.GetDisplayFormatString();
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ProtocolDetails.SummaWithNDS);
+            column.Caption = "Ставка, с учетом НДС";
+            column.Width = 200;
+            column.ToolTip = "Сумма Услуги с учетом НДС";
+            column.PropertiesEdit.DisplayFormatString = DisplayFormatSettings.GetDisplayFormatString();
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ProtocolDetails.CurrencyName);
+            column.Caption = "Валюта";
+            column.Width = 150;
+            column.ToolTip = "Валюта Услуги";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ProtocolDetails.CountryName);
+            column.Caption = "Территория";
+            column.Width = 220;
+            column.ToolTip = "Территория";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ProtocolDetails.StationFromName);
+            column.Caption = "Станция отправления";
+            column.Width = 220;
+            column.ToolTip = "Станция начала рейса (погрузки)";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ProtocolDetails.StationToName);
+            column.Caption = "Станция назначения";
+            column.Width = 220;
+            column.ToolTip = "Станция окончания рейса (выгрузки)";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ProtocolDetails.FreightName);
+            column.Caption = "Груз";
+            column.Width = 220;
+            column.ToolTip = "Груз ЕТСНГ";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ProtocolDetails.GroupTypeName);
+            column.Caption = "Группа отправки";
+            column.Width = 190;
+            column.ToolTip = "Тип группы отправки";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ProtocolDetails.CarParkName);
+            column.Caption = "Парк вагонов";
+            column.Width = 260;
+            column.ToolTip = "Парк вагонов";
+        });
+
+        settings.ApplyBasicLayout();
+
+    }).Bind(Model).GetHtml()

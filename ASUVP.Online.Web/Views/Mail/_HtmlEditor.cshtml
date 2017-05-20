@@ -1,0 +1,35 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Online.Web.Tools
+@using DevExpress.Web.ASPxHtmlEditor
+
+@model string
+
+@Html.DevExpress().HtmlEditor(
+    settings =>
+    {
+        settings.Name = "Body";
+        settings.CallbackRouteValues = new { Controller = "Mail", Action = "HtmlEditor" };
+        settings.Height = Unit.Pixel(400);
+        settings.Width = Unit.Pixel(1100);
+
+        settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.FileSystemSettings.Assign(HtmlEditorHelper.FileSaveSettings.FileSystemSettings);
+        settings.SettingsDialogs.InsertImageDialog.SettingsImageUpload.ValidationSettings.Assign(HtmlEditorHelper.ImageUploadValidationSettings);
+
+        HtmlEditorHelper.SetHtmlEditorImageSelectorSettings(settings.SettingsDialogs.InsertImageDialog.SettingsImageSelector);
+
+        settings.SettingsHtmlEditing.UpdateDeprecatedElements = true;
+        settings.SettingsHtmlEditing.UpdateBoldItalic = true;
+        settings.SettingsHtmlEditing.EnterMode = HtmlEditorEnterMode.P;
+        settings.SettingsHtmlEditing.AllowIdAttributes = true;
+        settings.SettingsHtmlEditing.AllowStyleAttributes = true;
+        settings.SettingsHtmlEditing.AllowedDocumentType = AllowedDocumentType.HTML5;
+        settings.SettingsHtmlEditing.AllowEditFullDocument = false;
+        settings.SettingsHtmlEditing.ResourcePathMode = ResourcePathMode.NotSet;
+        settings.Settings.AllowCustomColorsInColorPickers = true;
+        settings.ActiveView = HtmlEditorView.Design;
+
+        settings.Init = (s, e) =>
+        {
+            ((MVCxHtmlEditor) s).ImageFileSaving += HtmlEditorBinaryImageAutoUploadOptions.ProcessUploadedFile;
+        };
+    }).Bind(Model).GetHtml()

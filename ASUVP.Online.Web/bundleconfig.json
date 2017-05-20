@@ -1,0 +1,20 @@
+[
+  {
+    "outputFileName": "Content/js/cadesplugin_api.min.js",
+    "inputFiles": [
+      "Content/js/cadesplugin_api.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/js/CryptoPro.min.js",
+    "inputFiles": [
+      "Content/js/CryptoPro.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/js/async_code.min.js",
+    "inputFiles": [
+      "Content/js/async_code.js"
+    ]
+  }
+]

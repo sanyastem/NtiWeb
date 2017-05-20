@@ -1,0 +1,72 @@
+﻿@using System.Web.UI.WebControls
+<script src="~/Content/js/useDateFilter.js"></script>
+<table>
+    <tr>
+        <td colspan="2">
+            @Html.DevExpress().ComboBox(settings =>
+       {
+           settings.Name = "UseDate";
+           settings.Properties.Caption = "Период действия";
+           settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+           settings.Properties.CaptionSettings.ShowColon = false;
+           settings.Properties.CaptionStyle.Font.Bold = false;
+           settings.Style.Add("margin", "0px 10px 10px 5px");
+           settings.Width = Unit.Pixel(430);
+           settings.SelectedIndex = 6;
+           settings.Properties.ClientSideEvents.TextChanged = "UseDateChanged";
+           settings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.None;
+           settings.Properties.DropDownStyle = DropDownStyle.DropDownList;
+
+           settings.Properties.Items.Add("Все", 0);
+           settings.Properties.Items.Add("За период (C .. ПО)", 1);
+           settings.Properties.Items.Add("За сегодня", 2);
+           settings.Properties.Items.Add("За вчера", 3);
+           settings.Properties.Items.Add("За текущую неделю", 4);
+           settings.Properties.Items.Add("За последние 7 дней", 5);
+           settings.Properties.Items.Add("За текущий месяц", 6);
+           settings.Properties.Items.Add("За текущий квартал", 7);
+           settings.Properties.Items.Add("За текущий год", 8);
+
+       }).GetHtml()
+        </td>
+    </tr>
+    <tr id="SPOUseDate">
+        <td>
+            @Html.DevExpress().DateEdit(
+                settings =>
+                {
+                    settings.Name = "UseDateBeg";
+                    //settings.Properties.Caption = "C";
+                    settings.Properties.CaptionSettings.ShowColon = false;
+                    settings.Properties.CaptionStyle.Font.Bold = false;
+                    settings.Properties.EditFormat = EditFormat.Custom;
+                    settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+                    settings.Style.Add("margin", "0px 10px 10px 5px");
+                    settings.Width = Unit.Pixel(207);
+                    settings.Properties.EditFormatString = "dd/MM/yyyy";
+                    settings.Properties.ClientSideEvents.DateChanged = "OnUseDateBeginChanged";
+                    settings.ToolTip = "Дата начала";
+                }
+                ).GetHtml()
+        </td>
+        <td>
+            @Html.DevExpress().DateEdit(
+            settings =>
+            {
+                settings.Name = "UseDateEnd";
+                //settings.Properties.Caption = "По";
+                settings.Properties.CaptionSettings.ShowColon = false;
+                settings.Properties.CaptionStyle.Font.Bold = false;
+                settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+                settings.Style.Add("margin", "0px 10px 10px 5px");
+                settings.Width = Unit.Pixel(208);
+                settings.Properties.EditFormat = EditFormat.Custom;
+                settings.Properties.EditFormatString = "dd/MM/yyyy";
+                settings.Properties.ClientSideEvents.DateChanged = "OnUseDateEndChanged";
+                settings.ToolTip = "Дата окончания";
+            }
+            ).GetHtml()
+        </td>
+    </tr>
+</table>
+

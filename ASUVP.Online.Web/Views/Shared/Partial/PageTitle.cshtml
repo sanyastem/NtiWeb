@@ -1,0 +1,41 @@
+﻿<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-8">
+        <h2>@ViewBag.Title</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="@Url.Action("Index", "Home")">Главная</a>
+            </li>
+            @if (ViewBag.RootPageDetails != null)
+            {
+                if ((ViewBag.RootPageDetails as string[]).Length > 3)
+                {
+                    <li>
+                        <a href="@Url.Action(ViewBag.IndexPageDetails[0], ViewBag.IndexPageDetails[1])">@ViewBag.IndexPageDetails[2]</a>
+                    </li>
+                    //Для доп соглашений передается еще и id договора, поэтому есть 4-й элемент массива ViewBag.RootPageDetails[3]
+                    <li>
+                        <a href="@Url.Action(ViewBag.RootPageDetails[0], ViewBag.RootPageDetails[1], new { id = ViewBag.RootPageDetails[3] })">@ViewBag.RootPageDetails[2]</a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="@Url.Action(ViewBag.RootPageDetails[0], ViewBag.RootPageDetails[1])">@ViewBag.RootPageDetails[2]</a>
+                    </li>
+                }                
+            }
+            <li class="active">
+                <strong>@ViewBag.Title</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-4">
+        <!--
+        <div class="title-action">
+            <a href="#" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Экспорт в Excel </a>
+        </div>
+        -->
+      
+
+    </div>
+</div>

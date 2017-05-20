@@ -1,0 +1,79 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link type="image/x-icon" href="~/Content/img/favicon.ico" rel="icon">
+
+    <title>ЗАО "Русагротранс" - @ViewBag.Title</title>
+
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/jquery.validate.min.js"></script>
+    <script src="~/Content/js/jquery.validate.unobtrusive.min.js"></script>
+    @*<script src="~/Scripts/globalize.min.js"></script>
+    <script src="~/Scripts/jquery.validate.globalize.min.js"></script>*@
+    <script src="~/Content/js/bootstrap.min.js"></script>
+
+    @Html.Partial("~/Views/Shared/Partial/DevExpressDependency.cshtml")
+
+    <link href="@Url.Content("~/Content/css/Inspinia/bootstrap.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/Inspinia/font-awesome.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/Inspinia/toastr.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/Inspinia/animate.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/Inspinia/style.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/styles.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/filter.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/ribbon.css")" rel="stylesheet">
+
+    <script>
+        var timeout = @FormsAuthentication.Timeout.TotalMilliseconds; // 20 minutes
+
+        function SetWinTimeout() {
+            window.setTimeout("window.location.href='@FormsAuthentication.LoginUrl';",timeout); // In millisecods
+        }
+         SetWinTimeout();
+    </script> 
+</head>
+
+<body class="mini-navbar">
+    <script>
+        var ROOT_URL = '@string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"))';
+    </script>
+<div id="wrapper">
+    @Html.Partial("~/Views/Shared/Partial/Navigation.cshtml")
+
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+
+        @Html.Partial("~/Views/Shared/Partial/Header.cshtml")
+
+        @Html.Partial("~/Views/Shared/Partial/PageTitle.cshtml")
+
+        <div class="row wrapper wrapper-content animated fadeInRight">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div id="content">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*@Html.Partial("~/Views/Shared/Partial/Footer.cshtml")*@
+
+    </div>
+</div>
+
+@RenderSection("scripts", false)
+<script src="@Url.Content("~/Content/js/Site.js")"></script>
+<script src="@Url.Content("~/Content/js/Inspinia/jquery.metisMenu.js")"></script>
+<script src="@Url.Content("~/Content/js/Inspinia/jquery.slimscroll.min.js")"></script>
+<script src="@Url.Content("~/Content/js/Inspinia/inspinia.js")"></script>
+<script src="@Url.Content("~/Content/js/Inspinia/pace.min.js")"></script>
+<script src="@Url.Content("~/Content/js/Inspinia/toastr.min.js")"></script>
+<!-- <script src="@Url.Content("~/Content/js/Inspinia/hint.js")"></script> -->
+</body>
+</html>

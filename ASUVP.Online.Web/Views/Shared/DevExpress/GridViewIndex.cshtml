@@ -1,0 +1,19 @@
+﻿@model DevExpressGridViewIndexSettings
+
+<div id="content-inner">
+    @Html.GridViewAction(ViewContext.ControllerName())
+
+    @if (Model.DeletingSettings != null)
+    {
+        @Html.Partial("_GridViewDeletePopup", Model.DeletingSettings)
+    }
+
+    @if (Model.Partials.Any())
+    {
+        foreach (var partial in Model.Partials)
+        {
+            @Html.Partial(partial)
+        }
+    }
+
+</div>

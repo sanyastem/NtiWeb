@@ -1,0 +1,34 @@
+﻿@using DevExpress.Data
+@Html.DevExpress().GridLookup(settings =>
+{
+    settings.Name = "Permissions";
+    settings.KeyFieldName = "Id";
+    settings.ApplyLayoutSettings();
+
+    settings.Properties.SelectionMode = GridLookupSelectionMode.Multiple;
+    settings.Properties.TextFormatString = "{0}";
+
+    var column = settings.Columns.Add("Name", "Название");
+    column.SortOrder = ColumnSortOrder.Ascending;
+    column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+    settings.Columns.Add("Code", "Код").Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+    settings.Columns.Add("Code2", "Код 2").Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+    settings.Columns.Add("Module", "Модуль").Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+
+    settings.GridViewProperties.CallbackRouteValues = new {Controller = "Permission", Action = "PermissionsGridLookup", selected = Model};
+    settings.GridViewProperties.SetStatusBarTemplateContent(c => { Html.RenderPartial("_GridLookupFooter", "Permissions"); });
+
+    settings.PreRender = (sender, e) =>
+    {
+        if (Model == null)
+        {
+            return;
+        }
+
+        foreach (var id in Model)
+        {
+            ((MVCxGridLookup) sender).GridView.Selection.SelectRowByKey(id);
+        }
+    };
+}).BindList(ViewBag.Permissions).Bind(Model).GetHtml()

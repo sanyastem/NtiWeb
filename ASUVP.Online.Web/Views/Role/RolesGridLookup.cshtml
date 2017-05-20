@@ -1,0 +1,32 @@
+﻿@using System.Web.UI.WebControls
+@using DevExpress.Data
+@Html.DevExpress().GridLookup(settings =>
+{
+    settings.Name = "Roles";
+    settings.KeyFieldName = "Id";
+    settings.ApplyLayoutSettings();
+    settings.Width = Unit.Percentage(100);
+    settings.Properties.SelectionMode = GridLookupSelectionMode.Multiple;
+    settings.Properties.TextFormatString = "{0}";
+
+    var column = settings.Columns.Add("Name", "Название");
+    column.SortOrder = ColumnSortOrder.Ascending;
+    column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+    column.MinWidth = 200;
+
+    settings.GridViewProperties.CallbackRouteValues = new { Controller = "Role", Action = "RolesGridLookup", selected = Model };
+    settings.GridViewProperties.SetStatusBarTemplateContent(c => { Html.RenderPartial("_GridLookupFooter", "Roles"); });
+
+    settings.PreRender = (sender, e) =>
+    {
+        if (Model == null)
+        {
+            return;
+        }
+
+        foreach (var id in Model)
+        {
+            ((MVCxGridLookup)sender).GridView.Selection.SelectRowByKey(id);
+        }
+    };
+}).BindList(ViewBag.Roles).Bind(Model).GetHtml()

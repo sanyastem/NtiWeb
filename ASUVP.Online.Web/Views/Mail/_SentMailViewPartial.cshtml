@@ -1,0 +1,60 @@
+﻿@using ASUVP.Core.Configuration
+@using ASUVP.Core.DataAccess.Model
+@using DevExpress.Data
+@model ASUVP.Online.Web.Models.MailVM
+
+@{
+    @Html.DevExpress().GridView(settings =>
+{
+    settings.Name = "SentMailGrid";
+    settings.CommandColumn.Visible = true;
+    settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+    settings.CommandColumn.Caption = " ";
+    settings.CommandColumn.Width = 53;
+    settings.CommandColumn.ShowSelectCheckbox = true;
+    settings.CommandColumn.SelectAllCheckboxMode = GridViewSelectAllCheckBoxMode.Page;
+
+    settings.CallbackRouteValues = new
+    {
+        Controller = "Mail",
+        Action = "SentMailViewPartial"
+        /* Additional parameters here */
+    };
+
+    settings.ClientSideEvents.RowDblClick = "function (s, e) { var grid = MVCxClientGridView.Cast(s); window.open('" + Url.Action("Details", "Mail") + "?id=' + grid.GetRowKey(e.visibleIndex)) }";
+
+    settings.KeyFieldName = nameof(UserMailSentList.Id);
+
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = nameof(UserMailSentList.ReceiverName);
+        column.Caption = "Получатель";
+    });
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = nameof(UserMailSentList.Subject);
+        column.Caption = "Тема";
+    });
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = nameof(UserMailSentList.CreatedOn);
+        column.ColumnType = MVCxGridViewColumnType.DateEdit;
+        column.PropertiesEdit.DisplayFormatString = ConfigManager.LongDateTimeFormat;
+        column.Caption = "Отправлено";
+        column.SortOrder = ColumnSortOrder.Descending;
+    });
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = nameof(UserMailSentList.SenderName);
+        column.Caption = "Отправитель";
+    });
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = nameof(UserMailSentList.StatusName);
+        column.Caption = "Статус";
+    });
+
+    settings.ApplyPaging();
+    settings.ApplyBasicLayout();
+}).Bind(Model.SentMails).GetHtml()
+}

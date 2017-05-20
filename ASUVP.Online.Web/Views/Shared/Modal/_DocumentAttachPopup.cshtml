@@ -1,0 +1,26 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@Html.DevExpress().PopupControl(settings =>
+{
+    settings.Name = "DocumentAttachPopup";
+    settings.ShowHeader = true;
+    settings.ControlStyle.CssClass = "popupControl";
+    settings.AllowDragging = true;
+    settings.CloseOnEscape = true;
+    settings.ShowCloseButton = true;
+    settings.PopupAnimationType = AnimationType.None;
+    settings.Modal = true;
+    settings.CloseAction = CloseAction.CloseButton;
+    settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+    settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+
+    settings.Width = Unit.Pixel(900);
+
+    settings.HeaderText = "Вложения";
+
+    settings.SetContent(() =>
+    {
+        Html.RenderPartial("Modal/DocumentAttachPopupDetails", new List<DocumentAttachList>());
+    });
+}).GetHtml()
+

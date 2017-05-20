@@ -1,0 +1,16 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model Act
+@Html.DevExpress().RoundPanel(settings =>
+{
+    settings.Name = "ActServices";
+    settings.Width = Unit.Percentage(100);
+    settings.AllowCollapsingByHeaderClick = true;
+    settings.ShowCollapseButton = true;
+    settings.HeaderText = "Услуги";
+    settings.Collapsed = true;
+    settings.SetContent(() =>
+    {
+        Html.RenderAction("ActServiceData", new { id = Model.Id });
+    });
+}).GetHtml()

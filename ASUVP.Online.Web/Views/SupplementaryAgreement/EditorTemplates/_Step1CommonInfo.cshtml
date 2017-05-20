@@ -1,0 +1,211 @@
+﻿@using System.Drawing
+@using System.Web.UI.WebControls
+@using ASUVP.Online.Web.Models.SupplementaryAgreement
+@using ASUVP.Online.Web.Models.Lookup
+@using ASUVP.Core.DataAccess.Model
+
+@model SupplementaryAgreementWizardVM
+
+<table>
+    <tr>
+        <td class="left-label">Шаблон*</td>
+        <td colspan="3">
+            @Html.DevExpress().ComboBoxFor(m => m.TemplateId, s =>
+           {
+               s.Properties.DropDownStyle = DropDownStyle.DropDown;
+               s.CallbackRouteValues = new { Controller = "Template", Action = "TemplateLookup" };
+               s.Width = Unit.Percentage(100);
+               s.Name = nameof(SupplementaryAgreementWizardVM.TemplateId);
+               s.Properties.TextField = nameof(Template.TemplateName);
+               s.Properties.ValueField = nameof(Template.Id);
+               s.Properties.ValueType = typeof(Guid);
+               s.Properties.CallbackPageSize = 15;
+               s.ReadOnly = true;
+
+               s.ShowModelErrors = true;
+               s.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
+               s.Properties.ValidationSettings.Display = Display.None;
+
+               if (Model.DocumentId == Guid.Empty)
+               {
+                   s.SelectedIndex = 0;
+                   s.Enabled = true;
+               }
+           }).BindList(TemplateLookup.GetSupplementaryTemplatesRange, TemplateLookup.GetTemplateById).Bind(Model.TemplateId).GetHtml()
+        </td>
+    </tr>
+    <tr>
+        <td class="left-label">Номер*</td>
+        <td colspan="2">
+            <table>
+                <tr>
+                    <td style="width:150px">
+                        @Html.DevExpress().TextBox(s =>
+                   {
+                       s.Width = Unit.Percentage(100);
+                       s.ReadOnly = false;
+                       s.Name = nameof(SupplementaryAgreementWizardVM.DocNumber);
+                       s.ShowModelErrors = true;
+                       s.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
+                       s.Properties.ValidationSettings.Display = Display.None;
+                       //s.Properties.ValidationSettings.ErrorFrameStyle.BackColor = Color.Red;
+                       //s.Properties.ValidationSettings.ErrorFrameStyle.Width = Unit.Percentage(10);
+                       //s.Properties.ValidationSettings.ErrorFrameStyle.BorderColor = Color.Red;
+
+                       //
+                       //dxeFocused_Moderno dxh0
+                       //dxeInvalid_Moderno dxh0
+                       //dxeFocused_Moderno dxeInvalid_Moderno dxh0
+                   }).Bind(Model.DocNumber).GetHtml()
+                    </td>
+                    <td style="width:90px; padding-right: 5px" class="right-ali">Рег. номер</td>
+                    <td style="width:150px">
+                        @Html.DevExpress().TextBox(s =>
+                        {
+                            s.Width = Unit.Percentage(100);
+                            s.ReadOnly = false;
+                            s.Name = nameof(SupplementaryAgreementWizardVM.RegNumber);
+                        }).Bind(Model.RegNumber).GetHtml()
+                    </td>
+                    <td class="textTable" style="width:50px">Дата*</td>
+                    <td class="dateEditor">
+                        @Html.DevExpress().DateEdit(s =>
+                       {
+                           s.Width = Unit.Percentage(100);
+                           s.ReadOnly = false;
+                           s.Enabled = true;
+                           s.Name = nameof(SupplementaryAgreementWizardVM.DocDate);
+                           s.ShowModelErrors = true;
+                           s.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
+                           s.Properties.ValidationSettings.Display = Display.None;
+                       }).Bind(Model.DocDate).GetHtml()
+                    </td>
+                    <td style="width:40px"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="left-label">Наименование*</td>
+        <td colspan="3">
+            @Html.DevExpress().TextBox(s =>
+           {
+               s.Width = Unit.Percentage(100);
+               s.ReadOnly = false;
+               s.Name = nameof(SupplementaryAgreementWizardVM.DocName);
+
+               s.ShowModelErrors = true;
+               s.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
+               s.Properties.ValidationSettings.Display = Display.None;
+           }).Bind(Model.DocName).GetHtml()
+        </td>
+    </tr>
+    <tr>
+        <td class="left-label">
+            @Model.CustomerCompanyLabel
+        </td>
+        <td colspan="3">
+            @Html.DevExpress().TextBox(s =>
+            {
+                s.Width = Unit.Percentage(100);
+                s.ReadOnly = true;
+                s.Name = nameof(SupplementaryAgreementWizardVM.CustomerCompanyName);
+            }).Bind(Model.CustomerCompanyName).GetHtml()
+        </td>
+    </tr>
+    <tr>
+        <td class="left-label">
+            @Model.PerformerCompanyLabel
+        </td>
+        <td colspan="3">
+            @Html.DevExpress().TextBox(s =>
+            {
+                s.Width = Unit.Percentage(100);
+                s.ReadOnly = true;
+                s.Name = nameof(SupplementaryAgreementWizardVM.PerformerCompanyName);
+            }).Bind(Model.PerformerCompanyName).GetHtml()
+        </td>
+    </tr>
+    <tr>
+        <td class="left-label">Период действия</td>
+        <td colspan="4">
+            <table style="width:auto">
+                <tr>
+                    <td style="width:30px; text-align:center">C </td>
+                    <td class="dateEditor">
+                        @Html.DevExpress().DateEdit(s =>
+                        {
+                            s.Width = Unit.Percentage(100);
+                            s.ReadOnly = false;
+                            s.Enabled = true;
+                            s.Name = nameof(SupplementaryAgreementWizardVM.DateBeg);
+                        }).Bind(Model.DateBeg).GetHtml()
+                    </td>
+                    <td class="textTableAuto1">
+                        По
+                    </td>
+                    <td class="dateEditor">
+
+                        @Html.DevExpress().DateEdit(s =>
+                       {
+                           s.Width = Unit.Percentage(100);
+                           s.ReadOnly = false;
+                           s.Enabled = true;
+                           s.Name = nameof(SupplementaryAgreementWizardVM.DateEnd);
+                           s.ShowModelErrors = true;
+                           s.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
+                           s.Properties.ValidationSettings.Display = Display.None;
+                       }).Bind(Model.DateEnd).GetHtml()
+
+                    </td>
+                    <td class="textTableAuto2">
+                        Дата завершения
+                    </td>
+                    <td class="dateEditor">
+                        @Html.DevExpress().DateEdit(s =>
+                       {
+                           s.Width = Unit.Percentage(100);
+                           s.ReadOnly = false;
+                           s.Enabled = true;
+                           s.Name = nameof(SupplementaryAgreementWizardVM.DateStop);
+                           s.ShowModelErrors = true;
+                           s.Properties.ValidationSettings.ErrorDisplayMode = ErrorDisplayMode.ImageWithText;
+                           s.Properties.ValidationSettings.Display = Display.None;
+                       }).Bind(Model.DateStop).GetHtml()
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<br />
+<div>
+    Примечание
+</div>
+<div style="width: 100%">
+    @Html.DevExpress().Memo(s =>
+    {
+        s.Width = Unit.Percentage(100);
+        s.Name = nameof(SupplementaryAgreementWizardVM.Note);
+        s.Properties.Rows = 6;
+        s.ReadOnly = false;
+    }).Bind(Model.Note).GetHtml()
+</div>
+@*@Html.HiddenFor(m => m.DocumentId)
+@Html.HiddenFor(m => m.TemplateId)
+@Html.HiddenFor(m => m.AgreementId)
+
+@Html.HiddenFor(m => m.CustomerAddressId)
+@Html.HiddenFor(m => m.CustomerBankId)
+@Html.HiddenFor(m => m.CustomerContactId)
+@Html.HiddenFor(m => m.CustomerCompanyId)
+@Html.HiddenFor(m => m.CustomerCompanyLabel)
+
+@Html.HiddenFor(m => m.PerformerAddressId)
+@Html.HiddenFor(m => m.PerformerBankId)
+@Html.HiddenFor(m => m.PerformerContactId)
+@Html.HiddenFor(m => m.PerformerCompanyId)
+@Html.HiddenFor(m => m.PerformerCompanyLabel)
+
+@Html.HiddenFor(m => m.StatusId)*@

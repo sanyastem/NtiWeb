@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ASUVP.Core.DataAccess.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <Function Name="AccountGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="AccountListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Group" Type="nvarchar" Mode="In" />
+    <Parameter Name="PeriodType" Type="int" Mode="In" />
+    <Parameter Name="DateBeg" Type="datetime" Mode="In" />
+    <Parameter Name="DateEnd" Type="datetime" Mode="In" />
+    <Parameter Name="ReportPeriod" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="AgreementId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="AgrManagerId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="StatusId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="EPStatusId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ActDetailsGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ActId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ActGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ActListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Group" Type="nvarchar" Mode="In" />
+    <Parameter Name="DocPeriodType" Type="int" Mode="In" />
+    <Parameter Name="DocDateBeg" Type="date" Mode="In" />
+    <Parameter Name="DocDateEnd" Type="date" Mode="In" />
+    <Parameter Name="RepPeriodType" Type="int" Mode="In" />
+    <Parameter Name="RepDateBeg" Type="date" Mode="In" />
+    <Parameter Name="RepDateEnd" Type="date" Mode="In" />
+    <Parameter Name="AgreementId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="AgrManagerId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="StatusId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="EPStatusId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="AgreementDetele" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DocumentId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="AgreementGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="AgreementInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DocumentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="DateBeg" Type="date" Mode="In" />
+    <Parameter Name="DateEnd" Type="date" Mode="In" />
+    <Parameter Name="DateStop" Type="date" Mode="In" />
+    <Parameter Name="СustomerBankId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="СustomerAddressId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PerformerBankId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PerformerAddressId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CreatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="AgreementListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Group" Type="nvarchar" Mode="In" />
+    <Parameter Name="AgrManagerId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TemplateId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="OnlyActive" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="AgreementNumberListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="AgreementUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DocumentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="DateBeg" Type="date" Mode="In" />
+    <Parameter Name="DateEnd" Type="date" Mode="In" />
+    <Parameter Name="DateStop" Type="date" Mode="In" />
+    <Parameter Name="СustomerBankId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CustomerAddressId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PerformerBankId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PerformerAddressId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UpdatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ApprovalStatusListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ClaimDetailsGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ProtocolGroup" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ClaimGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ClaimListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Group" Type="nvarchar" Mode="In" />
+    <Parameter Name="DocPeriodType" Type="int" Mode="In" />
+    <Parameter Name="DocDateBeg" Type="datetime" Mode="In" />
+    <Parameter Name="DocDateEnd" Type="datetime" Mode="In" />
+    <Parameter Name="LoadPeriodType" Type="int" Mode="In" />
+    <Parameter Name="LoadDateBeg" Type="datetime" Mode="In" />
+    <Parameter Name="LoadDateEnd" Type="datetime" Mode="In" />
+    <Parameter Name="AgreementId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="DocStatusId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="EDStatusId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ContactId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ApprovalStatus" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="SigningStatus" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ClaimLoadingScheduleGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClaimId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ProtocolGroup" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ClaimRollingStockGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClaimId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ProtocolGroup" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ClaimRouteDetailsGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StationFromId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="StationToId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Options" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="ClientsGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CompanyGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ContactDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ContactDetailsGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ContactInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="F" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="I" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="O" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Phone" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CreatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ContactListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ContactUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="F" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="I" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="O" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Phone" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UpdatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="DocumentAttachDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UpdatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="DocumentAttachGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AttachId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="DocumentAttachInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DocumentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="FileName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Content" Type="varbinary(max)" Mode="In" />
+    <Parameter Name="Note" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CreatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="DocumentAttachListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DocumentId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="DocumentAttachUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Note" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="UpdatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="DocumentConditionDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DocumentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ConditionId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UpdatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="DocumentConditionGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DocumentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+  </Function>
+  <Function Name="DocumentConditionInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DocumentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ConditionId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ValueString" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ValueInteger" Type="int" Mode="In" />
+    <Parameter Name="ValueFloat" Type="float" Mode="In" />
+    <Parameter Name="ValueMoney" Type="money" Mode="In" />
+    <Parameter Name="ValueGUID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ValueDateTime" Type="datetime" Mode="In" />
+    <Parameter Name="ConditionLimitValue" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CreatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="DocumentConditionListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DocumentConditionUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DocumentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ConditionId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ValueString" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ValueInteger" Type="int" Mode="In" />
+    <Parameter Name="ValueFloat" Type="float" Mode="In" />
+    <Parameter Name="ValueMoney" Type="money" Mode="In" />
+    <Parameter Name="ValueGUID" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ValueDateTime" Type="datetime" Mode="In" />
+    <Parameter Name="ConditionLimitValue" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="UpdatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="DocumentESignatureGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DocumentId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="DocumentESignatureInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AttachId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Content" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CreatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="DocumentInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DocNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="CustomerRegNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="PerformerRegNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="DocDate" Type="date" Mode="In" />
+    <Parameter Name="CustomerName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PerformerName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CustomerCompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CustomerContactId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PerformerCompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PerformerContactId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="StatusId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TemplateId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Note" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CreatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="DocumentUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DocumentId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="DocNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="CustomerRegNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="PerformerRegNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="DocDate" Type="date" Mode="In" />
+    <Parameter Name="CustomerName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PerformerName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CustomerCompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CustomerContactId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PerformerCompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PerformerContactId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="StatusId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TemplateId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Note" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="UpdatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="EmployeeDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UpdatetBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="EmployeeGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="EmployeeInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CreatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="EmployeeRoleDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmployeeId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="RoleId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UpdatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="EmployeeRoleInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="RoleId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CreatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="EmployeeRolesListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="InstructionGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="InstructionListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Group" Type="nvarchar" Mode="In" />
+    <Parameter Name="PeriodType" Type="int" Mode="In" />
+    <Parameter Name="DateBeg" Type="date" Mode="In" />
+    <Parameter Name="DateEnd" Type="date" Mode="In" />
+    <Parameter Name="StationId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="AgreementId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="AgrManagerId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="TemplateId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="StatusId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="EPStatusId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="PermissionListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoleId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ProtocolDetailsGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProtocolId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ProtocolGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ProtocolListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Group" Type="nvarchar" Mode="In" />
+    <Parameter Name="DocPeriodType" Type="int" Mode="In" />
+    <Parameter Name="DocDateBeg" Type="datetime" Mode="In" />
+    <Parameter Name="DocDateEnd" Type="datetime" Mode="In" />
+    <Parameter Name="UsePeriodType" Type="int" Mode="In" />
+    <Parameter Name="UseDateBeg" Type="datetime" Mode="In" />
+    <Parameter Name="UseDateEnd" Type="datetime" Mode="In" />
+    <Parameter Name="AgreementId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="AgrManagerId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="StatusId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="EPStatusId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ReceivedMailListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="ReportPeriodListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="RoleGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoleId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="RoleInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CreatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="RolePermissionDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoleId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PermissionId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UpdatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="RolePermissionInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoleId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="PermissionId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CreatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="RoleUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoleId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="UpdatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="SigningStatusListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SupplementaryAgreementGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="SupplementaryAgreementInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AgreementId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="SupplementaryAgreementId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CreatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="SupplementaryAgreementListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AgreementId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="OnlyActive" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="SupplementaryAgreementUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SupplementaryAgreementId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UpdatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="SupplementaryTemplateGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="TemplateGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="UserByNameGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UserCompaniesListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="UserDetailsListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="UserGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="UserInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ContactId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PasswordHash" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SecurityStamp" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CreatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="UserListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UserMailGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="UserMailInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Subject" Type="nvarchar" Mode="In" />
+    <Parameter Name="Body" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SenderUserId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="SenderCompanyId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ReceiverCompanyId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="UserMailReceivedListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="UserMailSentListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="UserMailViewTimeUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ViewTime" Type="datetime" Mode="In" />
+    <Parameter Name="ViewerId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="UserNotificationChangeState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NotificationId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UpdatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="UserNotificationInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserFromId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CompanyFromId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UserToId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="CompanyToId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Text" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Url" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ObjectId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="UserNotificationListGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NotificationId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UserToId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="UserUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="ContactId" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
+    <Parameter Name="UpdatedBy" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <EntityContainer Name="ASUVPCoreDataAccessModelStoreContainer" />
+</Schema>

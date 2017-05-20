@@ -1,0 +1,30 @@
+﻿@model string
+
+@{
+    ViewContext.Writer.Write("<div style=\"padding: 0px 8px 2px 0; float: right; min-width: 300px;\">");
+
+    Html.DevExpress().Button(
+        btnSettings =>
+        {
+            btnSettings.Name = $"btn_{Model}_Apply";
+            btnSettings.UseSubmitBehavior = false;
+            btnSettings.Text = "Применить";
+            btnSettings.ClientSideEvents.Click = "function() {" + Model + ".ConfirmCurrentSelection(); " + Model + ".HideDropDown(); }";
+        }
+        )
+        .Render();
+
+    ViewContext.Writer.Write("<div style=\"padding: 0 10px; float: right\">");
+
+    Html.DevExpress().Button(
+        btnSettings =>
+        {
+            btnSettings.Name = $"btn_{Model}_Cancel";
+            btnSettings.UseSubmitBehavior = false;
+            btnSettings.Text = "Отмена";
+            btnSettings.ClientSideEvents.Click = "function() {" + Model + ".RollbackToLastConfirmedSelection(); " + Model + ".HideDropDown(); }";
+        }
+        ).Render();
+
+    ViewContext.Writer.Write("</div>");
+}

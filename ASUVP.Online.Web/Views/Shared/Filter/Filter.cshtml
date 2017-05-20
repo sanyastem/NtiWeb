@@ -1,0 +1,151 @@
+﻿@model ASUVP.Online.Web.Models.FilterModel
+<script>
+    var ROOT_URL = '@string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"))';
+</script>
+@if (ViewContext.Controller.ToString().Remove(0, 29) == "AgreementController"
+                                                     || ViewContext.Controller.ToString().Remove(0, 29) == "ProtocolController"
+                                                     || ViewContext.Controller.ToString().Remove(0, 29) == "AccountController"
+                                                     || ViewContext.Controller.ToString().Remove(0, 29) == "InstructionController"
+                                                     || ViewContext.Controller.ToString().Remove(0, 29) == "ClaimController"
+                                                     || ViewContext.Controller.ToString().Remove(0, 29) == "ActController")
+{
+    <div class="panel overridePanel">
+        <a class="handle"></a>
+        <h3><span lang="ru">Фильтр</span></h3><br>
+        <span lang="ru">
+
+
+            @if (ViewContext.Controller.ToString().Remove(0, 29) == "AgreementController")
+            {
+                @Html.Action("FilterManager", "Filter")
+                @Html.Action("FilterTemplate", "Filter")
+                @Html.Partial("Filter/FilterOnlyActive")
+            }
+            @if (ViewContext.Controller.ToString().Remove(0, 29) == "AccountController")
+            {
+                @Html.Partial("Filter/DocumentDate")
+                @Html.Action("FilterReportPeriod", "Filter")
+                @Html.Action("FilterAgreement", "Filter")
+                @Html.Action("FilterManager", "Filter")
+                @Html.Action("FilterCoordination", "Filter")
+                @Html.Action("FilterSigning", "Filter")
+            }
+
+            @if (ViewContext.Controller.ToString().Remove(0, 29) == "ProtocolController")
+            {
+
+                @Html.Partial("Filter/DocumentDate")
+                @Html.Partial("Filter/UsePeriod")
+                @Html.Action("FilterAgreement", "Filter")
+                @Html.Action("FilterManager", "Filter")
+                @Html.Action("FilterCoordination", "Filter")
+                @Html.Action("FilterSigning", "Filter")
+            }
+            @if (ViewContext.Controller.ToString().Remove(0, 29) == "InstructionController")
+            {
+
+                @Html.Partial("Filter/DocumentDate")
+                @Html.Action("FilterStation", "Filter")
+                //@Html.Action("FilterClient", "Filter")
+                @Html.Action("FilterAgreement", "Filter")
+                @Html.Action("FilterManager", "Filter")
+                @Html.Action("InstructionType", "Filter")
+                @Html.Action("FilterCoordination", "Filter")
+                @Html.Action("FilterSigning", "Filter")
+
+
+            }
+            @if (ViewContext.Controller.ToString().Remove(0, 29) == "ActController")
+            {
+
+                @Html.Partial("Filter/DocumentDate")
+                @Html.Action("FilterReportPeriod", "Filter")
+                @Html.Action("FilterAgreement", "Filter")
+                @Html.Action("FilterManager", "Filter")
+                @Html.Action("FilterCoordination", "Filter")
+                @Html.Action("FilterSigning", "Filter")
+            }
+            @if (ViewContext.Controller.ToString().Remove(0, 29) == "ClaimController")
+            {
+
+                @Html.Partial("Filter/DocumentDate")
+                @Html.Partial("Filter/ShipmentDate")
+                @Html.Action("FilterAgreement", "Filter")
+                @Html.Action("FilterCoordination", "Filter")
+                @Html.Action("FilterSigning", "Filter")
+                @Html.Action("FilterManager", "Filter")
+            }
+
+            @Html.DevExpress().Button(
+        set =>
+        {
+            set.Name = "btnNative";
+            set.Width = 90;
+            set.Height = 25;
+            set.Text = "Применить";
+            set.Style.Add("margin", "10px 10px 10px 5px");
+        }
+        ).GetHtml()
+        </span>
+    </div>
+}
+
+<script src="~/Content/js/filterForm.js"></script>
+<script type="text/javascript">
+
+    var controllerName = '@ViewContext.Controller.ToString().Remove(0, 29)';
+
+    $(document).ready(function () {
+        $("#filter").css("visibility", "visible");
+    });
+
+    $("#btnNative").click(function () {
+        if (controllerName === "AgreementController") {
+            AgreementView.callbackUrl = ROOT_URL + "/Agreement/AgreementViewPartial?manager=" + comboBoxManager.GetValue() + "&template=" + comboBoxTemplate.GetValue() + "&active=" + onlyActive.GetChecked();
+            AgreementView.Refresh();
+        }
+        if (controllerName === "AccountController") {
+            var i2 = $("#DateBegin_I").val().toString();
+            var i3 = $("#DateEnd_I").val().toString();
+            AccountView.callbackUrl = ROOT_URL + "/Account/AccountViewPartial?periodType=" + comboBoxDocumentDate.GetValue() + "&dateBeg=" + i2 + "&dateEnd=" + i3
+                + "&reportPeriod=" + comboBoxReportPeriod.GetValue() + "&agreementId=" + comboBoxAgreement.GetValue() + "&agrManagerId=" + comboBoxManager.GetValue()
+                + "&statusId=" + comboBoxStateOfCoordination.GetValue() + "&epStatusId=" + comboBoxStateOfSigning.GetValue();
+            AccountView.Refresh();
+        }
+        if (controllerName === "InstructionController") {
+            var v2 = $("#DateBegin_I").val().toString();
+            var v3 = $("#DateEnd_I").val().toString();
+            InstructionView.callbackUrl = ROOT_URL + "/Instruction/InstructionViewPartial?periodType=" + comboBoxDocumentDate.GetValue() + "&dateBeg=" + v2 + "&dateEnd=" + v3
+                + "&stationId=" + comboBoxStation.GetValue() + "&agreementId=" + comboBoxAgreement.GetValue() + "&agrManagerId=" + comboBoxManager.GetValue()
+                + "&templateId=" + comboBoxInstructionType.GetValue() + "&statusId=" + comboBoxStateOfCoordination.GetValue() + "&epStatusId=" + comboBoxStateOfSigning.GetValue();
+            InstructionView.Refresh();
+
+        }
+        if (controllerName === "ProtocolController") {
+            var c2 = $("#DateBegin_I").val().toString();
+            var c3 = $("#DateEnd_I").val().toString();
+            var c4 = $("#UseDateBeg_I").val().toString();
+            var c5 = $("#UseDateEnd_I").val().toString();
+            ProtocolView.callbackUrl = ROOT_URL + "/Protocol/ProtocolViewPartial?periodType=" + comboBoxDocumentDate.GetValue() + "&dateBeg=" + c2 + "&dateEnd=" + c3
+                +"&usePeriod=" + UseDate.GetValue() + "&useDateBeg=" + c4 + "&useDateEnd=" + c5
+                +"&agreementId=" + comboBoxAgreement.GetValue() + "&AgrManagerId=" + comboBoxManager.GetValue() + "&statusId=" + comboBoxStateOfCoordination.GetValue() + "&epStatusId=" + comboBoxStateOfSigning.GetValue();
+            ProtocolView.Refresh();
+        }
+        if (controllerName === "ActController") {
+            var z2 = $("#DateBegin_I").val().toString();
+            var z3 = $("#DateEnd_I").val().toString();
+            ActView.callbackUrl = ROOT_URL + "/Act/ActViewPartial?periodType=" + comboBoxDocumentDate.GetValue() + "&dateBeg=" + z2 + "&dateEnd=" + z3
+                + "&reportPeriod=" + comboBoxReportPeriod.GetValue() + "&agreementId=" + comboBoxAgreement.GetValue() + "&agrManagerId=" + comboBoxManager.GetValue()
+                + "&statusId=" + comboBoxStateOfCoordination.GetValue() + "&epStatusId=" + comboBoxStateOfSigning.GetValue();
+            ActView.Refresh();
+        }
+        if (controllerName === "ClaimController") {
+            var u1 = $("#DateBegin_I").val().toString();
+            var u2 = $("#DateEnd_I").val().toString();
+            var u3 = $("#ShipmentBegin_I").val().toString();
+            var u4 = $("#ShipmentEnd_I").val().toString();
+            ClaimView.callbackUrl = ROOT_URL + "/Claim/ClaimViewPartial?period=" + comboBoxDocumentDate.GetValue() + "&dateBeg=" + u1 + "&dateEnd=" + u2 + "&shipment=" + comboBoxShipmentDate.GetValue() + "&shipmentBeg=" + u3 + "&shipmentEnd=" + u4 + "&coordination=" + comboBoxStateOfCoordination.GetValue() + "&signing=" + comboBoxStateOfSigning.GetValue() + "&manager=" + comboBoxManager.GetValue() + "&agreement=" + comboBoxAgreement.GetValue();
+            ClaimView.Refresh();
+        }
+    });
+</script>

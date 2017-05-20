@@ -1,0 +1,7 @@
+F:\Job\ASUVP.Online\src\ASUVP.Core.Domain\bin\Debug\ASUVP.Core.Domain.dll
+F:\Job\ASUVP.Online\src\ASUVP.Core.Domain\bin\Debug\ASUVP.Core.Domain.pdb
+F:\Job\ASUVP.Online\src\ASUVP.Core.Domain\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+F:\Job\ASUVP.Online\src\ASUVP.Core.Domain\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+F:\Job\ASUVP.Online\src\ASUVP.Core.Domain\obj\Debug\ASUVP.Core.Domain.csprojResolveAssemblyReference.cache
+F:\Job\ASUVP.Online\src\ASUVP.Core.Domain\obj\Debug\ASUVP.Core.Domain.dll
+F:\Job\ASUVP.Online\src\ASUVP.Core.Domain\obj\Debug\ASUVP.Core.Domain.pdb

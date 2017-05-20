@@ -1,0 +1,76 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Online.Web.Models
+
+@model NewMailVM
+
+@using (Html.BeginForm("SendMail", "Mail", FormMethod.Post))
+{
+    <div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+        <div class="container-fluid">
+            <table style="width:100%">
+                <tr>
+                    <td style="text-align:right; padding-right: 25px; width: 100px">
+                        Кому:
+                    </td>
+                    <td style="width:600px">
+                        @Html.Action("CompanyGridLookup", "Company")
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="height: 12px" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right; padding-right: 25px; width: 100px">
+                        Тема:
+                    </td>
+                    <td style="width:600px">
+                        @Html.DevExpress().TextBox(settings => 
+                       {
+                           settings.Name = "Subject";
+                           settings.Width = Unit.Percentage(100);
+                       }).Bind(Model.Subject).GetHtml()
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="height: 25px" colspan="3"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        @Html.Partial("_HtmlEditor", Model.Body)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height: 25px" colspan="3"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:right">
+                        @Html.DevExpress().Button(settings => 
+                        {
+                            settings.Name = "btnSend";
+                            settings.UseSubmitBehavior = true;
+                            settings.Width = Unit.Pixel(100);
+                            settings.Text = "Отправить";
+                            settings.ToolTip = "Отправить письмо";
+                            settings.ControlStyle.CssClass = "btn btn-sm btn-primary";
+                        }).GetHtml()
+                                    
+                        @Html.DevExpress().Button(settings =>
+                        {
+                            settings.Name = "btnDiscard";
+                            settings.UseSubmitBehavior = false;
+                            settings.Width = Unit.Pixel(100);
+                            settings.Text = "Отмена";
+                            settings.ToolTip = "Отменить";
+                            settings.ClientSideEvents.Click = "function (s,e) { window.location = ROOT_URL + 'mail'; }";
+                            settings.ControlStyle.CssClass = "btn btn-sm btn-white";
+                        }).GetHtml()
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+            <br />
+        </div>
+    </div>
+}

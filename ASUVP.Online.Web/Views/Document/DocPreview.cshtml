@@ -1,0 +1,31 @@
+﻿@using System.Web.UI.WebControls
+@using DevExpress.XtraRichEdit
+@using ASUVP.Core.DataAccess.Model
+@using ASUVP.Online.Web.Tools
+
+@model DocumentAttach
+
+@Html.DevExpress().RichEdit(settings =>
+{
+    settings.Name = "RichEdit";
+    settings.Width = Unit.Percentage(100);
+    settings.Height = Unit.Pixel(1400);
+    settings.ShowConfirmOnLosingChanges = false;
+    settings.ActiveTabIndex = 0;
+    settings.RibbonMode = RichEditRibbonMode.Ribbon;
+
+    settings.PreRender = (s, e) =>
+    {
+        MVCxRichEdit richEdit = (MVCxRichEdit)s;
+        richEdit.Focus();
+    };
+
+    settings.RibbonTabs.Add(DocumentRibbonCustomizationHelper.GetCustomRibbonTab(false));
+
+}).Open(Guid.NewGuid().ToString(), (DocumentFormat)ViewData["DocumentFormat"], () => Model.Content).GetHtml()
+
+<script type="text/javascript">
+    $("#RichEdit_R_T0G0I0").click(function () {
+        window.open(ROOT_URL + 'document/download' + '?id=' + '@Model.DocumentId', "_self");
+    });
+</script>

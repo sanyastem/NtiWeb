@@ -1,0 +1,853 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DE4589A4-34B1-4A11-B181-7906975910A8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ASUVP.Online.Web</RootNamespace>
+    <AssemblyName>ASUVP.Online.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.2.0\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.0\lib\net451\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v16.2.Core, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Charts.v16.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.CodeParser.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.CodeParser.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Data.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.DataAccess.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Docs.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Docs.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v16.2.Core, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Office.v16.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v16.2.Core, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Pdf.v16.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v16.2.Drawing, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Pdf.v16.2.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Printing.v16.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v16.2.Core, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.RichEdit.v16.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Sparkline.v16.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Spreadsheet.v16.2.Core, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Spreadsheet.v16.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Utils.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxHtmlEditor.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Web.ASPxHtmlEditor.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxRichEdit.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Web.ASPxRichEdit.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxSpreadsheet.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Web.ASPxSpreadsheet.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxThemes.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Web.ASPxThemes.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.Mvc5.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Web.Mvc5.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Web.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v16.2, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.Xpo.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v16.2.Core, Version=16.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dev\DevExpress.XtraGauges.v16.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mvc2Futures.2.0.50217.0\lib\Microsoft.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\ValidationFormAttributes.cs" />
+    <Compile Include="Controllers\ActController.cs" />
+    <Compile Include="Controllers\DocumentController.cs" />
+    <Compile Include="Controllers\MailController.cs" />
+    <Compile Include="Controllers\SupplementaryAgreementController.cs" />
+    <Compile Include="Controllers\FilterController.cs" />
+    <Compile Include="Controllers\InstructionController.cs" />
+    <Compile Include="Controllers\ClaimController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Controllers\TemplateController.cs" />
+    <Compile Include="Hubs\Connections.cs" />
+    <Compile Include="Hubs\NotificationHub.cs" />
+    <Compile Include="Models\ActVM.cs" />
+    <Compile Include="Models\Lookup\TemplateLookup.cs" />
+    <Compile Include="Models\MailVM.cs" />
+    <Compile Include="Models\NewMailVM.cs" />
+    <Compile Include="Models\PdfPageModel.cs" />
+    <Compile Include="Models\SupplementaryAgreement\SupplementaryAgreementWizardVM.cs" />
+    <Compile Include="Models\Agreement\AgreementEditVM.cs" />
+    <Compile Include="Models\Agreement\AgreementToSave.cs" />
+    <Compile Include="Models\Claim\ClaimAdditonalConditions.cs" />
+    <Compile Include="Models\Claim\ClaimCargoSchedule.cs" />
+    <Compile Include="Models\Claim\ClaimFullDetails.cs" />
+    <Compile Include="Models\Claim\ClaimRollingStock.cs" />
+    <Compile Include="Models\Claim\ClaimCondition.cs" />
+    <Compile Include="Models\Contact\ContactEditable.cs" />
+    <Compile Include="Models\Entity\EditableAgreement.cs" />
+    <Compile Include="Models\InstructionVM.cs" />
+    <Compile Include="Models\Claim\ClaimVM.cs" />
+    <Compile Include="Models\Notification\NotificationVM.cs" />
+    <Compile Include="Models\RoleVM.cs" />
+    <Compile Include="Models\UserCompanyRolesVM.cs" />
+    <Compile Include="Models\UserVM.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ToExcelSettings\ActExcelSettings.cs" />
+    <Compile Include="ToExcelSettings\AgreementExcelSettings.cs" />
+    <Compile Include="ToExcelSettings\ClaimExcelSettings.cs" />
+    <Compile Include="ToExcelSettings\ContactExcelSettings.cs" />
+    <Compile Include="ToExcelSettings\InstructionExcelSettings.cs" />
+    <Compile Include="ToExcelSettings\AccountExcelSettings.cs" />
+    <Compile Include="ToExcelSettings\ProtocolExcelSettings.cs" />
+    <Compile Include="ToExcelSettings\RoleExcelSettings.cs" />
+    <Compile Include="ToExcelSettings\SupplementaryAgreementExcelSettings.cs" />
+    <Compile Include="ToExcelSettings\UserExcelSettings.cs" />
+    <Compile Include="Tools\DisplayFormatSettings.cs" />
+    <Compile Include="Tools\DocumentRibbonCustomizationHelper.cs" />
+    <Compile Include="Tools\ExcelDocumentRibbonCustomizationHelper.cs" />
+    <Compile Include="Tools\FileExtensionManager.cs" />
+    <Compile Include="Tools\HtmlEditorBinaryImageAutoUploadOptions.cs" />
+    <Compile Include="Tools\HtmlEditorHelper.cs" />
+    <Compile Include="Tools\StatusManager.cs" />
+    <Content Include="Content\css\CardStyle.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\filter.css" />
+    <Content Include="Content\css\Inspinia\animate.css" />
+    <Content Include="Content\css\Inspinia\bootstrap.min.css" />
+    <Content Include="Content\css\Inspinia\font-awesome.css" />
+    <Content Include="Content\css\Inspinia\style.css" />
+    <Content Include="Content\css\Inspinia\toastr.min.css" />
+    <Content Include="Content\css\ribbon.css" />
+    <Content Include="Content\css\styles.min.css" />
+    <Content Include="Content\fonts\fontawesome-webfonte0a5.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\HtmlEditor\Html\.empty" />
+    <Content Include="Content\img\apply_ep-white.png" />
+    <Content Include="Content\img\apply_ep.png" />
+    <Content Include="Content\img\button1.png" />
+    <Content Include="Content\img\button2.png" />
+    <Content Include="Content\img\button3.png" />
+    <Content Include="Content\img\doc_edit.png" />
+    <Content Include="Content\img\doc_view.png" />
+    <Content Include="Content\img\favicon.ico" />
+    <Content Include="Content\img\file_extensions\doc.png" />
+    <Content Include="Content\img\file_extensions\docx.png" />
+    <Content Include="Content\img\file_extensions\pdf.png" />
+    <Content Include="Content\img\file_extensions\xls.png" />
+    <Content Include="Content\img\file_extensions\xlsx.png" />
+    <Content Include="Content\img\Filter.png" />
+    <Content Include="Content\img\Inspinia\a4.jpg" />
+    <Content Include="Content\img\Inspinia\a7.jpg" />
+    <Content Include="Content\img\Inspinia\patterns\header-profile.png" />
+    <Content Include="Content\img\Inspinia\profile.jpg" />
+    <Content Include="Content\img\Inspinia\profile_small.jpg" />
+    <Content Include="Content\img\irs-white.png" />
+    <Content Include="Content\img\irs.png" />
+    <Content Include="Content\img\logo_307x49.png" />
+    <Content Include="Content\img\attach.png" />
+    <Content Include="Content\img\mail-white.png" />
+    <Content Include="Content\img\mail.png" />
+    <Content Include="Content\img\print-white.png" />
+    <Content Include="Content\img\print.png" />
+    <Content Include="Content\img\repeal.PNG" />
+    <Content Include="Content\img\siam.png" />
+    <Content Include="Content\img\status\01_doc.png" />
+    <Content Include="Content\img\status\02_doc.png" />
+    <Content Include="Content\img\status\03_doc.png" />
+    <Content Include="Content\img\status\04_doc.png" />
+    <Content Include="Content\img\status\05_doc.png" />
+    <Content Include="Content\img\status\06_doc.png" />
+    <Content Include="Content\img\status\07_doc.png" />
+    <Content Include="Content\img\status\08_doc.png" />
+    <Content Include="Content\img\status\doc_attach.png" />
+    <Content Include="Content\img\status\document_green.png" />
+    <Content Include="Content\img\status\document_red.png" />
+    <Content Include="Content\img\status\document_yellow.png" />
+    <Content Include="Content\img\status\sign_cust.png" />
+    <Content Include="Content\img\status\sign_perf.png" />
+    <Content Include="Content\img\tr.png" />
+    <Content Include="Content\img\train.jpg" />
+    <Content Include="Content\img\doc_del.png" />
+    <Content Include="Content\img\wizard\confirm-white.png" />
+    <Content Include="Content\img\wizard\confirm.png" />
+    <Content Include="Content\img\wizard\cross-white.png" />
+    <Content Include="Content\img\wizard\cross.png" />
+    <Content Include="Content\img\wizard\exit-white.png" />
+    <Content Include="Content\img\wizard\exit.png" />
+    <Content Include="Content\img\wizard\file-white.png" />
+    <Content Include="Content\img\wizard\file.png" />
+    <Content Include="Content\img\wizard\next-white.png" />
+    <Content Include="Content\img\wizard\next.png" />
+    <Content Include="Content\img\wizard\prev-white.png" />
+    <Content Include="Content\img\wizard\prev.png" />
+    <Content Include="Content\img\wizard\save-white.png" />
+    <Content Include="Content\img\wizard\save.png" />
+    <Content Include="Content\css\jquery.steps.css" />
+    <Content Include="Content\js\Act.js" />
+    <Content Include="Content\js\ie_eventlistner_polyfill.js" />
+    <Content Include="Content\js\SupplementaryAgreement.js" />
+    <Content Include="Content\js\Agreement.js" />
+    <Content Include="Content\js\async_code.js" />
+    <Content Include="Content\js\async_code.min.js">
+      <DependentUpon>async_code.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\cadesplugin_api.js" />
+    <Content Include="Content\js\cadesplugin_api.min.js">
+      <DependentUpon>cadesplugin_api.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\Contact.js" />
+    <Content Include="Content\js\CryptoPro.js" />
+    <Content Include="Content\js\CryptoPro.min.js">
+      <DependentUpon>CryptoPro.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\docDateFilter.js" />
+    <Content Include="Content\js\es6-promise.min.js" />
+    <Content Include="Content\js\filter.js" />
+    <Content Include="Content\js\filterForm.js" />
+    <Content Include="Content\js\Account.js" />
+    <Content Include="Content\js\Instruction.js" />
+    <Content Include="Content\js\Inspinia\hint.js" />
+    <Content Include="Content\js\Inspinia\inspinia.js" />
+    <Content Include="Content\js\Inspinia\jquery.metisMenu.js" />
+    <Content Include="Content\js\Inspinia\jquery.slimscroll.min.js" />
+    <Content Include="Content\js\Inspinia\pace.min.js" />
+    <Content Include="Content\js\Inspinia\toastr.min.js" />
+    <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\jquery.validate.min.js" />
+    <Content Include="Content\js\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\js\Claim.js" />
+    <Content Include="Content\js\Notification.js" />
+    <Content Include="Content\js\Protocol.js" />
+    <Content Include="Content\js\Role.js" />
+    <Content Include="Content\js\shipmentDate.js" />
+    <Content Include="Content\js\SignData.js" />
+    <Content Include="Content\js\Site.js" />
+    <Content Include="Content\js\useDateFilter.js" />
+    <Content Include="Content\js\User.js" />
+    <Content Include="Content\js\wizard-validation.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Help\administrator.htm" />
+    <Content Include="Help\akty.htm" />
+    <Content Include="Help\css\all.css" />
+    <Content Include="Help\css\printed.css" />
+    <Content Include="Help\custom.css" />
+    <Content Include="Help\de_search\0xu0031.txt" />
+    <Content Include="Help\de_search\0xu0032.txt" />
+    <Content Include="Help\de_search\0xu0033.txt" />
+    <Content Include="Help\de_search\0xu0034.txt" />
+    <Content Include="Help\de_search\0xu0035.txt" />
+    <Content Include="Help\de_search\0xu0036.txt" />
+    <Content Include="Help\de_search\0xu0037.txt" />
+    <Content Include="Help\de_search\0xu0038.txt" />
+    <Content Include="Help\de_search\0xu0043.txt" />
+    <Content Include="Help\de_search\0xu004f.txt" />
+    <Content Include="Help\de_search\0xu0410.txt" />
+    <Content Include="Help\de_search\0xu0411.txt" />
+    <Content Include="Help\de_search\0xu0412.txt" />
+    <Content Include="Help\de_search\0xu0414.txt" />
+    <Content Include="Help\de_search\0xu0416.txt" />
+    <Content Include="Help\de_search\0xu0417.txt" />
+    <Content Include="Help\de_search\0xu0418.txt" />
+    <Content Include="Help\de_search\0xu041a.txt" />
+    <Content Include="Help\de_search\0xu041b.txt" />
+    <Content Include="Help\de_search\0xu041c.txt" />
+    <Content Include="Help\de_search\0xu041d.txt" />
+    <Content Include="Help\de_search\0xu041e.txt" />
+    <Content Include="Help\de_search\0xu041f.txt" />
+    <Content Include="Help\de_search\0xu0420.txt" />
+    <Content Include="Help\de_search\0xu0421.txt" />
+    <Content Include="Help\de_search\0xu0422.txt" />
+    <Content Include="Help\de_search\0xu0423.txt" />
+    <Content Include="Help\de_search\0xu0424.txt" />
+    <Content Include="Help\de_search\0xu042d.txt" />
+    <Content Include="Help\de_search\0xu042e.txt" />
+    <Content Include="Help\de_search\ids.txt" />
+    <Content Include="Help\de_search\prefixes.txt" />
+    <Content Include="Help\de_style.css" />
+    <Content Include="Help\dogovory.htm" />
+    <Content Include="Help\drex_dogovory_custom.png" />
+    <Content Include="Help\drex_header_custom.png" />
+    <Content Include="Help\drex_header_custom_10.png" />
+    <Content Include="Help\drex_header_custom_11.png" />
+    <Content Include="Help\drex_header_custom_12.png" />
+    <Content Include="Help\drex_header_custom_13.png" />
+    <Content Include="Help\drex_header_custom_2.png" />
+    <Content Include="Help\drex_header_custom_3.png" />
+    <Content Include="Help\drex_header_custom_4.png" />
+    <Content Include="Help\drex_header_custom_5.png" />
+    <Content Include="Help\drex_header_custom_6.png" />
+    <Content Include="Help\drex_header_custom_7.png" />
+    <Content Include="Help\drex_header_custom_8.png" />
+    <Content Include="Help\drex_header_custom_9.png" />
+    <Content Include="Help\drex_index_custom.png" />
+    <Content Include="Help\drex_polzovateli_custom.png" />
+    <Content Include="Help\funktsional.htm" />
+    <Content Include="Help\index.htm" />
+    <Content Include="Help\instruktsii.htm" />
+    <Content Include="Help\i\blocks\interface-icons\delicious_logo.png" />
+    <Content Include="Help\i\blocks\interface-icons\digg-button.png" />
+    <Content Include="Help\i\blocks\interface-icons\interface-icons-sprite-8.png" />
+    <Content Include="Help\i\blocks\interface-icons\interface-icons-sprite.png" />
+    <Content Include="Help\i\blocks\search\loading.gif" />
+    <Content Include="Help\i\blocks\splitter\splitter-sprite.png" />
+    <Content Include="Help\i\blocks\tree\sprite.png" />
+    <Content Include="Help\i\blocks\work-zone\header-bg.png" />
+    <Content Include="Help\i\null.gif" />
+    <Content Include="Help\js\all.js" />
+    <Content Include="Help\js\all2.js" />
+    <Content Include="Help\js\drexplain.data.index.js" />
+    <Content Include="Help\js\oembed.js" />
+    <Content Include="Help\js\socialscript.js" />
+    <Content Include="Help\js\tooltips.js" />
+    <Content Include="Help\kontakty.htm" />
+    <Content Include="Help\polzovateli.htm" />
+    <Content Include="Help\protokoly.htm" />
+    <Content Include="Help\roli.htm" />
+    <Content Include="Help\scheta.htm" />
+    <Content Include="Help\vvedenie.htm" />
+    <Content Include="Help\zayavki.htm" />
+    <Content Include="packages.config" />
+    <Content Include="App_Config\AppSettings.config" />
+    <Content Include="Content\fonts\fontawesome-webfonte0a5.eot" />
+    <Content Include="Content\fonts\fontawesome-webfonte0a5.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfonte0a5.woff" />
+    <Content Include="Content\fonts\fontawesome-webfonte0a5.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Scripts\aspnet\dx.aspnet.data.js" />
+    <Content Include="Scripts\aspnet\dx.aspnet.mvc.js" />
+    <Content Include="Scripts\cldr.js" />
+    <Content Include="Scripts\cldr.min.js" />
+    <Content Include="Scripts\cldr\event.js" />
+    <Content Include="Scripts\cldr\event.min.js" />
+    <Content Include="Scripts\cldr\supplemental.js" />
+    <Content Include="Scripts\cldr\supplemental.min.js" />
+    <Content Include="Scripts\cldr\unresolved.js" />
+    <Content Include="Scripts\cldr\unresolved.min.js" />
+    <Content Include="Scripts\dx.all.debug.js" />
+    <Content Include="Scripts\dx.all.js" />
+    <Content Include="Scripts\dx.mobile.debug.js" />
+    <Content Include="Scripts\dx.mobile.js" />
+    <Content Include="Scripts\dx.viz-web.debug.js" />
+    <Content Include="Scripts\dx.viz-web.js" />
+    <Content Include="Scripts\dx.viz.debug.js" />
+    <Content Include="Scripts\dx.viz.js" />
+    <Content Include="Scripts\dx.web.debug.js" />
+    <Content Include="Scripts\dx.web.js" />
+    <Content Include="Scripts\globalize.js" />
+    <Content Include="Scripts\globalize.min.js" />
+    <Content Include="Scripts\globalize\currency.js" />
+    <Content Include="Scripts\globalize\currency.min.js" />
+    <Content Include="Scripts\globalize\date.js" />
+    <Content Include="Scripts\globalize\message.js" />
+    <Content Include="Scripts\globalize\message.min.js" />
+    <Content Include="Scripts\globalize\number.js" />
+    <Content Include="Scripts\globalize\number.min.js" />
+    <Content Include="Scripts\globalize\plural.js" />
+    <Content Include="Scripts\globalize\relative-time.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.12.3.js" />
+    <Content Include="Scripts\jquery-1.12.3.min.js" />
+    <Content Include="Help\drex_file_list" />
+    <Content Include="Content\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Content\HtmlEditor\Images\Upload\.empty" />
+    <Content Include="Content\HtmlEditor\Thumbnails\.empty" />
+    <Content Include="Content\HtmlEditor\UploadFiles\.empty" />
+    <None Include="Properties\PublishProfiles\A.Dulub.pubxml" />
+    <Content Include="Scripts\jquery-2.2.3.js" />
+    <Content Include="Scripts\jquery-2.2.3.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.steps.js" />
+    <Content Include="Scripts\jquery.steps.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.globalize.js" />
+    <Content Include="Scripts\jquery.validate.globalize.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jszip.js" />
+    <Content Include="Scripts\jszip.min.js" />
+    <Content Include="Scripts\localization\dx.all.de.js" />
+    <Content Include="Scripts\localization\dx.all.ja.js" />
+    <Content Include="Scripts\localization\dx.all.ru.js" />
+    <Content Include="Scripts\localization\dx.messages.de.js" />
+    <Content Include="Scripts\localization\dx.messages.en.js" />
+    <Content Include="Scripts\localization\dx.messages.ja.js" />
+    <Content Include="Scripts\localization\dx.messages.ru.js" />
+    <Content Include="Scripts\localization\dx.mobile.de.js" />
+    <Content Include="Scripts\localization\dx.mobile.ja.js" />
+    <Content Include="Scripts\localization\dx.mobile.ru.js" />
+    <Content Include="Scripts\localization\dx.web.de.js" />
+    <Content Include="Scripts\localization\dx.web.ja.js" />
+    <Content Include="Scripts\localization\dx.web.ru.js" />
+    <Content Include="Scripts\vectormap-data\africa.js" />
+    <Content Include="Scripts\vectormap-data\canada.js" />
+    <Content Include="Scripts\vectormap-data\eurasia.js" />
+    <Content Include="Scripts\vectormap-data\europe.js" />
+    <Content Include="Scripts\vectormap-data\usa.js" />
+    <Content Include="Scripts\vectormap-data\world.js" />
+    <Content Include="Scripts\vectormap-utils\dx.vectormaputils.debug.js" />
+    <Content Include="Scripts\vectormap-utils\dx.vectormaputils.js" />
+    <Content Include="Scripts\vectormap-utils\dx.vectormaputils.node.js" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Permission\PermissionsGridLookup.cshtml" />
+    <Content Include="Views\Shared\Partial\DevExpressDependency.cshtml" />
+    <Content Include="Views\Shared\Partial\Footer.cshtml" />
+    <Content Include="Views\Shared\Partial\Header.cshtml" />
+    <Content Include="Views\Shared\Partial\Navigation.cshtml" />
+    <Content Include="Views\Shared\Partial\PageTitle.cshtml" />
+    <Content Include="Views\Shared\_DashboardInspiniaLayout.cshtml" />
+    <Content Include="Views\Shared\_DashboardLayout.cshtml" />
+    <Content Include="Views\Shared\_EmptyLayout.cshtml" />
+    <Content Include="Views\Shared\_ExportButton.cshtml" />
+    <Content Include="Views\Shared\_GridLookupFooter.cshtml" />
+    <Content Include="Views\Shared\_GridViewDeletePopup.cshtml" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Company\CompanyGridLookup.cshtml" />
+    <Content Include="Views\Employee\UserEmployeesGridView.cshtml" />
+    <Content Include="Views\Employee\EmployeeRolesGridView.cshtml" />
+    <Content Include="Views\Employee\AssignRolesToEmployee.cshtml" />
+    <Content Include="Views\Company\CompaniesGridLookup.cshtml" />
+    <Content Include="Views\Contact\ContactGridLookup.cshtml" />
+    <Content Include="Views\Shared\_EmptyInspiniaLayout.cshtml" />
+    <Content Include="Views\UserAccount\Login.cshtml" />
+    <Content Include="Views\UserAccount\_ViewStart.cshtml" />
+    <Content Include="Views\UserAccount\UserCompanies.cshtml" />
+    <Content Include="Views\Shared\DevExpress\GridViewIndex.cshtml" />
+    <Compile Include="Attributes\AuthorizeSessionAttribute.cs" />
+    <Content Include="Views\Shared\_AccessDenied.cshtml" />
+    <Content Include="Views\Error\_ViewStart.cshtml" />
+    <Content Include="Views\Error\404.cshtml" />
+    <Content Include="Views\Error\500.cshtml" />
+    <Content Include="App_Config\AppSettings.Release.config" />
+    <None Include="bundleconfig.json" />
+    <Content Include="Views\Shared\Filter\Filter.cshtml" />
+    <Content Include="Views\Shared\Filter\FilterManager.cshtml" />
+    <Content Include="Views\Shared\Filter\FilterOnlyActive.cshtml" />
+    <Content Include="Views\Shared\Filter\FilterTemplate.cshtml" />
+    <Content Include="Views\Account\AccountDetails.cshtml" />
+    <Content Include="Views\Shared\Filter\StateOfSigning.cshtml" />
+    <Content Include="Views\Shared\Filter\DocumentDate.cshtml" />
+    <Content Include="Views\Shared\Filter\StateOfCoordination.cshtml" />
+    <Content Include="Views\Agreement\Index.cshtml" />
+    <Content Include="Views\Agreement\_AgreementViewPartial.cshtml" />
+    <Content Include="Views\UserAccount\WinLogin.cshtml" />
+    <Content Include="Views\Shared\_GridRibbon.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\_AccountViewPartial.cshtml" />
+    <Content Include="Views\Protocol\Index.cshtml" />
+    <Content Include="Views\Protocol\_ProtocolViewPartial.cshtml" />
+    <Content Include="Views\Instruction\Index.cshtml" />
+    <Content Include="Views\Instruction\_InstructionViewPartial.cshtml" />
+    <Content Include="Views\Instruction\InstructionDetails.cshtml" />
+    <Content Include="Views\Shared\Filter\InstructionType.cshtml" />
+    <Content Include="Views\Act\Index.cshtml" />
+    <Content Include="Views\Act\_ActViewPartial.cshtml" />
+    <Content Include="Views\Act\ActDetails.cshtml" />
+    <Content Include="Views\Shared\Lookup\PerformerCompanyLookup.cshtml" />
+    <Content Include="Views\Shared\Lookup\TemplateLookup.cshtml" />
+    <Content Include="Views\Shared\Lookup\CustomerCompanyLookup.cshtml" />
+    <Content Include="Views\Shared\Modal\_ExportXlsxErrorPopup.cshtml" />
+    <Content Include="Views\Protocol\_RowProtocolDetails.cshtml" />
+    <Content Include="Views\Act\_RowActDedails.cshtml" />
+    <Content Include="Views\Claim\Index.cshtml" />
+    <Content Include="Views\Claim\_ClaimViewPartial.cshtml" />
+    <Content Include="Views\Shared\Filter\ShipmentDate.cshtml" />
+    <Content Include="Views\Claim\Details\Details.cshtml" />
+    <Content Include="Views\Claim\Details\_ClaimState.cshtml" />
+    <Content Include="Views\Claim\Details\_ClaimStateData.cshtml" />
+    <Content Include="Views\Claim\Details\_ClaimRollingStockData.cshtml" />
+    <Content Include="Views\Claim\Details\_ClaimRollingStock.cshtml" />
+    <Content Include="Views\Claim\Details\_ClaimRouteDetails.cshtml" />
+    <Content Include="Views\Claim\Details\_ClaimNote.cshtml" />
+    <Content Include="Views\Claim\Details\_ClaimNoteData.cshtml" />
+    <Content Include="Views\Claim\Details\_ClaimCondition.cshtml" />
+    <Content Include="Views\Claim\Details\_ClaimConditionData.cshtml" />
+    <Content Include="Views\Claim\Details\_ClaimLoadingSchedule.cshtml" />
+    <Content Include="Views\Claim\Details\_ClaimLoadingScheduleData.cshtml" />
+    <Content Include="Views\Notification\Index.cshtml" />
+    <Content Include="Views\Agreement\Details.cshtml" />
+    <Content Include="Views\Claim\Details\_ClaimRouteDetailsData.cshtml" />
+    <Content Include="Views\Notification\_NotificationGridView.cshtml" />
+    <Content Include="Views\Shared\Filter\FilterAgreement.cshtml" />
+    <Content Include="Views\Agreement\CreateOrEdit.cshtml" />
+    <Content Include="Views\Agreement\Details\AuditEditData.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Contact\_ContactViewPartial.cshtml" />
+    <Content Include="Views\Contact\CreateOrEdit.cshtml" />
+    <Content Include="Views\Shared\Lookup\CompanyLookUp.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\_UserGridView.cshtml" />
+    <Content Include="Views\User\_UserRowDetails.cshtml" />
+    <Content Include="Views\Contact\Details.cshtml" />
+    <Content Include="Views\Shared\Filter\Client.cshtml" />
+    <Content Include="Views\Protocol\Details.cshtml" />
+    <Content Include="Views\Claim\Details\_ClaimAgreement.cshtml" />
+    <Content Include="Views\Claim\Details\_ClaimAgreementData.cshtml" />
+    <Content Include="Views\Claim\Details\AuditEditData.cshtml" />
+    <Content Include="Views\Account\AuditEditData.cshtml" />
+    <Content Include="Views\Instruction\AuditEditData.cshtml" />
+    <Content Include="Views\Act\AuditEditData.cshtml" />
+    <Content Include="Views\Act\_ActService.cshtml" />
+    <Content Include="Views\Act\_ActServiceData.cshtml" />
+    <Content Include="Views\Protocol\_ProtocolTariff.cshtml" />
+    <Content Include="Views\Protocol\_ProtocolTariffData.cshtml" />
+    <Content Include="Views\Agreement\Details\_AgreementCondition.cshtml" />
+    <Content Include="Views\Agreement\Details\_AgreementConditionData.cshtml" />
+    <Content Include="Views\Agreement\Details\_AgreementConditionPanel.cshtml" />
+    <Content Include="Views\Agreement\Details\_AgreementSupplementary.cshtml" />
+    <Content Include="Views\Agreement\Details\_AgreementSupplementaryPanel.cshtml" />
+    <Content Include="Views\Agreement\Details\_AgreementSupplementaryData.cshtml" />
+    <Content Include="Views\Agreement\Details\_SignatureMessage.cshtml" />
+    <Content Include="Views\Shared\Filter\UsePeriod.cshtml" />
+    <Content Include="Views\Shared\Filter\ReportPeriod.cshtml" />
+    <Content Include="Views\Shared\Filter\Station.cshtml" />
+    <Content Include="Views\User\CreateOrEdit.cshtml" />
+    <Content Include="Views\User\UserCompanyRolesEdit.cshtml" />
+    <Content Include="Views\User\_UserCompanyRoles.cshtml" />
+    <Content Include="Views\Role\_RoleGridView.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\_RoleRowDetails.cshtml" />
+    <Content Include="Views\Role\CreateOrEdit.cshtml" />
+    <Content Include="Views\Role\PermissionsGridLookup.cshtml" />
+    <Content Include="Views\Role\RolesGridLookup.cshtml" />
+    <Content Include="Views\Company\CustomerCompanyGridLookup.cshtml" />
+    <Content Include="Views\Company\PerformerCompanyGridLookup.cshtml" />
+    <Content Include="Views\SupplementaryAgreement\AddOrUpdateWizard.cshtml" />
+    <Content Include="Views\SupplementaryAgreement\EditorTemplates\_Step1CommonInfo.cshtml" />
+    <Content Include="Views\SupplementaryAgreement\EditorTemplates\_Step2Conditions.cshtml" />
+    <Content Include="Views\SupplementaryAgreement\EditorTemplates\_Step3Attachments.cshtml" />
+    <Content Include="Views\SupplementaryAgreement\Details.cshtml" />
+    <Content Include="Views\SupplementaryAgreement\Details\AuditEditData.cshtml" />
+    <Content Include="Views\SupplementaryAgreement\Details\_Condition.cshtml" />
+    <Content Include="Views\SupplementaryAgreement\Details\_ConditionData.cshtml" />
+    <Content Include="Views\SupplementaryAgreement\Details\_ConditionPanel.cshtml" />
+    <Content Include="Views\SupplementaryAgreement\_CommandRibbon.cshtml" />
+    <Content Include="Views\Notification\_NotificationDetails.cshtml" />
+    <Content Include="Views\Notification\_GridRibbonNotification.cshtml" />
+    <Content Include="Views\Document\Preview.cshtml" />
+    <Content Include="Views\Document\DocPreview.cshtml" />
+    <Content Include="Views\Document\XlsPreview.cshtml" />
+    <Content Include="Views\Document\PdfPreview.cshtml" />
+    <Content Include="Views\Document\PdfPreviewAllPages.cshtml" />
+    <Content Include="Views\Document\PdfCustomRibbon.cshtml" />
+    <Content Include="Views\Shared\Modal\_MessagePopup.cshtml" />
+    <Content Include="Views\Protocol\AuditEditData.cshtml" />
+    <Content Include="Views\Agreement\Details\_AgreementSupplementaryGridRibbon.cshtml" />
+    <Content Include="Views\SupplementaryAgreement\_Step4Complete.cshtml" />
+    <Content Include="Views\SupplementaryAgreement\_ConfirmationDialog.cshtml" />
+    <Content Include="Views\Mail\Index.cshtml" />
+    <Content Include="Views\Mail\Details.cshtml" />
+    <Content Include="Views\Mail\_SentMailViewPartial.cshtml" />
+    <Content Include="Views\Mail\_MailTabsView.cshtml" />
+    <Content Include="Views\Mail\_ReceivedMailTabsView.cshtml" />
+    <Content Include="Views\Error\403.cshtml" />
+    <Content Include="Views\Mail\ComposeMail.cshtml" />
+    <Content Include="Views\Mail\_HtmlEditor.cshtml" />
+    <Content Include="Views\Shared\Modal\_DocumentAttachPopup.cshtml" />
+    <Content Include="Views\Shared\Modal\DocumentAttachPopupDetails.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AutofacContainer.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Attributes\AuthorizePermissionsAttribute.cs" />
+    <Compile Include="Attributes\CustomHandleErrorAttribute.cs" />
+    <Compile Include="Controllers\UserAccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\PermissionController.cs" />
+    <Compile Include="Controllers\AgreementController.cs" />
+    <Compile Include="Controllers\ProtocolController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DevExpress\DevExpressFormLayoutSettings.cs" />
+    <Compile Include="DevExpress\DevExpressGridLookupSettingsExtensions.cs" />
+    <Compile Include="DevExpress\DevExpressGridViewController.cs" />
+    <Compile Include="DevExpress\DevExpressGridViewDeletingSettings.cs" />
+    <Compile Include="DevExpress\DevExpressGridViewEditingSettings.cs" />
+    <Compile Include="DevExpress\DevExpressGridViewExptentions.cs" />
+    <Compile Include="DevExpress\DevExpressGridViewModel.cs" />
+    <Compile Include="DevExpress\DevExpressGridViewQueryModel.cs" />
+    <Compile Include="DevExpress\DevExpressGridViewSettingsExtentions.cs" />
+    <Compile Include="DevExpress\DevExpressGridViewIndexSettings.cs" />
+    <Compile Include="DevExpress\Settings\ContactsGridViewSettings.cs" />
+    <Compile Include="DevExpress\Settings\EmployeeRolesGridViewSettings.cs" />
+    <Compile Include="DevExpress\Settings\UserEmployeesGridViewSettings.cs" />
+    <Compile Include="DevExpress\Settings\RolePermissionsGridViewSettings.cs" />
+    <Compile Include="DevExpress\Settings\RolesGridViewSettings.cs" />
+    <Compile Include="DevExpress\Settings\UsersGridViewSettings.cs" />
+    <Compile Include="Extentions\ControllerExtentions.cs" />
+    <Compile Include="Extentions\HtmlExtentions.cs" />
+    <Compile Include="Extentions\ViewExtentions.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Agreement\AgreementVM.cs" />
+    <Compile Include="Models\FilterModel.cs" />
+    <Compile Include="Models\AccountVM.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\ProtocolVM.cs" />
+    <Compile Include="Models\UserCompanyViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ASUVP.Core.DataAccess\ASUVP.Core.DataAccess.csproj">
+      <Project>{4f7f0084-c261-4548-b75d-68f706228f04}</Project>
+      <Name>ASUVP.Core.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASUVP.Core.Domain\ASUVP.Core.Domain.csproj">
+      <Project>{B248D732-F863-4421-B5CA-4D8AB5DB36D5}</Project>
+      <Name>ASUVP.Core.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASUVP.Core.Web\ASUVP.Core.Web.csproj">
+      <Project>{2b02497a-9799-435b-b915-b5b4f7d04ac3}</Project>
+      <Name>ASUVP.Core.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASUVP.Core\ASUVP.Core.csproj">
+      <Project>{909B4BD7-53D1-4514-B281-A0AB07C7E99E}</Project>
+      <Name>ASUVP.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASUVP.Online.OData\ASUVP.Online.OData.csproj">
+      <Project>{bd7a96d5-beee-432d-b3cc-7e839c71f64a}</Project>
+      <Name>ASUVP.Online.OData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASUVP.Online.Services\ASUVP.Online.Services.csproj">
+      <Project>{1f3ba7fe-db54-4e49-b825-7dffb8913ca4}</Project>
+      <Name>ASUVP.Online.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54873</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54873/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.2\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

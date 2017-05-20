@@ -1,0 +1,268 @@
+﻿@using ASUVP.Core.Configuration
+@using ASUVP.Core.DataAccess.Model
+@using ASUVP.Online.Web.Tools
+@*<script src="~/Content/js/Instruction.js"></script>*@
+@model ASUVP.Online.Web.Models.InstructionVM
+
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "InstructionView";
+        settings.CallbackRouteValues = new
+        {
+            Controller = "Instruction",
+            Action = "InstructionViewPartial",
+            periodType = Model.Filter.DocPeriodType,
+            dateBeg = Model.Filter.DocDateBeg,
+            dateEnd = Model.Filter.DocDateEnd,
+            stationId = Model.Filter.Station,
+            agreementId = Model.Filter.Agreement,
+            agrManagerId = Model.Filter.AgrManagerId,
+            templateId = Model.Filter.InstructionTemplateId,
+            statusId = Model.Filter.StatusId,
+            epStatusId = Model.Filter.EPStatusId
+        };
+        settings.CommandColumn.Visible = true;
+        settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+        settings.CommandColumn.Caption = " ";
+        settings.CommandColumn.Width = 53;
+        settings.CommandColumn.ShowSelectCheckbox = true;
+        settings.CommandColumn.SelectAllCheckboxMode = GridViewSelectAllCheckBoxMode.Page;
+        settings.KeyFieldName = nameof(InstructionList.Id);
+
+
+        var widthButtonColumn = 0;
+        if (AuthManager.User.IsInRole("InstructionView"))
+        {
+            widthButtonColumn += 43;
+        }
+        if (AuthManager.User.IsInRole("InstructionEdit"))
+        {
+            widthButtonColumn += 43;
+        }
+        if (AuthManager.User.IsInRole("InstructionDelete"))
+        {
+            widthButtonColumn += 43;
+        }
+        var viewButtonColumn = new MVCxGridViewColumn() { Width = widthButtonColumn };
+        settings.Columns.Add(viewButtonColumn);
+        viewButtonColumn.SetHeaderTemplateContent(c =>
+        {
+            c.ID = "btnViewHeader";
+        });
+        viewButtonColumn.SetDataItemTemplateContent(c =>
+        {
+            c.ID = "btnViews";
+
+            Html.DevExpress().Button(
+            b =>
+            {
+                b.Name = "btnView_" + c.VisibleIndex;
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_view.png");
+                b.Images.Image.ToolTip = "Просмотр";
+                b.Images.Image.AlternateText = "Просмотр";
+                b.Images.Image.Height = 32;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientSideEvents.Click = string.Format("function(s, e) {{ OnViewInstructionClick('{0}','{1}'); }}", settings.Name, c.KeyValue);
+                b.ClientVisible = AuthManager.User.IsInRole("InstructionView");
+            }).Render();
+            Html.DevExpress().Button(b =>
+            {
+                b.Name = "btnEdit_" + c.VisibleIndex;
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_edit.png");
+                b.Images.Image.ToolTip = "Изменить";
+                b.Images.Image.AlternateText = "Изменить";
+                b.Images.Image.Height = 32;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientSideEvents.Click = "";
+                b.ClientVisible = AuthManager.User.IsInRole("InstructionEdit");
+            }).Render();
+            Html.DevExpress().Button(b =>
+            {
+                b.Name = "btnDelete_" + c.VisibleIndex;
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_del.png");
+                b.Images.Image.ToolTip = "Удалить";
+                b.Images.Image.AlternateText = "Удалить";
+                b.Images.Image.Height = 32;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientVisible = AuthManager.User.IsInRole("InstructionDelete");
+                b.ClientSideEvents.Click = string.Format("function(s, e) {{ OnDeleteInstructionClick('{0}','{1}'); }}", settings.Name, c.KeyValue);
+            }).Render();
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(InstructionList.HasAttachmentHint);
+            column.Width = 80;
+            column.Caption = "Вложение";
+
+            column.SetHeaderCaptionTemplateContent(c =>
+            {
+                ViewContext.Writer.Write($"<img style=\"float:left; display: block;\" width=\"24\" height=\"24\" alt=\"Нет данных\" src=\"{Url.Content("~/Content/img/attach.png")}\" title=\"Вложение\" />");
+            });
+
+            column.SetDataItemTemplateContent(c =>
+            {
+                string imageUrl = new UrlHelper(HttpContext.Current.Request.RequestContext).Content($"~{DataBinder.Eval(c.DataItem, nameof(InstructionList.HasAttachmentImgPath))}");
+                string imageHint = "";
+                try
+                {
+                    imageHint = DataBinder.Eval(c.DataItem, nameof(InstructionList.HasAttachmentHint)).ToString();
+                    if (imageUrl != "/" && imageUrl != "/ASUVP.Online.Web/")
+                    {
+                        ViewContext.Writer.Write($"<img style=\"float:none; display: block; margin-left: auto; margin-right: auto;\" width=\"32\" height=\"32\" alt=\"Нет данных\" src=\"{imageUrl}\" title=\"{imageHint}\" onclick=\"onDocAttachClick('{ c.KeyValue}')\"/>");
+                    }
+                }
+                catch
+                {
+                }
+            });
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(InstructionList.DocNumber);
+            column.Caption = "Номер";
+            column.Width = 100;
+            column.ToolTip = "Номер инструкции";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(InstructionList.DocDate);
+            column.Caption = "Дата";
+            column.ColumnType = MVCxGridViewColumnType.DateEdit;
+            column.PropertiesEdit.DisplayFormatString = ConfigManager.ShortDateTimeFormat;
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Equals;
+            column.ToolTip = "Дата инструкции";
+            column.Width = 120;
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(InstructionList.DocName);
+            column.Caption = "Наименование";
+            column.Width = 300;
+            column.ToolTip = "Наименование инструкции";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(InstructionList.AgreementName);
+            column.Caption = "Договор";
+            column.Width = 200;
+            column.ToolTip = "Договор";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(InstructionList.ClaimName);
+            column.Caption = "Заявка";
+            column.Width = 200;
+            column.ToolTip = "Заявка";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(InstructionList.CustomerCompanyName);
+            column.Caption = "Клиент";
+            column.Width = 150;
+            column.ToolTip = "Наименование Клиента";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(InstructionList.PerformerCompanyName);
+            column.Caption = "Экспедитор";
+            column.Width = 150;
+            column.ToolTip = "Наименование Экспедитора";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(InstructionList.AgrManagerName);
+            column.Caption = "Менеджер";
+            column.Width = 120;
+            column.ToolTip = "Ответственный менеджер по Договору";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(InstructionList.ApprovalInstructionHint);
+            column.Caption = "Согл К";
+            column.Width = 110;
+            column.SetDataItemTemplateContent(c =>
+            {
+                string imageUrl = new UrlHelper(HttpContext.Current.Request.RequestContext).Content($"~{DataBinder.Eval(c.DataItem, nameof(InstructionList.ApprovalInstructionImgPath))}");
+                string imageHint = "";
+                try
+                {
+                    imageHint = DataBinder.Eval(c.DataItem, nameof(InstructionList.ApprovalInstructionHint)).ToString();
+                    ViewContext.Writer.Write($"<img style=\"float:none; display: block; margin-left: auto; margin-right: auto;\" width=\"32\" height=\"32\" alt=\"Нет данных\" src=\"{imageUrl}\" title=\"{imageHint}\" />");
+                }
+                catch { }
+            });
+            column.ToolTip = "Статус согласования инструкции";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(InstructionList.SigningInstructionHint);
+            column.Caption = "ЭП Э";
+            column.Width = 110;
+            column.SetDataItemTemplateContent(c =>
+            {
+                string imageUrl = new UrlHelper(HttpContext.Current.Request.RequestContext).Content($"~{DataBinder.Eval(c.DataItem, nameof(InstructionList.SingingInstructionImgPath))}");
+                string imageHint = "";
+                try
+                {
+                    imageHint = DataBinder.Eval(c.DataItem, nameof(InstructionList.SigningInstructionHint)).ToString();
+                    ViewContext.Writer.Write($"<img style=\"float:none; display: block; margin-left: auto; margin-right: auto;\" width=\"32\" height=\"32\" alt=\"Нет данных\" src=\"{imageUrl}\" title=\"{imageHint}\" />");
+                }
+                catch { }
+            });
+            column.ToolTip = "Статус подписания ЭП Инстркуции";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(InstructionList.TemplateName);
+            column.Caption = "Шаблон";
+            column.Width = 200;
+            column.ToolTip = "Шаблон инструкции";
+        });
+
+        settings.CustomJSProperties = (sender, e) =>
+        {
+            MVCxGridView gv = sender as MVCxGridView;
+            if (gv != null)
+            {
+                e.Properties["cp_Filter"] = gv.FilterExpression;
+                e.Properties["cp_FilterDocPeriodType"] = Model.Filter.DocPeriodType;
+                e.Properties["cp_FilterDocDateBeg"] = Model.Filter.DocDateBeg;
+                e.Properties["cp_FilterDocDateEnd"] = Model.Filter.DocDateEnd;
+                e.Properties["cp_FilterStation"] = Model.Filter.Station;
+                e.Properties["cp_FilterAgreement"] = Model.Filter.Agreement;
+                e.Properties["cp_FilterAgrManagerId"] = Model.Filter.AgrManagerId;
+                e.Properties["cp_FilterInstructionTemplateId"] = Model.Filter.InstructionTemplateId;
+                e.Properties["cp_FilterStatusId"] = Model.Filter.StatusId;
+                e.Properties["cp_FilterEPStatusId"] = Model.Filter.EPStatusId;
+
+                int startIndex = gv.PageIndex * gv.SettingsPager.PageSize;
+                int endIndex = Math.Min(gv.VisibleRowCount, startIndex + gv.SettingsPager.PageSize);
+                object[] attachments = new object[endIndex - startIndex];
+                for (int i = startIndex; i < endIndex; i++)
+                {
+                    attachments[i - startIndex] = gv.GetRowValues(i, nameof(InstructionList.HasAttachmentHint));
+                }
+                e.Properties["cp_attachments"] = attachments;
+            }
+        };
+        settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
+        settings.ApplyPaging();
+        settings.ApplyBasicLayout();
+    });
+}
+@grid.Bind(Model.Instructions).GetHtml()

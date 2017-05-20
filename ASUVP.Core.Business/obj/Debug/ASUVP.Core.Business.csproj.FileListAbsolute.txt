@@ -1,0 +1,15 @@
+F:\Job\ASUVP.Online\src\ASUVP.Core.Business\bin\Debug\ASUVP.Core.Business.dll
+F:\Job\ASUVP.Online\src\ASUVP.Core.Business\bin\Debug\ASUVP.Core.Business.pdb
+F:\Job\ASUVP.Online\src\ASUVP.Core.Business\bin\Debug\ASUVP.Core.dll
+F:\Job\ASUVP.Online\src\ASUVP.Core.Business\bin\Debug\ASUVP.Core.Domain.dll
+F:\Job\ASUVP.Online\src\ASUVP.Core.Business\bin\Debug\Autofac.dll
+F:\Job\ASUVP.Online\src\ASUVP.Core.Business\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+F:\Job\ASUVP.Online\src\ASUVP.Core.Business\bin\Debug\log4net.dll
+F:\Job\ASUVP.Online\src\ASUVP.Core.Business\bin\Debug\ASUVP.Core.Domain.pdb
+F:\Job\ASUVP.Online\src\ASUVP.Core.Business\bin\Debug\ASUVP.Core.pdb
+F:\Job\ASUVP.Online\src\ASUVP.Core.Business\bin\Debug\Autofac.xml
+F:\Job\ASUVP.Online\src\ASUVP.Core.Business\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+F:\Job\ASUVP.Online\src\ASUVP.Core.Business\bin\Debug\log4net.xml
+F:\Job\ASUVP.Online\src\ASUVP.Core.Business\obj\Debug\ASUVP.Core.Business.csprojResolveAssemblyReference.cache
+F:\Job\ASUVP.Online\src\ASUVP.Core.Business\obj\Debug\ASUVP.Core.Business.dll
+F:\Job\ASUVP.Online\src\ASUVP.Core.Business\obj\Debug\ASUVP.Core.Business.pdb
