@@ -57,7 +57,7 @@ namespace ASUVP.Online.Web.Controllers
         public ActionResult Details(Guid? id)
         {
             ViewBag.Title = "Просмотр сообщения";
-
+            ViewBag.ID = id;
             var mail = _service.GetMailDetails(id);
 
             // Обновляем письмо, если оно не было прочитано
@@ -78,6 +78,16 @@ namespace ASUVP.Online.Web.Controllers
             _service.UpdateUserMailViewTime(id);
 
             return View(mail);
+        }
+        public ActionResult UpdateMail(Guid? id)
+        {
+            ViewBag.Title = "Редактировать письмо";
+            var mail = _service.GetMailDetails(id);
+            ViewBag.RootPageDetails = new[] { "Index", "Mail", "Почта" };
+
+            var model = new NewMailVM { Body = mail.Body, Subject = mail.Subject };
+
+            return View("ComposeMail", model);
         }
 
         public ActionResult ComposeMail()

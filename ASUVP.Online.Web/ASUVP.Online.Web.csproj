@@ -225,6 +225,7 @@
   <ItemGroup>
     <Compile Include="Attributes\ValidationFormAttributes.cs" />
     <Compile Include="Controllers\ActController.cs" />
+    <Compile Include="Controllers\CalculationsController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\SupplementaryAgreementController.cs" />
@@ -722,6 +723,8 @@
     <Content Include="Views\Mail\_HtmlEditor.cshtml" />
     <Content Include="Views\Shared\Modal\_DocumentAttachPopup.cshtml" />
     <Content Include="Views\Shared\Modal\DocumentAttachPopupDetails.cshtml" />
+    <Content Include="Views\Calculations\Index.cshtml" />
+    <Content Include="Views\Mail\UpdateMail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

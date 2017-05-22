@@ -3,35 +3,36 @@
 <div class="mail-box-header">
     <h2>Просмотр сообщения</h2>
     <div class="m-t-md">
-        <h3>
-            <span class="font-noraml">Тема:</span>
-            @Model.Subject
-        </h3>
-        <h4>
-            <span class="font-noraml">Статус:</span>
-            @Model.StatusName
-        </h4>
-        @if (Model.ViewerId != null)
-        {
+        <a href="@Url.Action("UpdateMail","Mail",new { id = ViewBag.ID })" target="_blank">Редактировать письмо</a>
+            <h3>
+                <span class="font-noraml">Тема:</span>
+                @Model.Subject
+            </h3>
             <h4>
-                <span class="font-noraml">Время просмотра:</span>
-                @Model.ViewedAt
+                <span class="font-noraml">Статус:</span>
+                @Model.StatusName
             </h4>
-            <h4>
-                <span class="font-noraml">Кем просмотрено:</span>
-                @Model.ViewerName
-            </h4>
-        }
-        <h5>
-            <span class="pull-right font-noraml">@Model.CreatedOn</span>
-            <span class="font-noraml">От:</span>
-            @Model.SenderContactName (@Model.SenderCompanyName)
-        </h5>
-        <h5>
-            <span class="font-noraml">Кому:</span>
-            @Model.ReceiverCompanyName
-        </h5>
-    </div>
+            @if (Model.ViewerId != null)
+            {
+                <h4>
+                    <span class="font-noraml">Время просмотра:</span>
+                    @Model.ViewedAt
+                </h4>
+                <h4>
+                    <span class="font-noraml">Кем просмотрено:</span>
+                    @Model.ViewerName
+                </h4>
+            }
+            <h5>
+                <span class="pull-right font-noraml">@Model.CreatedOn</span>
+                <span class="font-noraml">От:</span>
+                @Model.SenderContactName (@Model.SenderCompanyName)
+            </h5>
+            <h5>
+                <span class="font-noraml">Кому:</span>
+                @Model.ReceiverCompanyName
+            </h5>
+</div>
 </div>
 <div class="mail-box">
     <div class="mail-body">

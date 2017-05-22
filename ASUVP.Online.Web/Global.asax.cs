@@ -32,7 +32,7 @@ namespace ASUVP.Online.Web
 
             RemoveWebFormsEngine();
         }
-        protected void Application_BeginRequest(object sender, EventArgs e)
+       /* protected void Application_BeginRequest(object sender, EventArgs e)
         {
 
             // Implement HTTP compression
@@ -56,7 +56,7 @@ namespace ASUVP.Online.Web
                     app.Response.AppendHeader("Content-Encoding", "gzip");
                 }
             }
-        }
+        }*/
         private static void RemoveWebFormsEngine()
         {
             var engines = ViewEngines.Engines;

@@ -99,7 +99,14 @@
                     </a>
                 </li>
             }
-
+            @if (AuthManager.User.IsInRole(AuthPermissions.ActView))
+            {
+                <li>
+                    <a href="@Url.Action("Index", "Calculations")" class="@Html.IsActive("Index", "Calculations") hint  hint--right" data-hint="Акты">
+                        <i class="fa fa-files-o"></i> <span class="nav-label">Предварительные расчеты</span>
+                    </a>
+                </li>
+            }
             @{
                 var hasRolesViewRole = AuthManager.User.IsInRole(AuthPermissions.RoleView);
                 var hasUsersViewRole = AuthManager.User.IsInRole(AuthPermissions.UserView);
