@@ -1,0 +1,335 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@using ASUVP.Online.Web.Tools
+@model Act
+<script src="~/Content/js/Act.js"></script>
+<link href="@Url.Content("~/Content/css/CardStyle.css")" rel="stylesheet">
+
+<div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+    <div class="container-fluid">
+
+        <div class="btn-group btn-group-header row" style="padding-left:4px">
+
+            @Html.DevExpress().Button(s =>
+       {
+           s.Name = "btnPrint";
+           s.ClientEnabled = true;
+           s.Images.Image.Url = Url.Content("~/Content/img/print.png");
+           s.Images.Image.Height = 32;
+           s.Text = "Печать";
+           s.Height = Unit.Pixel(60);
+           s.ControlStyle.CssClass = "btn";
+           s.ClientSideEvents.Click = string.Format("function() {{ onDocAttachClick('{0}'); }}", Model.Id);
+           s.Images.Image.UrlHottracked = Url.Content("~/Content/img/print-white.png");
+       }).GetHtml()
+
+            @Html.DevExpress().Button(s =>
+           {
+               s.Name = "btnIrs";
+               s.ClientEnabled = true;
+               s.Images.Image.Url = Url.Content("~/Content/img/irs.png");
+               s.Images.Image.Height = 32;
+               s.Text = "Открыть в ИРС";
+               s.Height = Unit.Pixel(60);
+               s.ControlStyle.CssClass = "btn";
+               s.ClientSideEvents.Click = string.Format("function() {{ ActOpenIrs('{0}'); }}", Model.IRSPerevozkiId);
+               s.Images.Image.UrlHottracked = Url.Content("~/Content/img/irs-white.png");
+           }).GetHtml()
+
+            @Html.DevExpress().Button(s =>
+       {
+           s.Name = "btnApplyEp";
+           s.ClientEnabled = true;
+           s.Images.Image.Url = Url.Content("~/Content/img/apply_ep.png");
+           s.Images.Image.Height = 32;
+           s.Text = "Подписать ЭЦП";
+           s.Height = Unit.Pixel(60);
+           s.ControlStyle.CssClass = "btn";
+           s.ClientSideEvents.Click = "function() { ActSign(); }";
+           s.Images.Image.UrlHottracked = Url.Content("~/Content/img/apply_ep-white.png");
+       }).GetHtml()
+            @Html.DevExpress().Button(s =>
+       {
+           s.Name = "btnSendMessage";
+           s.ClientEnabled = true;
+           s.Images.Image.Url = Url.Content("~/Content/img/mail.png");
+           s.Images.Image.Height = 32;
+           s.Text = "Отправить письмо";
+           s.Height = Unit.Pixel(60);
+           s.ControlStyle.CssClass = "btn";
+           s.ClientSideEvents.Click = "function() { ActSendMail(); }";
+           s.Images.Image.UrlHottracked = Url.Content("~/Content/img/mail-white.png");
+       }).GetHtml()
+            @Html.DevExpress().Button(s =>
+       {
+           s.Name = "btnAudit";
+           s.ClientEnabled = true;
+           s.Text = "Аудит";
+           s.Height = Unit.Pixel(60);
+           s.ControlStyle.CssClass = "btn";
+       }).GetHtml()
+            @Html.DevExpress().PopupMenu(s =>
+       {
+           s.Name = "pmAudit";
+           s.PopupElementID = "btnAudit";
+           s.PopupAction = PopupAction.LeftMouseClick;
+           s.PopupVerticalAlign = PopupVerticalAlign.Below;
+           s.ControlStyle.CssClass = "btn";
+
+           s.Items.Add(i =>
+           {
+               i.Name = "MatchingHistory";
+               i.Text = "История согласования";
+           });
+           s.Items.Add(i =>
+           {
+               i.Name = "SigningHistory";
+               i.Text = "История подписания";
+           });
+           s.Items.Add(i =>
+           {
+               i.Name = "EditHistory";
+               i.Text = "Создан/Изменен (Кем/Когда)";
+           });
+           s.ClientSideEvents.ItemClick = string.Format("function(s, e) {{ ActBtnAuditItemClick(s,e,'{0}'); }}", Model.AgreementId);
+           s.ClientSideEvents.Init = "InitPopupMenuHandler";
+       }).GetHtml()
+        </div>
+
+        <table style="width: 100%">
+            <tr>
+                <td class="left-label">
+                    Шаблон
+                </td>
+                <td>
+                    @Html.DevExpress().TextBox(s =>
+                   {
+                       s.Width = Unit.Percentage(100);
+                       s.ReadOnly = true;
+                       s.Name = nameof(Act.TemplateName);
+                   }).Bind(Model.TemplateName).GetHtml()
+                </td>
+            </tr>
+        </table>
+
+        <table style="width: 100%">
+            <tr>
+                <td class="left-label">
+                    Номер
+                </td>
+                <td colspan="3">
+                    <table style="width: 100%">
+                        <tr>
+                            <td class="numberEditor">
+                                @{
+                                    Html.DevExpress().TextBox(s =>
+                                    {
+                                        s.Width = Unit.Percentage(100);
+                                        s.ReadOnly = true;
+                                        s.Enabled = false;
+                                        s.Name = nameof(Act.DocNumber);
+                                    }).Bind(Model.DocNumber).Render();
+                                }
+                            </td>
+                            <td class="right-ali" style="width:60px; padding-right:5px">Дата </td>
+                            <td class="dateEditor">
+                                @Html.DevExpress().DateEdit(s =>
+                               {
+                                   s.Width = Unit.Percentage(100);
+                                   s.ReadOnly = true;
+                                   s.Enabled = false;
+                                   s.Name = nameof(Act.DocDate);
+                               }).Bind(Model.DocDate).GetHtml()
+                            </td>
+                            <td style="width:25px"></td>
+                            <td>
+                                @Html.DevExpress().TextBox(s =>
+                               {
+                                   s.Width = Unit.Percentage(100);
+                                   s.ReadOnly = true;
+                                   s.Name = nameof(Act.DocStatusName);
+                               }).Bind(Model.DocStatusName).GetHtml()
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <table style="width: 100%">
+            <tr>
+                <td class="left-label">Наименование</td>
+                <td>
+                    @Html.DevExpress().TextBox(s =>
+               {
+                   s.Width = Unit.Percentage(100);
+                   s.ReadOnly = true;
+                   s.Name = nameof(Act.DocName);
+               }).Bind(Model.DocName).GetHtml()
+                </td>
+            </tr>
+
+            <tr>
+                <td class="left-label">Договор</td>
+                <td>
+                    @Html.DevExpress().TextBox(s =>
+               {
+                   s.Width = Unit.Percentage(100);
+                   s.ReadOnly = true;
+                   s.Name = nameof(Act.AgreementName);
+               }).Bind(Model.AgreementName).GetHtml()
+                </td>
+            </tr>
+
+            <tr>
+                <td class="left-label">@Model.CustomerCompanyLabel</td>
+                <td>
+                    @Html.DevExpress().TextBox(s =>
+               {
+                   s.Width = Unit.Percentage(100);
+                   s.ReadOnly = true;
+                   s.Name = nameof(Act.CustomerCompanyName);
+               }).Bind(Model.CustomerCompanyName).GetHtml()
+                </td>
+            </tr>
+
+            <tr>
+                <td class="left-label">@Model.PerformerCompanyLabel</td>
+                <td>
+                    @Html.DevExpress().TextBox(s =>
+               {
+                   s.Width = Unit.Percentage(100);
+                   s.ReadOnly = true;
+                   s.Name = nameof(Act.PerformerCompanyName);
+               }).Bind(Model.PerformerCompanyName).GetHtml()
+                </td>
+            </tr>
+        </table>
+
+        <table style="width: 100%">
+            <tr>
+                <td class="left-label">
+                    Отчетный период
+                </td>
+                <td class="right-ali" style="width:25px; padding-right: 5px">С</td>
+                <td class="dateEditor">
+                    @Html.DevExpress().DateEdit(s =>
+                            {
+                                s.Width = Unit.Percentage(100);
+                                s.ReadOnly = true;
+                                s.Name = nameof(Act.DateBeg);
+                                s.Enabled = false;
+                            }).Bind(Model.DateBeg).GetHtml()
+                </td>
+                <td class="right-ali" style="width:40px; padding-right: 5px">ПО</td>
+                <td class="dateEditor">
+                    @Html.DevExpress().DateEdit(s =>
+                            {
+                                s.Width = Unit.Percentage(100);
+                                s.ReadOnly = true;
+                                s.Name = nameof(Act.DateEnd);
+                                s.Enabled = false;
+                            }).Bind(Model.DateEnd).GetHtml()
+                </td>
+                <td style="width:25px"></td>
+                <td class="datePeriod">
+                    @Html.DevExpress().TextBox(s =>
+                   {
+                       s.Width = Unit.Percentage(100);
+                       s.ReadOnly = true;
+                       s.Name = nameof(Act.RepoptPeriodName);
+                   }).Bind(Model.RepoptPeriodName).GetHtml()
+                </td>
+                <td></td>
+            </tr>
+        </table>
+
+        <table style="width:100%">
+            <tr>
+
+                <td class="left-label">
+                    Сумма счета
+                </td>
+                <td class="sumEditor">
+                    @Html.DevExpress().TextBox(s =>
+                       {
+                           s.Width = Unit.Pixel(130);
+                           s.ReadOnly = true;
+                           s.Enabled = false;
+                           s.Name = nameof(Act.SummaWithNDS);
+                           s.Properties.DisplayFormatString = DisplayFormatSettings.GetDisplayFormatString();
+                           var txtProperties = s.Properties as TextBoxProperties;
+                           txtProperties.Style.HorizontalAlign = HorizontalAlign.Right;
+                       }).Bind(Model.SummaWithNDS).GetHtml()
+                </td>
+
+                <td style="width:25px"></td>
+                <td class="currencyEditor">
+                    @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Act.CurrencyName);
+                    }).Bind(Model.CurrencyName).GetHtml()
+                </td>
+
+                <td class="right-ali" style="width: 120px; padding-right: 5px">В том числе НДС</td>
+                <td class="sumEditor">
+                    @Html.DevExpress().TextBox(s =>
+                   {
+                       s.Width = Unit.Pixel(130);
+                       s.ReadOnly = true;
+                       s.Enabled = false;
+                       s.Name = nameof(Act.SummaNDS);
+                       s.Properties.DisplayFormatString = DisplayFormatSettings.GetDisplayFormatString();
+                       var txtProperties = s.Properties as TextBoxProperties;
+                       txtProperties.Style.HorizontalAlign = HorizontalAlign.Right;
+                   }).Bind(Model.SummaNDS).GetHtml()
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <br />
+        <div>
+            Примечание
+        </div>
+        <div style="width: 100%">
+            @Html.DevExpress().Memo(s =>
+                {
+                    s.Width = Unit.Percentage(100);
+                    s.Name = nameof(Act.DocNote);
+                    s.Properties.Rows = 6;
+                    s.ReadOnly = true;
+                }).GetHtml()
+        </div>
+
+        <div class="next">
+            @{ Html.RenderPartial("_ActService", Model); }
+        </div>
+
+    </div>
+</div>
+
+@Html.DevExpress().PopupControl(settings =>
+{
+    settings.Name = "actAuditHistory";
+    settings.ShowHeader = true;
+    settings.ControlStyle.CssClass = "popupControl";
+    settings.AllowDragging = true;
+    settings.CloseOnEscape = true;
+    settings.ShowCloseButton = true;
+    settings.PopupAnimationType = AnimationType.None;
+    settings.Modal = true;
+    settings.CloseAction = CloseAction.CloseButton;
+    settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+    settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+
+    settings.Width = Unit.Pixel(900);
+
+    settings.HeaderText = "Создан/Изменен (Кем/Когда)";
+
+    settings.SetContent(() =>
+    {
+        ViewContext.Writer.Write(Html.Partial("AuditEditData", Model));
+    });
+}).GetHtml()

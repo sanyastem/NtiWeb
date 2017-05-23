@@ -7,3 +7,12 @@ F:\Job\ASUVP.Online\src\ASUVP.Core\bin\Debug\log4net.xml
 F:\Job\ASUVP.Online\src\ASUVP.Core\obj\Debug\ASUVP.Core.csprojResolveAssemblyReference.cache
 F:\Job\ASUVP.Online\src\ASUVP.Core\obj\Debug\ASUVP.Core.dll
 F:\Job\ASUVP.Online\src\ASUVP.Core\obj\Debug\ASUVP.Core.pdb
+C:\Users\alexa\Documents\GitHub\NtiWeb\ASUVP.Core\bin\Debug\ASUVP.Core.dll
+C:\Users\alexa\Documents\GitHub\NtiWeb\ASUVP.Core\bin\Debug\ASUVP.Core.pdb
+C:\Users\alexa\Documents\GitHub\NtiWeb\ASUVP.Core\bin\Debug\Autofac.dll
+C:\Users\alexa\Documents\GitHub\NtiWeb\ASUVP.Core\bin\Debug\log4net.dll
+C:\Users\alexa\Documents\GitHub\NtiWeb\ASUVP.Core\bin\Debug\Autofac.xml
+C:\Users\alexa\Documents\GitHub\NtiWeb\ASUVP.Core\bin\Debug\log4net.xml
+C:\Users\alexa\Documents\GitHub\NtiWeb\ASUVP.Core\obj\Debug\ASUVP.Core.csprojResolveAssemblyReference.cache
+C:\Users\alexa\Documents\GitHub\NtiWeb\ASUVP.Core\obj\Debug\ASUVP.Core.dll
+C:\Users\alexa\Documents\GitHub\NtiWeb\ASUVP.Core\obj\Debug\ASUVP.Core.pdb

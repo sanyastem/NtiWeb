@@ -514,6 +514,7 @@
     <Content Include="Scripts\globalize\number.min.js" />
     <Content Include="Scripts\globalize\plural.js" />
     <Content Include="Scripts\globalize\relative-time.js" />
+    <None Include="Properties\PublishProfiles\NTI.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -725,6 +726,7 @@
     <Content Include="Views\Shared\Modal\DocumentAttachPopupDetails.cshtml" />
     <Content Include="Views\Calculations\Index.cshtml" />
     <Content Include="Views\Mail\UpdateMail.cshtml" />
+    <Content Include="Views\Agreement\AgreementSendMail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

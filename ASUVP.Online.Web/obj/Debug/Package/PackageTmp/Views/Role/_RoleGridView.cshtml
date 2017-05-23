@@ -1,0 +1,96 @@
+﻿@using ASUVP.Core.DataAccess.Model
+@using System.Web.UI.WebControls;
+@model List<Role>
+
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+
+        settings.Name = "RoleView";
+        settings.CallbackRouteValues = new
+        {
+            Controller = "Role",
+            Action = "RoleGridView"
+        };
+        settings.Width = Unit.Percentage(100);
+        settings.SettingsBehavior.AllowFixedGroups = true;
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.Caption = " ";
+        settings.CommandColumn.Width = 53;
+        settings.CommandColumn.ShowSelectCheckbox = true;
+        settings.CommandColumn.SelectAllCheckboxMode = GridViewSelectAllCheckBoxMode.Page;
+        settings.KeyFieldName = nameof(Role.Id);
+
+        // Inner rows
+        settings.SettingsDetail.ShowDetailRow = true;
+        settings.SetDetailRowTemplateContent(c =>
+        {
+            Html.RenderAction("RoleRowDetails", new { RoleId = c.KeyValue });
+        });
+
+        //buttons
+        var widthButtonColumn = 0;
+        if (AuthManager.User.IsInRole("RoleEdit"))
+        {
+            widthButtonColumn += 43;
+        }
+        if (AuthManager.User.IsInRole("RoleDelete"))
+        {
+            widthButtonColumn += 43;
+        }
+        var viewButtonColumn = new MVCxGridViewColumn() { Width = widthButtonColumn };
+        settings.Columns.Add(viewButtonColumn);
+        viewButtonColumn.SetHeaderTemplateContent(c =>
+        {
+            c.ID = "btnViewHeader";
+        });
+        viewButtonColumn.SetDataItemTemplateContent(c =>
+        {
+            c.ID = "btnViews";
+
+            Html.DevExpress().Button(b =>
+            {
+                b.Name = "btnEdit_" + c.VisibleIndex;
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_edit.png");
+                b.Images.Image.ToolTip = "Изменить";
+                b.Images.Image.AlternateText = "Изменить";
+                b.Images.Image.Height = 32;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientSideEvents.Click = string.Format("function(s, e) {{ OnEditRoleClick('{0}','{1}'); }}", settings.Name, c.KeyValue);
+                b.ClientVisible = AuthManager.User.IsInRole("RoleEdit");
+            }).Render();
+            Html.DevExpress().Button(b =>
+            {
+                b.Name = "btnDelete_" + c.VisibleIndex;
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_del.png");
+                b.Images.Image.ToolTip = "Удалить";
+                b.Images.Image.AlternateText = "Удалить";
+                b.Images.Image.Height = 32;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientVisible = AuthManager.User.IsInRole("RoleDelete");
+            }).Render();
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(Role.Name);
+            column.Caption = "Название";
+            column.ToolTip = "Название роли";
+            column.Width = Unit.Percentage(100);
+        });
+        settings.CustomJSProperties = (sender, e) =>
+        {
+            MVCxGridView gv = sender as MVCxGridView;
+            if (gv != null)
+            {
+                e.Properties["cp_Filter"] = gv.FilterExpression;
+            };
+        };
+
+        settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
+        settings.ApplyPaging();
+        settings.ApplyBasicLayout();
+    });
+}
+@grid.Bind(Model).GetHtml()

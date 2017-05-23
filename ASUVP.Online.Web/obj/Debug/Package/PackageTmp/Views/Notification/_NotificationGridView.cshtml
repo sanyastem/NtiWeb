@@ -1,0 +1,105 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model List<UserNotificationList>
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "NotificationView";
+        settings.CallbackRouteValues = new
+        {
+            Controller = "Notification",
+            Action = "NotificationGridView",
+            status = ViewBag.NotifiStatus
+        };
+
+        settings.CommandColumn.Visible = true;
+        settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+        settings.CommandColumn.Caption = " ";
+        settings.CommandColumn.Width = 53;
+        settings.CommandColumn.ShowSelectCheckbox = true;
+        settings.CommandColumn.SelectAllCheckboxMode = GridViewSelectAllCheckBoxMode.Page;
+        settings.KeyFieldName = nameof(UserNotificationList.Id);
+        settings.SettingsDetail.ShowDetailRow = true;
+        settings.SetDetailRowTemplateContent(c =>
+        {
+            //var dateView = new UrlHelper(HttpContext.Current.Request.RequestContext).Content($"~{DataBinder.Eval(c.DataItem, nameof(UserNotificationList.ViewDate))}");
+            Html.RenderAction("NotificationDetails", "Notification", new { notificationId = c.KeyValue,
+                viewDate = new UrlHelper(HttpContext.Current.Request.RequestContext).Content($"{DataBinder.Eval(c.DataItem, nameof(UserNotificationList.ViewDate))}") });
+        });
+        settings.ClientSideEvents.DetailRowExpanding = string.Format("function(s, e) {{ ChangeRowColor(s,e); }}");
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(UserNotificationList.UserFromName);
+            column.Caption = "Отправитель";
+            column.Width = Unit.Percentage(15);
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(UserNotificationList.CompanyFromName);
+            column.Caption = "Компания отправитель";
+            column.Width = Unit.Percentage(15);
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(UserNotificationList.CompanyFromName);
+            column.Caption = "Получатель";
+            column.Width = Unit.Percentage(15);
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(UserNotificationList.UserToName);
+            column.Caption = "Компания получатель";
+            column.Width = Unit.Percentage(15);
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(UserNotificationList.Text);
+            column.Caption = "Текст уведомления";
+            column.Width = Unit.Percentage(15);
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(UserNotificationList.CreatedOn);
+            column.Caption = "Дата уведомления";
+            column.Width = Unit.Percentage(15);
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(UserNotificationList.ViewDate);
+            column.Caption = "Дата";
+            column.Width = Unit.Percentage(15);
+            //column.Visible = false;
+        });
+        settings.HtmlRowPrepared = (s, e) =>
+        {
+            if (e.RowType != GridViewRowType.Data) return;
+            var viewDate = Model.Find(x => x.Id.ToString() == e.KeyValue.ToString()).ViewDate;
+            if (viewDate == new DateTime(1900, 1,1,0,0,0))
+            {
+                e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#d6f5d6");
+            }
+        };
+
+        settings.CustomJSProperties = (sender, e) =>
+        {
+            MVCxGridView gv = sender as MVCxGridView;
+            if (gv != null)
+            {
+                int startIndex = gv.PageIndex * gv.SettingsPager.PageSize;
+                int endIndex = Math.Min(gv.VisibleRowCount, startIndex + gv.SettingsPager.PageSize);
+                object[] viewDates = new object[endIndex - startIndex];
+                for (int i = startIndex; i < endIndex; i++)
+                {
+                    viewDates[i - startIndex] = gv.GetRowValues(i, nameof(UserNotificationList.ViewDate));
+                }
+                e.Properties["cp_ViewDates"] = viewDates;
+            }
+        };
+
+
+        settings.ApplyPaging();
+        settings.ApplyBasicLayout();
+    });
+    grid.Bind(Model).Render();
+ }

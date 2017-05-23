@@ -1,0 +1,15 @@
+﻿@Html.DevExpress().PopupControl(settings =>
+{
+    settings.Name = "puMessage";
+    settings.HeaderText = " ";
+    settings.ShowHeader = true;
+    settings.AllowDragging = false;
+    settings.AllowResize = false;
+    settings.CloseOnEscape = true;
+    settings.ShowCloseButton = true;
+    settings.PopupAnimationType = AnimationType.None;
+    settings.Modal = true;
+    settings.CloseAction = CloseAction.CloseButton;
+    settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+    settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+}).GetHtml()

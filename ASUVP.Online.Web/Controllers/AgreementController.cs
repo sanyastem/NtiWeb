@@ -74,7 +74,18 @@ namespace ASUVP.Online.Web.Controllers
             ViewBag.RootPageDetails = new string[] { "Index", "Agreement", "Договоры" };
             return View(model);
         }
-
+        public ActionResult AgreementSendMail(Guid id)
+        {
+            ViewBag.Title = "Отправка договора";
+            var model = _service.GetAgreement(id);
+            if (AuthManager.User.CompanyId != model.CustomerCompanyId && AuthManager.User.CompanyId != model.PerformerCompanyId)
+            {
+                return RedirectToAction("Forbidden", "Error");
+            }
+            ViewBag.RootPageDetails = new[] { "Index", "Mail", "Почта" };
+            var mail = new NewMailVM { Body = "", Subject = model.TemplateName + "<br>" + model.DocNumber + "<br>" + model.RegNumber + "<br>" + model.DocDate + "<br>" + model.StatusName + "<br>" + model.DocName + "<br>" + model.CustomerCompanyName + "<br>" + model.PerformerCompanyName + "<br>" + model.DateBeg + "<br>" + model.DateEnd + "<br>" + model.DateStop + "<br>" + model.Note };
+            return View("ComposeMail", model);
+        }
         public PartialViewResult AgreementConditionData(Guid id, DateTime? date)
         {
             ViewBag.AgreementId = id;

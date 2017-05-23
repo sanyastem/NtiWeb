@@ -1,0 +1,37 @@
+﻿@model ASUVP.Online.Web.Models.UserCompanyViewModel
+
+@{
+    ViewBag.Title = "Список компаний пользователя";
+}
+
+
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <h3>Список компаний</h3>
+
+        @if (Model != null && Model.Companies.Any())
+        {
+            <p>Выберите компанию, от лица которой хотите работать</p>
+
+            using (Html.BeginForm("UserCompanies", "UserAccount", new {ViewBag.ReturnUrl}, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.CompanyId, Model.Companies, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.CompanyId)
+                </div>
+
+                <button type="submit" class="btn btn-primary block full-width m-b">Продолжить</button>
+            }
+        }
+        else
+        {
+            <div class="alert alert-warning" role="alert">
+                У Вас нет ни одной компании. Попробуйте войти под другой учетной записью.<br/>
+                <a href="@Url.Action("Logout", "UserAccount")">Сменить пользователя</a>
+            </div>
+        }
+    </div>
+</div>

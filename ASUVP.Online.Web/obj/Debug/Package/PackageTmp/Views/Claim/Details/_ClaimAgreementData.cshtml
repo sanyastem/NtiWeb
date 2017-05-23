@@ -1,0 +1,56 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model Claim
+<style>
+    #ClaimAgreement .claimAgreementTr > td:first-child {
+        width: 10%;
+        text-align: left;
+    }
+
+    #ClaimAgreement .claimAgreementTr > td {
+        width: 90%;
+        padding-top: .5em !important;
+        padding-bottom: .5em !important;
+    }
+</style>
+<table id="ClaimAgreement" style="width: 100%">
+    <tr class="claimAgreementTr">
+        <td>Договор</td>
+        <td>
+            @{
+                Html.DevExpress().TextBox(s =>
+                {
+                    s.Width = Unit.Percentage(100);
+                    s.ReadOnly = true;
+                    s.Name = nameof(Claim.AgreementName);
+                }).Bind(Model?.AgreementName).Render();
+            }
+        </td>
+        </tr>
+    <tr class="claimAgreementTr">
+        <td>@Model.CustomerCompanyLabel</td>
+        <td>
+            @{
+                Html.DevExpress().TextBox(s =>
+                {
+                    s.Width = Unit.Percentage(100);
+                    s.ReadOnly = true;
+                    s.Name = nameof(Claim.CustomerCompanyName);
+                }).Bind(Model?.CustomerCompanyName).Render();
+            }
+        </td>
+        </tr>
+    <tr class="claimAgreementTr">
+        <td>@Model.PerformerCompanyLabel</td>
+        <td>
+            @{
+                Html.DevExpress().TextBox(s =>
+                {
+                    s.Width = Unit.Percentage(100);
+                    s.ReadOnly = true;
+                    s.Name = nameof(Claim.PerformerCompanyName);
+                }).Bind(Model?.PerformerCompanyName).Render();
+            }
+        </td>
+    </tr>
+</table>

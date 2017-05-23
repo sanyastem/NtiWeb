@@ -1,0 +1,22 @@
+﻿@model ASUVP.Online.Web.Models.InstructionVM
+<script src="~/Content/js/Instruction.js"></script>
+<div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+    <iframe name="frame" style="width: 30%; height: 30%; position: absolute; z-index: -1"></iframe>
+    @Html.Partial("_GridRibbon", new string[] { "InstructionView", "Instruction" })
+    @Html.Action("InstructionViewPartial", new
+{
+    periodType = Model.Filter.DocPeriodType,
+    dateBeg = Model.Filter.DocDateBeg,
+    dateEnd = Model.Filter.DocDateEnd,
+    stationId = Model.Filter.Station,
+    agreementId = Model.Filter.Agreement,
+    agrManagerId = Model.Filter.AgrManagerId,
+    templateId = Model.Filter.InstructionTemplateId,
+    statusId = Model.Filter.StatusId,
+    epStatusId = Model.Filter.EPStatusId
+})
+    @*@Html.Partial("InstructionDetails")*@
+
+</div>
+
+<div id="filter">@Html.Partial("Filter/Filter", Model.Filter)</div>

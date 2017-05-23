@@ -38,7 +38,16 @@ namespace ASUVP.Online.Web.Controllers
                 return View("Preview", docAttach);
             }
         }
-
+       /* public ActionResult PreviewMail(Guid? id)
+        {
+            using (var context = new ProcData())
+            {
+                DocumentAttach docAttach = context.DocumentAttachGet(id).FirstOrDefault();
+                ViewBag.Title = "Вложение";
+                docAttach.Content = "";
+                return View("Preview", docAttach);
+            }
+        }*/
         public FileResult Download(Guid id)
         {
             using (var context = new ProcData())

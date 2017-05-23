@@ -1,0 +1,30 @@
+﻿@model ASUVP.Online.Web.Models.Claim.ClaimVM
+<script src="~/Content/js/Claim.js"></script>
+
+<div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+    <iframe name="frame" style="width: 30%; height: 30%; position: absolute; z-index: -1"></iframe>
+
+    @if (ViewBag.MessageSuccess != null)
+    {
+        <div class="alert alert-success alert-dismissable">@ViewBag.MessageSuccess</div>
+    }
+
+    @Html.Partial("_GridRibbon", new string[] {"ClaimView", "Claim"})
+
+    @Html.Action("ClaimViewPartial", new
+{
+    period = Model.Filter.DocPeriodType,
+    dateBeg = Model.Filter.DocDateBeg,
+    dateEnd = Model.Filter.DocDateEnd,
+    shipment = Model.Filter.ShipmentType,
+    shipmentBeg = Model.Filter.ShipmentBeg,
+    shipmentEnd = Model.Filter.ShipmentEnd,
+    coordination = Model.Filter.StatusId,
+    signing = Model.Filter.EPStatusId,
+    manager = Model.Filter.AgrManagerId
+})
+</div>
+
+<input id="ClaimId" type="hidden" value="">
+
+<div id="filter">@Html.Partial("Filter/Filter", Model?.Filter)</div>

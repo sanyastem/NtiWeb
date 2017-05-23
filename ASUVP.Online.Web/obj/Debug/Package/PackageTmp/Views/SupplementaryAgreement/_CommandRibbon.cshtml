@@ -1,0 +1,197 @@
+﻿@using System.Web.UI.WebControls
+
+@model string
+
+<style>
+    #progress_bar {
+        margin: 10px 0;
+        padding: 3px;
+        border: 1px solid #000;
+        font-size: 14px;
+        clear: both;
+        opacity: 0;
+        -moz-transition: opacity 1s linear;
+        -o-transition: opacity 1s linear;
+        -webkit-transition: opacity 1s linear;
+    }
+
+        #progress_bar.loading {
+            opacity: 1.0;
+        }
+
+        #progress_bar .percent {
+            background-color: #6fd1bd;
+            height: auto;
+            width: 0;
+        }
+
+    .fileUpload {
+        position: relative;
+        overflow: hidden;
+        height: 60px;
+    }
+    .fileUpload img {
+        height: 32px;
+    }
+    .fileUpload:hover{
+        background-color: #18a689;
+    }
+    /* works only for chrome */    
+    .fileUpload:hover>img{
+       content: url(@Url.Content("~/Content/img/wizard/file-white.png"))
+    }
+        .fileUpload input.upload {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+</style>
+
+@{
+    Html.DevExpress().Button(s =>
+    {
+        s.Name = $"btn_{Model}_Exit";
+        s.ClientEnabled = true;
+        s.Images.Image.Url = Url.Content("~/Content/img/wizard/exit.png");
+        s.Images.Image.UrlHottracked = Url.Content("~/Content/img/wizard/exit-white.png");
+        s.Images.Image.Height = 32;
+        s.Text = "Выход";
+        s.ToolTip = "Выйти и закрыть страницу";
+        s.Height = Unit.Pixel(60);
+        s.ControlStyle.CssClass = "btn";
+        if (Model == "Step4")
+        {
+            s.ClientSideEvents.Click = "function (s, e) { window.close(); }";
+        }
+        else
+        {
+            s.ClientSideEvents.Click = "function (s, e) { pcModalMode.Show(); }";
+        }
+    }).GetHtml();
+
+    if (Model == "Step1" || Model == "Step2" || Model == "Step3")
+    {
+        @Html.DevExpress().Button(s =>
+       {
+           s.Name = $"btn_{Model}_Save";
+           s.ClientEnabled = true;
+           s.Images.Image.Url = Url.Content("~/Content/img/wizard/save.png");
+           s.Images.Image.UrlHottracked = Url.Content("~/Content/img/wizard/save-white.png");
+           s.Images.Image.Height = 32;
+           s.Text = "Сохранить";
+           s.ToolTip = "Сохранение изменений";
+           s.Height = Unit.Pixel(60);
+           s.ControlStyle.CssClass = "btn";
+           s.UseSubmitBehavior = true;
+       }).GetHtml();
+    }
+
+    if (Model == "Step1")
+    {
+        @Html.DevExpress().Button(s =>
+   {
+       s.Name = $"btn_{Model}_Next";
+       s.ClientEnabled = true;
+       s.Images.Image.Url = Url.Content("~/Content/img/wizard/next.png");
+       s.Images.Image.UrlHottracked = Url.Content("~/Content/img/wizard/next-white.png");
+       s.Images.Image.Height = 32;
+       s.Text = "";
+       s.ToolTip = "Перейти к следующему шагу";
+       s.Height = Unit.Pixel(60);
+       s.ControlStyle.CssClass = "btn";
+       s.ClientSideEvents.Click = "function () { $('#wizard').steps('next'); }";
+   }).GetHtml();
+    }
+
+    if (Model == "Step2")
+    {
+        @Html.DevExpress().Button(s =>
+       {
+           s.Name = $"btn_{Model}_Prev";
+           s.ClientEnabled = true;
+           s.Images.Image.Url = Url.Content("~/Content/img/wizard/prev.png");
+           s.Images.Image.UrlHottracked = Url.Content("~/Content/img/wizard/prev-white.png");
+           s.Images.Image.Height = 32;
+           s.Text = "";
+           s.ToolTip = "Перейти к предыдущему шагу";
+           s.Height = Unit.Pixel(60);
+           s.ControlStyle.CssClass = "btn";
+           s.ClientSideEvents.Click = "function () { $('#wizard').steps('previous'); }";
+       }).GetHtml();
+
+        @Html.DevExpress().Button(s =>
+       {
+           s.Name = $"btn_{Model}_Next";
+           s.ClientEnabled = true;
+           s.Images.Image.Url = Url.Content("~/Content/img/wizard/next.png");
+           s.Images.Image.UrlHottracked = Url.Content("~/Content/img/wizard/next-white.png");
+           s.Images.Image.Height = 32;
+           s.Text = "";
+           s.ToolTip = "Перейти к следующему шагу";
+           s.Height = Unit.Pixel(60);
+           s.ControlStyle.CssClass = "btn";
+           s.ClientSideEvents.Click = "function () { $('#wizard').steps('next'); }";
+       }).GetHtml();
+
+        @Html.DevExpress().Button(s =>
+       {
+           s.Name = $"btn_{Model}_Add";
+           s.ClientEnabled = true;
+           s.Images.Image.Url = Url.Content("~/Content/img/wizard/cross.png");
+           s.Images.Image.UrlHottracked = Url.Content("~/Content/img/wizard/cross-white.png");
+           s.Images.Image.Height = 32;
+           s.Text = "Добавить";
+           s.ToolTip = "Добавить новое договорное условие";
+           s.Height = Unit.Pixel(60);
+           s.ControlStyle.CssClass = "btn";
+           s.ClientSideEvents.Click = "function() { Conditions.AddNewRow(); }";
+       }).GetHtml();
+
+    }
+    if (Model == "Step3")
+    {
+        @Html.DevExpress().Button(s =>
+       {
+           s.Name = $"btn_{Model}_Prev";
+           s.ClientEnabled = true;
+           s.Images.Image.Url = Url.Content("~/Content/img/wizard/prev.png");
+           s.Images.Image.UrlHottracked = Url.Content("~/Content/img/wizard/prev-white.png");
+           s.Images.Image.Height = 32;
+           s.Text = "";
+           s.ToolTip = "Перейти к предыдущему шагу";
+           s.Height = Unit.Pixel(60);
+           s.ControlStyle.CssClass = "btn";
+           s.ClientSideEvents.Click = "function () { $('#wizard').steps('previous'); }";
+       }).GetHtml();
+
+        @Html.DevExpress().Button(s =>
+       {
+           s.Name = "finish";
+           s.ClientEnabled = true;
+           s.Images.Image.Url = Url.Content("~/Content/img/wizard/confirm.png");
+           s.Images.Image.UrlHottracked = Url.Content("~/Content/img/wizard/confirm-white.png");
+           s.Images.Image.Height = 32;
+           s.Text = "Завершить";
+           s.Height = Unit.Pixel(60);
+           s.ControlStyle.CssClass = "btn";
+           s.UseSubmitBehavior = true;
+       }).GetHtml();
+        <div class="dxbButton_Moderno dxbButtonSys dxbTSys fileUpload btn" style="padding-top: 13px">
+            <img src="@Url.Content("~/Content/img/wizard/file.png")" />Добавить
+            <input type="file" class="upload" id="files" name="files[]" style="width: 100%; height: 100%" title="Прикрепить файл" accept=".xls,.xlsx,.doc,.docx,.pdf"/>
+        </div>
+
+        <div id="progress_bar"><div class="percent">0%</div></div>
+
+        <script>
+            var progress = document.querySelector('.percent');
+            document.getElementById('files').addEventListener('change', handleFileSelect, false);
+        </script>
+    }
+}

@@ -1,0 +1,302 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model Protocol
+<script src="~/Content/js/Protocol.js"></script>
+<link href="@Url.Content("~/Content/css/CardStyle.css")" rel="stylesheet">
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+}
+
+
+<div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+    <div class="container-fluid">
+
+        <div class="btn-group btn-group-header row" style="padding-left:4px">
+
+            @Html.DevExpress().Button(s =>
+       {
+           s.Name = "btnPrint";
+           s.ClientEnabled = true;
+           s.Images.Image.Url = Url.Content("~/Content/img/print.png");
+           s.Images.Image.Height = 32;
+           s.Text = "Печать";
+           s.Height = Unit.Pixel(60);
+           s.ControlStyle.CssClass = "btn";
+           s.ClientSideEvents.Click = string.Format("function() {{ onDocAttachClick('{0}'); }}", Model.Id);
+           s.Images.Image.UrlHottracked = Url.Content("~/Content/img/print-white.png");
+       }).GetHtml()
+
+            @Html.DevExpress().Button(s =>
+               {
+                   s.Name = "btnIrs";
+                   s.ClientEnabled = true;
+                   s.Images.Image.Url = Url.Content("~/Content/img/irs.png");
+                   s.Images.Image.Height = 32;
+                   s.Text = "Открыть в ИРС";
+                   s.Height = Unit.Pixel(60);
+                   s.ControlStyle.CssClass = "btn";
+                   s.ClientSideEvents.Click = string.Format("function() {{ ProtocolOpenIrs('{0}'); }}", Model.IRSPerevozkiId);
+                   s.Images.Image.UrlHottracked = Url.Content("~/Content/img/irs-white.png");
+               }).GetHtml()
+
+            @Html.DevExpress().Button(s =>
+       {
+           s.Name = "btnApplyEp";
+           s.ClientEnabled = true;
+           s.Images.Image.Url = Url.Content("~/Content/img/apply_ep.png");
+           s.Images.Image.Height = 32;
+           s.Text = "Подписать ЭЦП";
+           s.Height = Unit.Pixel(60);
+           s.ControlStyle.CssClass = "btn";
+           s.ClientSideEvents.Click = "function() { ProtocolSign(); }";
+           s.Images.Image.UrlHottracked = Url.Content("~/Content/img/apply_ep-white.png");
+       }).GetHtml()
+            @Html.DevExpress().Button(s =>
+       {
+           s.Name = "btnSendMessage";
+           s.ClientEnabled = true;
+           s.Images.Image.Url = Url.Content("~/Content/img/mail.png");
+           s.Images.Image.Height = 32;
+           s.Text = "Отправить письмо";
+           s.Height = Unit.Pixel(60);
+           s.ControlStyle.CssClass = "btn";
+           s.ClientSideEvents.Click = "function() { ProtocolSendMail(); }";
+           s.Images.Image.UrlHottracked = Url.Content("~/Content/img/mail-white.png");
+       }).GetHtml()
+
+
+            @Html.DevExpress().Button(s =>
+       {
+           s.Name = "btnAudit";
+           s.ClientEnabled = true;
+           s.Text = "Аудит";
+           s.Height = Unit.Pixel(60);
+           s.ControlStyle.CssClass = "btn";
+       }).GetHtml()
+            @Html.DevExpress().PopupMenu(s =>
+       {
+           s.Name = "pmAudit";
+           s.PopupElementID = "btnAudit";
+           s.PopupAction = PopupAction.LeftMouseClick;
+           s.PopupVerticalAlign = PopupVerticalAlign.Below;
+           s.ControlStyle.CssClass = "btn";
+
+           s.Items.Add(i =>
+           {
+               i.Name = "MatchingHistory";
+               i.Text = "История согласования";
+           });
+           s.Items.Add(i =>
+           {
+               i.Name = "SigningHistory";
+               i.Text = "История подписания";
+           });
+           s.Items.Add(i =>
+           {
+               i.Name = "EditHistory";
+               i.Text = "Создан/Изменен (Кем/Когда)";
+           });
+           s.ClientSideEvents.ItemClick = string.Format("function(s, e) {{ ProtocolBtnAuditItemClick(s,e,'{0}'); }}", Model.Id);
+           s.ClientSideEvents.Init = "InitPopupMenuHandler";
+       }).GetHtml()
+
+
+
+        </div>
+        <table>
+            <tr>
+                <td class="left-label">Шаблон</td>
+                <td colspan="3">
+                    @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Protocol.TemplateName);
+                    }).Bind(Model.TemplateName).GetHtml()
+                </td>
+            </tr>
+            <tr>
+                <td class="left-label">Номер</td>
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="numberEditor">
+                                @Html.DevExpress().TextBox(s =>
+                                {
+                                    s.Width = Unit.Percentage(100);
+                                    s.ReadOnly = true;
+                                    s.Name = nameof(Protocol.DocNumber);
+                                }).Bind(Model.DocNumber).GetHtml()
+                            </td>
+                            <td class="textTable" style="width:50px">Дата</td>
+                            <td class="dateEditor">
+                                @Html.DevExpress().DateEdit(s =>
+                                {
+                                    s.Width = Unit.Percentage(100);
+                                    s.ReadOnly = true;
+                                    s.Enabled = false;
+                                    s.Name = nameof(Protocol.DocDate);
+                                }).Bind(Model.DocDate).GetHtml()
+                            </td>
+                            <td style="width:40px"></td>
+                            <td>
+                                @Html.DevExpress().TextBox(s =>
+                                {
+                                    s.Width = Unit.Percentage(100);
+                                    s.ReadOnly = true;
+                                    s.Name = nameof(Protocol.DocStatusName);
+                                }).Bind(Model.DocStatusName).GetHtml()
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="left-label">Наименование</td>
+                <td colspan="3">
+                    @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Protocol.DocName);
+                    }).Bind(Model.DocName).GetHtml()
+                </td>
+            </tr>
+            <tr>
+                <td class="left-label">Договор</td>
+                <td colspan="3">
+                    @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Protocol.AgreementName);
+                    }).Bind(Model.AgreementName).GetHtml()
+                </td>
+            </tr>
+            <tr>
+                <td class="left-label">@Model.CustomerCompanyLabel</td>
+                <td colspan="3">
+                    @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Protocol.CustomerCompanyName);
+                    }).Bind(Model.CustomerCompanyName).GetHtml()
+                </td>
+            </tr>
+            <tr>
+                <td class="left-label">@Model.PerformerCompanyLabel</td>
+                <td colspan="3">
+                    @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Protocol.PerformerCompanyName);
+                    }).Bind(Model.PerformerCompanyName).GetHtml()
+                </td>
+            </tr>
+            <tr>
+                <td class="left-label">Период действия</td>
+                <td colspan="4">
+                    <table style="width:auto">
+                        <tr>
+                            <td style="width:30px; text-align:center">C </td>
+                            <td class="dateEditor">
+                                @Html.DevExpress().DateEdit(s =>
+                                {
+                                    s.Width = Unit.Percentage(100);
+                                    s.ReadOnly = true;
+                                    s.Enabled = false;
+                                    s.Name = nameof(Protocol.DateBeg);
+                                }).Bind(Model.DateBeg).GetHtml()
+                            </td>
+                            <td class="textTableAuto1">
+                                По
+                            </td>
+                            <td class="dateEditor">
+
+                                @Html.DevExpress().DateEdit(s =>
+                                {
+                                    s.Width = Unit.Percentage(100);
+                                    s.ReadOnly = true;
+                                    s.Enabled = false;
+                                    s.Name = nameof(Protocol.DateEnd);
+                                }).Bind(Model.DateEnd).GetHtml()
+
+                            </td>
+                            <td class="textTableAuto2">
+                                Дата завершения
+                            </td>
+                            <td class="dateEditor">
+                                @Html.DevExpress().DateEdit(s =>
+                                {
+                                    s.Width = Unit.Percentage(100);
+                                    s.ReadOnly = true;
+                                    s.Enabled = false;
+                                    s.Name = nameof(Protocol.DateStop);
+                                }).Bind(Model.DateStop).GetHtml()
+                            </td>
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="left-label">Заявка</td>
+                <td colspan="3">
+                    @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Protocol.ClaimName);
+                    }).Bind(Model.ClaimName).GetHtml()
+                </td>
+            </tr>
+        </table>
+        <br />
+        <div>
+            Примечание
+        </div>
+        <div style="width: 100%">
+            @Html.DevExpress().Memo(s =>
+                {
+                    s.Width = Unit.Percentage(100);
+                    s.Name = nameof(Protocol.DocNote);
+                    s.Properties.Rows = 6;
+                    s.ReadOnly = true;
+                }).GetHtml()
+        </div>
+
+        <div class="next">
+            @{ Html.RenderPartial("_ProtocolTariff", Model); }
+        </div>
+
+    </div>
+</div>
+
+
+@Html.DevExpress().PopupControl(settings =>
+{
+    settings.Name = "protocolAuditHistory";
+    settings.ShowHeader = true;
+    settings.ControlStyle.CssClass = "popupControl";
+    settings.AllowDragging = true;
+    settings.CloseOnEscape = true;
+    settings.ShowCloseButton = true;
+    settings.PopupAnimationType = AnimationType.None;
+    settings.Modal = true;
+    settings.CloseAction = CloseAction.CloseButton;
+    settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+    settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+
+    settings.Width = Unit.Pixel(900);
+
+    settings.HeaderText = "Создан/Изменен (Кем/Когда)";
+
+    settings.SetContent(() =>
+    {
+        ViewContext.Writer.Write(Html.Partial("AuditEditData", Model));
+    });
+}).GetHtml()

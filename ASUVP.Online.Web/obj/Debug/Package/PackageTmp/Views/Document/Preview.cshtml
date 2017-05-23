@@ -1,0 +1,52 @@
+﻿@using System.IO
+@using ASUVP.Core.DataAccess.Model
+@using DevExpress.XtraRichEdit
+
+@model DocumentAttach
+
+@using (Html.BeginForm())
+{
+    if (Model == null)
+    {
+        <p>Нет Вложений</p>
+    }
+    else
+    {
+        var docExtension = Path.GetExtension(Model.FName);
+
+        switch (docExtension)
+        {
+            case ".doc":
+                {
+                    ViewData["DocumentFormat"] = DocumentFormat.Doc;
+                    @Html.Partial("DocPreview", Model)
+                    break;
+                }
+            case ".docx":
+                {
+                    ViewData["DocumentFormat"] = DocumentFormat.OpenXml;
+                    @Html.Partial("DocPreview", Model)
+                    break;
+                }
+            case ".xls":
+                {
+                    ViewData["DocumentFormat"] = DevExpress.Spreadsheet.DocumentFormat.Xls;
+                    @Html.Partial("XlsPreview", Model)
+                    break;
+                }
+            case ".xlsx":
+                {
+                    ViewData["DocumentFormat"] = DevExpress.Spreadsheet.DocumentFormat.Xlsx;
+                    @Html.Partial("XlsPreview", Model)
+                    break;
+                }
+            case ".pdf":
+                {
+                    @Html.Partial("PdfCustomRibbon")
+                    @Html.Action("PdfPreview", new { id = Model.Id });
+                    break;
+                }
+        }
+    }
+}
+

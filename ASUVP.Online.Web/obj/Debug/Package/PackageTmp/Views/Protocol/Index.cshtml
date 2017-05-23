@@ -1,0 +1,34 @@
+﻿@model ASUVP.Online.Web.Models.ProtocolVM
+<script src="~/Content/js/Protocol.js"></script>
+
+<div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+    <iframe name="frame" style="width: 30%; height: 30%; position: absolute; z-index: -1"></iframe>
+    @Html.Partial("_GridRibbon", new string[] { "ProtocolView", "Protocol" })
+    @Html.Action("ProtocolViewPartial", new
+{
+    periodType = Model.Filter.DocPeriodType,
+    dateBeg = Model.Filter.DocDateBeg,
+    dateEnd = Model.Filter.DocDateEnd,
+    usePeriod = Model.Filter.UsePeriod,
+    useDateBeg = Model.Filter.UseDateBeg,
+    useDateEnd = Model.Filter.UseDateEnd,
+    agreementId = Model.Filter.Agreement,
+    agrManagerId = Model.Filter.AgrManagerId,
+    statusId = Model.Filter.StatusId,
+    epStatusId = Model.Filter.EPStatusId
+})
+</div>
+
+<div id="filter">@Html.Partial("Filter/Filter", Model.Filter)</div>
+
+<script type="text/javascript">
+
+    function OnDeleteProtocolClick(s, e) {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("DeleteProtocols", "Protocol")',
+            data: { keys: e },
+            success: function (data) { ProtocolView.Refresh(); }
+        });
+    }
+</script>

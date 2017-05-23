@@ -1,0 +1,42 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Online.Web.Models
+
+@model UserCompanyRolesVM
+
+<link href="@Url.Content("~/Content/css/CardStyle.css")" rel="stylesheet">
+
+@using (Html.BeginForm("UserCompanyRolesEdit", "User", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.CompanyId)
+    @Html.HiddenFor(m => m.UserId)
+
+    <div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+        <div class="container-fluid">
+
+            @Html.DevExpress().Button(s =>
+           {
+               s.Name = $"btnSave";
+               s.ClientEnabled = true;
+               s.Images.Image.Url = Url.Content("~/Content/img/wizard/save.png");
+               s.Images.Image.UrlHottracked = Url.Content("~/Content/img/wizard/save-white.png");
+               s.Images.Image.Height = 32;
+               s.Text = "Сохранить";
+               s.ToolTip = "Сохранение изменений";
+               s.Height = Unit.Pixel(60);
+               s.ControlStyle.CssClass = "btn";
+               s.UseSubmitBehavior = true;
+           }).GetHtml()
+
+            <table style="width:760px">
+                <tr>
+                    <td class="left-label">
+                        Роли (под фирмой):
+                    </td>
+                    <td class="one-inrow-editor">
+                        @Html.Action("RolesGridLookup", "Role", new { selected = Model.Roles })
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+}

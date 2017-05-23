@@ -1,0 +1,22 @@
+﻿@model ASUVP.Core.Web.Dto.EmployeeDto
+
+@Html.HiddenFor(m => m.Id)
+@Html.HiddenFor(m => m.UserId)
+
+@Html.DevExpress().FormLayout(settings =>
+{
+    settings.Name = "AssignRolesToEmployee";
+
+    settings.SettingsItems.ShowCaption = DefaultBoolean.True;
+    settings.SettingsItemCaptions.Location = LayoutItemCaptionLocation.Left;
+
+    settings.Items.Add(m => m.Roles,
+        s =>
+        {
+            s.Caption = "Роли сотрудника (под фирмой)";
+            s.FieldName = "Roles";
+            s.SetNestedContent(() => { Html.RenderAction("RolesGridLookup", "Role", new {selected = Model?.Roles}); });
+        });
+
+    settings.ApplyFormActions($"User_{Math.Abs(Model.UserId.GetHashCode())}");
+}).GetHtml()

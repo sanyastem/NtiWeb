@@ -1,0 +1,97 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@using ASUVP.Online.Web.Models.Contact
+@model ContactDetails
+
+@{
+    Html.EnableClientValidation();
+}
+<link href="@Url.Content("~/Content/css/CardStyle.css")" rel="stylesheet">
+
+    <div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+        <div class="container-fluid">
+            <table style="width: 760px">
+                <tr>
+                    <td class="left-label">
+                        Фамилия
+                    </td>
+                    <td class="one-inrow-editor">
+                        @Html.DevExpress().TextBox(s =>
+                        {
+                            s.Width = Unit.Percentage(100);
+                            s.ReadOnly = true;
+                            s.Name = nameof(ContactDetails.F);
+                        }).Bind(Model.F).GetHtml()
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-label">
+                        Имя
+                    </td>
+                    <td>
+                        @Html.DevExpress().TextBox(s =>
+                        {
+                            s.ReadOnly = true;
+                            s.Width = Unit.Percentage(100);
+                            s.Name = nameof(ContactDetails.I);
+                        }).Bind(Model.I).GetHtml()
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-label">
+                        Отчество
+                    </td>
+                    <td>
+                        @Html.DevExpress().TextBox(s =>
+                        {
+                            s.ReadOnly = true;
+                            s.Width = Unit.Percentage(100);
+                            s.Name = nameof(ContactDetails.O);
+                        }).Bind(Model.O).GetHtml()
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-label">
+                        Электронный адрес
+                    </td>
+                    <td>
+                        @Html.DevExpress().TextBox(s =>
+                        {
+                            s.ReadOnly = true;
+                            s.Width = Unit.Percentage(100);
+                            s.Name = nameof(ContactDetails.Email);
+                        }).Bind(Model.Email).GetHtml()
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-label">
+                        Телефон
+                    </td>
+                    <td>
+                        @Html.DevExpress().TextBox(s =>
+                   {
+                       s.ReadOnly = true;
+                       s.Width = Unit.Percentage(100);
+                       s.Name = nameof(ContactDetails.Phone);
+                   }).Bind(Model.Phone).GetHtml()
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-label">
+                        Фирма
+                    </td>
+                    <td>
+                        @Html.DevExpress().TextBox(s =>
+                        {
+                            s.ReadOnly = true;
+                            s.Width = Unit.Percentage(100);
+                            s.Name = nameof(ContactDetails.CompanyName);
+                        }).Bind(Model.CompanyName).GetHtml()
+                    </td>
+                </tr>
+            </table>
+
+
+
+        </div>
+    </div>

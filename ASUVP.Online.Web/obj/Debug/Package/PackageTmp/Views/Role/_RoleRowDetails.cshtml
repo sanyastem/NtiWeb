@@ -1,0 +1,39 @@
+﻿@using ASUVP.Core.DataAccess.Model
+@using System.Web.UI.WebControls;
+@model List<PermissionList>
+
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "detailGrid_" + ViewData["RoleId"];
+        settings.SettingsDetail.MasterGridName = "grid";
+        settings.CallbackRouteValues = new
+        {
+            Controller = "Role",
+            Action = "RoleRowDetails",
+            RoleId = ViewData["RoleId"]
+        };
+        settings.Width = Unit.Percentage(100);
+        settings.SettingsBehavior.AllowFixedGroups = true;
+        settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+        settings.Styles.Header.HorizontalAlign = HorizontalAlign.Center;
+
+        settings.SettingsResizing.Visualization = ResizingMode.Live;
+        settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+        settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
+
+        settings.KeyFieldName = nameof(PermissionList.Id);
+        //buttons
+        settings.Columns.Add(nameof(PermissionList.Name), "Название").Width = Unit.Percentage(34);
+        settings.Columns.Add(nameof(PermissionList.Code), "Код").Width = Unit.Percentage(33);
+        settings.Columns.Add(nameof(PermissionList.Code2), "Код 2").Width = Unit.Percentage(33);
+        settings.Columns.Add(c =>
+        {
+            c.FieldName = nameof(PermissionList.Module);
+            c.Caption = "Модуль";
+            c.GroupIndex = 0;
+        });
+        settings.ApplyBasicLayout();
+
+    }).Bind(Model).GetHtml();
+}

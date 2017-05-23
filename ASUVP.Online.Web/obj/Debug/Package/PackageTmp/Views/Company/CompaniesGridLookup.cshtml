@@ -1,0 +1,51 @@
+﻿@using System.Web.UI.WebControls
+@using DevExpress.Data
+@using ASUVP.Core.DataAccess.Model
+
+@Html.DevExpress().GridLookup(settings =>
+{
+    settings.Name = "UserCompanies";
+    settings.KeyFieldName = "Id";
+    settings.Width = Unit.Percentage(100);
+    settings.GridViewProperties.CallbackRouteValues = new {Controller = "Company", Action = "CompaniesGridLookup", selected = Model};
+    settings.Properties.SelectionMode = GridLookupSelectionMode.Multiple;
+
+    settings.Columns.Add(c =>
+    {
+        c.FieldName = "ShortName";
+        c.Caption = "Название";
+        c.Width = Unit.Percentage(70);
+        c.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+        c.SortOrder = ColumnSortOrder.Ascending;
+    });
+    settings.Columns.Add(c =>
+    {
+        c.FieldName = "CodeOKPO";
+        c.Caption = "Код ОКПО";
+        c.Width = Unit.Pixel(130);
+    });
+
+    settings.Columns.Add(c =>
+    {
+        c.FieldName = "CodeINN";
+        c.Caption = "Код ИНН";
+        c.Width = Unit.Pixel(130);
+    });
+
+    settings.ApplyLayoutSettings();
+
+    settings.GridViewProperties.SetStatusBarTemplateContent(c => { Html.RenderPartial("_GridLookupFooter", "UserCompanies"); });
+
+    settings.PreRender = (sender, e) =>
+    {
+        if (Model == null)
+        {
+            return;
+        }
+
+        foreach (var id in Model)
+        {
+            ((MVCxGridLookup) sender).GridView.Selection.SelectRowByKey(id);
+        }
+    };
+}).BindList(ViewBag.Companies).Bind(Model).GetHtml()

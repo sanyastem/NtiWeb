@@ -1,0 +1,78 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@using ASUVP.Online.Web.Tools
+@model List<ActDetails>
+
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "detailGrid_" + ViewData["ActId"];
+        settings.SettingsDetail.MasterGridName = "grid";
+        settings.Width = Unit.Percentage(100);
+        settings.CallbackRouteValues = new { Controller = "Act", Action = "RowDetails", ActId = ViewData["ActId"] };
+        settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+        settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
+
+        settings.KeyFieldName = nameof(ActDetails.ServiceId);
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ActDetails.ServiceName);
+            column.Caption = "Услуга";
+            column.ToolTip = "Наименование Услуги";
+            column.Width = 230;
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ActDetails.NDS);
+            column.Caption = "Ставка НДС";
+            column.ToolTip = "Ставка НДС Услуги";
+            column.Width = 130;
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ActDetails.Summa);
+            column.Caption = "Сумма без НДС";
+            column.ToolTip = "Сумма Услуги без учета НДС";
+            column.Width = 155;
+            column.PropertiesEdit.DisplayFormatString = DisplayFormatSettings.GetDisplayFormatString();
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ActDetails.SummaNDS);
+            column.Caption = "Сумма НДС";
+            column.ToolTip = "Сумма НДС Услуги";
+            column.Width = 130;
+            column.PropertiesEdit.DisplayFormatString = DisplayFormatSettings.GetDisplayFormatString();
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ActDetails.SummaWithNDS);
+            column.Caption = "Сумма с НДС";
+            column.ToolTip = "Сумма Услуги с учетом НДС";
+            column.Width = 140;
+            column.PropertiesEdit.DisplayFormatString = DisplayFormatSettings.GetDisplayFormatString();
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ActDetails.CurrencyName);
+            column.Caption = "Валюта";
+            column.ToolTip = "Валюта Услуги";
+            column.Width = 150;
+        });
+
+        //settings.Columns.Add(column =>
+        //{
+        //    column.FieldName = nameof(ActDetails.ConditionName);
+        //    column.Caption = "Параметры";
+        //    column.ToolTip = "Параметры Услуги";
+        //    column.Width = 170;
+        //});
+
+        settings.ApplyBasicLayout();
+    }).Bind(Model).GetHtml()

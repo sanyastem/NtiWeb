@@ -1,0 +1,32 @@
+﻿<div class="tabs-container">
+    <ul class="nav nav-tabs" id="mailTabs">
+        <li class="active"><a data-toggle="tab" href="#received" aria-expanded="true">Входящие</a></li>
+        <li class=""><a data-toggle="tab" href="#sent" aria-expanded="false">Исходящие</a></li>
+        <li style="float: right"><a href="@Url.Action("ComposeMail","Mail")" target="_blank">Написать письмо</a></li>
+    </ul>
+    
+    <script>
+        $(document).ready(function() {
+            var tab = window.location.hash;
+
+            if (tab) {
+                $('#mailTabs a[href="'+tab+'"]').tab('show');
+            }
+        })
+    </script>
+
+    <div class="tab-content">
+        <div id="received" class="tab-pane active">
+            <div class="panel-body">
+                @Html.Partial("_ReceivedMailTabsView")
+            </div>
+        </div>
+        <div id="sent" class="tab-pane">
+            <div class="panel-body">
+                @Html.Partial("_SentMailViewPartial")
+            </div>
+        </div>
+    </div>
+
+
+</div>

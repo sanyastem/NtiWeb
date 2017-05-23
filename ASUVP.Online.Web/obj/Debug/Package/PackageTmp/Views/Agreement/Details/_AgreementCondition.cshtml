@@ -1,0 +1,17 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model Agreement
+@Html.DevExpress().RoundPanel(settings =>
+{
+    settings.Name = "AgreementConditions";
+    settings.Width = Unit.Percentage(100);
+    settings.AllowCollapsingByHeaderClick = true;
+    settings.ShowCollapseButton = true;
+    settings.HeaderText = "Договорные условия";
+    settings.Collapsed = true;
+    settings.SetContent(() =>
+    {
+        Html.RenderAction("AgreementConditionPanel", new { id = Model.DocumentId });
+        //Html.RenderAction("AgreementConditionData", new { id = Model.Id });
+    });
+}).GetHtml()

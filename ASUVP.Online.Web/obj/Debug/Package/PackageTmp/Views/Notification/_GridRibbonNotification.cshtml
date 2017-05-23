@@ -1,0 +1,138 @@
+﻿@model string[]
+<script>
+    function ActiveTabChanged(s, e) {
+        NotificationView.callbackUrl = ROOT_URL + "/Notification/NotificationGridView?status=" + s.activeTabIndex + "&openTime=" + '@ViewBag.OpenTime';
+        NotificationView.Refresh();
+    }
+
+    function OnCommandExecuted(s, e) {
+        var buttonName = e.item.name;
+
+        if (buttonName === 'rbiRefresh') {
+            NotificationView.Refresh();
+        }
+
+
+        if (buttonName === 'rbRead') {
+            var ids = NotificationView.GetSelectedKeysOnPage();
+            $.ajax({
+                type: "POST",
+                url: "/Notification/UpdateNotification",
+                data: { ids: ids },
+                success: function (data) { NotificationView.Refresh(); }
+            });
+        }
+    }
+</script>
+@Html.DevExpress().Ribbon(
+    settings =>
+    {
+        settings.Name = $"rb{Model[0]}";
+        settings.AllowMinimize = false;
+        settings.ShowFileTab = false;
+        settings.ShowTabs = true;
+        settings.ShowGroupLabels = false;
+        settings.OneLineMode = true;
+        settings.ClientSideEvents.ActiveTabChanged = "ActiveTabChanged";
+        settings.ClientSideEvents.CommandExecuted = "OnCommandExecuted";
+
+        var actionTab = settings.Tabs.Add("Все");
+        actionTab.Groups.Add(g =>
+        {
+            g.Name = "All";
+            g.Text = "All";
+            g.ShowDialogBoxLauncher = false;
+
+            var rbRefresh = new RibbonButtonItem()
+            {
+                Name = "rbiRefresh",
+                Text = "Обновить"
+
+            };
+            rbRefresh.SmallImage.IconID = IconID.ActionsRefresh16x16office2013;
+            g.Items.Add(rbRefresh);
+
+            var rbRead = new RibbonButtonItem()
+            {
+                Name = "rbRead",
+                Text = "Пометить как прочитанные",
+                ToolTip = "Пометить как прочитанные"
+            };
+            rbRead.SmallImage.IconID = IconID.ContentCheckbox16x16office2013;
+            g.Items.Add(rbRead);
+
+            var rbiDelete = new RibbonButtonItem()
+            {
+                Name = "rbiDelete",
+                Text = "Удалить",
+            };
+            rbiDelete.SmallImage.IconID = IconID.ActionsDelete16x16office2013;
+            g.Items.Add(rbiDelete);
+
+        });
+
+        var actionTab2 = settings.Tabs.Add("Прочитанные");
+        actionTab2.Groups.Add(g =>
+        {
+            g.Name = "Readed";
+            g.Text = "Readed";
+            g.ShowDialogBoxLauncher = false;
+
+
+            var rbRefresh = new RibbonButtonItem()
+            {
+                Name = "rbiRefresh",
+                Text = "Обновить"
+
+            };
+            rbRefresh.SmallImage.IconID = IconID.ActionsRefresh16x16office2013;
+            g.Items.Add(rbRefresh);
+
+            var rbiDelete = new RibbonButtonItem()
+            {
+                Name = "rbiDelete",
+                Text = "Удалить",
+            };
+            rbiDelete.SmallImage.IconID = IconID.ActionsDelete16x16office2013;
+            g.Items.Add(rbiDelete);
+        });
+
+
+
+        var actionTab3 = settings.Tabs.Add("Не прочитанные");
+        actionTab3.Groups.Add(g =>
+        {
+            g.Name = "NotReaded";
+            g.Text = "NotReaded";
+            g.ShowDialogBoxLauncher = false;
+
+
+            var rbRefresh = new RibbonButtonItem()
+            {
+                Name = "rbiRefresh",
+                Text = "Обновить"
+
+            };
+            rbRefresh.SmallImage.IconID = IconID.ActionsRefresh16x16office2013;
+            g.Items.Add(rbRefresh);
+
+            var rbRead = new RibbonButtonItem()
+            {
+                Name = "rbRead",
+                Text = "Пометить как прочитанные",
+                ToolTip = "Пометить как прочитанные"
+            };
+            rbRead.SmallImage.IconID = IconID.ContentCheckbox16x16office2013;
+            g.Items.Add(rbRead);
+
+            var rbiDelete = new RibbonButtonItem()
+            {
+                Name = "rbiDelete",
+                Text = "Удалить",
+            };
+            rbiDelete.SmallImage.IconID = IconID.ActionsDelete16x16office2013;
+            g.Items.Add(rbiDelete);
+        });
+
+    }).GetHtml()
+

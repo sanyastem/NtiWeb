@@ -1,0 +1,59 @@
+﻿@using ASUVP.Core.DataAccess.Model
+@using System.Web.UI.WebControls;
+@model List<UserDetailsList>
+
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "detailGrid_" + ViewData["UserId"];
+        settings.SettingsDetail.MasterGridName = "grid";
+        settings.CallbackRouteValues = new
+        {
+            Controller = "User",
+            Action = "UserRowDetails",
+            UserId = ViewData["UserId"]
+        };
+        settings.Width = Unit.Percentage(100);
+        settings.SettingsResizing.Visualization = ResizingMode.Live;
+        settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+        settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
+
+        settings.KeyFieldName = nameof(UserDetailsList.CompanyId);
+        settings.SettingsDetail.ShowDetailRow = true;
+        settings.SetDetailRowTemplateContent(c =>
+        {
+            Html.RenderAction("UserCompanyRoles", new { CompanyId = c.KeyValue, UserId = ViewData["UserId"] });
+        });
+        //buttons
+        var viewButtonColumn = new MVCxGridViewColumn() { Width = 55 };
+        settings.Columns.Add(viewButtonColumn);
+        viewButtonColumn.SetHeaderTemplateContent(c =>
+        {
+            c.ID = "btnViewHeader";
+        });
+        viewButtonColumn.SetDataItemTemplateContent(c =>
+        {
+            c.ID = "btnViews";
+
+            Html.DevExpress().Button(b =>
+            {
+                b.Name = "btnEditDetails_" + c.VisibleIndex + "_" + Guid.NewGuid().ToString();
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_edit.png");
+                b.Images.Image.ToolTip = "Изменить";
+                b.Images.Image.AlternateText = "Изменить";
+                b.Images.Image.Height = 32;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientSideEvents.Click = string.Format("function(companyId, userId) {{ OnEditUserCompaniesClick('{0}','{1}'); }}", c.KeyValue, ViewData["UserId"]);
+                b.ClientVisible = AuthManager.User.IsInRole("UserEdit");
+            }).Render();
+        });
+
+        settings.Columns.Add(nameof(UserDetailsList.CompanyName), "Название компании").Width = Unit.Percentage(50);
+        settings.Columns.Add(nameof(UserDetailsList.CodeOKPO), "Код ОКПО").Width = Unit.Percentage(15);
+        settings.Columns.Add(nameof(UserDetailsList.CodeINN), "Код ИНН").Width = Unit.Percentage(15);
+        settings.Columns.Add(nameof(UserDetailsList.CompanyNote), "Примечание").Width = Unit.Percentage(20);
+        settings.ApplyBasicLayout();
+
+    }).Bind(Model).GetHtml();
+}

@@ -10,11 +10,12 @@ namespace ASUVP.Online.Web.Controllers
     {
         private readonly IMailService _service;
 
+
         public MailController(IMailService service)
         {
             _service = service;
         }
-        
+
         // GET: Mail
         public ActionResult Index()
         {
@@ -89,7 +90,6 @@ namespace ASUVP.Online.Web.Controllers
 
             return View("ComposeMail", model);
         }
-
         public ActionResult ComposeMail()
         {
             ViewBag.Title = "Написать письмо";

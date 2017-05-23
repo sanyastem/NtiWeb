@@ -1,0 +1,147 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@using ASUVP.Online.Web.Models.Contact
+@model ContactEditable
+
+@{
+    Html.EnableClientValidation();
+}
+<link href="@Url.Content("~/Content/css/CardStyle.css")" rel="stylesheet">
+
+@using (Html.BeginForm("CreateOrEdit", "Contact", FormMethod.Post, new { id = "contactForm" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(m => m.Id)
+    <div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+        <div class="container-fluid">
+
+            @Html.DevExpress().Button(s =>
+           {
+               s.Name = $"btnSave";
+               s.ClientEnabled = true;
+               s.Images.Image.Url = Url.Content("~/Content/img/wizard/save.png");
+               s.Images.Image.UrlHottracked = Url.Content("~/Content/img/wizard/save-white.png");
+               s.Images.Image.Height = 32;
+               s.Text = "Сохранить";
+               s.ToolTip = "Сохранение изменений";
+               s.Height = Unit.Pixel(60);
+               s.ControlStyle.CssClass = "btn";
+               s.UseSubmitBehavior = true;
+           }).GetHtml()
+
+            <table style="width: 760px">
+                <tr>
+                    <td class="left-label">
+                        Фамилия*
+                    </td>
+                    <td class="one-inrow-editor">
+                        @Html.DevExpress().TextBoxFor(m => m.F, s =>
+                        {
+                            s.Width = Unit.Percentage(100);
+                            s.Name = nameof(ContactEditable.F);
+                        }).Bind(Model.F).GetHtml()
+                        @Html.ValidationMessageFor(m => m.F)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-label">
+                        Имя
+                    </td>
+                    <td>
+                        @Html.DevExpress().TextBoxFor(m => m.I, s =>
+                        {
+                            s.Width = Unit.Percentage(100);
+                            s.Name = nameof(ContactEditable.I);
+                        }).Bind(Model.I).GetHtml()
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-label">
+                        Отчество
+                    </td>
+                    <td>
+                        @Html.DevExpress().TextBoxFor(m => m.O, s =>
+                        {
+                            s.Width = Unit.Percentage(100);
+                            s.Name = nameof(ContactEditable.O);
+                        }).Bind(Model.O).GetHtml()
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-label">
+                        Электронный адрес
+                    </td>
+                    <td>
+                        @Html.DevExpress().TextBoxFor(m => m.Email, s =>
+                        {
+                            s.Width = Unit.Percentage(100);
+                            s.Name = nameof(ContactEditable.Email);
+                        }).Bind(Model.Email).GetHtml()
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-label">
+                        Телефон
+                    </td>
+                    <td>
+                        @Html.DevExpress().TextBoxFor(m => m.Phone, s =>
+                        {
+                            s.Width = Unit.Percentage(100);
+                            s.Name = nameof(ContactEditable.Phone);
+                        }).Bind(Model.Phone).GetHtml()
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-label">
+                        Фирма
+                    </td>
+
+                    <td class="one-inrow-editor">
+                        @Html.Action("CompanyGridLookup", "Company", new { selected = Model.CompanyId })
+                        @Html.ValidationMessageFor(m => m.CompanyId)
+                    </td>
+                    @*</td>
+                        @if (Model.Id == Guid.Empty)
+                        {
+                            @Html.DevExpress().ComboBoxFor(m => m.CompanyId, s =>
+                            {
+                                s.Width = Unit.Percentage(100);
+                                s.Name = nameof(ContactEditable.CompanyId);
+                                s.Properties.DropDownStyle = DropDownStyle.DropDown;
+                                s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+                                s.CallbackRouteValues = new {Controller = "Contact", Action = "CompanyLookUp", Model};
+                                s.Properties.TextField = nameof(Company.ShortName);
+                                s.Properties.ValueField = nameof(Company.Id);
+                                s.Properties.ValueType = typeof(Guid);
+                                s.Properties.CallbackPageSize = 15;
+                                s.SelectedIndex = 0;
+                            }).BindList(Model.Companies).GetHtml()
+                        }
+                        else
+                        {
+                            @Html.DevExpress().ComboBoxFor(m => m.CompanyId, s =>
+                            {
+                                s.Width = Unit.Percentage(100);
+                                s.Name = nameof(ContactEditable.CompanyId);
+                                s.Properties.DropDownStyle = DropDownStyle.DropDown;
+                                s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+                                s.CallbackRouteValues = new {Controller = "Contact", Action = "CompanyLookUp", Model};
+                                s.Properties.TextField = nameof(Company.ShortName);
+                                s.Properties.ValueField = nameof(Company.Id);
+                                s.Properties.ValueType = typeof(Guid);
+                                s.Properties.CallbackPageSize = 15;
+                                s.SelectedIndex = 0;
+                            }).BindList(Model.Companies).Bind(Model.CompanyId).GetHtml()
+                        }
+                    </td>*@
+                </tr>
+            </table>
+
+        </div>
+    </div>
+}
+<script type="text/javascript">
+
+    $("#contactForm").validate();
+</script>

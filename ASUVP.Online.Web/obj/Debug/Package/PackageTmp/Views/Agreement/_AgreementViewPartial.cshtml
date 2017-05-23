@@ -1,0 +1,323 @@
+@using System.Web.UI.WebControls
+@using ASUVP.Core.Configuration
+@using ASUVP.Core.DataAccess.Model
+@using ASUVP.Online.Web.Tools
+@model ASUVP.Online.Web.Models.Agreement.AgreementVM
+
+@{
+
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+
+        settings.Name = "AgreementView";
+        settings.CallbackRouteValues = new
+        {
+            Controller = "Agreement",
+            Action = "AgreementViewPartial",
+            manager = Model.Filter.AgrManagerId,
+            template = Model.Filter.TemplateId,
+            active = Model.Filter.OnlyActive
+        };
+        settings.CommandColumn.Visible = true;
+        settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+        settings.CommandColumn.Caption = " ";
+        settings.CommandColumn.Width = 53;
+        settings.CommandColumn.ShowSelectCheckbox = true;
+        settings.CommandColumn.SelectAllCheckboxMode = GridViewSelectAllCheckBoxMode.Page;
+
+        settings.KeyFieldName = nameof(AgreementList.Id);
+
+        var widthButtonColumn = 0;
+        if (AuthManager.User.IsInRole("AgreementView"))
+        {
+            widthButtonColumn += 43;
+        }
+        if (AuthManager.User.IsInRole("AgreementEdit"))
+        {
+            widthButtonColumn += 43;
+        }
+        if (AuthManager.User.IsInRole("AgreementDelete"))
+        {
+            widthButtonColumn += 43;
+        }
+        var viewButtonColumn = new MVCxGridViewColumn() { Width = widthButtonColumn };
+        settings.Columns.Add(viewButtonColumn);
+        viewButtonColumn.SetHeaderTemplateContent(c =>
+        {
+            c.ID = "btnViewHeader";
+        });
+        viewButtonColumn.SetDataItemTemplateContent(c =>
+        {
+            c.ID = "btnViews";
+
+            Html.DevExpress().Button(
+            b =>
+            {
+                b.Name = "btnView_" + c.VisibleIndex;
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_view.png");
+                b.Images.Image.ToolTip = "Просмотр";
+                b.Images.Image.AlternateText = "Просмотр";
+                b.Images.Image.Height = 32;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientSideEvents.Click = string.Format("function(s, e) {{ OnViewAgreementClick('{0}','{1}'); }}", settings.Name, c.KeyValue);
+                b.ClientVisible = AuthManager.User.IsInRole("AgreementView");
+            }).Render();
+            Html.DevExpress().Button(b =>
+            {
+                b.Name = "btnEdit_" + c.VisibleIndex;
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_edit.png");
+                b.Images.Image.ToolTip = "Изменить";
+                b.Images.Image.AlternateText = "Изменить";
+                b.Images.Image.Height = 32;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientSideEvents.Click = "";
+                b.ClientVisible = AuthManager.User.IsInRole("AgreementEdit");
+                b.ClientSideEvents.Click = string.Format("function(s, e) {{ OnEditAgreementClick('{0}','{1}'); }}", settings.Name, c.KeyValue);
+            }).Render();
+            Html.DevExpress().Button(b =>
+            {
+                b.Name = "btnDelete_" + c.VisibleIndex;
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_del.png");
+                b.Images.Image.ToolTip = "Удалить";
+                b.Images.Image.AlternateText = "Удалить";
+                b.Images.Image.Height = 32;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientSideEvents.Click = string.Format("function(s, e) {{ OnDeleteAgreementClick('{0}','{1}'); }}", settings.Name, c.KeyValue);
+                b.ClientVisible = AuthManager.User.IsInRole("AgreementDelete");
+            }).Render();
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(AgreementList.HasAttachmentHint);
+            column.Width = 80;
+            column.Caption = "Вложение";
+
+            column.SetHeaderCaptionTemplateContent(c =>
+            {
+                ViewContext.Writer.Write($"<img style=\"float:left; display: block;\" width=\"24\" height=\"24\" alt=\"Нет данных\" src=\"{Url.Content("~/Content/img/attach.png")}\" title=\"Вложение\" />");
+            });
+
+            column.SetDataItemTemplateContent(c =>
+            {
+                string imageUrl = new UrlHelper(HttpContext.Current.Request.RequestContext).Content($"~{DataBinder.Eval(c.DataItem, nameof(AgreementList.HasAttachmentImgPath))}");
+                string imageHint = "";
+                try
+                {
+                    imageHint = DataBinder.Eval(c.DataItem, nameof(AgreementList.HasAttachmentHint)).ToString();
+                    if (imageUrl != "/" && imageUrl != "/ASUVP.Online.Web/")
+                    {
+                        ViewContext.Writer.Write(string.Format($"<img style=\"float:none; display: block; margin-left: auto; margin-right: auto;\" width=\"32\" height=\"32\" alt=\"Нет данных\" src=\"{imageUrl}\" title=\"{imageHint}\" onclick=\"onDocAttachClick('{ c.KeyValue}')\" />"));
+                    }
+                }
+                catch
+                {
+                }
+            });
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(AgreementList.DocNumber);
+            column.Caption = "Номер";
+            column.Width = 125;
+            column.ToolTip = "Номер договора";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(AgreementList.RegNumber);
+            column.Caption = "Рег. номер";
+            column.Width = 125;
+            column.ToolTip = "Регистрационный номер договора";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(AgreementList.DocDate);
+            column.Caption = "Дата";
+            column.ColumnType = MVCxGridViewColumnType.DateEdit;
+            column.PropertiesEdit.DisplayFormatString = ConfigManager.ShortDateTimeFormat;
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Equals;
+            column.Width = 100;
+            column.ToolTip = "Дата договора";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(AgreementList.Balance);
+            column.Caption = "Сальдо";
+            column.Width = 120;
+            column.ToolTip = "Оперативное сальдо по Договору";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(AgreementList.DocName);
+            column.Caption = "Наименование";
+            column.Width = 220;
+            column.ToolTip = "Наименование Договора";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(AgreementList.DateBeg);
+            column.Caption = "Дата начала";
+            column.ColumnType = MVCxGridViewColumnType.DateEdit;
+            column.PropertiesEdit.DisplayFormatString = ConfigManager.ShortDateTimeFormat;
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Equals;
+            column.Width = 145;
+            column.ToolTip = "Дата начала действия Договора";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(AgreementList.DateEnd);
+            column.Caption = "Дата окончания";
+            column.ColumnType = MVCxGridViewColumnType.DateEdit;
+            column.PropertiesEdit.DisplayFormatString = ConfigManager.ShortDateTimeFormat;
+            column.Settings.AutoFilterCondition = AutoFilterCondition.Equals;
+            column.Width = 160;
+            column.ToolTip = "Дата окончания действия Договора";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(AgreementList.CustomerCompanyName);
+            column.Caption = "Клиент";
+            column.Width = 220;
+            column.ToolTip = "Клиент по Договору";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(AgreementList.PerformerCompanyName);
+            column.Caption = "Экспедитор";
+            column.Width = 220;
+            column.ToolTip = "Экспедитор по Договору";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(AgreementList.AgrManagerName);
+            column.Caption = "Менеджер";
+            column.Width = 220;
+            column.ToolTip = "Ответственный менеджер по Договору";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(AgreementList.ApprovalPerformerHint);
+            column.Caption = "Согл Э";
+            column.Width = 110;
+            column.SetDataItemTemplateContent(c =>
+            {
+                string imageUrl = new UrlHelper(HttpContext.Current.Request.RequestContext).Content($"~{DataBinder.Eval(c.DataItem, nameof(AgreementList.ApprovalPerformerImgPath))}");
+                string imageHint = "";
+                try
+                {
+                    imageHint = DataBinder.Eval(c.DataItem, nameof(AgreementList.ApprovalPerformerHint)).ToString();
+                    ViewContext.Writer.Write($"<img style=\"float:none; display: block; margin-left: auto; margin-right: auto;\" width=\"32\" height=\"32\" alt=\"Нет данных\" src=\"{imageUrl}\" title=\"{imageHint}\" />");
+                }
+                catch { }
+            });
+            column.ToolTip = "Статус согласования Экспедитором";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(AgreementList.ApprovalCustomerHint);
+            column.Caption = "Согл К";
+            column.Width = 110;
+            column.SetDataItemTemplateContent(c =>
+            {
+                string imageUrl = new UrlHelper(HttpContext.Current.Request.RequestContext).Content($"~{DataBinder.Eval(c.DataItem, nameof(AgreementList.ApprovalCustomerImgPath))}");
+                string imageHint = "";
+                try
+                {
+                    imageHint = DataBinder.Eval(c.DataItem, nameof(AgreementList.ApprovalCustomerHint)).ToString();
+                    ViewContext.Writer.Write($"<img style=\"float:none; display: block; margin-left: auto; margin-right: auto;\" width=\"32\" height=\"32\" alt=\"Нет данных\" src=\"{imageUrl}\" title=\"{imageHint}\" />");
+                }
+                catch { }
+            });
+            column.ToolTip = "Статус согласования Клиентом";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(AgreementList.SigningPerformerHint);
+            column.Caption = "ЭП Э";
+            column.Width = 110;
+            column.SetDataItemTemplateContent(c =>
+            {
+                string imageUrl = new UrlHelper(HttpContext.Current.Request.RequestContext).Content($"~{DataBinder.Eval(c.DataItem, nameof(AgreementList.SigningPerformerImgPath))}");
+                string imageHint = "";
+                try
+                {
+                    imageHint = DataBinder.Eval(c.DataItem, nameof(AgreementList.SigningPerformerHint)).ToString();
+                    ViewContext.Writer.Write($"<img style=\"float:none; display: block; margin-left: auto; margin-right: auto;\" width=\"32\" height=\"32\" alt=\"Нет данных\" src=\"{imageUrl}\" title=\"{imageHint}\" />");
+                }
+                catch { }
+            });
+            column.ToolTip = "Статус подписания ЭП Экспедитором";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(AgreementList.SigningCustomerHint);
+            column.Caption = "ЭП К";
+            column.Width = 110;
+            column.SetDataItemTemplateContent(c =>
+            {
+                string imageUrl = new UrlHelper(HttpContext.Current.Request.RequestContext).Content($"~{DataBinder.Eval(c.DataItem, nameof(AgreementList.SigningCustomerImgPath))}");
+                string imageHint = "";
+                try
+                {
+                    imageHint = DataBinder.Eval(c.DataItem, nameof(AgreementList.SigningCustomerHint)).ToString();
+                    ViewContext.Writer.Write($"<img style=\"float:none; display: block; margin-left: auto; margin-right: auto;\" width=\"32\" height=\"32\" alt=\"Нет данных\" src=\"{imageUrl}\" title=\"{imageHint}\" />");
+                }
+                catch { }
+            });
+            column.ToolTip = "Статус подписания ЭП Клиентом";
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(AgreementList.TemplateName);
+            column.Caption = "Шаблон";
+            column.Width = 250;
+            column.ToolTip = "Шаблон Договора";
+        });
+
+        settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
+
+        settings.CustomJSProperties = (sender, e) =>
+        {
+            MVCxGridView gv = sender as MVCxGridView;
+            if (gv != null)
+            {
+                e.Properties["cp_Filter"] = gv.FilterExpression;
+                e.Properties["cp_FilterManager"] = Model.Filter.AgrManagerId;
+                e.Properties["cp_FilterTemplate"] = Model.Filter.TemplateId;
+                e.Properties["cp_FilterActive"] = Model.Filter.OnlyActive;
+
+                int startIndex = gv.PageIndex * gv.SettingsPager.PageSize;
+                int endIndex = Math.Min(gv.VisibleRowCount, startIndex + gv.SettingsPager.PageSize);
+                object[] attachments = new object[endIndex - startIndex];
+                for (int i = startIndex; i < endIndex; i++)
+                {
+                    attachments[i - startIndex] = gv.GetRowValues(i, nameof(AgreementList.HasAttachmentHint));
+                }
+                e.Properties["cp_attachments"] = attachments;
+            }
+        };
+
+        settings.ApplyPaging();
+        settings.ApplyBasicLayout();
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+
+@grid.Bind(Model.Agreements).GetHtml()

@@ -1,0 +1,72 @@
+﻿@using ASUVP.Core.Configuration
+@using ASUVP.Core.DataAccess.Model
+@using System.Web.UI.WebControls
+@using ASUVP.Online.Web.Tools
+@model List<DocumentAttachList>
+
+    @Html.DevExpress().GridView(settings =>
+{
+    settings.Name = "DocumentAttachGrid";
+    settings.CallbackRouteValues = new
+    {
+        Controller = "Document",
+        Action = "DocumentAttachPopupDetails",
+        id = ViewBag.AgrId
+    };
+    settings.Width = Unit.Percentage(100);
+    settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+    settings.Styles.Header.HorizontalAlign = HorizontalAlign.Center;
+
+    settings.KeyFieldName = nameof(DocumentAttachList.Id);
+
+    var viewButtonColumn = new MVCxGridViewColumn() { Width = 41 };
+    settings.Columns.Add(viewButtonColumn);
+    viewButtonColumn.SetHeaderTemplateContent(c =>
+    {
+        c.ID = "btnPrintHeader";
+    });
+    viewButtonColumn.SetDataItemTemplateContent(c =>
+    {
+        c.ID = "btnPrints";
+        Html.DevExpress().Button(
+        b =>
+        {
+            b.Name = "btnAttachPrint_" + c.VisibleIndex;
+            b.Images.Image.Url = Url.Content("~/Content/img/print.png");
+            b.Images.Image.Height = 32;
+            b.Images.Image.ToolTip = "Печать";
+            b.Images.Image.AlternateText = "Печать";
+            b.Images.Image.Height = 32;
+            b.RenderMode = ButtonRenderMode.Button;
+            b.EnableTheming = false;
+            b.Text = "";
+            b.ClientSideEvents.Click = string.Format("function(s,e) {{ OnBtnAttachPrintClick('{0}'); }}", c.KeyValue);
+        }).Render();
+    });
+
+    settings.Columns.Add(c =>
+    {
+        c.FieldName = nameof(DocumentAttachList.FName);
+        c.Caption = "Наименование";
+        c.ToolTip = "Наименование документа";
+        c.Width = Unit.Percentage(50);
+    });
+    settings.Columns.Add(c =>
+    {
+        c.FieldName = nameof(DocumentAttachList.CreatedByName);
+        c.Caption = "Создал";
+        c.ToolTip = "Создал пользователем";
+        c.Width = Unit.Percentage(50);
+    });
+    settings.Columns.Add(c => {
+        c.FieldName = nameof(DocumentAttachList.CreatedOn);
+        c.Caption = "Дата";
+        c.ToolTip = "Дата создания";
+        c.Width = Unit.Pixel(100);
+        c.ColumnType = MVCxGridViewColumnType.DateEdit;
+        c.PropertiesEdit.DisplayFormatString = ConfigManager.ShortDateTimeFormat;
+        c.Settings.AutoFilterCondition = AutoFilterCondition.Equals;
+    });
+    settings.ApplyBasicLayout();
+
+}).Bind(Model).GetHtml()

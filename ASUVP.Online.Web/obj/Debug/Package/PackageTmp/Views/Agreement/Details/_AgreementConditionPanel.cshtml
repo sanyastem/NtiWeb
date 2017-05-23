@@ -1,0 +1,43 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model Agreement
+<table>
+    <tr>
+        <td style="width: 60px; padding-right: 5px; text-align: right">
+            На дату:
+        </td>
+        <td style="width: 130px">
+            @Html.DevExpress().DateEdit(settings =>
+           {
+               settings.Name = "conditionDateFilter";
+               settings.Width = Unit.Percentage(100);
+
+           }).Bind(DateTime.Today).GetHtml()
+        </td>
+        <td style="width: 25px">
+        <td style="width: 100px">
+            @Html.DevExpress().Button(settings =>
+            {
+                settings.Name = "BtnViewConditionsByDate";
+                settings.Width = Unit.Pixel(100);
+                settings.Height = Unit.Pixel(20);
+                settings.Text = "Показать";
+            }).GetHtml()
+        </td>
+        <td></td>
+    </tr>
+</table>
+<br />
+
+
+@Html.DevExpress().Panel(settings =>
+{
+    settings.Name = "AgreementConditionPanel";
+    settings.Width = Unit.Percentage(100);
+    settings.SetContent(() =>
+    {
+        Html.RenderAction("AgreementConditionData", new { id = Model.DocumentId });
+    });
+}).GetHtml()
+
+

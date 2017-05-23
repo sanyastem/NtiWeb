@@ -1,0 +1,19 @@
+﻿@using ASUVP.Core.DataAccess.Model;
+@using ASUVP.Online.Web.Models.Entity
+@using System.Web.UI.WebControls
+
+@Html.DevExpress().ComboBox(settings =>
+{
+    settings.Name = nameof(EditableAgreement.PerformerCompanyId);
+    settings.Properties.DropDownStyle = DropDownStyle.DropDown;
+    settings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+    settings.CallbackRouteValues = new { Controller = "Agreement", Action = "PerformerLookUp", Model };
+    settings.Properties.TextFormatString = @"{0}{1: ОКПО:##1} {2: ИНН:##2}";
+    settings.Properties.Columns.Add("ViewName", "Название", Unit.Pixel(300));
+    settings.Properties.Columns.Add("CodeOKPO", "ОКПО", Unit.Pixel(150));
+    settings.Properties.Columns.Add("CodeINN", "ИНН", Unit.Pixel(150));
+    settings.Properties.ValueField = nameof(Company.Id);
+    settings.Properties.ValueType = typeof(Guid);
+
+    settings.Properties.CallbackPageSize = 15;
+}).BindList(EditableAgreement.GetCompanysRange, EditableAgreement.GetCompanyById).Bind(Model?.PerformerCompanyId).GetHtml()

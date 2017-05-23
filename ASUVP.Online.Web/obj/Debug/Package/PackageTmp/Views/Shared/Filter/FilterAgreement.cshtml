@@ -1,0 +1,23 @@
+﻿@using System.Web.UI.WebControls
+@model List<SelectListItem>
+
+@Html.DevExpress().ComboBox(settings =>
+{
+    settings.Name = "comboBoxAgreement";
+    settings.Properties.Caption = "Договор";
+    settings.Properties.Items.Add("Все", 0);
+    settings.Properties.CaptionSettings.ShowColon = false;
+    settings.Properties.CaptionStyle.Font.Bold = false;
+    settings.Style.Add("margin", "0px 10px 10px 5px");
+    settings.Width = Unit.Pixel(430);
+    settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+    settings.Properties.DropDownStyle = DropDownStyle.DropDownList;
+    settings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.None;
+
+    settings.SelectedIndex = 0;
+
+    foreach (var el in Model)
+    {
+        settings.Properties.Items.Add(el.Text, el.Value);
+    }
+}).GetHtml()
