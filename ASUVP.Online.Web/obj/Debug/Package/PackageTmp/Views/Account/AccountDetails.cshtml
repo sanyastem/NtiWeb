@@ -48,17 +48,17 @@
                 s.Images.Image.UrlHottracked = Url.Content("~/Content/img/apply_ep-white.png");
             }).GetHtml()
             @Html.DevExpress().Button(s =>
-            {
-                s.Name = "btnSendMessage";
-                s.ClientEnabled = true;
-                s.Images.Image.Url = Url.Content("~/Content/img/mail.png");
-                s.Images.Image.Height = 32;
-                s.Text = "Отправить письмо";
-                s.Height = Unit.Pixel(60);
-                s.ControlStyle.CssClass = "btn btn-card";
-                s.ClientSideEvents.Click = "function() { AccountSendMail(); }";
-                s.Images.Image.UrlHottracked = Url.Content("~/Content/img/mail-white.png");
-            }).GetHtml()
+       {
+           s.Name = "btnSendMessage";
+           s.ClientEnabled = true;
+           s.Images.Image.Url = Url.Content("~/Content/img/mail.png");
+           s.Images.Image.Height = 32;
+           s.Text = "Отправить письмо";
+           s.Height = Unit.Pixel(60);
+           s.ControlStyle.CssClass = "btn btn-card";
+           s.ClientSideEvents.Click = string.Format("function() {{ OnAccountSendMail('{0}'); }}", Model.Id);
+           s.Images.Image.UrlHottracked = Url.Content("~/Content/img/mail-white.png");
+       }).GetHtml()
             @Html.DevExpress().Button(s =>
             {
                 s.Name = "btnAudit";

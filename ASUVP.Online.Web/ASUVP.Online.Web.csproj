@@ -726,7 +726,7 @@
     <Content Include="Views\Shared\Modal\DocumentAttachPopupDetails.cshtml" />
     <Content Include="Views\Calculations\Index.cshtml" />
     <Content Include="Views\Mail\UpdateMail.cshtml" />
-    <Content Include="Views\Agreement\AgreementSendMail.cshtml" />
+    <Content Include="Views\Mail\AgreementSendMail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -12,3 +12,10 @@ C:\Users\alexa\Documents\GitHub\NtiWeb\ASUVP.Core.Domain\bin\Debug\Microsoft.Asp
 C:\Users\alexa\Documents\GitHub\NtiWeb\ASUVP.Core.Domain\obj\Debug\ASUVP.Core.Domain.csprojResolveAssemblyReference.cache
 C:\Users\alexa\Documents\GitHub\NtiWeb\ASUVP.Core.Domain\obj\Debug\ASUVP.Core.Domain.dll
 C:\Users\alexa\Documents\GitHub\NtiWeb\ASUVP.Core.Domain\obj\Debug\ASUVP.Core.Domain.pdb
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Domain\bin\Debug\ASUVP.Core.Domain.dll
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Domain\bin\Debug\ASUVP.Core.Domain.pdb
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Domain\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Domain\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Domain\obj\Debug\ASUVP.Core.Domain.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Domain\obj\Debug\ASUVP.Core.Domain.dll
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Domain\obj\Debug\ASUVP.Core.Domain.pdb

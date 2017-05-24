@@ -77,3 +77,27 @@ function OnBtnAttachPrintClick(attachId) {
     var href = ROOT_URL + "Document/Preview?id=" + attachId;
     window.open(href, "_blank");
 }
+function OnAgreementSendMail(agreechId) {
+    var href = ROOT_URL + "Mail/AgreementSendMail/?id=" + agreechId;
+    window.open(href, "_blank");
+}
+function OnProtocolSendMail(protocolchId) {
+    var href = ROOT_URL + "Mail/ProtocolSendMail/?id=" + protocolchId;
+    window.open(href, "_blank");
+}
+function OnAccountSendMail(accountId) {
+    var href = ROOT_URL + "Mail/AccountSendMail/?id=" + accountId;
+    window.open(href, "_blank");
+}
+function OnClaimSendMail(claimId) {
+    var href = ROOT_URL + "Mail/ClaimSendMail/?id=" + claimId;
+    window.open(href, "_blank");
+}
+function OnActSendMail(actId) {
+    var href = ROOT_URL + "Mail/ActSendMail/?id=" + actId;
+    window.open(href, "_blank");
+}
+function OnInstructionSendMail(actId) {
+    var href = ROOT_URL + "Mail/InstructionSendMail/?id=" + actId;
+    window.open(href, "_blank");
+}

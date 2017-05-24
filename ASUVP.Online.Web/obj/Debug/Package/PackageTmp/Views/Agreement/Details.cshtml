@@ -68,7 +68,7 @@
            s.Text = "Отправить письмо";
            s.Height = Unit.Pixel(60);
            s.ControlStyle.CssClass = "btn";
-           s.ClientSideEvents.Click = "function() { AgreementSendMail(); }";
+           s.ClientSideEvents.Click = string.Format("function() {{ OnAgreementSendMail('{0}'); }}", Model.DocumentId);
            s.Images.Image.UrlHottracked = Url.Content("~/Content/img/mail-white.png");
        }).GetHtml()
             @Html.DevExpress().Button(s =>

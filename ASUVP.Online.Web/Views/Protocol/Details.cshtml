@@ -62,7 +62,7 @@
            s.Text = "Отправить письмо";
            s.Height = Unit.Pixel(60);
            s.ControlStyle.CssClass = "btn";
-           s.ClientSideEvents.Click = "function() { ProtocolSendMail(); }";
+           s.ClientSideEvents.Click = string.Format("function() {{ OnProtocolSendMail('{0}'); }}",Model.Id);
            s.Images.Image.UrlHottracked = Url.Content("~/Content/img/mail-white.png");
        }).GetHtml()
 
