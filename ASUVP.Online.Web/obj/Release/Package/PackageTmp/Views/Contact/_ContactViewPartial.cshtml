@@ -1,0 +1,145 @@
+﻿@using ASUVP.Core.Configuration
+@using ASUVP.Core.DataAccess.Model
+@model List<ASUVP.Core.DataAccess.Model.ContactList>
+
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+
+        settings.Name = "ContactView";
+        settings.CallbackRouteValues = new { Controller = "Contact", Action = "ContactViewPartial"};
+        settings.CommandColumn.Visible = true;
+        settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+        settings.CommandColumn.Caption = " ";
+        settings.CommandColumn.Width = 53;
+        settings.CommandColumn.ShowSelectCheckbox = true;
+        settings.CommandColumn.SelectAllCheckboxMode = GridViewSelectAllCheckBoxMode.Page;
+
+        settings.KeyFieldName = nameof(ContactList.Id);
+
+
+        var widthButtonColumn = 0;
+        if (AuthManager.User.IsInRole("ContactView"))
+        {
+            widthButtonColumn += 43;
+        }
+        if (AuthManager.User.IsInRole("ContactEdit"))
+        {
+            widthButtonColumn += 43;
+        }
+        if (AuthManager.User.IsInRole("ContactDelete"))
+        {
+            widthButtonColumn += 43;
+        }
+        var viewButtonColumn = new MVCxGridViewColumn() { Width = widthButtonColumn };
+        settings.Columns.Add(viewButtonColumn);
+        viewButtonColumn.SetHeaderTemplateContent(c =>
+        {
+            c.ID = "btnViewHeader";
+        });
+        viewButtonColumn.SetDataItemTemplateContent(c =>
+        {
+            c.ID = "btnViews";
+
+            Html.DevExpress().Button(
+            b =>
+            {
+                b.Name = "btnView_" + c.VisibleIndex;
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_view.png");
+                b.Images.Image.ToolTip = "Просмотр";
+                b.Images.Image.AlternateText = "Просмотр";
+                b.Images.Image.Height = 32;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientVisible = AuthManager.User.IsInRole("ContactView");
+                b.ClientSideEvents.Click = string.Format("function(s, e) {{ OnViewContactClick('{0}','{1}'); }}", settings.Name, c.KeyValue);
+            }).Render();
+            Html.DevExpress().Button(b =>
+            {
+                b.Name = "btnEdit_" + c.VisibleIndex;
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_edit.png");
+                b.Images.Image.ToolTip = "Изменить";
+                b.Images.Image.AlternateText = "Изменить";
+                b.Images.Image.Height = 32;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientSideEvents.Click = "";
+                b.ClientVisible = AuthManager.User.IsInRole("ContactEdit");
+                b.ClientSideEvents.Click = string.Format("function(s, e) {{ OnEditContactClick('{0}','{1}'); }}", settings.Name, c.KeyValue);
+            }).Render();
+            Html.DevExpress().Button(b =>
+            {
+                b.Name = "btnDelete_" + c.VisibleIndex;
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_del.png");
+                b.Images.Image.ToolTip = "Удалить";
+                b.Images.Image.AlternateText = "Удалить";
+                b.Images.Image.Height = 32;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientSideEvents.Click = string.Format("function(s, e) {{ OnDeleteContactClick('{0}','{1}'); }}", settings.Name, c.KeyValue);
+                b.ClientVisible = AuthManager.User.IsInRole("ContactDelete");
+            }).Render();
+        });
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ContactList.F);
+            column.Caption = "Фамилия";
+            column.Width = 300;
+            column.ToolTip = "Фамилия пользователя";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ContactList.I);
+            column.Caption = "Имя";
+            column.Width = 225;
+            column.ToolTip = "Имя пользователя";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ContactList.O);
+            column.Caption = "Отчество";
+            column.Width = 225;
+            column.ToolTip = "Отчество пользователя";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ContactList.Email);
+            column.Caption = "Электронная почта";
+            column.Width = 225;
+            column.ToolTip = "Электронная почта пользователя";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ContactList.Phone);
+            column.Caption = "Телефон";
+            column.Width = 225;
+            column.ToolTip = "Телефон пользователя";
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ContactList.Company);
+            column.Caption = "Фирма";
+            column.Width = 225;
+            column.ToolTip = "Фирма пользователя";
+        });
+
+        settings.CustomJSProperties = (sender, e) =>
+        {
+            MVCxGridView gv = sender as MVCxGridView;
+            if (gv != null)
+            {
+                e.Properties["cp_Filter"] = gv.FilterExpression;
+            };
+        };
+
+        settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
+        settings.ApplyPaging();
+        settings.ApplyBasicLayout();
+    });
+    if (ViewData["EditError"] != null)
+    {
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+}
+@grid.Bind(Model).GetHtml()

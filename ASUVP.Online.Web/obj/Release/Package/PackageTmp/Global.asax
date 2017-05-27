@@ -1,0 +1,1 @@
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="ASUVP.Online.Web.Global" Language="C#" %>

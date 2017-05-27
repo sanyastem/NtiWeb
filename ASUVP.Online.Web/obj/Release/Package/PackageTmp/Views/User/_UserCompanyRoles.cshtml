@@ -1,0 +1,26 @@
+﻿@using ASUVP.Core.DataAccess.Model
+@using System.Web.UI.WebControls;
+@model List<EmployeeRolesList>
+
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "EmployeeRoles_"+ ViewData["UserId"]+"_" + ViewData["EmployeeCompanyId"];
+        settings.Width = Unit.Percentage(100);
+        settings.SettingsDetail.MasterGridName = "grid";
+        settings.CallbackRouteValues = new
+        {
+            Controller = "User",
+            Action = "UserCompanyRoles",
+            CompanyId = ViewData["EmployeeCompanyId"],
+            UserId = ViewData["EmployeeUserId"]
+        };
+        settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+        settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
+
+        settings.KeyFieldName = nameof(EmployeeRolesList.Id);
+        settings.Columns.Add(nameof(EmployeeRolesList.Name), "Название").Width = Unit.Percentage(100);
+        settings.ApplyBasicLayout();
+
+    }).Bind(Model).GetHtml();
+}

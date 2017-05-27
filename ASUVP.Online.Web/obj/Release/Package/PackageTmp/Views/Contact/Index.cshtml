@@ -1,0 +1,8 @@
+﻿@model List<ASUVP.Core.DataAccess.Model.ContactList>
+<script src="~/Content/js/Contact.js"></script>
+
+<div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+    <iframe name="frame" style="width: 30%; height: 30%; position: absolute; z-index: -1"></iframe>
+    @Html.Partial("_GridRibbon", new[] { "ContactView", "Contact" })
+    @Html.Action("ContactViewPartial")
+</div>

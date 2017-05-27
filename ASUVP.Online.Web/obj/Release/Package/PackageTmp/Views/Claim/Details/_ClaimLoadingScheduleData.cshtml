@@ -1,0 +1,88 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@using ASUVP.Online.Web.Tools
+@model ClaimLoadingSchedule
+<style>
+    #ClaimCargoSchedule .ClaimCargoSchedule td {
+        padding-top: .5em !important;
+        padding-bottom: .5em !important;
+    }
+        #ClaimCargoSchedule tr td:first-child {
+            text-align: left !important;
+    }
+</style>
+<table id="ClaimCargoSchedule" class="ClaimCargoSchedule" style="width: 100%">
+    <tr>
+        <td style="width: 10%">Версия графика</td>
+        <td style="width: 35%">
+            @Html.DevExpress().TextBox(s =>
+            {
+                s.Width = Unit.Percentage(100);
+                s.ReadOnly = true;
+                s.Name = nameof(ClaimLoadingSchedule.Version);
+            }).Bind(Model?.Version).GetHtml()
+        </td>
+        <td style="width: 10%; text-align:right; padding-right:5px">Состояние</td>
+        <td style="width: 45%">
+            @Html.DevExpress().TextBox(s =>
+            {
+                s.Width = Unit.Percentage(100);
+                s.ReadOnly = true;
+                s.Name = nameof(ClaimLoadingSchedule.StatusName);
+            }).Bind(Model?.StatusName).GetHtml()
+        </td>
+    </tr>
+    <tr>
+        <td>Дата договора</td>
+        <td colspan="3" style="padding-top: 0 !important; padding-bottom: 0 !important;">
+            <table style="width: 40%" class="ClaimCargoSchedule">
+                <tr>
+                    <td style="width:120px; min-width:120px">
+                        @if (Model.LoadDate != DateTime.MinValue)
+                        {
+                            @Html.DevExpress().DateEdit(s =>
+                               {
+                                   s.Width = Unit.Pixel(120);
+                                   s.ReadOnly = true;
+                                   s.Enabled = false;
+                                   s.Name = nameof(ClaimLoadingSchedule.LoadDate);
+                               }).Bind(Model?.LoadDate).GetHtml()
+                            ;
+                        }
+                        else
+                        {
+                            @Html.DevExpress().TextBox(s =>
+                            {
+                                s.Width = Unit.Pixel(120);
+                                s.ReadOnly = true;
+                                s.Name = nameof(ClaimLoadingSchedule.LoadDate);
+                            }).GetHtml()
+                        }
+                    </td>
+                    <td style="width: 5%; padding-right: 5px" class="right-ali">Тонн</td>
+                    <td style="width: 100px; padding-right: 0; min-width: 60px">
+                        @Html.DevExpress().TextBox(s =>
+                       {
+                           s.Width = Unit.Percentage(100);
+                           s.ReadOnly = true;
+                           s.Name = "Tonnes";
+                           s.Properties.DisplayFormatString = DisplayFormatSettings.GetDisplayFormatString();
+                       }).Bind(Model?.FrWeight).GetHtml()
+                    </td>
+                    <td style="width:25px"></td>
+                    <td style="width: 5%; padding-right: 5px" class="right-ali">Вагонов</td>
+                    <td style="width: 100px; min-width: 60px">
+                        @Html.DevExpress().TextBox(s =>
+                       {
+                           s.Width = Unit.Percentage(100);
+                           s.ReadOnly = true;
+                           s.Name = "Cars";
+                           s.Properties.DisplayFormatString = "### ### ###";
+                       }).Bind(Model?.CarCount).GetHtml()
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+

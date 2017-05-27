@@ -1,0 +1,44 @@
+﻿@Html.DevExpress().PopupControl(
+    settings =>
+    {
+        settings.Name = "pcModalMode";
+        settings.Width = 300;
+        settings.AllowDragging = true;
+        settings.CloseAction = CloseAction.CloseButton;
+        settings.CloseOnEscape = true;
+        settings.PopupAnimationType = AnimationType.None;
+        settings.HeaderText = "Предупреждение";
+        settings.Modal = true;
+        settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+        settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+        settings.SetContent(() =>
+        {
+            ViewContext.Writer.Write("<div><p>Вы действительно хотите выйти? Все несохраненные данные будут утеряны.</p></div>");
+            ViewContext.Writer.Write("<div>");
+
+            Html.DevExpress().Button(
+                buttonSettings =>
+                {
+                    buttonSettings.Name = "btnUpdate";
+                    buttonSettings.ControlStyle.CssClass = "button";
+                    buttonSettings.Width = 80;
+                    buttonSettings.Text = "Да";
+                    buttonSettings.ClientSideEvents.Click = "function (s, e){ window.close(); }";
+                }
+            )
+            .Render();
+            ViewContext.Writer.Write(" ");
+            Html.DevExpress().Button(
+                buttonSettings =>
+                {
+                    buttonSettings.Name = "btnCancel";
+                    buttonSettings.ControlStyle.CssClass = "button";
+                    buttonSettings.Width = 80;
+                    buttonSettings.Text = "Отмена";
+                    buttonSettings.ClientSideEvents.Click = "function(s, e){ pcModalMode.Hide(); }";
+                }
+            )
+            .Render();
+            ViewContext.Writer.Write("</div>");
+        });
+    }).GetHtml()

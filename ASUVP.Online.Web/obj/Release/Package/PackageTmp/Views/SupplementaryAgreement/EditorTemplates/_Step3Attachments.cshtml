@@ -1,0 +1,58 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Online.Web.Models.SupplementaryAgreement
+@using ASUVP.Core.DataAccess.Model
+
+@model SupplementaryAgreementWizardVM
+
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "Attachments";
+        settings.CallbackRouteValues = new
+        {
+            Controller = "SupplementaryAgreement",
+            Action = "SupplementaryAttachments"
+        };
+
+        settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "SupplementaryAgreement", Action = "AddNewAttach" };
+        settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "SupplementaryAgreement", Action = "UpdateAttach" };
+        settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "SupplementaryAgreement", Action = "DeleteAttach" };
+
+        settings.SettingsEditing.Mode = GridViewEditingMode.Inline;
+        settings.SettingsBehavior.ConfirmDelete = true;
+        settings.SettingsPopup.EditForm.Width = 600;
+        settings.Width = Unit.Percentage(100);
+
+        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.Width = Unit.Pixel(200);
+        settings.CommandColumn.ShowNewButton = false;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+
+        settings.Width = Unit.Percentage(100);
+        settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+        settings.Styles.Header.HorizontalAlign = HorizontalAlign.Center;
+
+        settings.SettingsPager.Mode = GridViewPagerMode.ShowAllRecords;
+
+        settings.KeyFieldName = nameof(DocumentAttach.Id);
+        settings.Columns.Add(s =>
+        {
+            s.FieldName = nameof(DocumentAttach.FName);
+            s.Caption = "Имя файла";
+            s.Width = Unit.Percentage(50);
+            s.ReadOnly = true;
+        });
+        settings.Columns.Add(nameof(DocumentAttach.Note), "Примечание").Width = Unit.Percentage(50);
+
+        settings.CellEditorInitialize = (s, e) =>
+        {
+            ASPxEdit editor = (ASPxEdit)e.Editor;
+            editor.ValidationSettings.Display = Display.Dynamic;
+        };
+
+        settings.ApplyBasicLayout();
+    });
+}
+
+@grid.Bind(Model.Attachments).GetHtml()

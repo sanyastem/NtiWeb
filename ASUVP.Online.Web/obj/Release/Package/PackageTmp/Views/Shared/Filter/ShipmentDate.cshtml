@@ -1,0 +1,74 @@
+﻿@using System.Web.UI.WebControls
+<script src="~/Content/js/shipmentDate.js"></script>
+<table>
+    <tr>
+        <td colspan="2">
+            @Html.DevExpress().ComboBox(settings =>
+       {
+           settings.Name = "comboBoxShipmentDate";
+           settings.Properties.Caption = "Период отгрузки";
+           settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+           settings.Properties.CaptionSettings.ShowColon = false;
+           settings.Properties.CaptionStyle.Font.Bold = false;
+           settings.Style.Add("margin", "0px 10px 10px 5px");
+           settings.Width = Unit.Pixel(430);
+           //settings.Properties.DropDownStyle = DropDownStyle.DropDown;
+           settings.SelectedIndex = 6;
+           settings.Properties.ClientSideEvents.TextChanged = "ShipmentChanged";
+           settings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.None;
+           settings.Properties.DropDownStyle = DropDownStyle.DropDownList;
+
+           settings.Properties.Items.Add("Все", 0);
+           settings.Properties.Items.Add("За период (C .. ПО)", 1);
+           settings.Properties.Items.Add("За сегодня", 2);
+           settings.Properties.Items.Add("За вчера", 3);
+           settings.Properties.Items.Add("За текущую неделю", 4);
+           settings.Properties.Items.Add("За последние 7 дней", 5);
+           settings.Properties.Items.Add("За текущий месяц", 6);
+           settings.Properties.Items.Add("За текущий квартал", 7);
+           settings.Properties.Items.Add("За текущий год", 8);
+
+       }).GetHtml()
+        </td>
+        <td></td>
+    </tr>
+    <tr id="SPOShipment">
+        <td>
+        @Html.DevExpress().DateEdit(
+            settings =>
+            {
+                settings.Name = "ShipmentBegin";
+                //settings.Properties.Caption = "C";
+                settings.Properties.CaptionSettings.ShowColon = false;
+                settings.Properties.CaptionStyle.Font.Bold = false;
+                settings.Properties.EditFormat = EditFormat.Custom;
+                settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+                settings.Style.Add("margin", "0px 10px 10px 5px");
+                settings.Width = Unit.Pixel(207);
+                settings.Properties.EditFormatString = "dd/MM/yyyy";
+                settings.Properties.ClientSideEvents.DateChanged = "OnShipmentBeginChanged";
+                settings.ToolTip = "Дата начала отгрузки";
+            }
+            ).GetHtml()
+        </td>
+        <td>
+            @Html.DevExpress().DateEdit(
+                settings =>
+                {
+                    settings.Name = "ShipmentEnd";
+                    //settings.Properties.Caption = "По";
+                    settings.Properties.CaptionSettings.ShowColon = false;
+                    settings.Properties.CaptionStyle.Font.Bold = false;
+                    settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+                    settings.Style.Add("margin", "0px 10px 10px 5px");
+                    settings.Width = Unit.Pixel(208);
+                    settings.Properties.EditFormat = EditFormat.Custom;
+                    settings.Properties.EditFormatString = "dd/MM/yyyy";
+                    settings.Properties.ClientSideEvents.DateChanged = "OnShipmentEndChanged";
+                    settings.ToolTip = "Дата окончания отгрузки";
+                }
+                ).GetHtml()
+        </td>
+    </tr>
+</table>
+

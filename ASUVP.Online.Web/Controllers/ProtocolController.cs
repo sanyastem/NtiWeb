@@ -13,6 +13,8 @@ using DevExpress.Data.Filtering;
 using DevExpress.Data.Filtering.Helpers;
 using DevExpress.Web.Mvc;
 using ASUVP.Online.Web.Attributes;
+using ASUVP.Online.Web.Models.Notification;
+using ASUVP.Online.Web.Hubs;
 
 namespace ASUVP.Online.Web.Controllers
 {
@@ -20,10 +22,11 @@ namespace ASUVP.Online.Web.Controllers
     public class ProtocolController : BaseController
     {
         private readonly IProtocolService _service;
-
-        public ProtocolController(IProtocolService service)
+        private readonly IUserNotificationService _notificationService;
+        public ProtocolController(IProtocolService service, IUserNotificationService notificationService)
         {
             _service = service;
+            _notificationService = notificationService;
         }
         public ActionResult Index()
         {
@@ -74,7 +77,33 @@ namespace ASUVP.Online.Web.Controllers
         [AuthorizePermissions(Permissions = AuthPermissions.ProtocolDelete)]
         public JsonResult DeleteProtocols(Guid[] keys)
         {
+            
             _service.DeleteProtocols(keys);
+            foreach (var item in keys)
+            {
+
+         
+                var idNotificstion = _notificationService.AddUserNotification(AuthManager.User.UserId, AuthManager.User.CompanyId, AuthManager.User.UserId, AuthManager.User.CompanyId, "Протокол " + _service.GetProtocol(item).TemplateName + " был удален", "Protocol|details|", (Guid)_service.GetProtocol(item).Id);
+                var not = _notificationService.GetUserNotifications(AuthManager.User.UserId, idNotificstion).FirstOrDefault();
+                var message = new NotificationVM()
+                {
+                    Id = not.Id,
+                    UserFromId = not.UserFromId,
+                    UserToID = not.UserToID,
+                    UserFromName = not.UserFromName,
+                    UserToName = not.UserToName,
+                    CompanyFromName = not.CompanyFromName,
+                    CompanyToName = not.CompanyToName,
+                    Text = not.Text,
+                    CreatedOn = not.CreatedOn.ToString(),
+                    ViewDate = not.ViewDate.ToString(),
+                    Url = not.Url,
+                    ObjectId = not.ObjectId
+                };
+
+                var contextHub = Microsoft.AspNet.SignalR.GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();
+                contextHub.Clients.All.DisplayMessage(AuthManager.User.UserId.ToString(), message);
+            }
             return Json(0, JsonRequestBehavior.AllowGet);
         }
 

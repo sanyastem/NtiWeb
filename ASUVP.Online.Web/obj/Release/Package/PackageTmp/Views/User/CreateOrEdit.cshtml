@@ -1,0 +1,152 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Online.Web.Models
+
+@model UserVM
+
+<link href="@Url.Content("~/Content/css/CardStyle.css")" rel="stylesheet">
+
+@{
+    Html.EnableClientValidation();
+}
+
+@using (Html.BeginForm("CreateOrEdit", "User", FormMethod.Post))
+{
+    @Html.HiddenFor(m=>m.Id)
+    <div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+        <div class="container-fluid">
+
+            @Html.DevExpress().Button(s =>
+           {
+               s.Name = $"btnSaveUser";
+               s.ClientEnabled = true;
+               s.Images.Image.Url = Url.Content("~/Content/img/wizard/save.png");
+               s.Images.Image.UrlHottracked = Url.Content("~/Content/img/wizard/save-white.png");
+               s.Images.Image.Height = 32;
+               s.Text = "Сохранить";
+               s.ToolTip = "Сохранение изменений";
+               s.Height = Unit.Pixel(60);
+               s.ControlStyle.CssClass = "btn";
+               s.UseSubmitBehavior = true;
+           }).GetHtml()
+
+            <table style="width:760px">
+                <tr>
+                    <td class="left-label">
+                        Контакт:
+                    </td>
+                    <td class="one-inrow-editor">
+                        @Html.Action("ContactGridLookup", "Contact", new { selected = Model.ContactId })
+                        @*@if (Model.ContactId == Guid.Empty)
+                        {
+                            @Html.DevExpress().ComboBoxFor(m => m.ContactId, s =>
+                            {
+                                s.Properties.DropDownStyle = DropDownStyle.DropDown;
+                                s.Width = Unit.Percentage(100);
+                                s.Name = nameof(Model.ContactId);
+                                s.Properties.TextFormatString = @"{0} {1} {2}";
+                                s.Properties.Columns.Add("F", "Фамилия", Unit.Pixel(300));
+                                s.Properties.Columns.Add("I", "Имя", Unit.Pixel(150));
+                                s.Properties.Columns.Add("O", "Отчество", Unit.Pixel(150));
+                                s.Properties.ValueField = "Id";
+                                s.SelectedIndex = 0;
+                                s.Properties.ValueType = typeof(Guid);
+                            }).BindList(Model.Contacts).GetHtml()
+                        }
+                        else
+                        {
+                            @Html.DevExpress().ComboBoxFor(m => m.ContactId, s =>
+                            {
+                                s.Properties.DropDownStyle = DropDownStyle.DropDown;
+                                s.Width = Unit.Percentage(100);
+                                s.Name = nameof(Model.ContactId);
+                                s.Properties.TextFormatString = @"{0} {1} {2}";
+                                s.Properties.Columns.Add("F", "Фамилия", Unit.Pixel(300));
+                                s.Properties.Columns.Add("I", "Имя", Unit.Pixel(150));
+                                s.Properties.Columns.Add("O", "Отчество", Unit.Pixel(150));
+                                s.Properties.ValueField = "Id";
+                                s.Properties.ValueType = typeof(Guid);
+                            }).BindList(Model.Contacts).Bind(Model?.ContactId).GetHtml()
+                        }*@
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="left-label">
+                        Логин:
+                    </td>
+                    <td class="one-inrow-editor">
+                        @Html.DevExpress().TextBoxFor(m => m.Name, s =>
+                        {
+                            s.Width = Unit.Percentage(100);
+                            s.Name = nameof(UserVM.Name);
+                        }).Bind(Model?.Name).GetHtml()
+                        @Html.ValidationMessageFor(m => m.Name)
+
+                    </td>
+                </tr>
+
+                @if (Model.Id == Guid.Empty)
+                {
+                    <tr>
+                        <td class="left-label">
+                            Пароль:
+                        </td>
+                        <td class="one-inrow-editor">
+                            @Html.DevExpress().TextBoxFor(m => m.Password, s =>
+                            {
+                                s.Width = Unit.Percentage(100);
+                                s.Properties.Password = true;
+                                s.Name = nameof(UserVM.Password);
+                            }).GetHtml()
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="left-label">
+                            Повторный пароль:
+                        </td>
+                        <td class="one-inrow-editor">
+                            @Html.DevExpress().TextBoxFor(m => m.ConfirmPassword, s =>
+                            {
+                                s.Width = Unit.Percentage(100);
+                                s.Properties.Password = true;
+                                s.Name = nameof(UserVM.ConfirmPassword);
+                            }).GetHtml()
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword)
+
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td class="left-label">
+                        Активный:
+                    </td>
+                    <td class="one-inrow-editor">
+                        @Html.DevExpress().CheckBoxFor(m => m.Active,s =>
+                        {
+                            s.Name = nameof(UserVM.Active);
+                            s.Text = " ";
+                            s.Checked = true;
+                            s.Width = Unit.Percentage(100);
+                            s.Properties.ValueType = typeof(bool);
+                        }).Bind(Model?.Active).GetHtml()
+                        @Html.ValidationMessageFor(m => m.Active)
+
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="left-label">
+                        Фирмы:
+                    </td>
+                    <td class="one-inrow-editor">
+                        @Html.Action("CompaniesGridLookup", "Company", new {selected = Model.UserCompanies})
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+}

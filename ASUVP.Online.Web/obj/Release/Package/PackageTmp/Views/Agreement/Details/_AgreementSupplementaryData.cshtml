@@ -1,0 +1,162 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.Configuration
+@using ASUVP.Core.DataAccess.Model
+@model List<SupplementaryAgreementList>
+
+@{
+    Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "DocumentSupplementaryGrid";
+        settings.CallbackRouteValues = new
+        {
+            Controller = "Agreement",
+            Action = "AgreementSupplementaryData",
+            id = ViewBag.AgreementId,
+            onlyActive = ViewBag.OnlyActive
+        };
+        settings.Width = Unit.Percentage(100);
+        settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+        settings.Styles.Header.HorizontalAlign = HorizontalAlign.Center;
+
+        //settings.CommandColumn.Visible = true;
+        //settings.CommandColumn.Caption = " ";
+        //settings.CommandColumn.Width = 53;
+        //settings.CommandColumn.ShowSelectCheckbox = true;
+        //settings.CommandColumn.SelectAllCheckboxMode = GridViewSelectAllCheckBoxMode.Page;
+
+        settings.KeyFieldName = nameof(SupplementaryAgreementList.Id);
+
+        var viewButtonColumn = new MVCxGridViewColumn() { Width = 123 };
+        settings.Columns.Add(viewButtonColumn);
+        viewButtonColumn.SetHeaderTemplateContent(c =>
+        {
+            c.ID = "btnViewHeader";
+        });
+        viewButtonColumn.SetDataItemTemplateContent(c =>
+        {
+            c.ID = "btnViews";
+            Html.DevExpress().Button(
+            b =>
+            {
+                b.Name = "btnView_" + c.VisibleIndex;
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_view.png");
+                b.Images.Image.Height = 32;
+                b.Images.Image.ToolTip = "Просмотр";
+                b.Images.Image.AlternateText = "Просмотр";
+                b.Images.Image.Height = 32;
+                b.RenderMode = ButtonRenderMode.Button;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientSideEvents.Click = string.Format("function(s, e, agrId) {{ OnViewSupplementaryAgreementClick('{0}','{1}','{2}'); }}", settings.Name, c.KeyValue, ViewBag.AgreementId);
+            }).Render();
+            Html.DevExpress().Button(b =>
+            {
+                b.Name = "btnEdit_" + Guid.NewGuid();
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_edit.png");
+                b.Images.Image.Height = 32;
+                b.Images.Image.ToolTip = "Изменить";
+                b.Images.Image.AlternateText = "Изменить";
+                b.Images.Image.Height = 32;
+                b.RenderMode = ButtonRenderMode.Button;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientVisible = AuthManager.User.IsInRole("AgreementEdit");
+                b.ClientSideEvents.Click = string.Format("function(s, e, agrId) {{ OnEditSupplementaryAgreementClick('{0}','{1}','{2}'); }}", settings.Name, c.KeyValue, ViewBag.AgreementId);
+            }).Render();
+            Html.DevExpress().Button(b =>
+            {
+                b.Name = "btnDelete_" + Guid.NewGuid();
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_del.png");
+                b.Images.Image.Height = 32;
+                b.Images.Image.ToolTip = "Удалить";
+                b.Images.Image.AlternateText = "Удалить";
+                b.Images.Image.Height = 32;
+                b.RenderMode = ButtonRenderMode.Button;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientSideEvents.Click = string.Format("function(s, e) {{ OnDeleteSupplementaryAgreementClick('{0}','{1}'); }}", settings.Name, c.KeyValue);
+                b.ClientVisible = AuthManager.User.IsInRole("AgreementDelete");
+            }).Render();
+        });
+        
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(SupplementaryAgreementList.HasAttachmentHint);
+            column.Width = 80;
+            column.Caption = "Вложение";
+
+            column.SetHeaderCaptionTemplateContent(c =>
+            {
+                ViewContext.Writer.Write($"<img style=\"float:left; display: block;\" width=\"24\" height=\"24\" alt=\"Нет данных\" src=\"{Url.Content("~/Content/img/attach.png")}\" title=\"Вложение\" />");
+            });
+
+            column.SetDataItemTemplateContent(c =>
+            {
+                string imageUrl = new UrlHelper(HttpContext.Current.Request.RequestContext).Content($"~{DataBinder.Eval(c.DataItem, nameof(SupplementaryAgreementList.HasAttachmentImgPath))}");
+                string imageHint = "";
+                try
+                {
+                    imageHint = DataBinder.Eval(c.DataItem, nameof(SupplementaryAgreementList.HasAttachmentHint)).ToString();
+                    if (imageUrl != "/" && imageUrl != "/ASUVP.Online.Web/")
+                    {
+                        ViewContext.Writer.Write(string.Format($"<img style=\"float:none; display: block; margin-left: auto; margin-right: auto;\" width=\"32\" height=\"32\" alt=\"Нет данных\" src=\"{imageUrl}\" title=\"{imageHint}\" onclick=\"onDocAttachClick('{ c.KeyValue}')\" />"));
+                    }
+                }
+                catch
+                {
+                }
+            });
+        });
+
+        settings.Columns.Add(c =>
+        {
+            c.FieldName = nameof(SupplementaryAgreementList.DocNumber);
+            c.Caption = "Номер";
+            c.Width = Unit.Pixel(120);
+        });
+
+        settings.Columns.Add(c => {
+            c.FieldName = nameof(SupplementaryAgreementList.DocDate);
+            c.Caption = "Дата";
+            c.Width = Unit.Pixel(100);
+            c.ColumnType = MVCxGridViewColumnType.DateEdit;
+            c.PropertiesEdit.DisplayFormatString = ConfigManager.ShortDateTimeFormat;
+            c.Settings.AutoFilterCondition = AutoFilterCondition.Equals;
+        });
+        settings.Columns.Add(nameof(SupplementaryAgreementList.DocName), "Наименование");
+        settings.Columns.Add(nameof(SupplementaryAgreementList.DocStatus), "Статус").Width = Unit.Pixel(100);
+        settings.Columns.Add(c =>
+        {
+            c.FieldName = nameof(SupplementaryAgreementList.DateBeg);
+            c.Caption = "Действует С";
+            c.Width = Unit.Pixel(150);
+            c.ColumnType = MVCxGridViewColumnType.DateEdit;
+            c.PropertiesEdit.DisplayFormatString = ConfigManager.ShortDateTimeFormat;
+            c.Settings.AutoFilterCondition = AutoFilterCondition.Equals;
+        });
+        settings.Columns.Add(c =>
+        {
+            c.FieldName = nameof(SupplementaryAgreementList.DateEnd);
+            c.Caption = "Действует ПО";
+            c.Width = Unit.Pixel(150);
+            c.ColumnType = MVCxGridViewColumnType.DateEdit;
+            c.PropertiesEdit.DisplayFormatString = ConfigManager.ShortDateTimeFormat;
+            c.Settings.AutoFilterCondition = AutoFilterCondition.Equals;
+        });
+        settings.Columns.Add(nameof(SupplementaryAgreementList.TemplateName), "Шаблон");
+        settings.CustomJSProperties = (sender, e) =>
+        {
+            MVCxGridView gv = sender as MVCxGridView;
+            if (gv != null)
+            {
+                e.Properties["cp_Filter"] = gv.FilterExpression;
+                e.Properties["cp_FilterAgrId"] = ViewBag.AgreementId;
+                e.Properties["cp_FilterActive"] = ViewBag.OnlyActive;
+            }
+        };
+
+        settings.ApplyBasicLayout();
+
+    }).Bind(Model).GetHtml();
+}

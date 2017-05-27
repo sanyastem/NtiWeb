@@ -1,0 +1,150 @@
+﻿@using Microsoft.Web.Mvc
+@using ASUVP.Online.Web.Models.SupplementaryAgreement
+
+@model SupplementaryAgreementWizardVM
+
+<link href="@Url.Content("~/Content/css/jquery.steps.css")" rel="stylesheet">
+<link href="@Url.Content("~/Content/css/CardStyle.css")" rel="stylesheet">
+<script src="~/Scripts/jquery.steps.js"></script>
+<script src="~/Content/js/wizard-validation.js"></script>
+
+<script>
+    var reader = new FileReader();
+
+    function errorHandler(evt) {
+        switch (evt.target.error.code) {
+            case evt.target.error.NOT_FOUND_ERR:
+                alert('Файл не найден!');
+                break;
+            case evt.target.error.NOT_READABLE_ERR:
+                alert('Невозможно прочитать файл');
+                break;
+            case evt.target.error.ABORT_ERR:
+                alert('Произошла ошибка при чтении файла.');
+                break; // noop
+            default:
+                alert('Произошла ошибка при чтении файла.');
+        };
+    }
+
+    function updateProgress(evt) {
+        // evt is an ProgressEvent.
+        if (evt.lengthComputable) {
+            var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
+            // Increase the progress bar length.
+            if (percentLoaded < 100) {
+                progress.style.width = percentLoaded + '%';
+                progress.textContent = percentLoaded + '%';
+            }
+        }
+    }
+
+    function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList object
+
+        f = files[0];
+
+        reader.onerror = errorHandler;
+
+        reader.onprogress = updateProgress;
+
+        reader.onloadstart = function (e) {
+            document.getElementById('progress_bar').className = 'loading';
+        };
+
+        reader.onload = function (e) {
+            // Ensure that the progress bar displays 100% at the end.
+            progress.style.width = '100%';
+            progress.textContent = '100%';
+            setTimeout("document.getElementById('progress_bar').className='';", 2000);
+        };
+
+        reader.onloadend = function (evt) {
+            if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+
+                var fileContent = btoa(evt.target.result);
+                var filename = f.name;
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("AddNewAttach", "SupplementaryAgreement")',
+                    data: {
+                        content: fileContent,
+                        fName: filename
+                    },
+                    success: function () { Attachments.Refresh(); document.getElementById("files").value = ""; }
+                });
+            }
+        };
+
+        var blob = f.slice(0, f.size);
+        reader.readAsBinaryString(blob);
+    }
+</script>
+
+@{
+    Html.EnableClientValidation(false);
+    Html.EnableUnobtrusiveJavaScript(false);
+}
+
+<div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%; height: auto">  
+    <div class="container-fluid" style="width: 100% !important">      
+        <script>
+            $(function () {
+                var form = $("#wizard");
+
+                form.steps({
+                    headerTag: "h3",
+                    bodyTag: "section",
+                    transitionEffect: "slideLeft",
+                    enablePagination: false,
+                    enableCancelButton: false,
+                    enableFinishButton: false,
+                    onStepChanging: function (event, currentIndex, newIndex) {
+
+                        return form.valid();
+                    }//,
+
+                    //onFinishing: function (event, currentIndex) {
+                    //    form.validate().settings.ignore = ":disabled";
+                    //    return form.valid();
+                    //},
+                    //onFinished: function (event, currentIndex) {
+                    //    alert("Submitted!");
+                    //}
+                });
+            })
+        </script>
+            
+        @using (Html.BeginForm("AddOrUpdateWizard", "SupplementaryAgreement", FormMethod.Post, new { id = "wizard" }))
+        {
+            <h3>Общая информация</h3>
+            <section>
+                <div class="col-lg-12" id="command-ribbon">
+                    @Html.Partial("_CommandRibbon", "Step1")
+                </div>
+                <div class="col-lg-9">
+                    @Html.Partial("EditorTemplates/_Step1CommonInfo", Model)
+                </div>
+                <div class="col-lg-3">
+                    * - поля, обязательные для заполнения
+                    @Html.DevExpress().ValidationSummary().GetHtml()
+                </div>  
+            </section>
+
+            <h3>Условия дополнительного соглашения</h3>
+            <section>
+                @Html.Partial("_CommandRibbon", "Step2")
+                @Html.Partial("EditorTemplates/_Step2Conditions", Model)
+            </section>
+
+            <h3>Прикрепленные документы</h3>
+            <section>
+                @Html.Partial("_CommandRibbon", "Step3")
+                @Html.Partial("EditorTemplates/_Step3Attachments", Model)
+            </section>
+        }
+    </div>
+</div>
+
+@Html.Partial("_ConfirmationDialog")

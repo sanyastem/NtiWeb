@@ -1,0 +1,1001 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ASUVPCoreDataAccessModelStoreContainer" CdmEntityContainer="ProcData">
+    <FunctionImportMapping FunctionImportName="AgreementDetele" FunctionName="ASUVP.Core.DataAccess.Model.Store.AgreementDetele" />
+    <FunctionImportMapping FunctionImportName="AgreementInsert" FunctionName="ASUVP.Core.DataAccess.Model.Store.AgreementInsert" />
+    <FunctionImportMapping FunctionImportName="AgreementUpdate" FunctionName="ASUVP.Core.DataAccess.Model.Store.AgreementUpdate" />
+    <FunctionImportMapping FunctionImportName="ClaimDetailsGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ClaimDetailsGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.ClaimDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
+          <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DocName" ColumnName="DocName" />
+          <ScalarProperty Name="DateBeg" ColumnName="DateBeg" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="DatePeriod" ColumnName="DatePeriod" />
+          <ScalarProperty Name="AgreementId" ColumnName="AgreementId" />
+          <ScalarProperty Name="AgreementName" ColumnName="AgreementName" />
+          <ScalarProperty Name="StFromId" ColumnName="StFromId" />
+          <ScalarProperty Name="StFromCode6" ColumnName="StFromCode6" />
+          <ScalarProperty Name="StFromName" ColumnName="StFromName" />
+          <ScalarProperty Name="RWFromName" ColumnName="RWFromName" />
+          <ScalarProperty Name="StToId" ColumnName="StToId" />
+          <ScalarProperty Name="StToCode6" ColumnName="StToCode6" />
+          <ScalarProperty Name="StToName" ColumnName="StToName" />
+          <ScalarProperty Name="RWToName" ColumnName="RWToName" />
+          <ScalarProperty Name="CarCount" ColumnName="CarCount" />
+          <ScalarProperty Name="FrWeight" ColumnName="FrWeight" />
+          <ScalarProperty Name="FrETSNGCode" ColumnName="FrETSNGCode" />
+          <ScalarProperty Name="FrETSNGName" ColumnName="FrETSNGName" />
+          <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+          <ScalarProperty Name="ContactFIO" ColumnName="ContactFIO" />
+          <ScalarProperty Name="TelegrammList" ColumnName="TelegrammList" />
+          <ScalarProperty Name="ApprovalPerformerImgId" ColumnName="ApprovalPerformerImgId" />
+          <ScalarProperty Name="ApprovalCustomerImgId" ColumnName="ApprovalCustomerImgId" />
+          <ScalarProperty Name="SigningPerformerImgId" ColumnName="SigningPerformerImgId" />
+          <ScalarProperty Name="SigningCustomerImgId" ColumnName="SigningCustomerImgId" />
+          <ScalarProperty Name="ApprovalPerformer" ColumnName="ApprovalPerformer" />
+          <ScalarProperty Name="ApprovalCustomer" ColumnName="ApprovalCustomer" />
+          <ScalarProperty Name="SigningPerformer" ColumnName="SigningPerformer" />
+          <ScalarProperty Name="SigningCustomer" ColumnName="SigningCustomer" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DocumentInsert" FunctionName="ASUVP.Core.DataAccess.Model.Store.DocumentInsert" />
+    <FunctionImportMapping FunctionImportName="DocumentUpdate" FunctionName="ASUVP.Core.DataAccess.Model.Store.DocumentUpdate" />
+    <FunctionImportMapping FunctionImportName="CompanyGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.CompanyGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.Company">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="ViewName" ColumnName="ViewName" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="CodeOKPO" ColumnName="CodeOKPO" />
+          <ScalarProperty Name="CodeINN" ColumnName="CodeINN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="TemplateGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.TemplateGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.Template">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="EmployeeGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.EmployeeGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.Employee">
+          <ScalarProperty Name="AgrOwnerId" ColumnName="AgrOwnerId" />
+          <ScalarProperty Name="AgrOwnerFIO" ColumnName="AgrOwnerFIO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserNotificationChangeState" FunctionName="ASUVP.Core.DataAccess.Model.Store.UserNotificationChangeState" />
+    <FunctionImportMapping FunctionImportName="UserNotificationInsert" FunctionName="ASUVP.Core.DataAccess.Model.Store.UserNotificationInsert" />
+    <FunctionImportMapping FunctionImportName="AgreementNumberListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.AgreementNumberListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.AgreementNumberList">
+          <ScalarProperty Name="AgreementId" ColumnName="AgreementId" />
+          <ScalarProperty Name="AgreementName" ColumnName="AgreementName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SigningStatusListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.SigningStatusListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.SigningStatusList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ApprovalStatusListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ApprovalStatusListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.ApprovalStatusList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ContactInsert" FunctionName="ASUVP.Core.DataAccess.Model.Store.ContactInsert" />
+    <FunctionImportMapping FunctionImportName="ContactListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ContactListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.ContactList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="F" ColumnName="F" />
+          <ScalarProperty Name="I" ColumnName="I" />
+          <ScalarProperty Name="O" ColumnName="O" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ContactUpdate" FunctionName="ASUVP.Core.DataAccess.Model.Store.ContactUpdate" />
+    <FunctionImportMapping FunctionImportName="ContactDelete" FunctionName="ASUVP.Core.DataAccess.Model.Store.ContactDelete" />
+    <FunctionImportMapping FunctionImportName="ContactDetailsGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ContactDetailsGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.ContactDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="F" ColumnName="F" />
+          <ScalarProperty Name="I" ColumnName="I" />
+          <ScalarProperty Name="O" ColumnName="O" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ClientsGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ClientsGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.Clients">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ActDetailsGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ActDetailsGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.ActDetails">
+          <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+          <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+          <ScalarProperty Name="NDS" ColumnName="NDS" />
+          <ScalarProperty Name="Summa" ColumnName="Summa" />
+          <ScalarProperty Name="SummaNDS" ColumnName="SummaNDS" />
+          <ScalarProperty Name="SummaWithNDS" ColumnName="SummaWithNDS" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="ConditionName" ColumnName="ConditionName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ClaimLoadingScheduleGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ClaimLoadingScheduleGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.ClaimLoadingSchedule">
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="LoadDate" ColumnName="LoadDate" />
+          <ScalarProperty Name="FrWeight" ColumnName="FrWeight" />
+          <ScalarProperty Name="CarCount" ColumnName="CarCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ClaimRollingStockGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ClaimRollingStockGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.ClaimRollingStock">
+          <ScalarProperty Name="ContParkName" ColumnName="ContParkName" />
+          <ScalarProperty Name="ContKindName" ColumnName="ContKindName" />
+          <ScalarProperty Name="CarParkName" ColumnName="CarParkName" />
+          <ScalarProperty Name="CarKindName" ColumnName="CarKindName" />
+          <ScalarProperty Name="CarTypeName" ColumnName="CarTypeName" />
+          <ScalarProperty Name="GroupTypeName" ColumnName="GroupTypeName" />
+          <ScalarProperty Name="ShipmentName" ColumnName="ShipmentName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ClaimRouteDetailsGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ClaimRouteDetailsGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.ClaimRouteDetails">
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="StationInCode" ColumnName="StationInCode" />
+          <ScalarProperty Name="StationInName" ColumnName="StationInName" />
+          <ScalarProperty Name="RailWayInName" ColumnName="RailWayInName" />
+          <ScalarProperty Name="StationOutCode" ColumnName="StationOutCode" />
+          <ScalarProperty Name="StationOutName" ColumnName="StationOutName" />
+          <ScalarProperty Name="RailWayOutName" ColumnName="RailWayOutName" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DocumentESignatureGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.DocumentESignatureGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.DocumentESignature">
+          <ScalarProperty Name="AttachId" ColumnName="AttachId" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DocumentESignatureInsert" FunctionName="ASUVP.Core.DataAccess.Model.Store.DocumentESignatureInsert" />
+    <FunctionImportMapping FunctionImportName="ProtocolDetailsGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ProtocolDetailsGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.ProtocolDetails">
+          <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+          <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+          <ScalarProperty Name="MeasureName" ColumnName="MeasureName" />
+          <ScalarProperty Name="NDS" ColumnName="NDS" />
+          <ScalarProperty Name="Summa" ColumnName="Summa" />
+          <ScalarProperty Name="SummaNDS" ColumnName="SummaNDS" />
+          <ScalarProperty Name="SummaWithNDS" ColumnName="SummaWithNDS" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="StationFromName" ColumnName="StationFromName" />
+          <ScalarProperty Name="StationToName" ColumnName="StationToName" />
+          <ScalarProperty Name="FreightName" ColumnName="FreightName" />
+          <ScalarProperty Name="GroupTypeName" ColumnName="GroupTypeName" />
+          <ScalarProperty Name="CarParkName" ColumnName="CarParkName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserDetailsListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.UserDetailsListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.UserDetailsList">
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyNote" ColumnName="CompanyNote" />
+          <ScalarProperty Name="CodeOKPO" ColumnName="CodeOKPO" />
+          <ScalarProperty Name="CodeINN" ColumnName="CodeINN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ReportPeriodListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ReportPeriodListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.ReportPeriodList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.UserGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.UserGet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="RecTimeStamp" ColumnName="RecTimeStamp" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserInsert" FunctionName="ASUVP.Core.DataAccess.Model.Store.UserInsert" />
+    <FunctionImportMapping FunctionImportName="UserCompaniesListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.UserCompaniesListGet" />
+    <FunctionImportMapping FunctionImportName="EmployeeInsert" FunctionName="ASUVP.Core.DataAccess.Model.Store.EmployeeInsert" />
+    <FunctionImportMapping FunctionImportName="UserUpdate" FunctionName="ASUVP.Core.DataAccess.Model.Store.UserUpdate" />
+    <FunctionImportMapping FunctionImportName="EmployeeDelete" FunctionName="ASUVP.Core.DataAccess.Model.Store.EmployeeDelete" />
+    <FunctionImportMapping FunctionImportName="UserListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.UserListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.UserList">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RoleGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.RoleGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="RecTimeStamp" ColumnName="RecTimeStamp" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PermissionListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.PermissionListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.PermissionList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Code2" ColumnName="Code2" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="EmployeeRoleInsert" FunctionName="ASUVP.Core.DataAccess.Model.Store.EmployeeRoleInsert" />
+    <FunctionImportMapping FunctionImportName="RoleInsert" FunctionName="ASUVP.Core.DataAccess.Model.Store.RoleInsert" />
+    <FunctionImportMapping FunctionImportName="RolePermissionDelete" FunctionName="ASUVP.Core.DataAccess.Model.Store.RolePermissionDelete" />
+    <FunctionImportMapping FunctionImportName="RolePermissionInsert" FunctionName="ASUVP.Core.DataAccess.Model.Store.RolePermissionInsert" />
+    <FunctionImportMapping FunctionImportName="RoleUpdate" FunctionName="ASUVP.Core.DataAccess.Model.Store.RoleUpdate" />
+    <FunctionImportMapping FunctionImportName="EmployeeRoleDelete" FunctionName="ASUVP.Core.DataAccess.Model.Store.EmployeeRoleDelete" />
+    <FunctionImportMapping FunctionImportName="EmployeeRolesListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.EmployeeRolesListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.EmployeeRolesList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserNotificationListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.UserNotificationListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.UserNotificationList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserFromId" ColumnName="UserFromId" />
+          <ScalarProperty Name="UserToID" ColumnName="UserToID" />
+          <ScalarProperty Name="UserFromName" ColumnName="UserFromName" />
+          <ScalarProperty Name="UserToName" ColumnName="UserToName" />
+          <ScalarProperty Name="CompanyFromId" ColumnName="CompanyFromId" />
+          <ScalarProperty Name="CompanyToId" ColumnName="CompanyToId" />
+          <ScalarProperty Name="CompanyFromName" ColumnName="CompanyFromName" />
+          <ScalarProperty Name="CompanyToName" ColumnName="CompanyToName" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ViewDate" ColumnName="ViewDate" />
+          <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AccountListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.AccountListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.AccountList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DocName" ColumnName="DocName" />
+          <ScalarProperty Name="ReportPeriod" ColumnName="ReportPeriod" />
+          <ScalarProperty Name="SummaWithNDS" ColumnName="SummaWithNDS" />
+          <ScalarProperty Name="SummaNDS" ColumnName="SummaNDS" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="AgreementName" ColumnName="AgreementName" />
+          <ScalarProperty Name="ClaimName" ColumnName="ClaimName" />
+          <ScalarProperty Name="CustomerCompanyName" ColumnName="CustomerCompanyName" />
+          <ScalarProperty Name="PerformerCompanyName" ColumnName="PerformerCompanyName" />
+          <ScalarProperty Name="AgrManagerName" ColumnName="AgrManagerName" />
+          <ScalarProperty Name="Signer1Name" ColumnName="Signer1Name" />
+          <ScalarProperty Name="Signer2Name" ColumnName="Signer2Name" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="HasAttachmentImgPath" ColumnName="HasAttachmentImgPath" />
+          <ScalarProperty Name="HasAttachmentHint" ColumnName="HasAttachmentHint" />
+          <ScalarProperty Name="ApprovalAccountImgPath" ColumnName="ApprovalAccountImgPath" />
+          <ScalarProperty Name="SigningAccountImgPath" ColumnName="SigningAccountImgPath" />
+          <ScalarProperty Name="ApprovalClaimImgPath" ColumnName="ApprovalClaimImgPath" />
+          <ScalarProperty Name="ApprovalProtocolImgPath" ColumnName="ApprovalProtocolImgPath" />
+          <ScalarProperty Name="SigningClaimImgPath" ColumnName="SigningClaimImgPath" />
+          <ScalarProperty Name="SigningProtocolPath" ColumnName="SigningProtocolPath" />
+          <ScalarProperty Name="ApprovalAccountHint" ColumnName="ApprovalAccountHint" />
+          <ScalarProperty Name="SigningAccountHint" ColumnName="SigningAccountHint" />
+          <ScalarProperty Name="ApprovalClaimHint" ColumnName="ApprovalClaimHint" />
+          <ScalarProperty Name="ApprovalProtocolHint" ColumnName="ApprovalProtocolHint" />
+          <ScalarProperty Name="SigningClaimHint" ColumnName="SigningClaimHint" />
+          <ScalarProperty Name="SigningProtocolHint" ColumnName="SigningProtocolHint" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ActListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ActListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.ActList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DocName" ColumnName="DocName" />
+          <ScalarProperty Name="DateBeg" ColumnName="DateBeg" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="SummaWithNDS" ColumnName="SummaWithNDS" />
+          <ScalarProperty Name="SummaNDS" ColumnName="SummaNDS" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="AgreementId" ColumnName="AgreementId" />
+          <ScalarProperty Name="AgreementName" ColumnName="AgreementName" />
+          <ScalarProperty Name="CustomerCompanyName" ColumnName="CustomerCompanyName" />
+          <ScalarProperty Name="PerformerCompanyName" ColumnName="PerformerCompanyName" />
+          <ScalarProperty Name="AgrManagerName" ColumnName="AgrManagerName" />
+          <ScalarProperty Name="HasAttachmentImgPath" ColumnName="HasAttachmentImgPath" />
+          <ScalarProperty Name="HasAttachmentHint" ColumnName="HasAttachmentHint" />
+          <ScalarProperty Name="ApprovalPerformerImgId" ColumnName="ApprovalPerformerImgId" />
+          <ScalarProperty Name="ApprovalCustomerImgId" ColumnName="ApprovalCustomerImgId" />
+          <ScalarProperty Name="SigningPerformerImgId" ColumnName="SigningPerformerImgId" />
+          <ScalarProperty Name="SigningCustomerImgId" ColumnName="SigningCustomerImgId" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AgreementListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.AgreementListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.AgreementList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
+          <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="DocName" ColumnName="DocName" />
+          <ScalarProperty Name="DateBeg" ColumnName="DateBeg" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="CustomerCompanyName" ColumnName="CustomerCompanyName" />
+          <ScalarProperty Name="PerformerCompanyName" ColumnName="PerformerCompanyName" />
+          <ScalarProperty Name="AgrManagerName" ColumnName="AgrManagerName" />
+          <ScalarProperty Name="HasAttachmentImgPath" ColumnName="HasAttachmentImgPath" />
+          <ScalarProperty Name="HasAttachmentHint" ColumnName="HasAttachmentHint" />
+          <ScalarProperty Name="ApprovalPerformerImgPath" ColumnName="ApprovalPerformerImgPath" />
+          <ScalarProperty Name="ApprovalCustomerImgPath" ColumnName="ApprovalCustomerImgPath" />
+          <ScalarProperty Name="SigningPerformerImgPath" ColumnName="SigningPerformerImgPath" />
+          <ScalarProperty Name="SigningCustomerImgPath" ColumnName="SigningCustomerImgPath" />
+          <ScalarProperty Name="ApprovalPerformerHint" ColumnName="ApprovalPerformerHint" />
+          <ScalarProperty Name="ApprovalCustomerHint" ColumnName="ApprovalCustomerHint" />
+          <ScalarProperty Name="SigningPerformerHint" ColumnName="SigningPerformerHint" />
+          <ScalarProperty Name="SigningCustomerHint" ColumnName="SigningCustomerHint" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ClaimListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ClaimListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.ClaimList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
+          <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DocName" ColumnName="DocName" />
+          <ScalarProperty Name="DateBeg" ColumnName="DateBeg" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="AgreementName" ColumnName="AgreementName" />
+          <ScalarProperty Name="StFromCode6" ColumnName="StFromCode6" />
+          <ScalarProperty Name="StFromName" ColumnName="StFromName" />
+          <ScalarProperty Name="RWFromName" ColumnName="RWFromName" />
+          <ScalarProperty Name="StToCode6" ColumnName="StToCode6" />
+          <ScalarProperty Name="StToName" ColumnName="StToName" />
+          <ScalarProperty Name="RWToName" ColumnName="RWToName" />
+          <ScalarProperty Name="CarCount" ColumnName="CarCount" />
+          <ScalarProperty Name="FrWeight" ColumnName="FrWeight" />
+          <ScalarProperty Name="FrETSNGCode" ColumnName="FrETSNGCode" />
+          <ScalarProperty Name="FrETSNGName" ColumnName="FrETSNGName" />
+          <ScalarProperty Name="ContactFIO" ColumnName="ContactFIO" />
+          <ScalarProperty Name="TelegrammList" ColumnName="TelegrammList" />
+          <ScalarProperty Name="HasAttachmentImgPath" ColumnName="HasAttachmentImgPath" />
+          <ScalarProperty Name="HasAttachmentHint" ColumnName="HasAttachmentHint" />
+          <ScalarProperty Name="ApprovalPerformerImgPath" ColumnName="ApprovalPerformerImgPath" />
+          <ScalarProperty Name="ApprovalCustomerImgPath" ColumnName="ApprovalCustomerImgPath" />
+          <ScalarProperty Name="SigningPerformerImgPath" ColumnName="SigningPerformerImgPath" />
+          <ScalarProperty Name="SigningCustomerImgPath" ColumnName="SigningCustomerImgPath" />
+          <ScalarProperty Name="ApprovalPerformerHint" ColumnName="ApprovalPerformerHint" />
+          <ScalarProperty Name="ApprovalCustomerHint" ColumnName="ApprovalCustomerHint" />
+          <ScalarProperty Name="SigningPerformerHint" ColumnName="SigningPerformerHint" />
+          <ScalarProperty Name="SigningCustomerHint" ColumnName="SigningCustomerHint" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="InstructionListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.InstructionListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.InstructionList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DocName" ColumnName="DocName" />
+          <ScalarProperty Name="AgreementName" ColumnName="AgreementName" />
+          <ScalarProperty Name="ClaimName" ColumnName="ClaimName" />
+          <ScalarProperty Name="CustomerCompanyName" ColumnName="CustomerCompanyName" />
+          <ScalarProperty Name="PerformerCompanyName" ColumnName="PerformerCompanyName" />
+          <ScalarProperty Name="AgrManagerName" ColumnName="AgrManagerName" />
+          <ScalarProperty Name="HasAttachmentImgPath" ColumnName="HasAttachmentImgPath" />
+          <ScalarProperty Name="HasAttachmentHint" ColumnName="HasAttachmentHint" />
+          <ScalarProperty Name="ApprovalInstructionHint" ColumnName="ApprovalInstructionHint" />
+          <ScalarProperty Name="SigningInstructionHint" ColumnName="SigningInstructionHint" />
+          <ScalarProperty Name="ApprovalInstructionImgPath" ColumnName="ApprovalInstructionImgPath" />
+          <ScalarProperty Name="SingingInstructionImgPath" ColumnName="SingingInstructionImgPath" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DocumentAttachInsert" FunctionName="ASUVP.Core.DataAccess.Model.Store.DocumentAttachInsert" />
+    <FunctionImportMapping FunctionImportName="ProtocolListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ProtocolListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.ProtocolList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DocName" ColumnName="DocName" />
+          <ScalarProperty Name="DateBeg" ColumnName="DateBeg" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="AgreementName" ColumnName="AgreementName" />
+          <ScalarProperty Name="ClaimName" ColumnName="ClaimName" />
+          <ScalarProperty Name="CustomerCompanyName" ColumnName="CustomerCompanyName" />
+          <ScalarProperty Name="PerformerCompanyName" ColumnName="PerformerCompanyName" />
+          <ScalarProperty Name="AgrManagerName" ColumnName="AgrManagerName" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="HasAttachmentImgPath" ColumnName="HasAttachmentImgPath" />
+          <ScalarProperty Name="HasAttachmentHint" ColumnName="HasAttachmentHint" />
+          <ScalarProperty Name="ApprovalPerformerImgPath" ColumnName="ApprovalPerformerImgPath" />
+          <ScalarProperty Name="ApprovalCustomerImgPath" ColumnName="ApprovalCustomerImgPath" />
+          <ScalarProperty Name="SigningPerformerImgPath" ColumnName="SigningPerformerImgPath" />
+          <ScalarProperty Name="SigningCustomerImgPath" ColumnName="SigningCustomerImgPath" />
+          <ScalarProperty Name="ApprovalPerformerHint" ColumnName="ApprovalPerformerHint" />
+          <ScalarProperty Name="ApprovalCustomerHint" ColumnName="ApprovalCustomerHint" />
+          <ScalarProperty Name="SigningPerformerHint" ColumnName="SigningPerformerHint" />
+          <ScalarProperty Name="SigningCustomerHint" ColumnName="SigningCustomerHint" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ProtocolGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ProtocolGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.Protocol">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DocStatusId" ColumnName="DocStatusId" />
+          <ScalarProperty Name="DocStatusName" ColumnName="DocStatusName" />
+          <ScalarProperty Name="DocName" ColumnName="DocName" />
+          <ScalarProperty Name="AgreementId" ColumnName="AgreementId" />
+          <ScalarProperty Name="AgreementName" ColumnName="AgreementName" />
+          <ScalarProperty Name="CustomerCompanyId" ColumnName="CustomerCompanyId" />
+          <ScalarProperty Name="CustomerCompanyLabel" ColumnName="CustomerCompanyLabel" />
+          <ScalarProperty Name="CustomerCompanyName" ColumnName="CustomerCompanyName" />
+          <ScalarProperty Name="PerformerCompanyId" ColumnName="PerformerCompanyId" />
+          <ScalarProperty Name="PerformerCompanyLabel" ColumnName="PerformerCompanyLabel" />
+          <ScalarProperty Name="PerformerCompanyName" ColumnName="PerformerCompanyName" />
+          <ScalarProperty Name="DateBeg" ColumnName="DateBeg" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="DateStop" ColumnName="DateStop" />
+          <ScalarProperty Name="ClaimId" ColumnName="ClaimId" />
+          <ScalarProperty Name="ClaimName" ColumnName="ClaimName" />
+          <ScalarProperty Name="DocNote" ColumnName="DocNote" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedByName" ColumnName="UpdatedByName" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IRSPerevozkiId" ColumnName="IRSPerevozkiId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ActGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ActGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.Act">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DocStatusId" ColumnName="DocStatusId" />
+          <ScalarProperty Name="DocStatusName" ColumnName="DocStatusName" />
+          <ScalarProperty Name="DocName" ColumnName="DocName" />
+          <ScalarProperty Name="AgreementId" ColumnName="AgreementId" />
+          <ScalarProperty Name="AgreementName" ColumnName="AgreementName" />
+          <ScalarProperty Name="CustomerCompanyId" ColumnName="CustomerCompanyId" />
+          <ScalarProperty Name="CustomerCompanyLabel" ColumnName="CustomerCompanyLabel" />
+          <ScalarProperty Name="CustomerCompanyName" ColumnName="CustomerCompanyName" />
+          <ScalarProperty Name="PerformerCompanyId" ColumnName="PerformerCompanyId" />
+          <ScalarProperty Name="PerformerCompanyLabel" ColumnName="PerformerCompanyLabel" />
+          <ScalarProperty Name="PerformerCompanyName" ColumnName="PerformerCompanyName" />
+          <ScalarProperty Name="DateBeg" ColumnName="DateBeg" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="RepoptPeriodName" ColumnName="RepoptPeriodName" />
+          <ScalarProperty Name="SummaWithNDS" ColumnName="SummaWithNDS" />
+          <ScalarProperty Name="SummaNDS" ColumnName="SummaNDS" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="DocNote" ColumnName="DocNote" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedByName" ColumnName="UpdatedByName" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IRSPerevozkiId" ColumnName="IRSPerevozkiId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ClaimGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ClaimGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.Claim">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="AgreementId" ColumnName="AgreementId" />
+          <ScalarProperty Name="AgreementName" ColumnName="AgreementName" />
+          <ScalarProperty Name="CustomerCompanyId" ColumnName="CustomerCompanyId" />
+          <ScalarProperty Name="CustomerCompanyLabel" ColumnName="CustomerCompanyLabel" />
+          <ScalarProperty Name="CustomerCompanyName" ColumnName="CustomerCompanyName" />
+          <ScalarProperty Name="PerformerCompanyId" ColumnName="PerformerCompanyId" />
+          <ScalarProperty Name="PerformerCompanyLabel" ColumnName="PerformerCompanyLabel" />
+          <ScalarProperty Name="PerformerCompanyName" ColumnName="PerformerCompanyName" />
+          <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
+          <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DocStatusId" ColumnName="DocStatusId" />
+          <ScalarProperty Name="DocStatusName" ColumnName="DocStatusName" />
+          <ScalarProperty Name="DateBeg" ColumnName="DateBeg" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="ReportPeriodName" ColumnName="ReportPeriodName" />
+          <ScalarProperty Name="PlanType" ColumnName="PlanType" />
+          <ScalarProperty Name="ClaimStatusName" ColumnName="ClaimStatusName" />
+          <ScalarProperty Name="LoadingScheduleStatusName" ColumnName="LoadingScheduleStatusName" />
+          <ScalarProperty Name="ProtocolId" ColumnName="ProtocolId" />
+          <ScalarProperty Name="ProtocolName" ColumnName="ProtocolName" />
+          <ScalarProperty Name="ApprovalProtocolCustomerImgPath" ColumnName="ApprovalProtocolCustomerImgPath" />
+          <ScalarProperty Name="ApprovalProtocolPerformerImgPath" ColumnName="ApprovalProtocolPerformerImgPath" />
+          <ScalarProperty Name="SigningProtocolCustomerImgPath" ColumnName="SigningProtocolCustomerImgPath" />
+          <ScalarProperty Name="SigningProtocolPerformerImgPath" ColumnName="SigningProtocolPerformerImgPath" />
+          <ScalarProperty Name="ApprovalProtocolCustomerHint" ColumnName="ApprovalProtocolCustomerHint" />
+          <ScalarProperty Name="ApprovalProtocolPerformerHint" ColumnName="ApprovalProtocolPerformerHint" />
+          <ScalarProperty Name="SigningProtocolCustomerHint" ColumnName="SigningProtocolCustomerHint" />
+          <ScalarProperty Name="SigningProtocolPerformerHint" ColumnName="SigningProtocolPerformerHint" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="ApprovalAccountCustomerImgPath" ColumnName="ApprovalAccountCustomerImgPath" />
+          <ScalarProperty Name="ApprovalAccountPerformerImgPath" ColumnName="ApprovalAccountPerformerImgPath" />
+          <ScalarProperty Name="SigningAccountCustomerImgPath" ColumnName="SigningAccountCustomerImgPath" />
+          <ScalarProperty Name="SigningAccountPerformerImgPath" ColumnName="SigningAccountPerformerImgPath" />
+          <ScalarProperty Name="ApprovalAccountCustomerHint" ColumnName="ApprovalAccountCustomerHint" />
+          <ScalarProperty Name="ApprovalAccountPerformerHint" ColumnName="ApprovalAccountPerformerHint" />
+          <ScalarProperty Name="SigningAccountCustomerHint" ColumnName="SigningAccountCustomerHint" />
+          <ScalarProperty Name="SigningAccountPerformerHint" ColumnName="SigningAccountPerformerHint" />
+          <ScalarProperty Name="ShowContInfo" ColumnName="ShowContInfo" />
+          <ScalarProperty Name="ContParkName" ColumnName="ContParkName" />
+          <ScalarProperty Name="ContKindName" ColumnName="ContKindName" />
+          <ScalarProperty Name="CarParkName" ColumnName="CarParkName" />
+          <ScalarProperty Name="CarKindName" ColumnName="CarKindName" />
+          <ScalarProperty Name="CarTypeName" ColumnName="CarTypeName" />
+          <ScalarProperty Name="GroupTypeName" ColumnName="GroupTypeName" />
+          <ScalarProperty Name="ShipmentName" ColumnName="ShipmentName" />
+          <ScalarProperty Name="CountryFromName" ColumnName="CountryFromName" />
+          <ScalarProperty Name="CountryToName" ColumnName="CountryToName" />
+          <ScalarProperty Name="StationFromId" ColumnName="StationFromId" />
+          <ScalarProperty Name="StationFromCode" ColumnName="StationFromCode" />
+          <ScalarProperty Name="RailWayFromName" ColumnName="RailWayFromName" />
+          <ScalarProperty Name="StationFromName" ColumnName="StationFromName" />
+          <ScalarProperty Name="StationToId" ColumnName="StationToId" />
+          <ScalarProperty Name="StationToCode" ColumnName="StationToCode" />
+          <ScalarProperty Name="RailWayToName" ColumnName="RailWayToName" />
+          <ScalarProperty Name="StationToName" ColumnName="StationToName" />
+          <ScalarProperty Name="TransferTypeName" ColumnName="TransferTypeName" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="PeriodOfDelivery" ColumnName="PeriodOfDelivery" />
+          <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+          <ScalarProperty Name="FrETSNGCode" ColumnName="FrETSNGCode" />
+          <ScalarProperty Name="FrETSNGName" ColumnName="FrETSNGName" />
+          <ScalarProperty Name="FrGNGCode" ColumnName="FrGNGCode" />
+          <ScalarProperty Name="FrGNGName" ColumnName="FrGNGName" />
+          <ScalarProperty Name="LoadFromTGNL" ColumnName="LoadFromTGNL" />
+          <ScalarProperty Name="LoadFromName" ColumnName="LoadFromName" />
+          <ScalarProperty Name="LoadToTGNL" ColumnName="LoadToTGNL" />
+          <ScalarProperty Name="LoadToName" ColumnName="LoadToName" />
+          <ScalarProperty Name="FrWeight" ColumnName="FrWeight" />
+          <ScalarProperty Name="ContCount" ColumnName="ContCount" />
+          <ScalarProperty Name="CarCount" ColumnName="CarCount" />
+          <ScalarProperty Name="ClaimNote" ColumnName="ClaimNote" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedByName" ColumnName="UpdatedByName" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="IRSPerevozkiId" ColumnName="IRSPerevozkiId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="InstructionGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.InstructionGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.Instruction">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DocStatusId" ColumnName="DocStatusId" />
+          <ScalarProperty Name="DocStatusName" ColumnName="DocStatusName" />
+          <ScalarProperty Name="DocName" ColumnName="DocName" />
+          <ScalarProperty Name="AgreementId" ColumnName="AgreementId" />
+          <ScalarProperty Name="AgreementName" ColumnName="AgreementName" />
+          <ScalarProperty Name="CustomerCompanyId" ColumnName="CustomerCompanyId" />
+          <ScalarProperty Name="CustomerCompanyLabel" ColumnName="CustomerCompanyLabel" />
+          <ScalarProperty Name="CustomerCompanyName" ColumnName="CustomerCompanyName" />
+          <ScalarProperty Name="PerformerCompanyId" ColumnName="PerformerCompanyId" />
+          <ScalarProperty Name="PerformerCompanyLabel" ColumnName="PerformerCompanyLabel" />
+          <ScalarProperty Name="PerformerCompanyName" ColumnName="PerformerCompanyName" />
+          <ScalarProperty Name="ClaimId" ColumnName="ClaimId" />
+          <ScalarProperty Name="ClaimName" ColumnName="ClaimName" />
+          <ScalarProperty Name="StationCode" ColumnName="StationCode" />
+          <ScalarProperty Name="RailWayName" ColumnName="RailWayName" />
+          <ScalarProperty Name="StationName" ColumnName="StationName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedByName" ColumnName="UpdatedByName" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IRSPerevozkiId" ColumnName="IRSPerevozkiId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SupplementaryTemplateGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.SupplementaryTemplateGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.SupplementaryTemplate">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SupplementaryAgreementInsert" FunctionName="ASUVP.Core.DataAccess.Model.Store.SupplementaryAgreementInsert" />
+    <FunctionImportMapping FunctionImportName="AccountGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.AccountGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.Account">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DocStatusId" ColumnName="DocStatusId" />
+          <ScalarProperty Name="DocStatusName" ColumnName="DocStatusName" />
+          <ScalarProperty Name="DocName" ColumnName="DocName" />
+          <ScalarProperty Name="AgreementId" ColumnName="AgreementId" />
+          <ScalarProperty Name="AgreementName" ColumnName="AgreementName" />
+          <ScalarProperty Name="CustomerCompanyId" ColumnName="CustomerCompanyId" />
+          <ScalarProperty Name="CustomerCompanyLabel" ColumnName="CustomerCompanyLabel" />
+          <ScalarProperty Name="CustomerCompanyName" ColumnName="CustomerCompanyName" />
+          <ScalarProperty Name="PerformerCompanyId" ColumnName="PerformerCompanyId" />
+          <ScalarProperty Name="PerformerCompanyLabel" ColumnName="PerformerCompanyLabel" />
+          <ScalarProperty Name="PerformerCompanyName" ColumnName="PerformerCompanyName" />
+          <ScalarProperty Name="ClaimId" ColumnName="ClaimId" />
+          <ScalarProperty Name="ClaimName" ColumnName="ClaimName" />
+          <ScalarProperty Name="RepoptPeriodName" ColumnName="RepoptPeriodName" />
+          <ScalarProperty Name="DateBeg" ColumnName="DateBeg" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="SummaWithNDS" ColumnName="SummaWithNDS" />
+          <ScalarProperty Name="SummaNDS" ColumnName="SummaNDS" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedByName" ColumnName="UpdatedByName" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IRSPerevozkiId" ColumnName="IRSPerevozkiId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AgreementGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.AgreementGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.Agreement">
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+          <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
+          <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="DocName" ColumnName="DocName" />
+          <ScalarProperty Name="CustomerCompanyId" ColumnName="CustomerCompanyId" />
+          <ScalarProperty Name="CustomerCompanyName" ColumnName="CustomerCompanyName" />
+          <ScalarProperty Name="CustomerCompanyLabel" ColumnName="CustomerCompanyLabel" />
+          <ScalarProperty Name="PerformerCompanyId" ColumnName="PerformerCompanyId" />
+          <ScalarProperty Name="PerformerCompanyName" ColumnName="PerformerCompanyName" />
+          <ScalarProperty Name="PerformerCompanyLabel" ColumnName="PerformerCompanyLabel" />
+          <ScalarProperty Name="CustomerBankId" ColumnName="CustomerBankId" />
+          <ScalarProperty Name="CustomerBankName" ColumnName="CustomerBankName" />
+          <ScalarProperty Name="PerformerBankId" ColumnName="PerformerBankId" />
+          <ScalarProperty Name="PerformerBankName" ColumnName="PerformerBankName" />
+          <ScalarProperty Name="CustomerAddressId" ColumnName="CustomerAddressId" />
+          <ScalarProperty Name="CustomerAddressName" ColumnName="CustomerAddressName" />
+          <ScalarProperty Name="PerformerAddressId" ColumnName="PerformerAddressId" />
+          <ScalarProperty Name="PerformerAddressName" ColumnName="PerformerAddressName" />
+          <ScalarProperty Name="CustomerSignerId" ColumnName="CustomerSignerId" />
+          <ScalarProperty Name="CustomerSignerName" ColumnName="CustomerSignerName" />
+          <ScalarProperty Name="PerformerSignerId" ColumnName="PerformerSignerId" />
+          <ScalarProperty Name="PerformerSignerName" ColumnName="PerformerSignerName" />
+          <ScalarProperty Name="DateBeg" ColumnName="DateBeg" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="DateStop" ColumnName="DateStop" />
+          <ScalarProperty Name="CustomerManagerId" ColumnName="CustomerManagerId" />
+          <ScalarProperty Name="CustomerManagerName" ColumnName="CustomerManagerName" />
+          <ScalarProperty Name="PerformerManagerId" ColumnName="PerformerManagerId" />
+          <ScalarProperty Name="PerformerManagerName" ColumnName="PerformerManagerName" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedByName" ColumnName="UpdatedByName" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="IRSPerevozkiId" ColumnName="IRSPerevozkiId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SupplementaryAgreementGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.SupplementaryAgreementGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.SupplementaryAgreement">
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+          <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
+          <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="DocName" ColumnName="DocName" />
+          <ScalarProperty Name="CustomerCompanyId" ColumnName="CustomerCompanyId" />
+          <ScalarProperty Name="CustomerCompanyName" ColumnName="CustomerCompanyName" />
+          <ScalarProperty Name="CustomerCompanyLabel" ColumnName="CustomerCompanyLabel" />
+          <ScalarProperty Name="PerformerCompanyId" ColumnName="PerformerCompanyId" />
+          <ScalarProperty Name="PerformerCompanyName" ColumnName="PerformerCompanyName" />
+          <ScalarProperty Name="PerformerCompanyLabel" ColumnName="PerformerCompanyLabel" />
+          <ScalarProperty Name="CustomerBankId" ColumnName="CustomerBankId" />
+          <ScalarProperty Name="CustomerBankName" ColumnName="CustomerBankName" />
+          <ScalarProperty Name="PerformerBankId" ColumnName="PerformerBankId" />
+          <ScalarProperty Name="PerformerBankName" ColumnName="PerformerBankName" />
+          <ScalarProperty Name="CustomerAddressId" ColumnName="CustomerAddressId" />
+          <ScalarProperty Name="CustomerAddressName" ColumnName="CustomerAddressName" />
+          <ScalarProperty Name="PerformerAddressId" ColumnName="PerformerAddressId" />
+          <ScalarProperty Name="PerformerAddressName" ColumnName="PerformerAddressName" />
+          <ScalarProperty Name="CustomerSignerId" ColumnName="CustomerSignerId" />
+          <ScalarProperty Name="CustomerSignerName" ColumnName="CustomerSignerName" />
+          <ScalarProperty Name="PerformerSignerId" ColumnName="PerformerSignerId" />
+          <ScalarProperty Name="PerformerSignerName" ColumnName="PerformerSignerName" />
+          <ScalarProperty Name="DateBeg" ColumnName="DateBeg" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="DateStop" ColumnName="DateStop" />
+          <ScalarProperty Name="CustomerManagerId" ColumnName="CustomerManagerId" />
+          <ScalarProperty Name="CustomerManagerName" ColumnName="CustomerManagerName" />
+          <ScalarProperty Name="PerformerManagerId" ColumnName="PerformerManagerId" />
+          <ScalarProperty Name="PerformerManagerName" ColumnName="PerformerManagerName" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedByName" ColumnName="UpdatedByName" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="IRSPerevozkiId" ColumnName="IRSPerevozkiId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SupplementaryAgreementUpdate" FunctionName="ASUVP.Core.DataAccess.Model.Store.SupplementaryAgreementUpdate" />
+    <FunctionImportMapping FunctionImportName="ReceivedMailListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.ReceivedMailListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.ReceivedMailList">
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="ViewedAt" ColumnName="ViewedAt" />
+          <ScalarProperty Name="ViewerName" ColumnName="ViewerName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserMailGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.UserMailGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.UserMail">
+          <ScalarProperty Name="SenderUserId" ColumnName="SenderUserId" />
+          <ScalarProperty Name="SenderContactName" ColumnName="SenderContactName" />
+          <ScalarProperty Name="SenderCompanyName" ColumnName="SenderCompanyName" />
+          <ScalarProperty Name="ReceiverCompanyId" ColumnName="ReceiverCompanyId" />
+          <ScalarProperty Name="ReceiverCompanyName" ColumnName="ReceiverCompanyName" />
+          <ScalarProperty Name="ViewedAt" ColumnName="ViewedAt" />
+          <ScalarProperty Name="ViewerId" ColumnName="ViewerId" />
+          <ScalarProperty Name="ViewerName" ColumnName="ViewerName" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserMailReceivedListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.UserMailReceivedListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.UserMailReceivedList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserMailSentListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.UserMailSentListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.UserMailSentList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UserMailViewTimeUpdate" FunctionName="ASUVP.Core.DataAccess.Model.Store.UserMailViewTimeUpdate" />
+    <FunctionImportMapping FunctionImportName="UserByNameGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.UserByNameGet" />
+    <FunctionImportMapping FunctionImportName="UserMailInsert" FunctionName="ASUVP.Core.DataAccess.Model.Store.UserMailInsert" />
+    <FunctionImportMapping FunctionImportName="DocumentAttachListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.DocumentAttachListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.DocumentAttachList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="CreatedById" ColumnName="CreatedById" />
+          <ScalarProperty Name="CreatedByName" ColumnName="CreatedByName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DocumentConditionListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.DocumentConditionListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.DocumentConditionList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MnemoCode" ColumnName="MnemoCode" />
+          <ScalarProperty Name="ValueTypeId" ColumnName="ValueTypeId" />
+          <ScalarProperty Name="ValueTypeName" ColumnName="ValueTypeName" />
+          <ScalarProperty Name="ConditionGroupId" ColumnName="ConditionGroupId" />
+          <ScalarProperty Name="ConditionGroupName" ColumnName="ConditionGroupName" />
+          <ScalarProperty Name="PositionGroup" ColumnName="PositionGroup" />
+          <ScalarProperty Name="ConditionName" ColumnName="ConditionName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DocumentConditionGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.DocumentConditionGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.DocumentCondition">
+          <ScalarProperty Name="PositionGroup" ColumnName="PositionGroup" />
+          <ScalarProperty Name="PositionValue" ColumnName="PositionValue" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ValueString" ColumnName="ValueString" />
+          <ScalarProperty Name="ConditionLimitValue" ColumnName="ConditionLimitValue" />
+          <ScalarProperty Name="ConditionId" ColumnName="ConditionId" />
+          <ScalarProperty Name="ConditionGroupId" ColumnName="ConditionGroupId" />
+          <ScalarProperty Name="ConditionGroupName" ColumnName="ConditionGroupName" />
+          <ScalarProperty Name="ValueTypeId" ColumnName="ValueTypeId" />
+          <ScalarProperty Name="ValueTypeName" ColumnName="ValueTypeName" />
+          <ScalarProperty Name="ValueInteger" ColumnName="ValueInteger" />
+          <ScalarProperty Name="ValueFloat" ColumnName="ValueFloat" />
+          <ScalarProperty Name="ValueMoney" ColumnName="ValueMoney" />
+          <ScalarProperty Name="ValueGUID" ColumnName="ValueGUID" />
+          <ScalarProperty Name="ValueDateTime" ColumnName="ValueDateTime" />
+          <ScalarProperty Name="ValueMIN" ColumnName="ValueMIN" />
+          <ScalarProperty Name="ValueMAX" ColumnName="ValueMAX" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DocumentAttachGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.DocumentAttachGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.DocumentAttach">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DocumentConditionInsert" FunctionName="ASUVP.Core.DataAccess.Model.Store.DocumentConditionInsert" />
+    <FunctionImportMapping FunctionImportName="DocumentConditionUpdate" FunctionName="ASUVP.Core.DataAccess.Model.Store.DocumentConditionUpdate" />
+    <FunctionImportMapping FunctionImportName="DocumentConditionDelete" FunctionName="ASUVP.Core.DataAccess.Model.Store.DocumentConditionDelete" />
+    <FunctionImportMapping FunctionImportName="DocumentAttachDelete" FunctionName="ASUVP.Core.DataAccess.Model.Store.DocumentAttachDelete" />
+    <FunctionImportMapping FunctionImportName="DocumentAttachUpdate" FunctionName="ASUVP.Core.DataAccess.Model.Store.DocumentAttachUpdate" />
+    <FunctionImportMapping FunctionImportName="SupplementaryAgreementListGet" FunctionName="ASUVP.Core.DataAccess.Model.Store.SupplementaryAgreementListGet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.SupplementaryAgreementList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="DocName" ColumnName="DocName" />
+          <ScalarProperty Name="DateBeg" ColumnName="DateBeg" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+          <ScalarProperty Name="HasAttachmentImgPath" ColumnName="HasAttachmentImgPath" />
+          <ScalarProperty Name="HasAttachmentHint" ColumnName="HasAttachmentHint" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,1234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ASUVP.Core.DataAccess.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ProcData" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="AgreementDetele">
+      <Parameter Name="DocumentId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="AgreementInsert">
+      <Parameter Name="DocumentId" Mode="In" Type="Guid" />
+      <Parameter Name="DateBeg" Mode="In" Type="DateTime" />
+      <Parameter Name="DateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="DateStop" Mode="In" Type="DateTime" />
+      <Parameter Name="СustomerBankId" Mode="In" Type="Guid" />
+      <Parameter Name="СustomerAddressId" Mode="In" Type="Guid" />
+      <Parameter Name="PerformerBankId" Mode="In" Type="Guid" />
+      <Parameter Name="PerformerAddressId" Mode="In" Type="Guid" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="AgreementUpdate">
+      <Parameter Name="DocumentId" Mode="In" Type="Guid" />
+      <Parameter Name="DateBeg" Mode="In" Type="DateTime" />
+      <Parameter Name="DateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="DateStop" Mode="In" Type="DateTime" />
+      <Parameter Name="СustomerBankId" Mode="In" Type="Guid" />
+      <Parameter Name="CustomerAddressId" Mode="In" Type="Guid" />
+      <Parameter Name="PerformerBankId" Mode="In" Type="Guid" />
+      <Parameter Name="PerformerAddressId" Mode="In" Type="Guid" />
+      <Parameter Name="UpdatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ClaimDetailsGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.ClaimDetails)">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="ProtocolGroup" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DocumentInsert" ReturnType="Collection(Guid)">
+      <Parameter Name="DocNumber" Mode="In" Type="String" />
+      <Parameter Name="CustomerRegNumber" Mode="In" Type="String" />
+      <Parameter Name="PerformerRegNumber" Mode="In" Type="String" />
+      <Parameter Name="DocDate" Mode="In" Type="DateTime" />
+      <Parameter Name="CustomerName" Mode="In" Type="String" />
+      <Parameter Name="PerformerName" Mode="In" Type="String" />
+      <Parameter Name="CustomerCompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="CustomerContactId" Mode="In" Type="Guid" />
+      <Parameter Name="PerformerCompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="PerformerContactId" Mode="In" Type="Guid" />
+      <Parameter Name="StatusId" Mode="In" Type="Guid" />
+      <Parameter Name="TemplateId" Mode="In" Type="Guid" />
+      <Parameter Name="Note" Mode="In" Type="String" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="DocumentUpdate">
+      <Parameter Name="DocumentId" Mode="In" Type="Guid" />
+      <Parameter Name="DocNumber" Mode="In" Type="String" />
+      <Parameter Name="CustomerRegNumber" Mode="In" Type="String" />
+      <Parameter Name="PerformerRegNumber" Mode="In" Type="String" />
+      <Parameter Name="DocDate" Mode="In" Type="DateTime" />
+      <Parameter Name="CustomerName" Mode="In" Type="String" />
+      <Parameter Name="PerformerName" Mode="In" Type="String" />
+      <Parameter Name="CustomerCompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="CustomerContactId" Mode="In" Type="Guid" />
+      <Parameter Name="PerformerCompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="PerformerContactId" Mode="In" Type="Guid" />
+      <Parameter Name="StatusId" Mode="In" Type="Guid" />
+      <Parameter Name="TemplateId" Mode="In" Type="Guid" />
+      <Parameter Name="Note" Mode="In" Type="String" />
+      <Parameter Name="UpdatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="CompanyGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.Company)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="TemplateGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.Template)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="EmployeeGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.Employee)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="UserNotificationChangeState">
+      <Parameter Name="NotificationId" Mode="In" Type="Guid" />
+      <Parameter Name="UpdatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="UserNotificationInsert" ReturnType="Collection(Guid)">
+      <Parameter Name="UserFromId" Mode="In" Type="Guid" />
+      <Parameter Name="CompanyFromId" Mode="In" Type="Guid" />
+      <Parameter Name="UserToId" Mode="In" Type="Guid" />
+      <Parameter Name="CompanyToId" Mode="In" Type="Guid" />
+      <Parameter Name="Text" Mode="In" Type="String" />
+      <Parameter Name="Url" Mode="In" Type="String" />
+      <Parameter Name="ObjectId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="AgreementNumberListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.AgreementNumberList)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="SigningStatusListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.SigningStatusList)" />
+    <FunctionImport Name="ApprovalStatusListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.ApprovalStatusList)" />
+    <FunctionImport Name="ContactInsert">
+      <Parameter Name="F" Mode="In" Type="String" />
+      <Parameter Name="I" Mode="In" Type="String" />
+      <Parameter Name="O" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ContactListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.ContactList)" />
+    <FunctionImport Name="ContactUpdate">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+      <Parameter Name="F" Mode="In" Type="String" />
+      <Parameter Name="I" Mode="In" Type="String" />
+      <Parameter Name="O" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="UpdatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ContactDelete">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ContactDetailsGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.ContactDetails)">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="AccountDetailsGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.AccountDetails)">
+      <Parameter Name="AccountId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ClientsGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.Clients)" />
+    <FunctionImport Name="ActDetailsGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.ActDetails)">
+      <Parameter Name="ActId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ClaimLoadingScheduleGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.ClaimLoadingSchedule)">
+      <Parameter Name="ClaimId" Mode="In" Type="Guid" />
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="ProtocolGroup" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ClaimRollingStockGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.ClaimRollingStock)">
+      <Parameter Name="ClaimId" Mode="In" Type="Guid" />
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="ProtocolGroup" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ClaimRouteDetailsGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.ClaimRouteDetails)">
+      <Parameter Name="StationFromId" Mode="In" Type="Guid" />
+      <Parameter Name="StationToId" Mode="In" Type="Guid" />
+      <Parameter Name="Options" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DocumentESignatureGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.DocumentESignature)">
+      <Parameter Name="DocumentId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="AgreementsIdGet" ReturnType="Collection(Guid)" />
+    <FunctionImport Name="DocumentESignatureInsert">
+      <Parameter Name="AttachId" Mode="In" Type="Guid" />
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="Content" Mode="In" Type="String" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ProtocolDetailsGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.ProtocolDetails)">
+      <Parameter Name="ProtocolId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="UserDetailsListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.UserDetailsList)">
+      <Parameter Name="UserId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ReportPeriodListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.ReportPeriodList)" />
+    <FunctionImport Name="UserGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.UserGet)">
+      <Parameter Name="UserId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="UserInsert" ReturnType="Collection(String)">
+      <Parameter Name="ContactId" Mode="In" Type="Guid" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="PasswordHash" Mode="In" Type="String" />
+      <Parameter Name="SecurityStamp" Mode="In" Type="String" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="UserCompaniesListGet" ReturnType="Collection(Guid)">
+      <Parameter Name="UserId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="EmployeeInsert">
+      <Parameter Name="UserId" Mode="In" Type="Guid" />
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="UserUpdate" ReturnType="Collection(String)">
+      <Parameter Name="UserId" Mode="In" Type="Guid" />
+      <Parameter Name="ContactId" Mode="In" Type="Guid" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="UpdatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="EmployeeDelete">
+      <Parameter Name="UserId" Mode="In" Type="Guid" />
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="UpdatetBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="UserListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.UserList)" />
+    <FunctionImport Name="RoleGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.Role)">
+      <Parameter Name="RoleId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="PermissionListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.PermissionList)">
+      <Parameter Name="RoleId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="EmployeeRoleInsert">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="UserId" Mode="In" Type="Guid" />
+      <Parameter Name="RoleId" Mode="In" Type="Guid" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="RoleInsert" ReturnType="Collection(String)">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="RolePermissionDelete">
+      <Parameter Name="RoleId" Mode="In" Type="Guid" />
+      <Parameter Name="PermissionId" Mode="In" Type="Guid" />
+      <Parameter Name="UpdatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="RolePermissionInsert">
+      <Parameter Name="RoleId" Mode="In" Type="Guid" />
+      <Parameter Name="PermissionId" Mode="In" Type="Guid" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="RoleUpdate">
+      <Parameter Name="RoleId" Mode="In" Type="Guid" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="UpdatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="EmployeeRoleDelete">
+      <Parameter Name="EmployeeId" Mode="In" Type="Guid" />
+      <Parameter Name="RoleId" Mode="In" Type="Guid" />
+      <Parameter Name="UpdatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="EmployeeRolesListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.EmployeeRolesList)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="UserId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="UserNotificationListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.UserNotificationList)">
+      <Parameter Name="NotificationId" Mode="In" Type="Guid" />
+      <Parameter Name="UserToId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="AccountListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.AccountList)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="PeriodType" Mode="In" Type="Int32" />
+      <Parameter Name="DateBeg" Mode="In" Type="DateTime" />
+      <Parameter Name="DateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="ReportPeriod" Mode="In" Type="Guid" />
+      <Parameter Name="AgreementId" Mode="In" Type="Guid" />
+      <Parameter Name="AgrManagerId" Mode="In" Type="Guid" />
+      <Parameter Name="StatusId" Mode="In" Type="Guid" />
+      <Parameter Name="EPStatusId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ActListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.ActList)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="DocPeriodType" Mode="In" Type="Int32" />
+      <Parameter Name="DocDateBeg" Mode="In" Type="DateTime" />
+      <Parameter Name="DocDateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="RepPeriodType" Mode="In" Type="Int32" />
+      <Parameter Name="RepDateBeg" Mode="In" Type="DateTime" />
+      <Parameter Name="RepDateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="AgreementId" Mode="In" Type="Guid" />
+      <Parameter Name="AgrManagerId" Mode="In" Type="Guid" />
+      <Parameter Name="StatusId" Mode="In" Type="Guid" />
+      <Parameter Name="EPStatusId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="AgreementListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.AgreementList)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="AgrManagerId" Mode="In" Type="Guid" />
+      <Parameter Name="TemplateId" Mode="In" Type="Guid" />
+      <Parameter Name="OnlyActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="ClaimListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.ClaimList)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="DocPeriodType" Mode="In" Type="Int32" />
+      <Parameter Name="DocDateBeg" Mode="In" Type="DateTime" />
+      <Parameter Name="DocDateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="LoadPeriodType" Mode="In" Type="Int32" />
+      <Parameter Name="LoadDateBeg" Mode="In" Type="DateTime" />
+      <Parameter Name="LoadDateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="AgreementId" Mode="In" Type="Guid" />
+      <Parameter Name="DocStatusId" Mode="In" Type="Guid" />
+      <Parameter Name="EDStatusId" Mode="In" Type="Guid" />
+      <Parameter Name="ContactId" Mode="In" Type="Guid" />
+      <Parameter Name="ApprovalStatus" Mode="In" Type="Guid" />
+      <Parameter Name="SigningStatus" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="InstructionListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.InstructionList)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="PeriodType" Mode="In" Type="Int32" />
+      <Parameter Name="DateBeg" Mode="In" Type="DateTime" />
+      <Parameter Name="DateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="StationId" Mode="In" Type="Guid" />
+      <Parameter Name="AgreementId" Mode="In" Type="Guid" />
+      <Parameter Name="AgrManagerId" Mode="In" Type="Guid" />
+      <Parameter Name="TemplateId" Mode="In" Type="Guid" />
+      <Parameter Name="StatusId" Mode="In" Type="Guid" />
+      <Parameter Name="EPStatusId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="DocumentAttachInsert" ReturnType="Collection(Guid)">
+      <Parameter Name="DocumentId" Mode="In" Type="Guid" />
+      <Parameter Name="FileName" Mode="In" Type="String" />
+      <Parameter Name="Content" Mode="In" Type="Binary" />
+      <Parameter Name="Note" Mode="In" Type="String" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ProtocolListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.ProtocolList)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="Group" Mode="In" Type="String" />
+      <Parameter Name="DocPeriodType" Mode="In" Type="Int32" />
+      <Parameter Name="DocDateBeg" Mode="In" Type="DateTime" />
+      <Parameter Name="DocDateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="UsePeriodType" Mode="In" Type="Int32" />
+      <Parameter Name="UseDateBeg" Mode="In" Type="DateTime" />
+      <Parameter Name="UseDateEnd" Mode="In" Type="DateTime" />
+      <Parameter Name="AgreementId" Mode="In" Type="Guid" />
+      <Parameter Name="AgrManagerId" Mode="In" Type="Guid" />
+      <Parameter Name="StatusId" Mode="In" Type="Guid" />
+      <Parameter Name="EPStatusId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ProtocolGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.Protocol)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ActGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.Act)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ClaimGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.Claim)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="InstructionGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.Instruction)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="SupplementaryTemplateGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.SupplementaryTemplate)" />
+    <FunctionImport Name="SupplementaryAgreementInsert">
+      <Parameter Name="AgreementId" Mode="In" Type="Guid" />
+      <Parameter Name="SupplementaryAgreementId" Mode="In" Type="Guid" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="AccountGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.Account)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="AgreementGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.Agreement)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="SupplementaryAgreementGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.SupplementaryAgreement)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="SupplementaryAgreementUpdate">
+      <Parameter Name="SupplementaryAgreementId" Mode="In" Type="Guid" />
+      <Parameter Name="UpdatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="ReceivedMailListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.ReceivedMailList)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="UserMailGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.UserMail)">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="UserMailReceivedListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.UserMailReceivedList)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="UserMailSentListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.UserMailSentList)">
+      <Parameter Name="CompanyId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="UserMailViewTimeUpdate">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+      <Parameter Name="ViewTime" Mode="In" Type="DateTime" />
+      <Parameter Name="ViewerId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="UserByNameGet" ReturnType="Collection(Guid)">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UserMailInsert">
+      <Parameter Name="Subject" Mode="In" Type="String" />
+      <Parameter Name="Body" Mode="In" Type="String" />
+      <Parameter Name="SenderUserId" Mode="In" Type="Guid" />
+      <Parameter Name="SenderCompanyId" Mode="In" Type="Guid" />
+      <Parameter Name="ReceiverCompanyId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="DocumentAttachListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.DocumentAttachList)">
+      <Parameter Name="DocumentId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="DocumentConditionListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.DocumentConditionList)" />
+    <FunctionImport Name="DocumentConditionGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.DocumentCondition)">
+      <Parameter Name="DocumentId" Mode="In" Type="Guid" />
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="DocumentAttachGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.DocumentAttach)">
+      <Parameter Name="AttachId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="DocumentConditionInsert">
+      <Parameter Name="DocumentId" Mode="In" Type="Guid" />
+      <Parameter Name="ConditionId" Mode="In" Type="Guid" />
+      <Parameter Name="ValueString" Mode="In" Type="String" />
+      <Parameter Name="ValueInteger" Mode="In" Type="Int32" />
+      <Parameter Name="ValueFloat" Mode="In" Type="Double" />
+      <Parameter Name="ValueMoney" Mode="In" Type="Decimal" />
+      <Parameter Name="ValueGUID" Mode="In" Type="Guid" />
+      <Parameter Name="ValueDateTime" Mode="In" Type="DateTime" />
+      <Parameter Name="ConditionLimitValue" Mode="In" Type="String" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="DocumentConditionUpdate">
+      <Parameter Name="DocumentId" Mode="In" Type="Guid" />
+      <Parameter Name="ConditionId" Mode="In" Type="Guid" />
+      <Parameter Name="ValueString" Mode="In" Type="String" />
+      <Parameter Name="ValueInteger" Mode="In" Type="Int32" />
+      <Parameter Name="ValueFloat" Mode="In" Type="Double" />
+      <Parameter Name="ValueMoney" Mode="In" Type="Decimal" />
+      <Parameter Name="ValueGUID" Mode="In" Type="Guid" />
+      <Parameter Name="ValueDateTime" Mode="In" Type="DateTime" />
+      <Parameter Name="ConditionLimitValue" Mode="In" Type="String" />
+      <Parameter Name="UpdatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="DocumentConditionDelete">
+      <Parameter Name="DocumentId" Mode="In" Type="Guid" />
+      <Parameter Name="ConditionId" Mode="In" Type="Guid" />
+      <Parameter Name="UpdatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="DocumentAttachDelete">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+      <Parameter Name="UpdatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="DocumentAttachUpdate">
+      <Parameter Name="Id" Mode="In" Type="Guid" />
+      <Parameter Name="Note" Mode="In" Type="String" />
+      <Parameter Name="UpdatedBy" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="SupplementaryAgreementListGet" ReturnType="Collection(ASUVP.Core.DataAccess.Model.SupplementaryAgreementList)">
+      <Parameter Name="AgreementId" Mode="In" Type="Guid" />
+      <Parameter Name="OnlyActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="Company">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="FullName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="ShortName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="ViewName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Note" Nullable="true" />
+    <Property Type="String" Name="CodeOKPO" Nullable="true" />
+    <Property Type="String" Name="CodeINN" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Template">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="Employee">
+    <Property Type="Guid" Name="AgrOwnerId" Nullable="true" />
+    <Property Type="String" Name="AgrOwnerFIO" Nullable="true" MaxLength="770" />
+  </ComplexType>
+  <ComplexType Name="ClaimDetails">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="StatusName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="DocNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RegNumber" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="DocDate" Nullable="true" />
+    <Property Type="String" Name="DocName" Nullable="true" MaxLength="256" />
+    <Property Type="DateTime" Name="DateBeg" Nullable="false" />
+    <Property Type="DateTime" Name="DateEnd" Nullable="false" />
+    <Property Type="String" Name="DatePeriod" Nullable="true" MaxLength="92" />
+    <Property Type="Guid" Name="AgreementId" Nullable="false" />
+    <Property Type="String" Name="AgreementName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="StFromId" Nullable="true" />
+    <Property Type="String" Name="StFromCode6" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="StFromName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="RWFromName" Nullable="true" MaxLength="3" />
+    <Property Type="Guid" Name="StToId" Nullable="true" />
+    <Property Type="String" Name="StToCode6" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="StToName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="RWToName" Nullable="true" MaxLength="3" />
+    <Property Type="Int32" Name="CarCount" Nullable="false" />
+    <Property Type="Decimal" Name="FrWeight" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="FrETSNGCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="FrETSNGName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="ContactId" Nullable="true" />
+    <Property Type="String" Name="ContactFIO" Nullable="true" MaxLength="770" />
+    <Property Type="String" Name="TelegrammList" Nullable="false" MaxLength="1" />
+    <Property Type="Guid" Name="ApprovalPerformerImgId" Nullable="true" />
+    <Property Type="Guid" Name="ApprovalCustomerImgId" Nullable="true" />
+    <Property Type="Guid" Name="SigningPerformerImgId" Nullable="true" />
+    <Property Type="Guid" Name="SigningCustomerImgId" Nullable="true" />
+    <Property Type="Int32" Name="ApprovalPerformer" Nullable="true" />
+    <Property Type="Int32" Name="ApprovalCustomer" Nullable="true" />
+    <Property Type="Int32" Name="SigningPerformer" Nullable="true" />
+    <Property Type="Int32" Name="SigningCustomer" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="AgreementNumberList">
+    <Property Type="Guid" Name="AgreementId" Nullable="false" />
+    <Property Type="String" Name="AgreementName" Nullable="true" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="SigningStatusList">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="ApprovalStatusList">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="ContactList">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="F" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="I" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="O" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Company" Nullable="true" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="ContactDetails">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="F" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="I" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="O" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="CompanyId" Nullable="true" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="AccountDetails">
+    <Property Type="Int32" Name="Id" Nullable="true" />
+    <Property Type="Int32" Name="Name" Nullable="true" />
+    <Property Type="Int32" Name="ClientName" Nullable="true" />
+    <Property Type="Int32" Name="Number" Nullable="true" />
+    <Property Type="Int32" Name="AgreementName" Nullable="true" />
+    <Property Type="Int32" Name="Request" Nullable="true" />
+    <Property Type="Int32" Name="AccountDate" Nullable="true" />
+    <Property Type="Int32" Name="PerformerName" Nullable="true" />
+    <Property Type="Int32" Name="EmployeeName" Nullable="true" />
+    <Property Type="Int32" Name="SignatoryFirst" Nullable="true" />
+    <Property Type="Int32" Name="SignatorySecond" Nullable="true" />
+    <Property Type="Int32" Name="ElectronicSignature" Nullable="true" />
+    <Property Type="Int32" Name="ProtocolStatus" Nullable="true" />
+    <Property Type="Int32" Name="RequestStatus" Nullable="true" />
+    <Property Type="Int32" Name="CreatorName" Nullable="true" />
+    <Property Type="Int32" Name="ConfirmedName" Nullable="true" />
+    <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+    <Property Type="Int32" Name="CreatedOn" Nullable="true" />
+    <Property Type="Int32" Name="UpdatedBy" Nullable="true" />
+    <Property Type="Int32" Name="UpdatedOn" Nullable="true" />
+    <Property Type="Int32" Name="IsDeleted" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Clients">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="ShortName" Nullable="true" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="ActDetails">
+    <Property Type="Int32" Name="ServiceId" Nullable="true" />
+    <Property Type="String" Name="ServiceName" Nullable="false" MaxLength="16" />
+    <Property Type="String" Name="NDS" Nullable="false" MaxLength="3" />
+    <Property Type="Decimal" Name="Summa" Nullable="false" Precision="6" Scale="2" />
+    <Property Type="Decimal" Name="SummaNDS" Nullable="true" Precision="7" Scale="2" />
+    <Property Type="Decimal" Name="SummaWithNDS" Nullable="false" Precision="5" Scale="1" />
+    <Property Type="String" Name="CurrencyName" Nullable="false" MaxLength="16" />
+    <Property Type="Int32" Name="ConditionName" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ClaimLoadingSchedule">
+    <Property Type="Int32" Name="Version" Nullable="true" />
+    <Property Type="String" Name="StatusName" Nullable="true" MaxLength="256" />
+    <Property Type="DateTime" Name="LoadDate" Nullable="true" />
+    <Property Type="Decimal" Name="FrWeight" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="CarCount" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ClaimRollingStock">
+    <Property Type="String" Name="ContParkName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="ContKindName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="CarParkName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="CarKindName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="CarTypeName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="GroupTypeName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="ShipmentName" Nullable="false" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="ClaimRouteDetails">
+    <Property Type="Guid" Name="RouteId" Nullable="false" />
+    <Property Type="Int32" Name="Position" Nullable="false" />
+    <Property Type="String" Name="CountryName" Nullable="false" MaxLength="128" />
+    <Property Type="String" Name="StationInCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="StationInName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="RailWayInName" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="StationOutCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="StationOutName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="RailWayOutName" Nullable="true" MaxLength="3" />
+    <Property Type="Int32" Name="Distance" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="DocumentESignature">
+    <Property Type="Guid" Name="AttachId" Nullable="false" />
+    <Property Type="String" Name="Content" Nullable="false" />
+    <Property Type="Guid" Name="CompanyId" Nullable="true" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="false" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="ProtocolDetails">
+    <Property Type="Guid" Name="ServiceId" Nullable="false" />
+    <Property Type="String" Name="ServiceName" Nullable="true" />
+    <Property Type="String" Name="MeasureName" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="NDS" Nullable="true" MaxLength="32" />
+    <Property Type="Decimal" Name="Summa" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="SummaNDS" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="SummaWithNDS" Nullable="false" Precision="19" />
+    <Property Type="String" Name="CurrencyName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="CountryName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="StationFromName" Nullable="true" MaxLength="270" />
+    <Property Type="String" Name="StationToName" Nullable="true" MaxLength="270" />
+    <Property Type="String" Name="FreightName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="GroupTypeName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="CarParkName" Nullable="true" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="UserDetailsList">
+    <Property Type="Guid" Name="CompanyId" Nullable="false" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="CompanyNote" Nullable="true" />
+    <Property Type="String" Name="CodeOKPO" Nullable="true" />
+    <Property Type="String" Name="CodeINN" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ReportPeriodList">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="UserGet">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="PasswordHash" Nullable="true" />
+    <Property Type="String" Name="SecurityStamp" Nullable="true" />
+    <Property Type="String" Name="Note" Nullable="true" />
+    <Property Type="Guid" Name="ContactId" Nullable="true" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="false" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="Guid" Name="UpdatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="UpdatedOn" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+    <Property Type="Binary" Name="RecTimeStamp" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="UserList">
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="FIO" Nullable="true" MaxLength="770" />
+    <Property Type="String" Name="Login" Nullable="false" MaxLength="256" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Role">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="false" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="Guid" Name="UpdatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="UpdatedOn" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+    <Property Type="Binary" Name="RecTimeStamp" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="PermissionList">
+    <Property Type="Guid" Name="Id" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Code" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Code2" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Module" Nullable="true" MaxLength="128" />
+  </ComplexType>
+  <ComplexType Name="EmployeeRolesList">
+    <Property Type="Guid" Name="Id" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="EmployeeId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UserNotificationList">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="Guid" Name="UserFromId" Nullable="true" />
+    <Property Type="Guid" Name="UserToID" Nullable="true" />
+    <Property Type="String" Name="UserFromName" Nullable="true" MaxLength="770" />
+    <Property Type="String" Name="UserToName" Nullable="true" MaxLength="770" />
+    <Property Type="Guid" Name="CompanyFromId" Nullable="true" />
+    <Property Type="Guid" Name="CompanyToId" Nullable="true" />
+    <Property Type="String" Name="CompanyFromName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="CompanyToName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Text" Nullable="true" />
+    <Property Type="String" Name="Url" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="ViewDate" Nullable="true" Precision="23" />
+    <Property Type="Guid" Name="ObjectId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="AccountList">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="DocNumber" Nullable="true" MaxLength="64" />
+    <Property Type="DateTime" Name="DocDate" Nullable="true" />
+    <Property Type="String" Name="DocName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="ReportPeriod" Nullable="true" />
+    <Property Type="Decimal" Name="SummaWithNDS" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="SummaNDS" Nullable="true" Precision="19" />
+    <Property Type="String" Name="CurrencyName" Nullable="true" />
+    <Property Type="String" Name="AgreementName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="ClaimName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="CustomerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="PerformerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="AgrManagerName" Nullable="true" MaxLength="770" />
+    <Property Type="String" Name="Signer1Name" Nullable="false" MaxLength="11" />
+    <Property Type="String" Name="Signer2Name" Nullable="false" MaxLength="11" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="HasAttachmentImgPath" Nullable="false" MaxLength="34" />
+    <Property Type="String" Name="HasAttachmentHint" Nullable="false" MaxLength="21" />
+    <Property Type="String" Name="ApprovalAccountImgPath" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="SigningAccountImgPath" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ApprovalClaimImgPath" Nullable="false" MaxLength="33" />
+    <Property Type="String" Name="ApprovalProtocolImgPath" Nullable="false" MaxLength="33" />
+    <Property Type="String" Name="SigningClaimImgPath" Nullable="false" MaxLength="33" />
+    <Property Type="String" Name="SigningProtocolPath" Nullable="false" MaxLength="33" />
+    <Property Type="String" Name="ApprovalAccountHint" Nullable="false" MaxLength="52" />
+    <Property Type="String" Name="SigningAccountHint" Nullable="false" MaxLength="55" />
+    <Property Type="String" Name="ApprovalClaimHint" Nullable="false" MaxLength="18" />
+    <Property Type="String" Name="ApprovalProtocolHint" Nullable="false" MaxLength="19" />
+    <Property Type="String" Name="SigningClaimHint" Nullable="false" MaxLength="19" />
+    <Property Type="String" Name="SigningProtocolHint" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="ActList">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="DocNumber" Nullable="true" MaxLength="64" />
+    <Property Type="DateTime" Name="DocDate" Nullable="true" />
+    <Property Type="String" Name="DocName" Nullable="false" MaxLength="256" />
+    <Property Type="DateTime" Name="DateBeg" Nullable="true" />
+    <Property Type="DateTime" Name="DateEnd" Nullable="true" />
+    <Property Type="Decimal" Name="SummaWithNDS" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="SummaNDS" Nullable="true" Precision="19" />
+    <Property Type="String" Name="CurrencyName" Nullable="true" />
+    <Property Type="Guid" Name="AgreementId" Nullable="true" />
+    <Property Type="String" Name="AgreementName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="CustomerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="PerformerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="AgrManagerName" Nullable="true" MaxLength="770" />
+    <Property Type="String" Name="HasAttachmentImgPath" Nullable="false" MaxLength="34" />
+    <Property Type="String" Name="HasAttachmentHint" Nullable="false" MaxLength="21" />
+    <Property Type="Int32" Name="ApprovalPerformerImgId" Nullable="true" />
+    <Property Type="Int32" Name="ApprovalCustomerImgId" Nullable="true" />
+    <Property Type="Int32" Name="SigningPerformerImgId" Nullable="true" />
+    <Property Type="Int32" Name="SigningCustomerImgId" Nullable="true" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="AgreementList">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="DocNumber" Nullable="true" MaxLength="64" />
+    <Property Type="String" Name="RegNumber" Nullable="true" MaxLength="64" />
+    <Property Type="DateTime" Name="DocDate" Nullable="true" />
+    <Property Type="Decimal" Name="Balance" Nullable="false" Precision="1" Scale="1" />
+    <Property Type="String" Name="DocName" Nullable="true" MaxLength="256" />
+    <Property Type="DateTime" Name="DateBeg" Nullable="true" />
+    <Property Type="DateTime" Name="DateEnd" Nullable="true" />
+    <Property Type="String" Name="CustomerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="PerformerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="AgrManagerName" Nullable="true" MaxLength="770" />
+    <Property Type="String" Name="HasAttachmentImgPath" Nullable="false" MaxLength="34" />
+    <Property Type="String" Name="HasAttachmentHint" Nullable="false" MaxLength="21" />
+    <Property Type="String" Name="ApprovalPerformerImgPath" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ApprovalCustomerImgPath" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="SigningPerformerImgPath" Nullable="false" MaxLength="33" />
+    <Property Type="String" Name="SigningCustomerImgPath" Nullable="false" MaxLength="33" />
+    <Property Type="String" Name="ApprovalPerformerHint" Nullable="false" MaxLength="52" />
+    <Property Type="String" Name="ApprovalCustomerHint" Nullable="false" MaxLength="55" />
+    <Property Type="String" Name="SigningPerformerHint" Nullable="false" MaxLength="24" />
+    <Property Type="String" Name="SigningCustomerHint" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="ClaimList">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="StatusName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="DocNumber" Nullable="true" MaxLength="64" />
+    <Property Type="String" Name="RegNumber" Nullable="true" MaxLength="64" />
+    <Property Type="DateTime" Name="DocDate" Nullable="true" />
+    <Property Type="String" Name="DocName" Nullable="true" MaxLength="256" />
+    <Property Type="DateTime" Name="DateBeg" Nullable="false" />
+    <Property Type="DateTime" Name="DateEnd" Nullable="false" />
+    <Property Type="String" Name="AgreementName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="StFromCode6" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="StFromName" Nullable="true" MaxLength="270" />
+    <Property Type="String" Name="RWFromName" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="StToCode6" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="StToName" Nullable="true" MaxLength="270" />
+    <Property Type="String" Name="RWToName" Nullable="true" MaxLength="3" />
+    <Property Type="Int32" Name="CarCount" Nullable="false" />
+    <Property Type="Decimal" Name="FrWeight" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="FrETSNGCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="FrETSNGName" Nullable="true" MaxLength="264" />
+    <Property Type="String" Name="ContactFIO" Nullable="true" MaxLength="770" />
+    <Property Type="String" Name="TelegrammList" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="HasAttachmentImgPath" Nullable="false" MaxLength="34" />
+    <Property Type="String" Name="HasAttachmentHint" Nullable="false" MaxLength="21" />
+    <Property Type="String" Name="ApprovalPerformerImgPath" Nullable="true" MaxLength="768" />
+    <Property Type="String" Name="ApprovalCustomerImgPath" Nullable="true" MaxLength="768" />
+    <Property Type="String" Name="SigningPerformerImgPath" Nullable="true" MaxLength="768" />
+    <Property Type="String" Name="SigningCustomerImgPath" Nullable="true" MaxLength="768" />
+    <Property Type="String" Name="ApprovalPerformerHint" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="ApprovalCustomerHint" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="SigningPerformerHint" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="SigningCustomerHint" Nullable="true" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="InstructionList">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="DocNumber" Nullable="true" MaxLength="64" />
+    <Property Type="DateTime" Name="DocDate" Nullable="true" />
+    <Property Type="String" Name="DocName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="AgreementName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="ClaimName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="CustomerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="PerformerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="AgrManagerName" Nullable="true" MaxLength="770" />
+    <Property Type="String" Name="HasAttachmentImgPath" Nullable="false" MaxLength="34" />
+    <Property Type="String" Name="HasAttachmentHint" Nullable="false" MaxLength="21" />
+    <Property Type="String" Name="ApprovalInstructionHint" Nullable="false" MaxLength="52" />
+    <Property Type="String" Name="SigningInstructionHint" Nullable="false" MaxLength="24" />
+    <Property Type="String" Name="ApprovalInstructionImgPath" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="SingingInstructionImgPath" Nullable="false" MaxLength="33" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="ProtocolList">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="DocNumber" Nullable="true" MaxLength="64" />
+    <Property Type="DateTime" Name="DocDate" Nullable="true" />
+    <Property Type="String" Name="DocName" Nullable="true" MaxLength="256" />
+    <Property Type="DateTime" Name="DateBeg" Nullable="true" />
+    <Property Type="DateTime" Name="DateEnd" Nullable="true" />
+    <Property Type="String" Name="AgreementName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="ClaimName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="CustomerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="PerformerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="AgrManagerName" Nullable="true" MaxLength="770" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="HasAttachmentImgPath" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="HasAttachmentHint" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="ApprovalPerformerImgPath" Nullable="true" MaxLength="768" />
+    <Property Type="String" Name="ApprovalCustomerImgPath" Nullable="true" MaxLength="768" />
+    <Property Type="String" Name="SigningPerformerImgPath" Nullable="true" MaxLength="768" />
+    <Property Type="String" Name="SigningCustomerImgPath" Nullable="true" MaxLength="768" />
+    <Property Type="String" Name="ApprovalPerformerHint" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="ApprovalCustomerHint" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="SigningPerformerHint" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="SigningCustomerHint" Nullable="true" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="Protocol">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="DocNumber" Nullable="true" MaxLength="64" />
+    <Property Type="DateTime" Name="DocDate" Nullable="true" />
+    <Property Type="Guid" Name="DocStatusId" Nullable="true" />
+    <Property Type="String" Name="DocStatusName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="DocName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="AgreementId" Nullable="true" />
+    <Property Type="String" Name="AgreementName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="CustomerCompanyId" Nullable="true" />
+    <Property Type="String" Name="CustomerCompanyLabel" Nullable="true" />
+    <Property Type="String" Name="CustomerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="PerformerCompanyId" Nullable="true" />
+    <Property Type="String" Name="PerformerCompanyLabel" Nullable="true" />
+    <Property Type="String" Name="PerformerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="DateTime" Name="DateBeg" Nullable="true" />
+    <Property Type="DateTime" Name="DateEnd" Nullable="true" />
+    <Property Type="DateTime" Name="DateStop" Nullable="true" />
+    <Property Type="Guid" Name="ClaimId" Nullable="true" />
+    <Property Type="String" Name="ClaimName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="DocNote" Nullable="true" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="false" />
+    <Property Type="String" Name="CreatedByName" Nullable="true" MaxLength="770" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="Guid" Name="UpdatedBy" Nullable="true" />
+    <Property Type="String" Name="UpdatedByName" Nullable="true" MaxLength="770" />
+    <Property Type="DateTime" Name="UpdatedOn" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+    <Property Type="Int32" Name="IRSPerevozkiId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Act">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="DocNumber" Nullable="true" MaxLength="64" />
+    <Property Type="DateTime" Name="DocDate" Nullable="true" />
+    <Property Type="Guid" Name="DocStatusId" Nullable="true" />
+    <Property Type="String" Name="DocStatusName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="DocName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="AgreementId" Nullable="true" />
+    <Property Type="String" Name="AgreementName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="CustomerCompanyId" Nullable="true" />
+    <Property Type="String" Name="CustomerCompanyLabel" Nullable="true" />
+    <Property Type="String" Name="CustomerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="PerformerCompanyId" Nullable="true" />
+    <Property Type="String" Name="PerformerCompanyLabel" Nullable="true" />
+    <Property Type="String" Name="PerformerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="DateTime" Name="DateBeg" Nullable="true" />
+    <Property Type="DateTime" Name="DateEnd" Nullable="true" />
+    <Property Type="String" Name="RepoptPeriodName" Nullable="true" MaxLength="256" />
+    <Property Type="Decimal" Name="SummaWithNDS" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="SummaNDS" Nullable="true" Precision="19" />
+    <Property Type="String" Name="CurrencyName" Nullable="true" />
+    <Property Type="String" Name="DocNote" Nullable="true" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="false" />
+    <Property Type="String" Name="CreatedByName" Nullable="true" MaxLength="770" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="Guid" Name="UpdatedBy" Nullable="true" />
+    <Property Type="String" Name="UpdatedByName" Nullable="true" MaxLength="770" />
+    <Property Type="DateTime" Name="UpdatedOn" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+    <Property Type="Int32" Name="IRSPerevozkiId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Claim">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="256" />
+    <Property Type="Guid" Name="AgreementId" Nullable="true" />
+    <Property Type="String" Name="AgreementName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="CustomerCompanyId" Nullable="true" />
+    <Property Type="String" Name="CustomerCompanyLabel" Nullable="true" />
+    <Property Type="String" Name="CustomerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="PerformerCompanyId" Nullable="true" />
+    <Property Type="String" Name="PerformerCompanyLabel" Nullable="true" />
+    <Property Type="String" Name="PerformerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="DocNumber" Nullable="true" MaxLength="64" />
+    <Property Type="String" Name="RegNumber" Nullable="true" MaxLength="64" />
+    <Property Type="DateTime" Name="DocDate" Nullable="true" />
+    <Property Type="Guid" Name="DocStatusId" Nullable="false" />
+    <Property Type="String" Name="DocStatusName" Nullable="false" MaxLength="256" />
+    <Property Type="DateTime" Name="DateBeg" Nullable="false" />
+    <Property Type="DateTime" Name="DateEnd" Nullable="false" />
+    <Property Type="String" Name="ReportPeriodName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="PlanType" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="ClaimStatusName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="LoadingScheduleStatusName" Nullable="false" MaxLength="1" />
+    <Property Type="Guid" Name="ProtocolId" Nullable="true" />
+    <Property Type="String" Name="ProtocolName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="ApprovalProtocolCustomerImgPath" Nullable="false" MaxLength="33" />
+    <Property Type="String" Name="ApprovalProtocolPerformerImgPath" Nullable="false" MaxLength="33" />
+    <Property Type="String" Name="SigningProtocolCustomerImgPath" Nullable="false" MaxLength="33" />
+    <Property Type="String" Name="SigningProtocolPerformerImgPath" Nullable="false" MaxLength="33" />
+    <Property Type="String" Name="ApprovalProtocolCustomerHint" Nullable="false" MaxLength="19" />
+    <Property Type="String" Name="ApprovalProtocolPerformerHint" Nullable="false" MaxLength="22" />
+    <Property Type="String" Name="SigningProtocolCustomerHint" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="SigningProtocolPerformerHint" Nullable="false" MaxLength="23" />
+    <Property Type="Guid" Name="AccountId" Nullable="true" />
+    <Property Type="String" Name="AccountName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="ApprovalAccountCustomerImgPath" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ApprovalAccountPerformerImgPath" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="SigningAccountCustomerImgPath" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="SigningAccountPerformerImgPath" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ApprovalAccountCustomerHint" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="ApprovalAccountPerformerHint" Nullable="false" MaxLength="18" />
+    <Property Type="String" Name="SigningAccountCustomerHint" Nullable="false" MaxLength="17" />
+    <Property Type="String" Name="SigningAccountPerformerHint" Nullable="false" MaxLength="20" />
+    <Property Type="Boolean" Name="ShowContInfo" Nullable="true" />
+    <Property Type="String" Name="ContParkName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="ContKindName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="CarParkName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="CarKindName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="CarTypeName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="GroupTypeName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="ShipmentName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="CountryFromName" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="CountryToName" Nullable="true" MaxLength="128" />
+    <Property Type="Guid" Name="StationFromId" Nullable="true" />
+    <Property Type="String" Name="StationFromCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="RailWayFromName" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="StationFromName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="StationToId" Nullable="true" />
+    <Property Type="String" Name="StationToCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="RailWayToName" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="StationToName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="TransferTypeName" Nullable="false" MaxLength="1" />
+    <Property Type="Decimal" Name="Distance" Nullable="false" Precision="4" Scale="1" />
+    <Property Type="Int32" Name="PeriodOfDelivery" Nullable="false" />
+    <Property Type="String" Name="RouteName" Nullable="true" MaxLength="514" />
+    <Property Type="String" Name="FrETSNGCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="FrETSNGName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="FrGNGCode" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="FrGNGName" Nullable="true" />
+    <Property Type="String" Name="LoadFromTGNL" Nullable="true" MaxLength="4" />
+    <Property Type="String" Name="LoadFromName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="LoadToTGNL" Nullable="true" MaxLength="4" />
+    <Property Type="String" Name="LoadToName" Nullable="true" MaxLength="256" />
+    <Property Type="Decimal" Name="FrWeight" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="ContCount" Nullable="true" />
+    <Property Type="Int32" Name="CarCount" Nullable="false" />
+    <Property Type="String" Name="ClaimNote" Nullable="true" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="false" />
+    <Property Type="String" Name="CreatedByName" Nullable="true" MaxLength="770" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="Guid" Name="UpdatedBy" Nullable="true" />
+    <Property Type="String" Name="UpdatedByName" Nullable="true" MaxLength="770" />
+    <Property Type="DateTime" Name="UpdatedOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="IRSPerevozkiId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Instruction">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="DocNumber" Nullable="true" MaxLength="64" />
+    <Property Type="DateTime" Name="DocDate" Nullable="true" />
+    <Property Type="Guid" Name="DocStatusId" Nullable="true" />
+    <Property Type="String" Name="DocStatusName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="DocName" Nullable="false" MaxLength="256" />
+    <Property Type="Guid" Name="AgreementId" Nullable="true" />
+    <Property Type="String" Name="AgreementName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="CustomerCompanyId" Nullable="true" />
+    <Property Type="String" Name="CustomerCompanyLabel" Nullable="true" />
+    <Property Type="String" Name="CustomerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="PerformerCompanyId" Nullable="true" />
+    <Property Type="String" Name="PerformerCompanyLabel" Nullable="true" />
+    <Property Type="String" Name="PerformerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="ClaimId" Nullable="true" />
+    <Property Type="String" Name="ClaimName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="StationCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="RailWayName" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="StationName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="false" />
+    <Property Type="String" Name="CreatedByName" Nullable="true" MaxLength="770" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="Guid" Name="UpdatedBy" Nullable="true" />
+    <Property Type="String" Name="UpdatedByName" Nullable="true" MaxLength="770" />
+    <Property Type="DateTime" Name="UpdatedOn" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+    <Property Type="Int32" Name="IRSPerevozkiId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SupplementaryTemplate">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="Account">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="DocNumber" Nullable="true" MaxLength="64" />
+    <Property Type="DateTime" Name="DocDate" Nullable="true" />
+    <Property Type="Guid" Name="DocStatusId" Nullable="true" />
+    <Property Type="String" Name="DocStatusName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="DocName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="AgreementId" Nullable="true" />
+    <Property Type="String" Name="AgreementName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="CustomerCompanyId" Nullable="true" />
+    <Property Type="String" Name="CustomerCompanyLabel" Nullable="true" />
+    <Property Type="String" Name="CustomerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="PerformerCompanyId" Nullable="true" />
+    <Property Type="String" Name="PerformerCompanyLabel" Nullable="true" />
+    <Property Type="String" Name="PerformerCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="ClaimId" Nullable="true" />
+    <Property Type="String" Name="ClaimName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="RepoptPeriodName" Nullable="true" MaxLength="256" />
+    <Property Type="DateTime" Name="DateBeg" Nullable="false" />
+    <Property Type="DateTime" Name="DateEnd" Nullable="false" />
+    <Property Type="Decimal" Name="SummaWithNDS" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="SummaNDS" Nullable="true" Precision="19" />
+    <Property Type="String" Name="CurrencyName" Nullable="true" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="false" />
+    <Property Type="String" Name="CreatedByName" Nullable="true" MaxLength="770" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="Guid" Name="UpdatedBy" Nullable="true" />
+    <Property Type="String" Name="UpdatedByName" Nullable="true" MaxLength="770" />
+    <Property Type="DateTime" Name="UpdatedOn" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+    <Property Type="Int32" Name="IRSPerevozkiId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Agreement">
+    <Property Type="Guid" Name="DocumentId" Nullable="false" />
+    <Property Type="Guid" Name="TemplateId" Nullable="false" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="DocNumber" Nullable="true" MaxLength="64" />
+    <Property Type="String" Name="RegNumber" Nullable="true" MaxLength="64" />
+    <Property Type="DateTime" Name="DocDate" Nullable="true" />
+    <Property Type="Guid" Name="StatusId" Nullable="true" />
+    <Property Type="String" Name="StatusName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="DocName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="CustomerCompanyId" Nullable="true" />
+    <Property Type="String" Name="CustomerCompanyName" Nullable="true" />
+    <Property Type="String" Name="CustomerCompanyLabel" Nullable="true" />
+    <Property Type="Guid" Name="PerformerCompanyId" Nullable="true" />
+    <Property Type="String" Name="PerformerCompanyName" Nullable="true" />
+    <Property Type="String" Name="PerformerCompanyLabel" Nullable="true" />
+    <Property Type="Guid" Name="CustomerBankId" Nullable="true" />
+    <Property Type="String" Name="CustomerBankName" Nullable="false" MaxLength="1" />
+    <Property Type="Guid" Name="PerformerBankId" Nullable="true" />
+    <Property Type="String" Name="PerformerBankName" Nullable="false" MaxLength="1" />
+    <Property Type="Guid" Name="CustomerAddressId" Nullable="true" />
+    <Property Type="String" Name="CustomerAddressName" Nullable="false" MaxLength="1" />
+    <Property Type="Guid" Name="PerformerAddressId" Nullable="true" />
+    <Property Type="String" Name="PerformerAddressName" Nullable="false" MaxLength="1" />
+    <Property Type="Guid" Name="CustomerSignerId" Nullable="true" />
+    <Property Type="String" Name="CustomerSignerName" Nullable="false" MaxLength="1" />
+    <Property Type="Guid" Name="PerformerSignerId" Nullable="true" />
+    <Property Type="String" Name="PerformerSignerName" Nullable="false" MaxLength="1" />
+    <Property Type="DateTime" Name="DateBeg" Nullable="true" />
+    <Property Type="DateTime" Name="DateEnd" Nullable="true" />
+    <Property Type="DateTime" Name="DateStop" Nullable="true" />
+    <Property Type="Int32" Name="CustomerManagerId" Nullable="true" />
+    <Property Type="String" Name="CustomerManagerName" Nullable="false" MaxLength="1" />
+    <Property Type="Int32" Name="PerformerManagerId" Nullable="true" />
+    <Property Type="String" Name="PerformerManagerName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="Note" Nullable="true" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="false" />
+    <Property Type="String" Name="CreatedByName" Nullable="true" MaxLength="770" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="Guid" Name="UpdatedBy" Nullable="true" />
+    <Property Type="String" Name="UpdatedByName" Nullable="true" MaxLength="770" />
+    <Property Type="DateTime" Name="UpdatedOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="IRSPerevozkiId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SupplementaryAgreement">
+    <Property Type="Guid" Name="DocumentId" Nullable="false" />
+    <Property Type="Guid" Name="TemplateId" Nullable="false" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="DocNumber" Nullable="true" MaxLength="64" />
+    <Property Type="String" Name="RegNumber" Nullable="true" MaxLength="64" />
+    <Property Type="DateTime" Name="DocDate" Nullable="true" />
+    <Property Type="Guid" Name="StatusId" Nullable="true" />
+    <Property Type="String" Name="StatusName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="DocName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="CustomerCompanyId" Nullable="true" />
+    <Property Type="String" Name="CustomerCompanyName" Nullable="true" />
+    <Property Type="String" Name="CustomerCompanyLabel" Nullable="true" />
+    <Property Type="Guid" Name="PerformerCompanyId" Nullable="true" />
+    <Property Type="String" Name="PerformerCompanyName" Nullable="true" />
+    <Property Type="String" Name="PerformerCompanyLabel" Nullable="true" />
+    <Property Type="Guid" Name="CustomerBankId" Nullable="true" />
+    <Property Type="String" Name="CustomerBankName" Nullable="false" MaxLength="1" />
+    <Property Type="Guid" Name="PerformerBankId" Nullable="true" />
+    <Property Type="String" Name="PerformerBankName" Nullable="false" MaxLength="1" />
+    <Property Type="Guid" Name="CustomerAddressId" Nullable="true" />
+    <Property Type="String" Name="CustomerAddressName" Nullable="false" MaxLength="1" />
+    <Property Type="Guid" Name="PerformerAddressId" Nullable="true" />
+    <Property Type="String" Name="PerformerAddressName" Nullable="false" MaxLength="1" />
+    <Property Type="Guid" Name="CustomerSignerId" Nullable="true" />
+    <Property Type="String" Name="CustomerSignerName" Nullable="false" MaxLength="1" />
+    <Property Type="Guid" Name="PerformerSignerId" Nullable="true" />
+    <Property Type="String" Name="PerformerSignerName" Nullable="false" MaxLength="1" />
+    <Property Type="DateTime" Name="DateBeg" Nullable="true" />
+    <Property Type="DateTime" Name="DateEnd" Nullable="true" />
+    <Property Type="DateTime" Name="DateStop" Nullable="true" />
+    <Property Type="Int32" Name="CustomerManagerId" Nullable="true" />
+    <Property Type="String" Name="CustomerManagerName" Nullable="false" MaxLength="1" />
+    <Property Type="Int32" Name="PerformerManagerId" Nullable="true" />
+    <Property Type="String" Name="PerformerManagerName" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="Note" Nullable="true" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="false" />
+    <Property Type="String" Name="CreatedByName" Nullable="true" MaxLength="770" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="Guid" Name="UpdatedBy" Nullable="true" />
+    <Property Type="String" Name="UpdatedByName" Nullable="true" MaxLength="770" />
+    <Property Type="DateTime" Name="UpdatedOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="IRSPerevozkiId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ReceivedMailList">
+    <Property Type="Guid" Name="EmailId" Nullable="false" />
+    <Property Type="String" Name="SenderName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Subject" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="String" Name="StatusName" Nullable="false" MaxLength="1" />
+    <Property Type="DateTime" Name="ViewedAt" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ViewerName" Nullable="true" MaxLength="770" />
+  </ComplexType>
+  <ComplexType Name="UserMail">
+    <Property Type="Guid" Name="SenderUserId" Nullable="false" />
+    <Property Type="String" Name="SenderContactName" Nullable="true" MaxLength="770" />
+    <Property Type="String" Name="SenderCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="ReceiverCompanyId" Nullable="false" />
+    <Property Type="String" Name="ReceiverCompanyName" Nullable="true" MaxLength="256" />
+    <Property Type="DateTime" Name="ViewedAt" Nullable="false" Precision="23" />
+    <Property Type="Guid" Name="ViewerId" Nullable="true" />
+    <Property Type="String" Name="ViewerName" Nullable="true" MaxLength="770" />
+    <Property Type="String" Name="Subject" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Body" Nullable="true" />
+    <Property Type="Guid" Name="StatusId" Nullable="true" />
+    <Property Type="String" Name="StatusName" Nullable="false" MaxLength="1" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="UserMailReceivedList">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="SenderName" Nullable="true" MaxLength="770" />
+    <Property Type="String" Name="Subject" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="String" Name="StatusName" Nullable="false" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="UserMailSentList">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="ReceiverName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Subject" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="String" Name="SenderName" Nullable="true" MaxLength="770" />
+    <Property Type="String" Name="StatusName" Nullable="false" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="DocumentAttachList">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="FName" Nullable="true" MaxLength="256" />
+    <Property Type="Guid" Name="CreatedById" Nullable="false" />
+    <Property Type="String" Name="CreatedByName" Nullable="true" MaxLength="770" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Note" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="DocumentConditionList">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="MnemoCode" Nullable="false" MaxLength="256" />
+    <Property Type="Guid" Name="ValueTypeId" Nullable="false" />
+    <Property Type="String" Name="ValueTypeName" Nullable="false" MaxLength="256" />
+    <Property Type="Guid" Name="ConditionGroupId" Nullable="false" />
+    <Property Type="String" Name="ConditionGroupName" Nullable="false" MaxLength="256" />
+    <Property Type="Int32" Name="PositionGroup" Nullable="false" />
+    <Property Type="String" Name="ConditionName" Nullable="false" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="DocumentCondition">
+    <Property Type="Int32" Name="PositionGroup" Nullable="false" />
+    <Property Type="Int32" Name="PositionValue" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="ValueString" Nullable="true" />
+    <Property Type="String" Name="ConditionLimitValue" Nullable="true" />
+    <Property Type="Guid" Name="ConditionId" Nullable="false" />
+    <Property Type="Guid" Name="ConditionGroupId" Nullable="false" />
+    <Property Type="String" Name="ConditionGroupName" Nullable="false" MaxLength="256" />
+    <Property Type="Guid" Name="ValueTypeId" Nullable="false" />
+    <Property Type="String" Name="ValueTypeName" Nullable="false" MaxLength="256" />
+    <Property Type="Int32" Name="ValueInteger" Nullable="true" />
+    <Property Type="Double" Name="ValueFloat" Nullable="true" />
+    <Property Type="Decimal" Name="ValueMoney" Nullable="true" Precision="19" />
+    <Property Type="Guid" Name="ValueGUID" Nullable="true" />
+    <Property Type="DateTime" Name="ValueDateTime" Nullable="true" Precision="23" />
+    <Property Type="Double" Name="ValueMIN" Nullable="true" />
+    <Property Type="Double" Name="ValueMAX" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="DocumentAttach">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="Guid" Name="DocumentId" Nullable="false" />
+    <Property Type="Binary" Name="Content" Nullable="false" MaxLength="Max" />
+    <Property Type="String" Name="FName" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Note" Nullable="true" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="false" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="Guid" Name="UpdatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="UpdatedOn" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="SupplementaryAgreementList">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="DocNumber" Nullable="true" MaxLength="64" />
+    <Property Type="DateTime" Name="DocDate" Nullable="true" />
+    <Property Type="String" Name="DocName" Nullable="false" MaxLength="256" />
+    <Property Type="DateTime" Name="DateBeg" Nullable="true" />
+    <Property Type="DateTime" Name="DateEnd" Nullable="true" />
+    <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="256" />
+    <Property Type="Int32" Name="DocStatus" Nullable="false" />
+    <Property Type="String" Name="HasAttachmentImgPath" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="HasAttachmentHint" Nullable="true" MaxLength="256" />
+  </ComplexType>
+</Schema>

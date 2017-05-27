@@ -1,0 +1,68 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model Protocol
+<style>
+    .auditPaddingRows {
+        padding-top: 15px;
+    }
+</style>
+@{
+    var capt = "audit";
+}
+<div class="col-lg-12 auditPaddingRows">
+    <div class="col-lg-3">ID</div>
+    <div class="col-lg-9">
+        @Html.DevExpress().ButtonEdit(settings =>
+        {
+            settings.Name = capt + "ProtocolId";
+            settings.ReadOnly = true;
+            settings.Width = Unit.Percentage(100);
+            settings.Properties.Buttons.Add("Копировать");
+            settings.Properties.ClientSideEvents.ButtonClick = "function(s,e) { ProtocolAuditCopyIdToBuffer(s,e); }";
+        }).Bind(Model?.Id).GetHtml()
+    </div>
+</div>
+<div class="col-lg-12 auditPaddingRows">
+    <div class="col-lg-3">Дата создания:</div>
+    <div class="col-lg-9">
+        @Html.DevExpress().TextBox(s =>
+        {
+            s.Width = Unit.Percentage(25);
+            s.ReadOnly = true;
+            s.Name = capt + nameof(Protocol.CreatedOn);
+        }).Bind(Model?.CreatedOn).GetHtml()
+    </div>
+</div>
+<div class="col-lg-12 auditPaddingRows">
+    <div class="col-lg-3">Кем создан:</div>
+    <div class="col-lg-9">
+        @Html.DevExpress().TextBox(s =>
+        {
+            s.Width = Unit.Percentage(100);
+            s.ReadOnly = true;
+            s.Name = capt + nameof(Protocol.CreatedBy);
+        }).Bind(Model?.CreatedByName).GetHtml()
+    </div>
+</div>
+<div class="col-lg-12 auditPaddingRows">
+    <div class="col-lg-3">Дата последней правки:</div>
+    <div class="col-lg-9">
+        @Html.DevExpress().TextBox(s =>
+        {
+            s.Width = Unit.Percentage(25);
+            s.ReadOnly = true;
+            s.Name = capt + nameof(Protocol.UpdatedOn);
+        }).Bind(Model?.UpdatedOn).GetHtml()
+    </div>
+</div>
+<div class="col-lg-12 auditPaddingRows">
+    <div class="col-lg-3">Кем изменен:</div>
+    <div class="col-lg-9">
+        @Html.DevExpress().TextBox(s =>
+        {
+            s.Width = Unit.Percentage(100);
+            s.ReadOnly = true;
+            s.Name = capt + nameof(Protocol.UpdatedBy);
+        }).Bind(Model?.UpdatedByName).GetHtml()
+    </div>
+</div>

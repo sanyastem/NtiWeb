@@ -1,0 +1,15 @@
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Business\bin\Release\ASUVP.Core.Business.dll
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Business\bin\Release\ASUVP.Core.Business.pdb
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Business\bin\Release\ASUVP.Core.dll
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Business\bin\Release\ASUVP.Core.Domain.dll
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Business\bin\Release\Autofac.dll
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Business\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Business\bin\Release\log4net.dll
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Business\bin\Release\ASUVP.Core.Domain.pdb
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Business\bin\Release\ASUVP.Core.pdb
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Business\bin\Release\Autofac.xml
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Business\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Business\bin\Release\log4net.xml
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Business\obj\Release\ASUVP.Core.Business.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Business\obj\Release\ASUVP.Core.Business.dll
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Business\obj\Release\ASUVP.Core.Business.pdb

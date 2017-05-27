@@ -1,0 +1,10 @@
+﻿@Html.DevExpress().CheckBox(
+    settings =>
+    {
+        settings.Name = "onlyActive";
+        settings.Checked = true;
+        settings.Text = "Только активные";
+        settings.Style.Add("padding", "0px 0px 0px 0px");
+        settings.Properties.ClientSideEvents.CheckedChanged = "function (s, e){ myButton.SetVisible(!myButton.GetVisible());}";
+    }
+    ).GetHtml()

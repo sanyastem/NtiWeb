@@ -1,0 +1,8 @@
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core\bin\Release\ASUVP.Core.dll
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core\bin\Release\ASUVP.Core.pdb
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core\bin\Release\Autofac.dll
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core\bin\Release\log4net.dll
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core\bin\Release\Autofac.xml
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core\bin\Release\log4net.xml
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core\obj\Release\ASUVP.Core.dll
+C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core\obj\Release\ASUVP.Core.pdb

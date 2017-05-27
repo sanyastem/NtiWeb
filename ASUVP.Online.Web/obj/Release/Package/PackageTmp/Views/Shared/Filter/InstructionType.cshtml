@@ -1,0 +1,27 @@
+﻿@using System.Web.UI.WebControls
+@model List<SelectListItem>
+@Html.DevExpress().ComboBox(settings =>
+{
+    settings.Name = "comboBoxInstructionType";
+    settings.Properties.Caption = "Тип инструкции";
+    settings.Properties.CaptionSettings.ShowColon = false;
+    settings.Properties.CaptionStyle.Font.Bold = false;
+    settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+    settings.Style.Add("margin", "0px 10px 10px 5px");
+    settings.Width = Unit.Pixel(430);
+    settings.Properties.DropDownStyle = DropDownStyle.DropDownList;
+    settings.SelectedIndex = 0;
+    settings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+    foreach (var el in Model)
+    {
+        settings.Properties.Items.Add(el.Text, el.Value);
+    }
+
+    //settings.Properties.Items.Add("Все", 0);
+    //settings.Properties.Items.Add("Тип 1", 1);
+    //settings.Properties.Items.Add("Тип 2", 2);
+
+
+}).GetHtml()
+
+

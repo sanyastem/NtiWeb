@@ -1,0 +1,113 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model Claim
+<style>
+    #ClaimState .claimStateTr>td:first-child {
+        width: 20%;
+        text-align: left;
+    }
+
+     #ClaimState .claimStateTr>td {
+         width: 80%;                
+         padding-top: .5em !important;
+         padding-bottom: .5em  !important;
+     }
+
+    .staus-image {
+         display: inline; 
+         margin-left: auto; 
+         margin-right: auto;
+         width:32px;
+         height:32px;
+    }
+
+</style>
+<table id ="ClaimState" style="width: 100%">
+    <tr class="claimStateTr">
+        <td>Согласование Заявки</td>
+        <td>
+            @{
+                Html.DevExpress().TextBox(s =>
+                {
+                    s.Width = Unit.Percentage(100);
+                    s.ReadOnly = true;
+                    s.Name = nameof(Claim.ClaimStatusName);
+                }).Bind(Model?.ClaimStatusName).Render();
+            }
+        </td>
+    </tr>
+    <tr class="claimStateTr">
+        <td>Согласование графика погрузки</td>
+        <td>
+            @{
+                Html.DevExpress().TextBox(s =>
+                {
+                    s.Width = Unit.Percentage(100);
+                    s.ReadOnly = true;
+                    s.Name = nameof(Claim.LoadingScheduleStatusName);
+                }).Bind(Model?.LoadingScheduleStatusName).Render();
+            }
+        </td>
+    </tr>
+    <tr class="claimStateTr">
+        <td>Протокол</td>
+        <td>
+            @{
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 80%">
+                            @{
+                                Html.DevExpress().TextBox(s =>
+                                {
+                                    s.Width = Unit.Percentage(100);
+                                    s.ReadOnly = true;
+                                    s.Name = nameof(Claim.ProtocolName);
+                                }).Bind(Model?.ProtocolName).Render();
+                            }
+                        </td>
+                        <td style="width: 20%; text-align:center">
+                            @{ 
+                                <img src="@Url.Content($"~{Model.ApprovalProtocolCustomerImgPath}")" style="display: inline; margin-left: auto; margin-right: auto; width:32px; height:32px;" alt="Нет данных" title="@Model.ApprovalProtocolCustomerHint" />
+                                <img src="@Url.Content($"~{Model.ApprovalProtocolPerformerImgPath}")" style="display: inline; margin-left: auto; margin-right: auto; width:32px; height:32px;" alt="Нет данных" title="@Model.ApprovalProtocolPerformerHint" />
+
+                                <img src="@Url.Content($"~{Model.SigningProtocolCustomerImgPath}")" style="display: inline; margin-left: auto; margin-right: auto; width:32px; height:32px;" alt="Нет данных" title="@Model.SigningProtocolCustomerHint" />
+                                <img src="@Url.Content($"~{Model.SigningProtocolPerformerImgPath}")" style="display: inline; margin-left: auto; margin-right: auto; width:32px; height:32px;" alt="Нет данных" title="@Model.SigningProtocolPerformerHint" />
+                            }
+                        </td>
+                    </tr>
+                </table>
+              }
+        </td>
+    </tr>
+    <tr class="claimStateTr">
+        <td>Счет на предоплату</td>
+        <td>
+            @{
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 80%">
+                            @{
+                                Html.DevExpress().TextBox(s =>
+                                {
+                                    s.Width = Unit.Percentage(100);
+                                    s.ReadOnly = true;
+                                    s.Name = nameof(Claim.AccountName);
+                                }).Bind(Model?.AccountName).Render();
+                            }
+                        </td>
+                        <td style="width: 20%; text-align:center">
+                            @{
+                                <img src="@Url.Content($"~{Model.ApprovalAccountCustomerImgPath}")" style="display: inline; margin-left: auto; margin-right: auto; width:32px; height:32px;" alt="Нет данных" title="@Model.ApprovalAccountCustomerHint" />
+                                <img src="@Url.Content($"~{Model.ApprovalAccountPerformerImgPath}")" style="display: inline; margin-left: auto; margin-right: auto; width:32px; height:32px;" alt="Нет данных" title="@Model.ApprovalAccountPerformerHint" />
+
+                                <img src="@Url.Content($"~{Model.SigningAccountCustomerImgPath}")" style="display: inline; margin-left: auto; margin-right: auto; width:32px; height:32px;" alt="Нет данных" title="@Model.SigningAccountCustomerHint" />
+                                <img src="@Url.Content($"~{Model.SigningAccountPerformerImgPath}")" style="display: inline; margin-left: auto; margin-right: auto; width:32px; height:32px;" alt="Нет данных" title="@Model.SigningAccountPerformerHint" />
+                            }
+                        </td>
+                    </tr>
+                </table>
+            }
+        </td>
+    </tr>
+
+</table>

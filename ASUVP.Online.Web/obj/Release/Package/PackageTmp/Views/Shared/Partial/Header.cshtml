@@ -1,0 +1,186 @@
+﻿@using Microsoft.AspNet.Identity
+@using RestSharp.Extensions
+<div class="row border-bottom">
+    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a id="collapse" class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#">
+                <i class="fa fa-bars"></i>
+            </a>
+            <form role="search" class="navbar-form-custom" action="">
+                <div class="form-group">
+                    @*<input type="text" placeholder="Поиск..." class="form-control" name="top-search" id="top-search">*@
+                </div>
+            </form>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="count-info" href="@Url.Action("Index","Mail")">
+                    <i class="fa fa-envelope"></i> @*<span class="label label-warning">0</span>*@
+                </a>
+                @*<ul class="dropdown-menu dropdown-messages">
+                    <li>
+                        <div class="dropdown-messages-box">
+                            <a href="profile.html" class="pull-left">
+                                <img alt="image" class="img-circle" src="@Url.Content("~/Content/img/Inspinia/a7.jpg")">
+                            </a>
+                            <div class="media-body">
+                                <small class="pull-right">46h ago</small>
+                                <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <div class="dropdown-messages-box">
+                            <a href="profile.html" class="pull-left">
+                                <img alt="image" class="img-circle" src="@Url.Content("~/Content/img/Inspinia/a4.jpg")">
+                            </a>
+                            <div class="media-body ">
+                                <small class="pull-right text-navy">5h ago</small>
+                                <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <div class="dropdown-messages-box">
+                            <a href="profile.html" class="pull-left">
+                                <img alt="image" class="img-circle" src="@Url.Content("~/Content/img/Inspinia/profile.jpg")">
+                            </a>
+                            <div class="media-body ">
+                                <small class="pull-right">23h ago</small>
+                                <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <div class="text-center link-block">
+                            <a href="mailbox.html">
+                                <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                            </a>
+                        </div>
+                    </li>
+                </ul>*@
+            </li>
+            <li id="notificationsIcon" style="visibility: visible">
+                <a href="@Url.Action("Index","Notification")" class="count-info" >
+                    <i class="fa fa-bell"></i> <span id="notificationsCount" class="label label-primary" style="visibility: hidden">0</span>
+                </a>
+                @*<ul id="notifications" class="dropdown-menu dropdown-alerts">
+                    <li>
+                        <a href="mailbox.html">
+                            <div>
+                                <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="profile.html">
+                            <div>
+                                <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                <span class="pull-right text-muted small">12 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="grid_options.html">
+                            <div>
+                                <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <div class="text-center link-block">
+                            <a href="notifications.html">
+                                <strong>See All Alerts</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </li>
+                </ul>*@
+            </li>
+            <li>
+                <a href="~/Help/index.htm" target="_blank">
+                    <i class="fa fa-question "></i> Справка
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Logout", "UserAccount")">
+                    <i class="fa fa-sign-out"></i> Выход
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+</div>
+
+
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            url: ROOT_URL + "/notification/GetNotifications",
+            type: 'GET',
+            cache: false,
+            success: function (obj) {
+                if (obj) {
+                    var not = 0;
+                    $.each(obj, function (key, value) {
+                        not += 1;
+                    });
+                    $("#notificationsCount").text(not);
+                    if(not!==0)
+                    { $("#notificationsCount").css("visibility", "visible"); }
+                }
+            }
+        });
+    });
+
+    $(function() {
+        var notificationhub = $.connection.notificationHub;
+
+        notificationhub.client.DisplayMessage = function(id, message) {
+            if ('@Session["UserId"]' === id) {
+                var c = parseInt($("#notificationsCount").text());
+                if (c + 1 > 0) {
+                    $("#notificationsCount").css("visibility", "visible");
+                }
+                $("#notificationsCount").text(c + 1);
+                //NotificationView.Refresh();
+            }
+        };
+        notificationhub.client.ReadNotifications = function (id, message) {
+            if ('@Session["UserId"]' === id) {
+                var c = parseInt($("#notificationsCount").text());
+                var readNotificationCount = parseInt(message);
+
+                if (c - readNotificationCount <= 0) {
+                    $("#notificationsCount").css("visibility", "hidden");
+                }
+                $("#notificationsCount").text(c - readNotificationCount);
+                //NotificationView.Refresh();
+            }
+        };
+        $.connection.hub.start();
+    });
+
+
+    $("#collapse").click(function () {
+        var has = $("body").hasClass("mini-navbar");
+        if (has === true) {
+            localStorage.setItem("collapse_menu", "off");
+        } else {
+            localStorage.setItem("collapse_menu", "on");
+        }
+    });
+</script>

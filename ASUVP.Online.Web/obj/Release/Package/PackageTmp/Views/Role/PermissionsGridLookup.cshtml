@@ -1,0 +1,57 @@
+﻿@using System.Web.UI.WebControls
+@using DevExpress.Data
+@using ASUVP.Core.DataAccess.Model
+@using ASUVP.Online.Web.Models
+
+@Html.DevExpress().GridLookup(settings =>
+{
+    settings.Name = "RolePermissionList";
+    settings.KeyFieldName = "Id";
+    settings.Width = Unit.Percentage(100);
+    settings.GridViewProperties.CallbackRouteValues = new { Controller = "Role", Action = "PermissionsGridLookup", selected = Model };
+    settings.Properties.SelectionMode = GridLookupSelectionMode.Multiple;
+
+    settings.Properties.TextFormatString = "{0}";
+
+    var column = settings.Columns.Add(nameof(PermissionList.Name), "Название");
+    column.SortOrder = ColumnSortOrder.Ascending;
+    column.Settings.AutoFilterCondition = AutoFilterCondition.Contains;
+    column.Width = Unit.Percentage(40);
+
+    settings.Columns.Add(c =>
+    {
+        c.FieldName = nameof(PermissionList.Code);
+        c.Caption = "Код";
+        c.Width = Unit.Percentage(20);
+    });
+
+    settings.Columns.Add(c =>
+    {
+        c.FieldName = nameof(PermissionList.Code2);
+        c.Caption = "Код 2";
+        c.Width = Unit.Percentage(20);
+    });
+    settings.Columns.Add(c =>
+    {
+        c.FieldName = nameof(PermissionList.Module);
+        c.Caption = "Модуль";
+        c.Width = Unit.Percentage(20);
+    });
+
+    settings.ApplyLayoutSettings();
+
+    settings.GridViewProperties.SetStatusBarTemplateContent(c => { Html.RenderPartial("_GridLookupFooter", "RolePermissionList"); });
+
+    settings.PreRender = (sender, e) =>
+    {
+        if (Model == null)
+        {
+            return;
+        }
+
+        foreach (var id in Model)
+        {
+            ((MVCxGridLookup)sender).GridView.Selection.SelectRowByKey(id);
+        }
+    };
+}).BindList(ViewBag.Permissions).Bind(Model).GetHtml()

@@ -1,0 +1,103 @@
+﻿@using System.Web.UI.WebControls
+
+@model Guid
+<script>
+    function OnCommandExecuted(s, e) {
+        var text = e.item.name;
+        //Refresh
+        if (text === 'rbiRefresh') {
+            DocumentSupplementaryGrid.Refresh();
+        }
+
+
+        if (text === 'rbiOnlyActive') {
+            var z = e.parameter.toString();
+            DocumentSupplementaryGrid.callbackUrl =ROOT_URL + "/agreement/agreementsupplementarydata/" + '@Model' + "?onlyActive=" + z;
+            DocumentSupplementaryGrid.Refresh();
+        }
+
+        if (text === 'rbiAdd') {
+            window.open(ROOT_URL + "SupplementaryAgreement/AddOrUpdateWizard?agrId=" + '@Model');
+        }
+        //Export to excel
+        if (text === 'rbiExportToExcel') {     
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("SupplemetaryExportTo", "Agreement", null, Request.Url.Scheme)',
+                    data: {
+                        filterExpression: DocumentSupplementaryGrid.cp_Filter,
+                        agrId: DocumentSupplementaryGrid.cp_FilterAgrId,
+                        active: DocumentSupplementaryGrid.cp_FilterActive
+                    },
+                    success: function (data) {
+                        if (data.success) {
+                            var linkToDownload = '@Url.Action("Download", "Agreement", null, Request.Url.Scheme)';
+                            window.location = linkToDownload + '?fileGuid=' + data.FileGuid + '&filename=' + data.FileName;
+                        } else {
+                            exportExlslErrorPopup.SetContentHtml(data.message);
+                            exportExlslErrorPopup.Show();
+                        }
+                    }
+                });
+        }
+
+    }
+</script>
+
+@Html.DevExpress().Ribbon(
+    settings =>
+    {
+        settings.Name = "DocumentSupplementaryGridRibbon";
+        settings.AllowMinimize = false;
+        settings.ShowFileTab = false;
+        settings.ShowTabs = true;
+        settings.ShowGroupLabels = false;
+        settings.OneLineMode = true;
+
+        settings.Width = Unit.Percentage(95);
+
+        settings.ClientSideEvents.CommandExecuted = "OnCommandExecuted";
+
+        var actionTab = settings.Tabs.Add("Главная");
+        actionTab.Groups.Add(g =>
+        {
+            g.Name = "Commom";
+            g.Text = "Common";
+            g.ShowDialogBoxLauncher = false;
+
+
+            var rbiActive = new RibbonCheckBoxItem()
+            {
+                Name = "rbiOnlyActive",
+                Text = "Только активные",
+                Value = true
+            };
+            g.Items.Add(rbiActive);
+
+
+            var rbRefresh = new RibbonButtonItem()
+            {
+                Name = "rbiRefresh",
+                Text = "Обновить"
+
+            };
+            rbRefresh.SmallImage.IconID = IconID.ActionsRefresh16x16office2013;
+            g.Items.Add(rbRefresh);
+
+            var rbiExportToExcel = new RibbonButtonItem()
+            {
+                Name = "rbiExportToExcel",
+                Text = "Экспорт в Excel"
+            };
+            rbiExportToExcel.SmallImage.IconID = IconID.ExportExporttoxlsx16x16office2013;
+            g.Items.Add(rbiExportToExcel);
+
+            var rbAdd = new RibbonButtonItem()
+            {
+                Name = "rbiAdd",
+                Text = "Добавить",
+            };
+            rbAdd.SmallImage.IconID = IconID.ActionsAdditem16x16office2013;
+            g.Items.Add(rbAdd);
+        });
+    }).GetHtml()

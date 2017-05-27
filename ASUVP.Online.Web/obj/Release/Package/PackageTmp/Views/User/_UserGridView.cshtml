@@ -1,0 +1,122 @@
+﻿@using ASUVP.Core.DataAccess.Model
+@using System.Web.UI.WebControls;
+@model List<UserList>
+
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+
+        settings.Name = "UsersView";
+        settings.CallbackRouteValues = new
+        {
+            Controller = "User",
+            Action = "UserGridView"
+        };
+        settings.Width = Unit.Percentage(100);
+        settings.SettingsBehavior.AllowFixedGroups = true;
+        settings.CommandColumn.Visible = true;
+        settings.SettingsResizing.Visualization = ResizingMode.Live;
+        settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+        settings.CommandColumn.Caption = " ";
+        settings.CommandColumn.Width = 53;
+        settings.CommandColumn.ShowSelectCheckbox = true;
+        settings.CommandColumn.SelectAllCheckboxMode = GridViewSelectAllCheckBoxMode.Page;
+        settings.KeyFieldName = nameof(UserList.UserId);
+
+        // Inner rows
+        settings.SettingsDetail.ShowDetailRow = true;
+        settings.SetDetailRowTemplateContent(c =>
+        {
+            Html.RenderAction("UserRowDetails", new {UserId = c.KeyValue});
+        });
+
+        //buttons
+        var widthButtonColumn = 0;
+        if (AuthManager.User.IsInRole("UserEdit"))
+        {
+            widthButtonColumn += 43;
+        }
+        if (AuthManager.User.IsInRole("UserDelete"))
+        {
+            widthButtonColumn += 43;
+        }
+        var viewButtonColumn = new MVCxGridViewColumn() {Width = widthButtonColumn };
+        settings.Columns.Add(viewButtonColumn);
+        viewButtonColumn.SetHeaderTemplateContent(c =>
+        {
+            c.ID = "btnViewHeader";
+        });
+        viewButtonColumn.SetDataItemTemplateContent(c =>
+        {
+            c.ID = "btnViews";
+
+            Html.DevExpress().Button(b =>
+            {
+                b.Name = "btnEdit_" + c.VisibleIndex;
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_edit.png");
+                b.Images.Image.ToolTip = "Изменить";
+                b.Images.Image.AlternateText = "Изменить";
+                b.Images.Image.Height = 32;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientSideEvents.Click = string.Format("function(s, e) {{ OnEditUserClick('{0}','{1}'); }}", settings.Name, c.KeyValue);
+                b.ClientVisible = AuthManager.User.IsInRole("UserEdit");
+            }).Render();
+            Html.DevExpress().Button(b =>
+            {
+                b.Name = "btnDelete_" + c.VisibleIndex;
+                b.Images.Image.Url = Url.Content("~/Content/img/doc_del.png");
+                b.Images.Image.ToolTip = "Удалить";
+                b.Images.Image.AlternateText = "Удалить";
+                b.Images.Image.Height = 32;
+                b.EnableTheming = false;
+                b.Text = "";
+                b.ClientVisible = AuthManager.User.IsInRole("UserDelete");
+            }).Render();
+        });
+
+        settings.HtmlRowPrepared = (sender, e) =>
+        {
+            if (!Convert.ToBoolean(e.GetValue("IsActive")))
+            {
+                e.Row.Font.Italic = true;
+            }
+        };
+
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(UserList.FIO);
+            column.Caption = "ФИО";
+            column.ToolTip = "Фамилия Имя Отчество";
+            column.Width = Unit.Percentage(50);
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(UserList.Login);
+            column.Caption = "Логин";
+            column.ToolTip = "Логин пользователя";
+            column.Width = Unit.Percentage(30);
+        });
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(UserList.IsActive);
+            column.ColumnType = MVCxGridViewColumnType.CheckBox;
+            column.Caption = "Активен";
+            column.ToolTip = "Активен";
+            column.Width = Unit.Percentage(10);
+        });
+        settings.CustomJSProperties = (sender, e) =>
+        {
+            MVCxGridView gv = sender as MVCxGridView;
+            if (gv != null)
+            {
+                e.Properties["cp_Filter"] = gv.FilterExpression;
+            };
+        };
+
+        settings.Settings.HorizontalScrollBarMode = ScrollBarMode.Visible;
+        settings.ApplyPaging();
+        settings.ApplyBasicLayout();
+    });
+}
+@grid.Bind(Model).GetHtml()

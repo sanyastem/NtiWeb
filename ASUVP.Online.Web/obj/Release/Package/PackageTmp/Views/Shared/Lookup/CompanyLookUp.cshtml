@@ -1,0 +1,15 @@
+﻿@using ASUVP.Core.DataAccess.Model;
+@using ASUVP.Online.Web.Models.Contact
+
+@Html.DevExpress().ComboBox(settings =>
+{
+    settings.Name = nameof(ContactEditable.CompanyId);
+    settings.Properties.DropDownStyle = DropDownStyle.DropDown;
+    settings.CallbackRouteValues = new { Controller = "Contact", Action = "CompanyLookUp", Model };
+    settings.Properties.TextField = nameof(Company.ShortName);
+    settings.Properties.ValueField = nameof(Company.Id);
+    settings.Properties.ValueType = typeof(Guid);
+
+    settings.Properties.CallbackPageSize = 15;
+}).BindList(ContactEditable.GetCompanysRange, ContactEditable.GetCompanyById).Bind(Model?.CompanyId).GetHtml()
+

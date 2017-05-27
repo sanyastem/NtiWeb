@@ -1,0 +1,22 @@
+﻿@using System.Web.UI.WebControls
+@Html.DevExpress().ComboBox(settings =>
+{
+    settings.Name = "comboBoxStateOfSigning";
+    settings.Properties.Caption = " Состояние подписания";
+    settings.Properties.CaptionSettings.ShowColon = false;
+    settings.Properties.CaptionStyle.Font.Bold = false;
+    settings.Properties.CaptionSettings.Position = EditorCaptionPosition.Top;
+    settings.Style.Add("margin", "0px 10px 10px 5px");
+    settings.Width = Unit.Pixel(430);
+    settings.Properties.DropDownStyle = DropDownStyle.DropDownList;
+    settings.Properties.IncrementalFilteringMode = IncrementalFilteringMode.None;
+
+    settings.SelectedIndex = 0;
+
+    settings.Properties.Items.Add("Все", 0);
+    foreach (var el in Model)
+    {
+        settings.Properties.Items.Add(el.Text, el.Value);
+    }
+
+}).GetHtml()

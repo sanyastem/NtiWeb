@@ -1,0 +1,438 @@
+﻿@model string[]
+
+<script>
+    function OnCommandExecuted(s, e) {
+        var text = e.item.name;
+        var itemName =  @Model[0];
+        var linkToDownload = '@Url.Action("Download", "Agreement", null, Request.Url.Scheme)';
+
+        //Refresh
+        if (text === 'rbiRefresh') {
+            var l = '@Url.Content("~/")';
+
+            if ('@Model[1]'=== "Contact") {
+                l += "contact/Index";
+            }
+            if ('@Model[1]' === "Agreement") {
+                AgreementView.callbackUrl = ROOT_URL + "/Agreement/AgreementViewPartial?manager=" + comboBoxManager.GetValue() + "&template=" + comboBoxTemplate.GetValue() + "&active=" + onlyActive.GetChecked();
+                AgreementView.Refresh();
+            }
+
+            if ('@Model[1]' === "Account") {
+                var i2 = $("#DateBegin_I").val().toString();
+                var i3 = $("#DateEnd_I").val().toString();
+                AccountView.callbackUrl = ROOT_URL + "/Account/AccountViewPartial?periodType=" + comboBoxDocumentDate.GetValue() + "&dateBeg=" + i2 + "&dateEnd=" + i3
+                    + "&reportPeriod=" + comboBoxReportPeriod.GetValue() + "&agreementId=" + comboBoxAgreement.GetValue() + "&agrManagerId=" + comboBoxManager.GetValue()
+                    + "&statusId=" + comboBoxStateOfCoordination.GetValue() + "&epStatusId=" + comboBoxStateOfSigning.GetValue();
+                AccountView.Refresh();
+            }
+            if ('@Model[1]' === "Instruction") {
+                var v2 = $("#DateBegin_I").val().toString();
+                var v3 = $("#DateEnd_I").val().toString();
+                InstructionView.callbackUrl = ROOT_URL + "/Instruction/InstructionViewPartial?periodType=" + comboBoxDocumentDate.GetValue() + "&dateBeg=" + v2 + "&dateEnd=" + v3
+                    + "&stationId=" + comboBoxStation.GetValue() + "&agreementId=" + comboBoxAgreement.GetValue() + "&agrManagerId=" + comboBoxManager.GetValue()
+                    + "&templateId=" + comboBoxInstructionType.GetValue() + "&statusId=" + comboBoxStateOfCoordination.GetValue() + "&epStatusId=" + comboBoxStateOfSigning.GetValue();
+                InstructionView.Refresh();
+            }
+            if ('@Model[1]' === "Protocol") {
+                var c2 = $("#DateBegin_I").val().toString();
+                var c3 = $("#DateEnd_I").val().toString();
+                var c4 = $("#UseDateBeg_I").val().toString();
+                var c5 = $("#UseDateEnd_I").val().toString();
+                ProtocolView.callbackUrl = ROOT_URL + "/Protocol/ProtocolViewPartial?periodType=" + comboBoxDocumentDate.GetValue() + "&dateBeg=" + c2 + "&dateEnd=" + c3
+                    +"&usePeriod=" + UseDate.GetValue() + "&useDateBeg=" + c4 + "&useDateEnd=" + c5
+                    +"&agreementId=" + comboBoxAgreement.GetValue() + "&AgrManagerId=" + comboBoxManager.GetValue() + "&statusId=" + comboBoxStateOfCoordination.GetValue() + "&epStatusId=" + comboBoxStateOfSigning.GetValue();
+                ProtocolView.Refresh();
+            }
+            if ('@Model[1]' === "Act") {
+                var z2 = $("#DateBegin_I").val().toString();
+                var z3 = $("#DateEnd_I").val().toString();
+                ActView.callbackUrl = ROOT_URL + "/Act/ActViewPartial?periodType=" + comboBoxDocumentDate.GetValue() + "&dateBeg=" + z2 + "&dateEnd=" + z3
+                    + "&reportPeriod=" + comboBoxReportPeriod.GetValue() + "&agreementId=" + comboBoxAgreement.GetValue() + "&agrManagerId=" + comboBoxManager.GetValue()
+                    + "&statusId=" + comboBoxStateOfCoordination.GetValue() + "&epStatusId=" + comboBoxStateOfSigning.GetValue();
+                ActView.Refresh();
+            }
+            if ('@Model[1]' === "Claim") {
+                var u1 = $("#DateBegin_I").val().toString();
+                var u2 = $("#DateEnd_I").val().toString();
+                var u3 = $("#ShipmentBegin_I").val().toString();
+                var u4 = $("#ShipmentEnd_I").val().toString();
+                ClaimView.callbackUrl = ROOT_URL + "/Claim/ClaimViewPartial?period=" + comboBoxDocumentDate.GetValue() + "&dateBeg=" + u1 + "&dateEnd=" + u2 + "&shipment=" + comboBoxShipmentDate.GetValue() + "&shipmentBeg=" + u3 + "&shipmentEnd=" + u4 + "&coordination=" + comboBoxStateOfCoordination.GetValue() + "&signing=" + comboBoxStateOfSigning.GetValue() + "&manager=" + comboBoxManager.GetValue() + "&agreement=" + comboBoxAgreement.GetValue();
+                ClaimView.Refresh();
+            }
+            if ('@Model[1]' === "User")
+            {
+                l += "user/Index";
+            }
+        }
+
+        //Sign
+        if (text === 'rbiSign') {
+            // sign
+        }
+
+        //Add
+        if (text === 'rbiAdd') {
+            if ('@Model[1]' === 'Agreement') {
+                OnAddAgreementClick();
+            }
+            if ('@Model[1]' === 'Contact') {
+                OnAddContactClick();
+            }
+            if ('@Model[1]' === 'User') {
+                window.open(ROOT_URL + "User/Create");
+            }
+            if ('@Model[1]' === 'Role') {
+                window.open(ROOT_URL + "Role/Create");
+            }
+        }
+
+
+        //Delete
+        if (text === 'rbiDelete') {
+            var urlDel = "";
+            if ('@Model[1]' === 'Contact') {
+                urlDel = '@Url.Action("DeleteContacts","Contact")';
+            }
+            if ('@Model[1]' === 'Agreement') {
+                urlDel = '@Url.Action("DeleteAgreements","Agreement")';
+            }
+            if ('@Model[1]' === 'Protocol') {
+                urlDel = '@Url.Action("DeleteProtocols","Protocol")';
+            }
+            if ('@Model[1]' === 'Account') {
+                urlDel = '@Url.Action("DeleteAccounts","Account")';
+            }
+            if ('@Model[1]' === 'Instruction') {
+                urlDel = '@Url.Action("DeleteInstructions","Instruction")';
+            }
+            if ('@Model[1]' === 'Act') {
+                urlDel = '@Url.Action("DeleteActs","Act")';
+            }
+            if ('@Model[1]' === 'Claim') {
+                urlDel = '@Url.Action("DeleteClaims","Claim")';
+            }
+            var ids = itemName.GetSelectedKeysOnPage();
+            $.ajax({
+                type: "POST",
+                url: urlDel,
+                data: {keys:ids},
+                success: function (data) { itemName.Refresh(); }
+            });
+        }
+
+
+        //OpenIRS
+        if (text === 'rbiIRS') {
+            e.preventDefault();
+            var visibleIndex = itemName.GetFocusedRowIndex();
+            var key = itemName.GetRowKey(visibleIndex);
+            //$("#btnOpenInIRS").prop("href", "les-lt://mskirs1/Traffic/Traffic/Command=RunReferenceEditor/Id=" + key);
+            if(key!=null)
+            {
+                var href = "les-lt://mskirs1/Traffic/Traffic/Command=RunReferenceEditor/Id=" + key;
+                location.href = href;
+            }
+        }
+
+        //Export to excel
+        if (text === 'rbiExportToExcel') {
+            if (itemName.name.toString() === 'AgreementView') {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("ExportTo", "Agreement", null, Request.Url.Scheme)',
+                    data: {
+                        filterExpression: itemName.cp_Filter,
+                        manager: itemName.cp_FilterManager,
+                        template: itemName.cp_FilterTemplate,
+                        active: itemName.cp_FilterActive
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            window.location = linkToDownload + '?fileGuid=' + data.FileGuid + '&filename=' + data.FileName;
+                        } else {
+                            exportExlslErrorPopup.SetContentHtml(data.message);
+                            exportExlslErrorPopup.Show();
+                        }
+                    }
+                });
+            }
+            if (itemName.name.toString() === 'ProtocolView') {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("ExportTo", "Protocol", null, Request.Url.Scheme)',
+                    data: {
+                        filterExpression: itemName.cp_Filter,
+                        periodType: itemName.cp_FilterDocPeriodType,
+                        dateBeg: itemName.cp_FilterDocDateBeg,
+                        dateEnd: itemName.cp_FilterDocDateEnd,
+                        usePeriod: itemName.cp_FilterUsePeriod,
+                        useDateBeg: itemName.cp_FilterUseDateBeg,
+                        useDateEnd: itemName.cp_FilterUseDateEnd,
+                        agreementId: itemName.cp_FilterAgreement,
+                        agrManagerId: itemName.cp_FilterAgrManagerId,
+                        statusId: itemName.cp_FilterStatusId,
+                        epStatusId: itemName.cp_FilterEPStatusId
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            window.location = linkToDownload + '?fileGuid=' + data.FileGuid + '&filename=' + data.FileName;
+                        } else {
+                            exportExlslErrorPopup.SetContentHtml(data.message);
+                            exportExlslErrorPopup.Show();
+                        }
+                    }
+                });
+            }
+            if (itemName.name.toString() === 'AccountView') {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("ExportTo", "Account", null, Request.Url.Scheme)',
+                    data: {
+                        filterExpression: itemName.cp_Filter,
+                        periodType: itemName.cp_FilterDocPeriodType,
+                        dateBeg: itemName.cp_FilterDocDateBeg,
+                        dateEnd: itemName.cp_FilterDocDateEnd,
+                        reportPeriod: itemName.cp_FilterReportPeriod,
+                        agreementId: itemName.cp_FilterAgreement,
+                        agrManagerId:itemName.cp_FilterAgrManagerId,
+                        statusId:itemName.cp_FilterStatusId,
+                        epStatusId:itemName.cp_FilterEPStatusId
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            window.location = linkToDownload + '?fileGuid=' + data.FileGuid + '&filename=' + data.FileName;
+                        } else {
+                            exportExlslErrorPopup.SetContentHtml(data.message);
+                            exportExlslErrorPopup.Show();
+                        }                }
+                });
+            }
+            if (itemName.name.toString() === 'InstructionView') {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("ExportTo", "Instruction", null, Request.Url.Scheme)',
+                    data: {
+                        filterExpression: itemName.cp_Filter,
+                        periodType: itemName.cp_FilterDocPeriodType,
+                        dateBeg: itemName.cp_FilterDocDateBeg,
+                        dateEnd: itemName.cp_FilterDocDateEnd,
+                        stationId: itemName.cp_FilterStation,
+                        agreementId: itemName.cp_FilterAgreement,
+                        agrManagerId: itemName.cp_FilterAgrManagerId,
+                        templateId: itemName.cp_FilterInstructionTemplateId,
+                        statusId: itemName.cp_FilterStatusId,
+                        epStatusId: itemName.cp_FilterEPStatusId
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            window.location = linkToDownload + '?fileGuid=' + data.FileGuid + '&filename=' + data.FileName;
+                        } else {
+                            exportExlslErrorPopup.SetContentHtml(data.message);
+                            exportExlslErrorPopup.Show();
+                        }
+                    }
+                });
+            }
+
+            if (itemName.name.toString() === 'ActView') {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("ExportTo", "Act", null, Request.Url.Scheme)',
+                    data: {
+                        filterExpression: itemName.cp_Filter,
+                        periodType  : itemName.cp_FilterDocPeriodType,
+                        dateBeg : itemName.cp_FilterDocDateBeg,
+                        dateEnd : itemName.cp_FilterDocDateEnd,
+                        reportPeriod : itemName.cp_FilterReportPeriod,
+                        agreementId : itemName.cp_FilterAgreement,
+                        agrManagerId : itemName.cp_FilterAgrManagerId,
+                        statusId : itemName.cp_FilterStatusId,
+                        epStatusId : itemName.cp_FilterEPStatusId
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            window.location = linkToDownload + '?fileGuid=' + data.FileGuid + '&filename=' + data.FileName;
+                        } else {
+                            exportExlslErrorPopup.SetContentHtml(data.message);
+                            exportExlslErrorPopup.Show();
+                        }
+                    }
+                });
+            }
+
+            if (itemName.name.toString() === 'ClaimView') {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("ExportTo", "Claim", null, Request.Url.Scheme)',
+                    data: {
+                        filterExpression: itemName.cp_Filter,
+                        period: itemName.cp_FilterPeriod,
+                        dateBeg: itemName.cp_FilterTimeBeg,
+                        dateEnd: itemName.cp_FilterTimeEnd,
+                        shipment: itemName.cp_FilterShipment,
+                        shipmentBeg: itemName.cp_FilterShipmentBeg,
+                        shipmentEnd: itemName.cp_FilterShipmentEnd,
+                        coordination: itemName.cp_FilterCoordination,
+                        signing: itemName.cp_FilterSigning,
+                        agreement: itemName.cp_FilterAgreement,
+                        manager: itemName.cp_FilterManager
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            window.location = linkToDownload + '?fileGuid=' + data.FileGuid + '&filename=' + data.FileName;
+                        } else {
+                            exportExlslErrorPopup.SetContentHtml(data.message);
+                            exportExlslErrorPopup.Show();
+                        }
+                    }
+                });
+            }
+
+
+            if (itemName.name.toString() === 'ContactView') {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("ExportTo", "Contact", null, Request.Url.Scheme)',
+                    data: {
+                        filterExpression: itemName.cp_Filter
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            window.location = linkToDownload + '?fileGuid=' + data.FileGuid + '&filename=' + data.FileName;
+                        } else {
+                            exportExlslErrorPopup.SetContentHtml(data.message);
+                            exportExlslErrorPopup.Show();
+                        }
+                    }
+                });
+            }
+
+            if (itemName.name.toString() === 'UsersView') {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("ExportTo", "User", null, Request.Url.Scheme)',
+                    data: {
+                        filterExpression: itemName.cp_Filter
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            window.location = linkToDownload + '?fileGuid=' + data.FileGuid + '&filename=' + data.FileName;
+                        } else {
+                            exportExlslErrorPopup.SetContentHtml(data.message);
+                            exportExlslErrorPopup.Show();
+                        }
+                    }
+                });
+            }
+
+            if (itemName.name.toString() === 'RoleView') {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("ExportTo", "Role", null, Request.Url.Scheme)',
+                    data: {
+                        filterExpression: itemName.cp_Filter
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            window.location = linkToDownload + '?fileGuid=' + data.FileGuid + '&filename=' + data.FileName;
+                        } else {
+                            exportExlslErrorPopup.SetContentHtml(data.message);
+                            exportExlslErrorPopup.Show();
+                        }
+                    }
+                });
+            }
+        }
+    }
+</script>
+
+@Html.DevExpress().Ribbon(
+    settings =>
+    {
+        settings.Name = $"rb{Model[0]}";
+        settings.AllowMinimize = false;
+        settings.ShowFileTab = false;
+        settings.ShowTabs = true;
+        settings.ShowGroupLabels = false;
+        settings.OneLineMode = true;
+
+        settings.ClientSideEvents.CommandExecuted = "OnCommandExecuted";
+
+        var actionTab = settings.Tabs.Add("Главная");
+        actionTab.Groups.Add(g =>
+        {
+            g.Name = "Commom";
+            g.Text = "Common";
+            g.ShowDialogBoxLauncher = false;
+
+            var rbRefresh = new RibbonButtonItem()
+            {
+                Name = "rbiRefresh",
+                Text = "Обновить"
+
+            };
+            rbRefresh.SmallImage.IconID = IconID.ActionsRefresh16x16office2013;
+            g.Items.Add(rbRefresh);
+
+            var rbiExportToExcel = new RibbonButtonItem()
+            {
+                Name = "rbiExportToExcel",
+                Text = "Экспорт в Excel"
+            };
+            rbiExportToExcel.SmallImage.IconID = IconID.ExportExporttoxlsx16x16office2013;
+            g.Items.Add(rbiExportToExcel);
+        });
+
+        var actionTab2 = settings.Tabs.Add("Действия");
+        actionTab2.Groups.Add(g =>
+        {
+            g.Name = "Actions";
+            g.Text = "Actions";
+            g.ShowDialogBoxLauncher = false;
+
+
+            var rbiAdd = new RibbonButtonItem()
+            {
+                Name = "rbiAdd",
+                Text = "Добавить",
+                Visible = AuthManager.User.IsInRole($"{Model[1]}Create")
+
+            };
+            rbiAdd.SmallImage.IconID = IconID.ActionsAdditem16x16office2013;
+            rbiAdd.ItemStyle.HoverStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#18a689");
+            g.Items.Add(rbiAdd);
+
+            var rbiDelete = new RibbonButtonItem()
+            {
+                Name = "rbiDelete",
+                Text = "Удалить",
+                Visible = AuthManager.User.IsInRole($"{Model[1]}Delete")
+            };
+            rbiDelete.SmallImage.IconID = IconID.ActionsDelete16x16office2013;
+            g.Items.Add(rbiDelete);
+
+
+            if (Model[1].ToString() != "Contact" && Model[1].ToString() != "Role")
+            {
+                var rbiSign = new RibbonButtonItem()
+                {
+                    Name = "rbiSign",
+                    Text = "Подписать"
+                };
+                rbiSign.SmallImage.IconID = IconID.ActionsApply16x16office2013;
+                g.Items.Add(rbiSign);
+
+
+                var rbiIrs = new RibbonButtonItem()
+                {
+                    Name = "rbiIRS",
+                    Text = "Экспорт в ИРС",
+                };
+                rbiIrs.SmallImage.IconID = IconID.ArrowsLast16x16;
+                g.Items.Add(rbiIrs);
+            }
+
+        });
+
+    }).GetHtml()

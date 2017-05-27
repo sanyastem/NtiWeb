@@ -1,0 +1,31 @@
+﻿@using ASUVP.Online.Web.Models
+
+@model List<PdfPageModel>
+
+@Html.DevExpress().DataView(settings =>
+{
+    settings.Name = "PdfPreview";
+    settings.CallbackRouteValues = new
+    {
+        Controller = "Document",
+        Action = "PdfPreview"
+    };
+    settings.SettingsTableLayout.RowsPerPage = 1;
+    settings.SettingsTableLayout.ColumnCount = 1;
+    settings.PagerSettings.AllButton.Visible = true;
+    settings.PagerSettings.Position = System.Web.UI.WebControls.PagerPosition.Bottom;
+    settings.SetItemTemplateContent(c =>
+    {
+        PdfPageModel pageModel = c.DataItem as PdfPageModel;
+        Html.DevExpress().BinaryImage(imageSettings =>
+        {
+            imageSettings.Name = "bimPdfPage" + pageModel.PageNumber;
+        }).Bind(pageModel.GetPageImageBytes()).Render();
+    });
+}).Bind(Model).GetHtml()
+
+<script type="text/javascript">
+    $("#CustomPdfRibbon_T0G0I0").click(function () {
+        window.open(ROOT_URL + 'document/download' + '?id=' + '@ViewBag.DocumentId', "_self");
+    });
+</script>

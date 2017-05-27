@@ -1,0 +1,16 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model Claim
+@Html.DevExpress().RoundPanel(settings =>
+{
+    settings.Name = "ClaimNoteView";
+    settings.Width = Unit.Percentage(100);
+    settings.AllowCollapsingByHeaderClick = true;
+    settings.ShowCollapseButton = true;
+    settings.HeaderText = "Примечание";
+    settings.Collapsed = true;
+    settings.SetContent(() =>
+    {
+        Html.RenderAction("ClaimNoteData");
+    });
+}).GetHtml()

@@ -727,6 +727,7 @@
     <Content Include="Views\Calculations\Index.cshtml" />
     <Content Include="Views\Mail\UpdateMail.cshtml" />
     <Content Include="Views\Mail\AgreementSendMail.cshtml" />
+    <Content Include="Views\Agreement\CreatePul.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

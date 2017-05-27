@@ -1,0 +1,68 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model Agreement
+<style>
+    .auditPaddingRows {
+        padding-top: 15px;
+    }
+</style>
+@{
+    var capt = "audit";
+}
+<div class="col-lg-12 auditPaddingRows">
+    <div class="col-lg-3">ID</div>
+    <div class="col-lg-9">
+        @Html.DevExpress().ButtonEdit(settings =>
+        {
+            settings.Name = capt + nameof(Agreement.DocumentId);
+            settings.ReadOnly = true;
+            settings.Width = Unit.Percentage(100);
+            settings.Properties.Buttons.Add("Копировать");
+            settings.Properties.ClientSideEvents.ButtonClick = "function(s,e) { AgreementAuditCopyIdToBuffer(s,e); }";
+        }).Bind(Model?.DocumentId).GetHtml()
+    </div>
+</div>
+<div class="col-lg-12 auditPaddingRows">
+    <div class="col-lg-3">Дата создания:</div>
+    <div class="col-lg-9">
+        @Html.DevExpress().TextBox(s =>
+        {
+            s.Width = Unit.Percentage(25);
+            s.ReadOnly = true;
+            s.Name = capt + nameof(Agreement.CreatedOn);
+        }).Bind(Model?.CreatedOn).GetHtml()
+    </div>
+</div>
+<div class="col-lg-12 auditPaddingRows">
+    <div class="col-lg-3">Кем создан:</div>
+    <div class="col-lg-9">
+        @Html.DevExpress().TextBox(s =>
+        {
+            s.Width = Unit.Percentage(100);
+            s.ReadOnly = true;
+            s.Name = capt + nameof(Agreement.CreatedByName);
+        }).Bind(Model?.CreatedByName).GetHtml()
+    </div>
+</div>
+<div class="col-lg-12 auditPaddingRows">
+    <div class="col-lg-3">Дата последней правки:</div>
+    <div class="col-lg-9">
+        @Html.DevExpress().TextBox(s =>
+        {
+            s.Width = Unit.Percentage(25);
+            s.ReadOnly = true;
+            s.Name = capt + nameof(Agreement.UpdatedOn);
+        }).Bind(Model?.UpdatedOn).GetHtml()
+    </div>
+</div>
+<div class="col-lg-12 auditPaddingRows">
+    <div class="col-lg-3">Кем изменен:</div>
+    <div class="col-lg-9">
+        @Html.DevExpress().TextBox(s =>
+        {
+            s.Width = Unit.Percentage(100);
+            s.ReadOnly = true;
+            s.Name = capt + nameof(Agreement.UpdatedByName);
+        }).Bind(Model?.UpdatedByName).GetHtml()
+    </div>
+</div>

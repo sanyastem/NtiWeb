@@ -1,0 +1,17 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model Agreement
+
+@Html.DevExpress().Panel(settings =>
+{
+    settings.Name = "AgreementSupplementaryPanel";
+    settings.Width = Unit.Percentage(100);
+    settings.SetContent(() =>
+    {
+        Html.RenderPartial("Details/_AgreementSupplementaryGridRibbon", Model.DocumentId);
+        Html.RenderAction("AgreementSupplementaryData", new { id = Model.DocumentId, onlyActive = true });
+    });
+}).GetHtml()
+
+
+

@@ -1,0 +1,21 @@
+﻿@model ASUVP.Online.Web.Models.Agreement.AgreementVM
+
+<script language="javascript" src="~/Content/js/es6-promise.min.js"></script>
+<script language="javascript" src="~/Content/js/ie_eventlistner_polyfill.js"></script>
+<script language="javascript" src="~/Content/js/cadesplugin_api.min.js"></script>
+
+<script src="~/Content/js/SignData.js"></script>
+<script src="~/Content/js/Agreement.js"></script>
+<div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff;">
+    <iframe name="frame" style="width: 30%; height: 30%; position: absolute; z-index: -1"></iframe>
+
+    @if (ViewBag.MessageSuccess != null)
+    {
+        <div class="alert alert-success alert-dismissable">@ViewBag.MessageSuccess</div>
+    }
+
+    @Html.Partial("_GridRibbon", new string[] { "AgreementView", "Agreement" })
+    @Html.Action("AgreementViewPartial", new { manager = Model?.Filter.AgrManagerId, template = Model?.Filter.TemplateId, active = Model?.Filter.OnlyActive })
+</div>
+<input id="agreementId" type="hidden" value="">
+<div id="filter">@Html.Partial("Filter/Filter", Model?.Filter)</div>

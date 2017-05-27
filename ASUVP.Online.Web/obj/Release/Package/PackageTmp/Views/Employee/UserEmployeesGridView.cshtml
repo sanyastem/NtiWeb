@@ -1,0 +1,16 @@
+﻿@{
+    var gridViewSettings = UserEmployeesGridViewSettings.Configure((Guid) ViewBag.UserId);
+
+    gridViewSettings.SetDetailRowTemplateContent(c => { Html.RenderAction("EmployeeRolesGridView", "Employee", new {employeeId = DataBinder.Eval(c.DataItem, "Id")}); });
+
+    gridViewSettings.SetEditFormTemplateContent(c => { @Html.RenderAction("AssignRolesToEmployee", "Employee", new {employeeId = DataBinder.Eval(c.DataItem, "Id")}); });
+
+    var gridView = Html.DevExpress().GridView(gridViewSettings);
+
+    if (ViewBag.EditError != null)
+    {
+        gridView.SetEditErrorText(ViewBag.EditError);
+    }
+}
+
+@gridView.Bind(Model).GetHtml()

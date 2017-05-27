@@ -1,0 +1,16 @@
+﻿@using ASUVP.Core.DataAccess.Model;
+@using ASUVP.Online.Web.Models.Lookup
+
+@model Guid?
+
+@Html.DevExpress().ComboBox(settings =>
+{
+    settings.Name = "TemplateId";
+    settings.Properties.DropDownStyle = DropDownStyle.DropDown;
+    settings.CallbackRouteValues = new { Controller = "Template", Action = "TemplateLookUp", Model };
+    settings.Properties.TextField = nameof(Template.TemplateName);
+    settings.Properties.ValueField = nameof(Template.Id);
+    settings.Properties.ValueType = typeof(Guid);
+
+    settings.Properties.CallbackPageSize = 15;
+}).BindList(TemplateLookup.GetTemplatesRange, TemplateLookup.GetTemplateById).Bind(Model).GetHtml()

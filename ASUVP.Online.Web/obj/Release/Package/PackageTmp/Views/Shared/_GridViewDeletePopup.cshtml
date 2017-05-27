@@ -1,0 +1,60 @@
+﻿@using System.Web.UI.WebControls
+@model DevExpressGridViewDeletingSettings
+
+<script type="text/javascript">
+    var key;
+
+    function OnCustomButtonClick(s, e) {
+        if (e.buttonID === "btnDelete") {
+            key = e.visibleIndex;
+            gridViewDeletePopup.Show();
+        }
+    }
+</script>
+
+@Html.DevExpress().PopupControl(settings =>
+{
+    settings.Name = "gridViewDeletePopup";
+    settings.ShowHeader = true;
+    settings.AllowDragging = true;
+    settings.AllowResize = true;
+    settings.Modal = true;
+    settings.PopupAction = PopupAction.None;
+    settings.CloseAction = CloseAction.OuterMouseClick;
+    settings.PopupElementID = Model.ParentId;
+    settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+    settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+
+    settings.MinWidth = Unit.Pixel(400);
+
+    settings.HeaderText = "Удалить?";
+
+    settings.SetContent(() =>
+    {
+        ViewContext.Writer.Write($"<p>{Model.Message}</p>");
+
+        ViewContext.Writer.Write("<div style=\"padding: 2px 8px 2px 0; float: right\">");
+
+        @Html.DevExpress().Button(buttonSettings =>
+        {
+            buttonSettings.Name = $"btn_{settings.Name}_cancel";
+            buttonSettings.Text = "Отмена";
+            buttonSettings.UseSubmitBehavior = false;
+            buttonSettings.ClientSideEvents.Click = "function() { " + settings.Name + ".Hide(); }";
+        }).Render();
+
+        ViewContext.Writer.Write("</div>");
+
+        ViewContext.Writer.Write("<div style=\"padding: 0 10px; float: right\">");
+
+        @Html.DevExpress().Button(buttonSettings =>
+        {
+            buttonSettings.Name = $"btn_{settings.Name}_delete";
+            buttonSettings.Text = "Удалить";
+            buttonSettings.UseSubmitBehavior = false;
+            buttonSettings.ClientSideEvents.Click = "function() {" + Model.ParentId + ".DeleteRow(key); " + settings.Name + ".Hide(); }";
+        }).Render();
+
+        ViewContext.Writer.Write("</div>");
+    });
+}).GetHtml()

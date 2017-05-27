@@ -1,0 +1,86 @@
+﻿.dxeButton { /*background : green;*/
+}
+
+.dxeButtonEditButton_Moderno { /*background : green;*/
+}
+
+.dxeButtonEditButtonHover_Moderno {
+    background: #18a689;
+}
+
+.dxeListBoxItemHover_Moderno {
+    background-color: #18a689;
+}
+
+.dxeButtonEditSys {
+    box-shadow: #18a689;
+}
+
+.dxeButtonEdit_Moderno {
+    box-shadow: #18a689;
+}
+
+
+.dxeFocused_Moderno {
+    border: 1px solid #18a689;
+    box-shadow: #18a689;
+}
+
+.dxh0 {
+    box-shadow: #18a689;
+}
+
+
+.dxbButtonHover_Moderno {
+    background: #18a689;
+        border: 1px solid #18a689;
+}
+
+.dxpc-closeBtnHover {
+    background: #18a689;
+    border: 1px solid #18a689;
+}
+
+.dxp-hoverDropDownButton {
+        background: #18a689;
+    border: 1px solid #18a999;
+}
+
+
+hr {
+    margin: 0;
+}
+
+.filterBox {
+    padding: 16px 0;
+    background-color: #ffffff;
+    border-color: #e7eaec;
+    margin-top: 20px;
+    width: 100%;
+}
+
+    .panel {
+        padding: 20px;
+        width: 480px;
+        background: #ffffff;
+        border: #282828 0px solid;
+        box-shadow: -11px 12px 23px rgba(0,0,0,.2);
+        font-family: Georgia;
+        margin-right: -11px;
+        z-index: 50;
+    }
+
+    .handle {
+        border-radius: 5px 0 0 5px;
+        background-color: #18a689;
+    }
+
+    #filter {
+        visibility: hidden
+    }
+
+	
+.dxm-item.dxm-hovered {
+                        background-color: #18a689;
+                        background: #18a689;
+}	
