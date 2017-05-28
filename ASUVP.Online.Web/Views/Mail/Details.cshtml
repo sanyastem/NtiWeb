@@ -4,10 +4,10 @@
     <h2>Просмотр сообщения</h2>
     <div class="m-t-md">
         
-        <a href="#" onclick="PrintElem()" style="margin-right: 30px;"><img class="dx-vam" src="/Content/img/mail.png" alt="Отправить письмо на печять" style="height: 45px;" />
+        <a href="#" onclick="PrintElem()" style="margin-right: 30px;"><img class="dx-vam" src="../Content/img/mail.png" alt="Отправить письмо на печять" style="height: 45px;" />
         <span>Отправить письмо на печять</span>
         </a>
-        <a href="@Url.Action("UpdateMail","Mail",new { id = ViewBag.ID })" target="_blank"><img class="dx-vam" src="/Content/img/doc_edit.png" alt="Редактировать письмо" style="height: 32px;" /><span>Редактировать письмо</span></a>
+        <a href="@Url.Action("UpdateMail","Mail",new { id = ViewBag.ID })" target="_blank"><img class="dx-vam" src="../Content/img/doc_edit.png" alt="Редактировать письмо" style="height: 32px;" /><span>Редактировать письмо</span></a>
             <h3>
                 <span class="font-noraml">Тема:</span>
                 @Model.Subject

@@ -1,4 +1,7 @@
-﻿<div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model UserNotificationList
+<div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
     <div class="container-fluid">
 
         @*<div class="btn-group btn-group-header row" style="padding-left:4px">
@@ -20,6 +23,7 @@
                 </td>
                 <td class="one-inrow-editor">
                     Уведомление
+                    @{Model}
                 </td>
             </tr>
             <tr>
@@ -57,7 +61,7 @@
             </tr>
             <tr>
                 <td class="left-label" colspan="2">
-                    Для просмотра или ответа перейдите по ссылке: <a href="/Home/Index"> Заявка №2225 от 15.09.2016. Первичное согласование заявки.</a>
+                    Для просмотра или ответа перейдите по ссылке: <a href="@Model.Url"> Заявка №2225 от 15.09.2016. Первичное согласование заявки.</a>
                 </td>
 
             </tr>
