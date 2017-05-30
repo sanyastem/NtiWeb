@@ -11,10 +11,10 @@
         <table style="width:100%">
             <tr>
                 <td class="left-label">
-                    Название:
+                    Отправитель:
                 </td>
                 <td class="one-inrow-editor">
-                    Заявка №2225 от 15.09.2016. Первичное согласование заявки.
+                    @Model.UserFromName
                 </td>
             </tr>
             <tr>
@@ -23,15 +23,14 @@
                 </td>
                 <td class="one-inrow-editor">
                     Уведомление
-                    @{Model}
                 </td>
             </tr>
             <tr>
                 <td class="left-label">
-                    Договор:
+                    Компания отправитель:
                 </td>
                 <td class="one-inrow-editor">
-                    РАТ/ЦО/13-ТУ-885//ЗАО "АвтоЦентр"
+                    @Model.CompanyToName
                 </td>
             </tr>
             <tr>
@@ -46,9 +45,7 @@
                     Текст:
                 </td>
                 <td class="one-inrow-editor">
-                    Вам поступила задача для первичного рассмотрения
-                    по заявке № 2225 от 15.09.2016.
-                    Договор: РАТ/ЦО/13-ТУ-885//ЗАО "АвтоЦентр"
+                    @Model.Text
                 </td>
             </tr>
             <tr>
@@ -56,12 +53,12 @@
                     Получено:
                 </td>
                 <td class="one-inrow-editor">
-                    15.09.2016.
+                    @Model.ViewDate
                 </td>
             </tr>
             <tr>
                 <td class="left-label" colspan="2">
-                    Для просмотра или ответа перейдите по ссылке: <a href="@Model.Url"> Заявка №2225 от 15.09.2016. Первичное согласование заявки.</a>
+                    Для просмотра или ответа перейдите по ссылке: <a href="@Model.Url / @Model.Id"> @Model.Text.</a>
                 </td>
 
             </tr>
