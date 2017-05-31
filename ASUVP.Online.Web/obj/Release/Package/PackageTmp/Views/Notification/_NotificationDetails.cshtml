@@ -11,10 +11,10 @@
         <table style="width:100%">
             <tr>
                 <td class="left-label">
-                    Название:
+                    Отправитель:
                 </td>
                 <td class="one-inrow-editor">
-                    @Model.
+                    @Model.UserFromName
                 </td>
             </tr>
             <tr>
@@ -27,7 +27,7 @@
             </tr>
             <tr>
                 <td class="left-label">
-                    Договор:
+                    Компания отправитель:
                 </td>
                 <td class="one-inrow-editor">
                     @Model.CompanyToName
@@ -58,7 +58,7 @@
             </tr>
             <tr>
                 <td class="left-label" colspan="2">
-                    Для просмотра или ответа перейдите по ссылке: <a href="@Model.Url"> Заявка №2225 от 15.09.2016. Первичное согласование заявки.</a>
+                    Для просмотра или ответа перейдите по ссылке: <a href="@Model.Url / @Model.Id"> @Model.Text.</a>
                 </td>
 
             </tr>
