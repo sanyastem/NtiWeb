@@ -9,7 +9,7 @@
         var buttonName = e.item.name;
 
         if (buttonName === 'rbiRefresh') {
-            NotificationView.Refresh();
+            location.reload();
         }
 
 
@@ -19,7 +19,7 @@
                 type: "POST",
                 url: "/Notification/UpdateNotification/" + ids,
                 data: { ids: ids },
-                success: function (data) { NotificationView.Refresh(); }
+                success: function () { location.reload(); }
             });
         }
     }
