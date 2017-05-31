@@ -98,7 +98,7 @@
 
             column.SetHeaderCaptionTemplateContent(c =>
             {
-                ViewContext.Writer.Write($"<img style=\"float:left; display: block;\" width=\"24\" height=\"24\" alt=\"Нет данных\" src=\"{Url.Content("~/Content/img/attach.png")}\" title=\"Вложение\" />");
+                ViewContext.Writer.Write($"<img style=\"float:left; display: block;\" width=\"24\" height=\"24\" alt=\"Нет данных\" src=\"{Url.Content("~/Content/img/attach.png")}\" title=\"Вложение\" onerror=\"this.style.visibility='hidden'\" />");
             });
 
             column.SetDataItemTemplateContent(c =>

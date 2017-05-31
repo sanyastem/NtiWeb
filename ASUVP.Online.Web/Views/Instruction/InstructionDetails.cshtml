@@ -37,6 +37,19 @@
                }).GetHtml()
 
             @Html.DevExpress().Button(s =>
+               {
+                   s.Name = "btnIrs";
+                   s.ClientEnabled = true;
+                   s.Images.Image.Url = Url.Content("~/Content/img/irs.png");
+                   s.Images.Image.Height = 32;
+                   s.Text = "Отмена инструкции";
+                   s.Height = Unit.Pixel(60);
+                   s.ControlStyle.CssClass = "btn";
+                   s.ClientSideEvents.Click = string.Format("function() {{ InstructionAnnOpen('{0}'); }}", Model.Id);
+                   s.Images.Image.UrlHottracked = Url.Content("~/Content/img/doc_del.png");
+               }).GetHtml()
+
+            @Html.DevExpress().Button(s =>
        {
            s.Name = "btnApplyEp";
            s.ClientEnabled = true;

@@ -1,4 +1,7 @@
-﻿<div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model UserNotificationList
+<div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
     <div class="container-fluid">
 
         @*<div class="btn-group btn-group-header row" style="padding-left:4px">
@@ -11,7 +14,7 @@
                     Название:
                 </td>
                 <td class="one-inrow-editor">
-                    Заявка №2225 от 15.09.2016. Первичное согласование заявки.
+                    @Model.
                 </td>
             </tr>
             <tr>
@@ -27,7 +30,7 @@
                     Договор:
                 </td>
                 <td class="one-inrow-editor">
-                    РАТ/ЦО/13-ТУ-885//ЗАО "АвтоЦентр"
+                    @Model.CompanyToName
                 </td>
             </tr>
             <tr>
@@ -42,9 +45,7 @@
                     Текст:
                 </td>
                 <td class="one-inrow-editor">
-                    Вам поступила задача для первичного рассмотрения
-                    по заявке № 2225 от 15.09.2016.
-                    Договор: РАТ/ЦО/13-ТУ-885//ЗАО "АвтоЦентр"
+                    @Model.Text
                 </td>
             </tr>
             <tr>
@@ -52,12 +53,12 @@
                     Получено:
                 </td>
                 <td class="one-inrow-editor">
-                    15.09.2016.
+                    @Model.ViewDate
                 </td>
             </tr>
             <tr>
                 <td class="left-label" colspan="2">
-                    Для просмотра или ответа перейдите по ссылке: <a href="/Home/Index"> Заявка №2225 от 15.09.2016. Первичное согласование заявки.</a>
+                    Для просмотра или ответа перейдите по ссылке: <a href="@Model.Url"> Заявка №2225 от 15.09.2016. Первичное согласование заявки.</a>
                 </td>
 
             </tr>
