@@ -13,6 +13,7 @@ function OnViewClaimClick(s, e) {
 /*function OnAddAgreementClick(s, e) {
     window.open(ROOT_URL + "Agreement/Create");
 }*/
+
 function ClaimBtnAuditItemClick(s, e, id) {
     if (e.item.name === "EditHistory") {
         claimAuditHistory.Show();
