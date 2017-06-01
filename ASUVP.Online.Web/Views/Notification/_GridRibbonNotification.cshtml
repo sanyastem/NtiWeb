@@ -1,7 +1,7 @@
 ﻿@model string[]
 <script>
     function ActiveTabChanged(s, e) {
-        NotificationView.callbackUrl = ROOT_URL + "/Notification/NotificationGridView?status=" + s.activeTabIndex + "&openTime=" + '@ViewBag.OpenTime';
+        NotificationView.callbackUrl = ROOT_URL + "../Notification/NotificationGridView?status=" + s.activeTabIndex + "&openTime=" + '@ViewBag.OpenTime';
         NotificationView.Refresh();
     }
 
@@ -17,7 +17,7 @@
             var ids = NotificationView.GetSelectedKeysOnPage();
             $.ajax({
                 type: "POST",
-                url: "/Notification/UpdateNotification/" + ids,
+                url: "../Notification/UpdateNotification/" + ids,
                 data: { ids: ids },
                 success: function () { location.reload(); }
             });
