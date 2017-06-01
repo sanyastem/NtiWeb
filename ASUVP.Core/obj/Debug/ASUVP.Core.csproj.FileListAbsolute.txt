@@ -25,3 +25,12 @@ C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core\bin\Debug\log4net.xml
 C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core\obj\Debug\ASUVP.Core.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core\obj\Debug\ASUVP.Core.dll
 C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core\obj\Debug\ASUVP.Core.pdb
+f:\github\NtiWeb\ASUVP.Core\bin\Debug\ASUVP.Core.dll
+f:\github\NtiWeb\ASUVP.Core\bin\Debug\ASUVP.Core.pdb
+f:\github\NtiWeb\ASUVP.Core\bin\Debug\Autofac.dll
+f:\github\NtiWeb\ASUVP.Core\bin\Debug\log4net.dll
+f:\github\NtiWeb\ASUVP.Core\bin\Debug\Autofac.xml
+f:\github\NtiWeb\ASUVP.Core\bin\Debug\log4net.xml
+f:\github\NtiWeb\ASUVP.Core\obj\Debug\ASUVP.Core.csprojResolveAssemblyReference.cache
+f:\github\NtiWeb\ASUVP.Core\obj\Debug\ASUVP.Core.dll
+f:\github\NtiWeb\ASUVP.Core\obj\Debug\ASUVP.Core.pdb
