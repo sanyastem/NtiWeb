@@ -10,7 +10,9 @@
 function OnViewClaimClick(s, e) {
     window.open(ROOT_URL + "Claim/details/" + e);
 }
-
+function OnAddAgreementClick(s, e) {
+    window.open(ROOT_URL + "Claim/Create");
+}
 function ClaimBtnAuditItemClick(s, e, id) {
     if (e.item.name === "EditHistory") {
         claimAuditHistory.Show();
@@ -34,6 +36,7 @@ function OnPreventContextMenu(evt) {
 function ClaimPrintClick(key) {
     window.location = ROOT_URL + 'document/preview' + '?id=' + key;
 }
+
 
 function ClaimOpenIrs(key) {
     window.open('les-lt://mskirs1/Traffic/Traffic/Command=RunReferenceEditor/Id=' + key);

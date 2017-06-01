@@ -1,0 +1,276 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Online.Web.Models.Entity
+@using ASUVP.Online.Web.Models.Lookup
+@using ASUVP.Core.DataAccess.Model;
+@using System.Text;
+
+@model EditableAgreement
+
+<link href="@Url.Content("~/Content/css/CardStyle.css")" rel="stylesheet">
+
+@{
+    Html.EnableClientValidation();
+}
+
+@using (Html.BeginForm("CreateOrEdit", "Agreement", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.DocumentId)
+    @Html.HiddenFor(m => m.PerformerRegNumber)
+
+    <div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+        <div class="container-fluid">
+
+            @Html.DevExpress().Button(s =>
+           {
+               s.Name = $"btnSave";
+               s.ClientEnabled = true;
+               s.Images.Image.Url = Url.Content("~/Content/img/wizard/save.png");
+               s.Images.Image.UrlHottracked = Url.Content("~/Content/img/wizard/save-white.png");
+               s.Images.Image.Height = 32;
+               s.Text = "Сохранить";
+               s.ToolTip = "Сохранение изменений";
+               s.Height = Unit.Pixel(60);
+               s.ControlStyle.CssClass = "btn";
+               s.UseSubmitBehavior = true;
+           }).GetHtml()
+
+            <table>
+                <tr>
+                    <td>Шаблон</td>
+                    <td colspan="3">
+                        @Html.DevExpress().ComboBoxFor(m => m.TemplateId, s =>
+                       {
+                           s.Properties.DropDownStyle = DropDownStyle.DropDown;
+                           s.CallbackRouteValues = new { Controller = "Template", Action = "TemplateLookup", Model.TemplateId };
+                           s.Width = Unit.Percentage(100);
+                           s.Name = nameof(EditableAgreement.TemplateId);
+                           s.Properties.TextField = nameof(Template.TemplateName);
+                           s.Properties.ValueField = nameof(Template.Id);
+                           s.Properties.ValueType = typeof(Guid);
+                           s.Properties.CallbackPageSize = 15;
+                           if (Model.DocumentId != null && Model.DocumentId != Guid.Empty) { s.ReadOnly = true; s.Enabled = false; }
+                           else { s.SelectedIndex = 0; }
+                       }).BindList(TemplateLookup.GetTemplatesRange, TemplateLookup.GetTemplateById).Bind(Model.TemplateId).GetHtml()
+                    </td>
+                </tr>
+                <tr>
+                    <td>Номер</td>
+                    <td colspan="2">
+                        <table style="width:95%">
+                            <tr>
+                                <td>
+                                    @Html.DevExpress().TextBoxFor(m => m.DocNumber, s =>
+                               {
+                                   s.Width = Unit.Percentage(100);
+                                   s.Name = nameof(EditableAgreement.DocNumber);
+                               }).Bind(Model.DocNumber).GetHtml()
+                                </td>
+                                <td class="textTable">Рег.номер</td>
+                                <td>
+                                    @Html.DevExpress().TextBoxFor(m => m.RegNumber, s =>
+                               {
+                                   s.Width = Unit.Percentage(100);
+                                   s.Name = nameof(EditableAgreement.RegNumber);
+                               }).Bind(Model.RegNumber).GetHtml()
+                                </td>
+                                <td class="textTable">Дата</td>
+                                <td class="dateEditor">
+                                    @Html.DevExpress().DateEditFor(m => m.DocDate, s =>
+                                   {
+                                       s.Width = Unit.Percentage(100);
+                                       s.Name = nameof(EditableAgreement.DocDate);
+                                       s.Properties.AllowUserInput = false;
+                                   }).Bind(Model.DocDate).GetHtml()
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        @Html.DevExpress().TextBoxFor(m => m.StatusId, s =>
+                               {
+                                   s.Width = Unit.Percentage(100);
+                                   s.Name = nameof(EditableAgreement.StatusId);
+                               }).Bind(Model.StatusName).GetHtml()
+                    </td>
+                </tr>
+                <tr>
+                    <td>Наименование</td>
+                    <td colspan="3">
+                        @Html.DevExpress().TextBoxFor(m => m.Name, s =>
+                   {
+                       s.Width = Unit.Percentage(100);
+                       s.Name = nameof(EditableAgreement.Name);
+                   }).Bind(Model.Name).GetHtml()
+                    </td>
+                </tr>
+                <tr>
+                    <td> Заказчик</td>
+                    <td class="comboBoxEditor">
+                        @*@Html.DevExpress().ComboBoxFor(m => m.CustomerCompanyId, s =>
+                            {
+                                s.Width = Unit.Percentage(100);
+                                s.Properties.DropDownStyle = DropDownStyle.DropDown;
+                                s.CallbackRouteValues = new { Controller = "Agreement", Action = "CustomerLookUp", Model };
+                                s.Properties.TextFormatString = @"{0}{1: ОКПО:##1} {2: ИНН:##2}";
+                                s.Properties.Columns.Add("ViewName", "Название", Unit.Pixel(300));
+                                s.Properties.Columns.Add("CodeOKPO", "ОКПО", Unit.Pixel(150));
+                                s.Properties.Columns.Add("CodeINN", "ИНН", Unit.Pixel(150));
+                                s.Properties.ValueField = nameof(Company.Id);
+                                s.Properties.ValueType = typeof(Guid);
+                                s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+                                s.Properties.CallbackPageSize = 15;
+                                s.Name = nameof(Agreement.CustomerCompanyId);
+                                s.SelectedIndex = 0;
+                            }).BindList(Model.Companies).Bind(Model.CustomerCompanyId).GetHtml()*@
+                        @Html.Action("CustomerCompanyGridLookup", "Company", new { selected = Model.CustomerCompanyId })
+
+
+                    </td>
+                    <td class="textBeforComboBoxEditor"> Исполнитель</td>
+                    <td class="comboBoxEditor">
+                        @*@Html.DevExpress().ComboBoxFor(m => m.PerformerCompanyId, s =>
+                            {
+                                s.Width = Unit.Percentage(100);
+                                s.Name = nameof(Agreement.PerformerCompanyId);
+                                s.Properties.DropDownStyle = DropDownStyle.DropDown;
+                                s.Properties.IncrementalFilteringMode = IncrementalFilteringMode.Contains;
+                                s.Properties.TextFormatString = @"{0}{1: ОКПО:##1}{2: ИНН:##2}";
+                                s.Properties.Columns.Add("ViewName", "Название", Unit.Pixel(300));
+                                s.Properties.Columns.Add("CodeOKPO", "ОКПО", Unit.Pixel(150));
+                                s.Properties.Columns.Add("CodeINN", "ИНН", Unit.Pixel(150));
+                                s.CallbackRouteValues = new { Controller = "Agreement", Action = "PerformerLookUp", Model };
+                                s.Properties.TextField = nameof(Company.ShortName);
+                                s.Properties.ValueField = nameof(Company.Id);
+                                s.Properties.ValueType = typeof(Guid);
+                                s.Properties.CallbackPageSize = 15;
+                                s.SelectedIndex = 0;
+                            }).BindList(Model.Companies).Bind(Model.PerformerCompanyId).GetHtml()*@
+                        @Html.Action("PerformerCompanyGridLookup", "Company", new { selected = Model.PerformerCompanyId })
+
+
+                    </td>
+                </tr>
+                <tr>
+                    <td> Адрес</td>
+                    <td class="comboBoxEditor">
+                        @Html.DevExpress().TextBoxFor(m => m.CustomerAddress, s =>
+                   {
+                       s.Width = Unit.Percentage(100);
+                       s.Name = nameof(EditableAgreement.CustomerAddress);
+                   }).Bind(Model.CustomerAddress).GetHtml()
+                    </td>
+                    <td class="textBeforComboBoxEditor">Адрес</td>
+                    <td class="comboBoxEditor">
+                        @Html.DevExpress().TextBoxFor(m => m.PerformerAddress, s =>
+                   {
+                       s.Width = Unit.Percentage(100);
+                       s.Name = nameof(EditableAgreement.PerformerAddressId);
+                   }).Bind(Model.PerformerAddress).GetHtml()
+                    </td>
+                </tr>
+                <tr>
+                    <td> Банковский реквизит</td>
+                    <td class="comboBoxEditor">
+                        @Html.DevExpress().TextBoxFor(m => m.CustomerBank, s =>
+                   {
+                       s.Width = Unit.Percentage(100);
+                       s.Name = nameof(EditableAgreement.CustomerBank);
+                   }).Bind(Model.CustomerBank).GetHtml()
+                    </td>
+                    <td class="textBeforComboBoxEditor"> Банковский реквизит</td>
+                    <td class="comboBoxEditor">
+                        @Html.DevExpress().TextBoxFor(m => m.PerformerBank, s =>
+                   {
+                       s.Width = Unit.Percentage(100);
+                       s.Name = nameof(EditableAgreement.PerformerBankId);
+                   }).Bind(Model.PerformerBank).GetHtml()
+                    </td>
+                </tr>
+                <tr>
+                    <td>Подписант</td>
+                    <td class="comboBoxEditor">
+                        @Html.DevExpress().TextBoxFor(m => m.CustomerContact, s =>
+                   {
+                       s.Width = Unit.Percentage(100);
+                       s.Name = nameof(EditableAgreement.CustomerContact);
+                   }).Bind(Model.CustomerContact).GetHtml()
+                    </td>
+                    <td class="textBeforComboBoxEditor">Подписант</td>
+                    <td class="comboBoxEditor">
+                        @Html.DevExpress().TextBoxFor(m => m.PerformerContact, s =>
+                   {
+                       s.Width = Unit.Percentage(100);
+                       s.Name = nameof(EditableAgreement.PerformerContact);
+                   }).Bind(Model.PerformerContact).GetHtml()
+                    </td>
+                </tr>
+                <tr>
+                    <td>Действует С</td>
+                    <td colspan="4">
+                        <table style="width:auto">
+                            <tr>
+                                <td class="dateEditor">
+                                    @Html.DevExpress().DateEditFor(m => m.DateBeg, s =>
+                       {
+                           s.Width = Unit.Percentage(100);
+                           s.Properties.AllowUserInput = false;
+                           s.Name = nameof(EditableAgreement.DateBeg);
+                       }).Bind(Model.DateBeg).GetHtml()
+                                </td>
+                                <td class="textTableAuto1">
+                                    По
+                                </td>
+                                <td class="dateEditor">
+
+                                    @Html.DevExpress().DateEditFor(m => m.DateEnd, s =>
+                                   {
+                                       s.Width = Unit.Percentage(100);
+                                       s.Name = nameof(EditableAgreement.DateEnd);
+                                       s.Properties.AllowUserInput = false;
+                                   }).GetHtml()
+
+                                </td>
+                                <td class="textTableAuto2">
+                                    Дата завершения
+                                </td>
+                                <td class="dateEditor">
+                                    @Html.DevExpress().DateEditFor(m => m.DateStop, s =>
+                                   {
+                                       s.Width = Unit.Percentage(100);
+                                       s.Properties.AllowUserInput = false;
+                                       s.Name = nameof(EditableAgreement.DateStop);
+                                   }).Bind(Model.DateStop).GetHtml()
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%">Примечание</td>
+                    <td colspan="7">
+                        @Html.DevExpress().MemoFor(m => m.Note, s =>
+                   {
+                       s.Width = Unit.Percentage(100);
+                       s.Name = nameof(EditableAgreement.Note);
+                       s.Properties.Rows = 3;
+                   }).Bind(Model.Note).GetHtml()
+                    </td>
+                </tr>
+            </table>
+
+            @Html.HiddenFor(m => m.TemplateId)
+
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var customer = '@Model.CustomerName';
+        var perfomer = '@Model.PerformerName';
+        CustomerCompanyId.AddItem(customer.replace(/&quot;/g, '\"').replace(/&#171;/g, '\"').replace(/&#187;/g, '\"'), '@Model.CustomerCompanyId');
+        CustomerCompanyId.SetValue('@Model.CustomerCompanyId');
+        PerformerCompanyId.AddItem(perfomer.replace(/&quot;/g, '\"').replace(/&#171;/g, '\"').replace(/&#187;/g, '\"'), '@Model.PerformerCompanyId');
+        PerformerCompanyId.SetValue('@Model.PerformerCompanyId');
+    });
+</script>
