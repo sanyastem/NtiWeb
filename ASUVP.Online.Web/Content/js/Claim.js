@@ -10,9 +10,9 @@
 function OnViewClaimClick(s, e) {
     window.open(ROOT_URL + "Claim/details/" + e);
 }
-/*function OnAddAgreementClick(s, e) {
-    window.open(ROOT_URL + "Agreement/Create");
-}*/
+function OnAddClaimClick(s, e) {
+    window.open(ROOT_URL + "Claim/Create");
+}
 
 function ClaimBtnAuditItemClick(s, e, id) {
     if (e.item.name === "EditHistory") {
