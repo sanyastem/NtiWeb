@@ -729,6 +729,7 @@
     <Content Include="Views\Mail\AgreementSendMail.cshtml" />
     <Content Include="Views\Agreement\CreatePul.cshtml" />
     <Content Include="Views\Claim\CreateOrEdit.cshtml" />
+    <Content Include="Views\Claim\_addClaim.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
