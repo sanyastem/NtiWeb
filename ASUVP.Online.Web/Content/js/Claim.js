@@ -11,7 +11,9 @@ function OnViewClaimClick(s, e) {
     window.open(ROOT_URL + "Claim/details/" + e);
 }
 function OnAddClaimClick(s, e) {
-    window.open(ROOT_URL + "Claim/Create");
+    
+    $('#addClaim').dialog("open");
+   
 }
 
 function ClaimBtnAuditItemClick(s, e, id) {
@@ -76,3 +78,10 @@ function ClaimOpenIrs(key) {
 //    }
 //});
 
+$(function () {
+
+    $('#addClaim').dialog({
+        autoOpen: false,
+        width: '50%'
+    });
+});
