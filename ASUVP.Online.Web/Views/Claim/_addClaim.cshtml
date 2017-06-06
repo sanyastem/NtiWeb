@@ -1,0 +1,13 @@
+﻿@using (Html.BeginForm("Action",
+                        "Controller",
+                        new { ReturnUrl = ViewBag.ReturnUrl },
+                        FormMethod.Post, new { @class = "addForm" }))
+{
+<p>Выбирете шаблон</p>
+<select class="template">
+<option>Шаблон 1</option>
+<option>Шаблон 2</option>
+</select>
+<br>
+<input class="btn sbmt" type="submit" value="Открыть">
+}

@@ -1,5 +1,46 @@
 ﻿@model ASUVP.Online.Web.Models.Claim.ClaimVM
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+        integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+        crossorigin="anonymous"></script>
 <script src="~/Content/js/Claim.js"></script>
+<style>
+    #addClaim{
+        background-color: #fff;
+    }
+    #addClaim p{
+        text-align:center;
+    }
+    .ui-dialog-titlebar{
+        background: #f3f3f4;
+        position:relative;
+        height: 25px;
+    }
+    .sbmt{
+        background-color: #1ab394;
+        color: white;
+        position: absolute;
+        top: 60px;
+        right: 0px;
+    }
+    .template{
+        width:100%;
+    }
+
+    .addForm{
+        position:relative;
+        width:80%;
+        margin:auto;
+    }
+    .ui-dialog-titlebar-close{
+        background-color: #1ab394;
+        border: 0;
+        color: #fff;
+        border-radius: 51px;
+        position: absolute;
+        right: 5px;
+        bottom: 3px;
+    }
+</style>
 
 <div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
     <iframe name="frame" style="width: 30%; height: 30%; position: absolute; z-index: -1"></iframe>
@@ -28,3 +69,7 @@
 <input id="ClaimId" type="hidden" value="">
 
 <div id="filter">@Html.Partial("Filter/Filter", Model?.Filter)</div>
+
+<div id="addClaim">
+    @Html.Partial("_addClaim")
+</div>
