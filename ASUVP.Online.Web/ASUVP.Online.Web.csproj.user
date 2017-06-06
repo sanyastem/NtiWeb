@@ -12,6 +12,7 @@
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
     <NameOfLastUsedPublishProfile>NTI</NameOfLastUsedPublishProfile>
+    <ToolsVersionPromptShown>2.3</ToolsVersionPromptShown>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
@@ -23,7 +24,7 @@
           <AspNetDebugging>True</AspNetDebugging>
           <SilverlightDebugging>False</SilverlightDebugging>
           <NativeDebugging>False</NativeDebugging>
-          <SQLDebugging>True</SQLDebugging>
+          <SQLDebugging>False</SQLDebugging>
           <ExternalProgram>
           </ExternalProgram>
           <StartExternalURL>

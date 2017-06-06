@@ -1,12 +1,17 @@
-﻿@using (Html.BeginForm("Action",
+﻿@using ASUVP.Core.DataAccess.Model
+@model IEnumerable<Template>
+@using (Html.BeginForm("Action",
                         "Controller",
                         new { ReturnUrl = ViewBag.ReturnUrl },
                         FormMethod.Post, new { @class = "addForm" }))
 {
 <p>Выбирете шаблон</p>
 <select class="template">
-<option>Шаблон 1</option>
-<option>Шаблон 2</option>
+   @foreach (var item in model)
+   {
+    <option value="@item.Id">@item.TemplateName</option>
+   }
+
 </select>
 <br>
 <input class="btn sbmt" type="submit" value="Открыть">

@@ -33,3 +33,10 @@ D:\NtiWeb\ASUVP.Core.Domain\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 D:\NtiWeb\ASUVP.Core.Domain\obj\Debug\ASUVP.Core.Domain.csprojResolveAssemblyReference.cache
 D:\NtiWeb\ASUVP.Core.Domain\obj\Debug\ASUVP.Core.Domain.dll
 D:\NtiWeb\ASUVP.Core.Domain\obj\Debug\ASUVP.Core.Domain.pdb
+D:\GitHub\NtiWeb\ASUVP.Core.Domain\bin\Debug\ASUVP.Core.Domain.dll
+D:\GitHub\NtiWeb\ASUVP.Core.Domain\bin\Debug\ASUVP.Core.Domain.pdb
+D:\GitHub\NtiWeb\ASUVP.Core.Domain\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\GitHub\NtiWeb\ASUVP.Core.Domain\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\GitHub\NtiWeb\ASUVP.Core.Domain\obj\Debug\ASUVP.Core.Domain.csprojResolveAssemblyReference.cache
+D:\GitHub\NtiWeb\ASUVP.Core.Domain\obj\Debug\ASUVP.Core.Domain.dll
+D:\GitHub\NtiWeb\ASUVP.Core.Domain\obj\Debug\ASUVP.Core.Domain.pdb

@@ -43,3 +43,12 @@ D:\NtiWeb\ASUVP.Core\bin\Debug\log4net.xml
 D:\NtiWeb\ASUVP.Core\obj\Debug\ASUVP.Core.csprojResolveAssemblyReference.cache
 D:\NtiWeb\ASUVP.Core\obj\Debug\ASUVP.Core.dll
 D:\NtiWeb\ASUVP.Core\obj\Debug\ASUVP.Core.pdb
+D:\GitHub\NtiWeb\ASUVP.Core\bin\Debug\ASUVP.Core.dll
+D:\GitHub\NtiWeb\ASUVP.Core\bin\Debug\ASUVP.Core.pdb
+D:\GitHub\NtiWeb\ASUVP.Core\bin\Debug\Autofac.dll
+D:\GitHub\NtiWeb\ASUVP.Core\bin\Debug\log4net.dll
+D:\GitHub\NtiWeb\ASUVP.Core\bin\Debug\Autofac.xml
+D:\GitHub\NtiWeb\ASUVP.Core\bin\Debug\log4net.xml
+D:\GitHub\NtiWeb\ASUVP.Core\obj\Debug\ASUVP.Core.csprojResolveAssemblyReference.cache
+D:\GitHub\NtiWeb\ASUVP.Core\obj\Debug\ASUVP.Core.dll
+D:\GitHub\NtiWeb\ASUVP.Core\obj\Debug\ASUVP.Core.pdb

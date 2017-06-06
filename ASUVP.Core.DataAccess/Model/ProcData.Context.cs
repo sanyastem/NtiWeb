@@ -520,6 +520,10 @@ namespace ASUVP.Core.DataAccess.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ClaimRouteDetails>("ClaimRouteDetailsGet", stationFromIdParameter, stationToIdParameter, optionsParameter);
         }
+        public virtual ObjectResult<Template> GetTemplate()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Template>("TemplateGetClaim");
+        }
     
         public virtual ObjectResult<DocumentESignature> DocumentESignatureGet(Guid? documentId)
         {

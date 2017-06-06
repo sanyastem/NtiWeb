@@ -104,7 +104,11 @@ namespace ASUVP.Online.Web.Controllers
 
             return PartialView("_ClaimViewPartial", model);
         }
-
+        public ActionResult TemplateAdd()
+        {
+            var model = _service.GetTemplate();
+            return View("Claim/_addClaim",model);
+        }
         [HttpGet]
         public ActionResult Details(Guid id)
         {

@@ -239,7 +239,6 @@
     <Compile Include="Hubs\Connections.cs" />
     <Compile Include="Hubs\NotificationHub.cs" />
     <Compile Include="Models\ActVM.cs" />
-    <Compile Include="Models\Claim\ClaimTemplate.cs" />
     <Compile Include="Models\Lookup\TemplateLookup.cs" />
     <Compile Include="Models\MailVM.cs" />
     <Compile Include="Models\NewMailVM.cs" />
@@ -836,7 +835,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54873</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
