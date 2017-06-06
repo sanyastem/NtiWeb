@@ -82,6 +82,7 @@ $(function () {
 
     $('#addClaim').dialog({
         autoOpen: false,
-        width: '50%'
+        width: '50%',
+        closeText: "X"
     });
 });
