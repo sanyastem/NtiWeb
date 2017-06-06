@@ -208,6 +208,9 @@
     <Compile Include="Model\Template.cs">
       <DependentUpon>ProcData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\TemplateGetClaim_Result.cs">
+      <DependentUpon>ProcData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\UserDetailsList.cs">
       <DependentUpon>ProcData.tt</DependentUpon>
     </Compile>

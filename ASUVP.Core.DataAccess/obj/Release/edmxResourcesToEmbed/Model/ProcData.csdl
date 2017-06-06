@@ -432,6 +432,7 @@
       <Parameter Name="AgreementId" Mode="In" Type="Guid" />
       <Parameter Name="OnlyActive" Mode="In" Type="Boolean" />
     </FunctionImport>
+    <FunctionImport Name="TemplateGetClaim" ReturnType="Collection(ASUVP.Core.DataAccess.Model.TemplateGetClaim_Result)" />
   </EntityContainer>
   <ComplexType Name="Company">
     <Property Type="Guid" Name="Id" Nullable="false" />
@@ -1230,5 +1231,19 @@
     <Property Type="Int32" Name="DocStatus" Nullable="false" />
     <Property Type="String" Name="HasAttachmentImgPath" Nullable="true" MaxLength="256" />
     <Property Type="String" Name="HasAttachmentHint" Nullable="true" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="TemplateGetClaim_Result">
+    <Property Type="Guid" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
+    <Property Type="DateTime" Name="DateBeg" Nullable="true" />
+    <Property Type="DateTime" Name="DateEnd" Nullable="true" />
+    <Property Type="Guid" Name="TemplateTypeId" Nullable="false" />
+    <Property Type="Guid" Name="OwnerFirmId" Nullable="true" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="false" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="23" />
+    <Property Type="Guid" Name="UpdatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="UpdatedOn" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+    <Property Type="Binary" Name="RecTimeStamp" Nullable="false" MaxLength="8" />
   </ComplexType>
 </Schema>

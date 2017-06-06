@@ -16,7 +16,7 @@ namespace ASUVP.Online.Services
         List<ClaimList> GetClaimsByParametrs(string period, string dateBeg, string dateEnd,
             string shipment, string shipmentBeg, string shipmentEnd,
             string coordination, string signing, string agreement, string manager, string approvalStatus, string signingStatu);
-        List<Template> GetTemplate();
+        List<TemplateGetClaim_Result> GetTemplate();
         List<ClaimRouteDetails> GetClaimRouteDetails(string stFrom, string stTo);
 
         Claim GetClaim(Guid id);
@@ -147,11 +147,11 @@ namespace ASUVP.Online.Services
             }
         }
 
-        public List<Template> GetTemplate()
+        public List<TemplateGetClaim_Result> GetTemplate()
         {
             using (var context = new ProcData())
             {
-                return context.GetTemplate().ToList();
+                return context.TemplateGetClaim().ToList();
             }
         }
     }

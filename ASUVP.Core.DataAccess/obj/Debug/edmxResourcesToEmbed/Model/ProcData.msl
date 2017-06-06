@@ -997,5 +997,23 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="TemplateGetClaim" FunctionName="ASUVP.Core.DataAccess.Model.Store.TemplateGetClaim">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ASUVP.Core.DataAccess.Model.TemplateGetClaim_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DateBeg" ColumnName="DateBeg" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="TemplateTypeId" ColumnName="TemplateTypeId" />
+          <ScalarProperty Name="OwnerFirmId" ColumnName="OwnerFirmId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="RecTimeStamp" ColumnName="RecTimeStamp" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>
