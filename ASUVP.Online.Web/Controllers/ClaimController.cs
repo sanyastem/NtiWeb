@@ -109,6 +109,14 @@ namespace ASUVP.Online.Web.Controllers
             var model = _service.GetTemplate();
             return PartialView("_addClaim", model);
         }
+
+        public ActionResult TemplateAddForm()
+        {
+            var model = _service.GetTemplate();
+            return PartialView("_CreateOrEdit", model);
+        }
+
+
         [HttpGet]
         public ActionResult Details(Guid id)
         {

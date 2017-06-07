@@ -85,4 +85,15 @@ $(function () {
         width: '50%',
         closeText: "X"
     });
+    $('#addClaimSend').dialog({
+        autoOpen: false,
+        width: '80%',
+        closeText: "X",
+        dialogClass: 'formAdd1'
+    });
+    $('.collapse').collapse();
+    $(".date").datepicker();
+    $('#sub').click(function () {
+        $('#addClaimSend').dialog("open");
+    });
 });

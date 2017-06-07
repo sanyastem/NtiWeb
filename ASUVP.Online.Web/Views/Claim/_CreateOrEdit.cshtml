@@ -1,0 +1,729 @@
+﻿@using (Html.BeginForm("Action",
+                                                            "Controller",
+                                                            new { ReturnUrl = ViewBag.ReturnUrl },
+                                                            FormMethod.Post, new { @class = "addForm" }))
+{
+    <div class="container-fluid claim">
+        <div class="row">
+            <input class="form-control" type="text" placeholder="Шаблон">
+        </div>
+
+        <div class="row">
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                            Договор: РАТ/Нск/15-ТУ-55//ООО «Партнер-Агросервис»
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="accordion-body collapse in">
+                        <div class="accordion-inner">
+                            <label>Договор</label>
+                            <input class="form-control" type="text">
+                            <label>Заказчик</label>
+                            <input class="form-control" type="text">
+                            <label>Исполнитель</label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2" style="padding: 0;">
+                <input class="form-control" type="text" placeholder="Номер">
+            </div>
+            <div class="col-md-2">
+                <input class="form-control" type="text" placeholder="Рег. номер">
+            </div>
+            <div class="col-md-2">
+                <input class="form-control date" type="text" placeholder="Дата">
+            </div>
+            <div class="col-md-6" style="padding: 0;">
+                <input class="form-control" type="text" placeholder="Заявка согласована по плану">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3" style="padding: 0;">
+                <input class="form-control date" type="text" placeholder="Погрузка с">
+            </div>
+            <div class="col-md-3">
+                <input class="form-control date" type="text" placeholder="по">
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" placeholder="Дата">
+            </div>
+            <div class="col-md-3" style="padding: 0;">
+                <input class="form-control" type="text" placeholder="Тип плана">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse2">
+                            Состояние заявки
+                        </a>
+                    </div>
+                    <div id="collapse2" class="accordion-body collapse in">
+                        <div class="accordion-inner">
+                            <label>Согласование Заявки</label>
+                            <input class="form-control" type="text">
+                            <label>Согласование графика погрузки</label>
+                            <input class="form-control" type="text">
+                            <label>Протокол</label>
+                            <input class="form-control" type="text">
+                            <label>Счет на предоплату</label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">
+                            Подвижной состав
+                        </a>
+                    </div>
+                    <div id="collapse3" class="accordion-body collapse in">
+                        <div class="accordion-inner">
+                            <div class="col-md-4">
+                                <label>Парк контейнеров</label>
+                                <input class="form-control" type="text">
+                                <label>Парк вагонов</label>
+                                <input class="form-control" type="text">
+                                <label>Вид группы</label>
+                                <input class="form-control" type="text">
+                            </div>
+                            <div class="col-md-4">
+                                <label>Род контейнеров</label>
+                                <input class="form-control" type="text">
+                                <label>Род вагонов</label>
+                                <input class="form-control" type="text">
+                                <label>Вид отправки</label>
+                                <input class="form-control" type="text">
+                            </div>
+                            <div class="col-md-4">
+                                <label>Тип вагонов</label>
+                                <input class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="padding-left: 0;">
+                <label>Страна отправления</label>
+                <input class="form-control" type="text">
+            </div>
+            <div class="col-md-6" style="padding-right: 0;">
+                <label>Страна назначения</label>
+                <input class="form-control" type="text">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="padding-left: 0;">
+                <label>Станция отправления</label>
+                    <div class="row">
+                        <div class="col-md-4"><input class="form-control" type="text" placeholder="893500"></div>
+                        <div class="col-md-4"><input class="form-control" type="text" placeholder="КРС"></div>
+                        <div class="col-md-4"><input class="form-control" type="text" placeholder="КАНСК-ЕНИСЕЙСКИЙ"></div>
+                    </div>
+            </div>
+            <div class="col-md-6" style="padding-right: 0;">
+                <label>Станция назначения</label>
+                <div class="row">
+                    <div class="col-md-4"><input class="form-control" type="text" placeholder="893500"></div>
+                    <div class="col-md-4"><input class="form-control" type="text" placeholder="КРС"></div>
+                    <div class="col-md-4"><input class="form-control" type="text" placeholder="КАНСК-ЕНИСЕЙСКИЙ"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4" style="padding-left: 0;">
+                <input class="form-control" type="text" placeholder="Вид сообщения">
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="text" placeholder="Тарифное расстояние(км)">
+            </div>
+            <div class="col-md-4" style="padding-right: 0;">
+                <input class="form-control" type="text" placeholder="Нормативный срок доставки (дней)">
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="row">
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse4">
+                            Детализация маршрута КАНСК-ЕНИСЕЙСКИЙ->МАЛЬТА
+                        </a>
+                    </div>
+                    <div id="collapse4" class="accordion-body collapse in">
+                        <div class="accordion-inner">
+                            <div id="RouteDetails_CRC" class="dx-borderBox dxrpCW">
+                                <table class="dxgvControl_Moderno dxgv" id="ClaimRouteDetails" style="width:100%;border-collapse:separate;">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table id="ClaimRouteDetails_DXMainTable" class="dxgvTable_Moderno" onclick="ASPx.GTableClick('ClaimRouteDetails', event);" ondblclick="ASPx.GVTableDblClick('ClaimRouteDetails', event);" oncontextmenu="return ASPx.GVContextMenu('ClaimRouteDetails',event);" style="width:100%;empty-cells:show;table-layout:fixed;overflow:hidden;text-overflow:ellipsis;">
+                                                    <tbody>
+                                                        <tr class="dxgvArm">
+                                                            <td style="width:5%;"></td>
+                                                            <td style="width:12%;"></td>
+                                                            <td style="width:12%;"></td>
+                                                            <td style="width:12%;"></td>
+                                                            <td style="width:12%;"></td>
+                                                            <td style="width:12%;"></td>
+                                                            <td style="width:12%;"></td>
+                                                            <td style="width:12%;"></td>
+                                                            <td style="width:12%;"></td>
+                                                        </tr>
+                                                        <tr id="ClaimRouteDetails_DXHeadersRow0">
+                                                            <td id="ClaimRouteDetails_col0" class="dxgvHeader_Moderno" style="text-align:Center;border-top-width:0px;border-left-width:0px;">
+                                                                <table style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="text-align:Center;">№</td>
+                                                                            <td style="width:1px;text-align:right;"><span class="dx-vam">&nbsp;</span><img class="dxGridView_gvHeaderFilter_Moderno dxgv__hfb dx-vam" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Not filtered" style="cursor:default;"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                            <td id="ClaimRouteDetails_col1" class="dxgvHeader_Moderno" style="text-align: center; border-top-width: 0px; border-left-width: 0px;">
+                                                                <table style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="text-align:Center;">Страна</td>
+                                                                            <td style="width:1px;text-align:right;"><span class="dx-vam">&nbsp;</span><img class="dxGridView_gvHeaderFilter_Moderno dxgv__hfb dx-vam" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Not filtered" style="cursor:default;"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                            <td id="ClaimRouteDetails_col2" class="dxgvHeader_Moderno" style="text-align: center; border-top-width: 0px; border-left-width: 0px;">
+                                                                <table style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="text-align:Center;">Станция входа (код)</td>
+                                                                            <td style="width:1px;text-align:right;"><span class="dx-vam">&nbsp;</span><img class="dxGridView_gvHeaderFilter_Moderno dxgv__hfb dx-vam" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Not filtered" style="cursor:default;"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                            <td id="ClaimRouteDetails_col3" class="dxgvHeader_Moderno" style="text-align:Center;border-top-width:0px;border-left-width:0px;">
+                                                                <table style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="text-align:Center;">Станция входа</td>
+                                                                            <td style="width:1px;text-align:right;"><span class="dx-vam">&nbsp;</span><img class="dxGridView_gvHeaderFilter_Moderno dxgv__hfb dx-vam" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Not filtered" style="cursor:default;"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                            <td id="ClaimRouteDetails_col4" class="dxgvHeader_Moderno" style="text-align:Center;border-top-width:0px;border-left-width:0px;">
+                                                                <table style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="text-align:Center;">Дорога входа</td>
+                                                                            <td style="width:1px;text-align:right;"><span class="dx-vam">&nbsp;</span><img class="dxGridView_gvHeaderFilter_Moderno dxgv__hfb dx-vam" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Not filtered" style="cursor:default;"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                            <td id="ClaimRouteDetails_col5" class="dxgvHeader_Moderno" style="text-align:Center;border-top-width:0px;border-left-width:0px;">
+                                                                <table style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="text-align:Center;">Станция выхода (код)</td>
+                                                                            <td style="width:1px;text-align:right;"><span class="dx-vam">&nbsp;</span><img class="dxGridView_gvHeaderFilter_Moderno dxgv__hfb dx-vam" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Not filtered" style="cursor:default;"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                            <td id="ClaimRouteDetails_col6" class="dxgvHeader_Moderno" style="text-align:Center;border-top-width:0px;border-left-width:0px;">
+                                                                <table style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="text-align:Center;">Станция выхода</td>
+                                                                            <td style="width:1px;text-align:right;"><span class="dx-vam">&nbsp;</span><img class="dxGridView_gvHeaderFilter_Moderno dxgv__hfb dx-vam" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Not filtered" style="cursor:default;"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                            <td id="ClaimRouteDetails_col7" class="dxgvHeader_Moderno" style="text-align:Center;border-top-width:0px;border-left-width:0px;">
+                                                                <table style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="text-align:Center;">Дорога выхода</td>
+                                                                            <td style="width:1px;text-align:right;"><span class="dx-vam">&nbsp;</span><img class="dxGridView_gvHeaderFilter_Moderno dxgv__hfb dx-vam" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Not filtered" style="cursor:default;"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                            <td id="ClaimRouteDetails_col8" class="dxgvHeader_Moderno" style="text-align:Center;border-top-width:0px;border-left-width:0px;border-right-width:0px;">
+                                                                <table style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td style="text-align:Center;">Расстояние (км)</td>
+                                                                            <td style="width:1px;text-align:right;"><span class="dx-vam">&nbsp;</span><img class="dxGridView_gvHeaderFilter_Moderno dxgv__hfb dx-vam" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Not filtered" style="cursor:default;"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="ClaimRouteDetails_DXFilterRow" class="dxgvFilterRow_Moderno">
+                                                            <td class="dxgv" style="text-align:Right;">
+                                                                <table class="dxeTextBoxSys dxeTextBox_Moderno dxeTextBoxDefaultWidthSys" id="ClaimRouteDetails_DXFREditorcol0" style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="dxic" style="width:100%;"><input class="dxeEditArea_Moderno dxeEditAreaSys" id="ClaimRouteDetails_DXFREditorcol0_I" name="ClaimRouteDetails$DXFREditorcol0" onfocus="ASPx.EGotFocus('ClaimRouteDetails_DXFREditorcol0')" onblur="ASPx.ELostFocus('ClaimRouteDetails_DXFREditorcol0')" onchange="ASPx.EValueChanged('ClaimRouteDetails_DXFREditorcol0')" type="text"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                
+                                                            </td>
+                                                            <td class="dxgv">
+                                                                <table class="dxeTextBoxSys dxeTextBox_Moderno dxeTextBoxDefaultWidthSys" id="ClaimRouteDetails_DXFREditorcol1" style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="dxic" style="width:100%;"><input class="dxeEditArea_Moderno dxeEditAreaSys" id="ClaimRouteDetails_DXFREditorcol1_I" name="ClaimRouteDetails$DXFREditorcol1" onfocus="ASPx.EGotFocus('ClaimRouteDetails_DXFREditorcol1')" onblur="ASPx.ELostFocus('ClaimRouteDetails_DXFREditorcol1')" onchange="ASPx.EValueChanged('ClaimRouteDetails_DXFREditorcol1')" type="text"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                
+                                                            </td>
+                                                            <td class="dxgv">
+                                                                <table class="dxeTextBoxSys dxeTextBox_Moderno dxeTextBoxDefaultWidthSys" id="ClaimRouteDetails_DXFREditorcol2" style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="dxic" style="width:100%;"><input class="dxeEditArea_Moderno dxeEditAreaSys" id="ClaimRouteDetails_DXFREditorcol2_I" name="ClaimRouteDetails$DXFREditorcol2" onfocus="ASPx.EGotFocus('ClaimRouteDetails_DXFREditorcol2')" onblur="ASPx.ELostFocus('ClaimRouteDetails_DXFREditorcol2')" onchange="ASPx.EValueChanged('ClaimRouteDetails_DXFREditorcol2')" type="text"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                
+                                                            </td>
+                                                            <td class="dxgv">
+                                                                <table class="dxeTextBoxSys dxeTextBox_Moderno dxeTextBoxDefaultWidthSys" id="ClaimRouteDetails_DXFREditorcol3" style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="dxic" style="width:100%;"><input class="dxeEditArea_Moderno dxeEditAreaSys" id="ClaimRouteDetails_DXFREditorcol3_I" name="ClaimRouteDetails$DXFREditorcol3" onfocus="ASPx.EGotFocus('ClaimRouteDetails_DXFREditorcol3')" onblur="ASPx.ELostFocus('ClaimRouteDetails_DXFREditorcol3')" onchange="ASPx.EValueChanged('ClaimRouteDetails_DXFREditorcol3')" type="text"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                
+                                                            </td>
+                                                            <td class="dxgv">
+                                                                <table class="dxeTextBoxSys dxeTextBox_Moderno dxeTextBoxDefaultWidthSys" id="ClaimRouteDetails_DXFREditorcol4" style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="dxic" style="width:100%;"><input class="dxeEditArea_Moderno dxeEditAreaSys" id="ClaimRouteDetails_DXFREditorcol4_I" name="ClaimRouteDetails$DXFREditorcol4" onfocus="ASPx.EGotFocus('ClaimRouteDetails_DXFREditorcol4')" onblur="ASPx.ELostFocus('ClaimRouteDetails_DXFREditorcol4')" onchange="ASPx.EValueChanged('ClaimRouteDetails_DXFREditorcol4')" type="text"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                
+                                                            </td>
+                                                            <td class="dxgv">
+                                                                <table class="dxeTextBoxSys dxeTextBox_Moderno dxeTextBoxDefaultWidthSys" id="ClaimRouteDetails_DXFREditorcol5" style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="dxic" style="width:100%;"><input class="dxeEditArea_Moderno dxeEditAreaSys" id="ClaimRouteDetails_DXFREditorcol5_I" name="ClaimRouteDetails$DXFREditorcol5" onfocus="ASPx.EGotFocus('ClaimRouteDetails_DXFREditorcol5')" onblur="ASPx.ELostFocus('ClaimRouteDetails_DXFREditorcol5')" onchange="ASPx.EValueChanged('ClaimRouteDetails_DXFREditorcol5')" type="text"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                
+                                                            </td>
+                                                            <td class="dxgv">
+                                                                <table class="dxeTextBoxSys dxeTextBox_Moderno dxeTextBoxDefaultWidthSys" id="ClaimRouteDetails_DXFREditorcol6" style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="dxic" style="width:100%;"><input class="dxeEditArea_Moderno dxeEditAreaSys" id="ClaimRouteDetails_DXFREditorcol6_I" name="ClaimRouteDetails$DXFREditorcol6" onfocus="ASPx.EGotFocus('ClaimRouteDetails_DXFREditorcol6')" onblur="ASPx.ELostFocus('ClaimRouteDetails_DXFREditorcol6')" onchange="ASPx.EValueChanged('ClaimRouteDetails_DXFREditorcol6')" type="text"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                
+                                                            </td>
+                                                            <td class="dxgv">
+                                                                <table class="dxeTextBoxSys dxeTextBox_Moderno dxeTextBoxDefaultWidthSys" id="ClaimRouteDetails_DXFREditorcol7" style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="dxic" style="width:100%;"><input class="dxeEditArea_Moderno dxeEditAreaSys" id="ClaimRouteDetails_DXFREditorcol7_I" name="ClaimRouteDetails$DXFREditorcol7" onfocus="ASPx.EGotFocus('ClaimRouteDetails_DXFREditorcol7')" onblur="ASPx.ELostFocus('ClaimRouteDetails_DXFREditorcol7')" onchange="ASPx.EValueChanged('ClaimRouteDetails_DXFREditorcol7')" type="text"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                              
+                                                            </td>
+                                                            <td class="dxgv" style="text-align:Right;border-right-width:0px;">
+                                                                <table class="dxeTextBoxSys dxeTextBox_Moderno dxeTextBoxDefaultWidthSys" id="ClaimRouteDetails_DXFREditorcol8" style="width:100%;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="dxic" style="width:100%;"><input class="dxeEditArea_Moderno dxeEditAreaSys" id="ClaimRouteDetails_DXFREditorcol8_I" name="ClaimRouteDetails$DXFREditorcol8" onfocus="ASPx.EGotFocus('ClaimRouteDetails_DXFREditorcol8')" onblur="ASPx.ELostFocus('ClaimRouteDetails_DXFREditorcol8')" onchange="ASPx.EValueChanged('ClaimRouteDetails_DXFREditorcol8')" type="text"></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                               
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="ClaimRouteDetails_DXDataRow0" class="dxgvDataRow_Moderno dxgvFocusedRow_Moderno">
+                                                            <td class="dxgv dx-al" style="border-bottom-width:0px;">1</td>
+                                                            <td class="dxgv dx-al" style="border-bottom-width:0px;">РОССИЯ</td>
+                                                            <td class="dxgv" style="border-bottom-width:0px;">893500</td>
+                                                            <td class="dxgv" style="border-bottom-width:0px;">КАНСК-ЕНИСЕЙСКИЙ</td>
+                                                            <td class="dxgv" style="border-bottom-width:0px;">КРС</td>
+                                                            <td class="dxgv" style="border-bottom-width:0px;">931702</td>
+                                                            <td class="dxgv" style="border-bottom-width:0px;">МАЛЬТА</td>
+                                                            <td class="dxgv" style="border-bottom-width:0px;">ВСБ</td>
+                                                            <td class="dxgv dx-ar" style="border-right-width:0px;border-bottom-width:0px;">760</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table><div id="ClaimRouteDetails_DXHFP_PW-1" class="dxpcLite_Moderno dxpclW" style="height:200px;width:280px;cursor:default;z-index:10000;display:none;visibility:hidden;">
+                                                    <div class="dxpc-mainDiv">
+                                                        <div class="dxpc-contentWrapper">
+                                                            <div class="dxpc-content" style="padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;overflow-x:hidden;overflow-y:auto;" id="ClaimRouteDetails_DXHFP_PWC-1">
+                                                                &nbsp;&nbsp;
+                                                            </div>
+                                                        </div><div class="dxpc-footer" id="ClaimRouteDetails_DXHFP_PWF-1">
+                                                            <div class="dxpc-footerContent">
+                                                                <table id="ClaimRouteDetails_DXHFP_TPCFCm1_P">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div class="dxbButton_Moderno dxbButtonSys dxbTSys" id="ClaimRouteDetails_DXHFP_TPCFCm1_O" style="-webkit-user-select:none;">
+                                                                                    <div class="dxb" id="ClaimRouteDetails_DXHFP_TPCFCm1_O_CD">
+                                                                                        <div class="dxb-hbc">
+                                                                                            <input id="ClaimRouteDetails_DXHFP_TPCFCm1_O_I" class="dxb-hb" value="OK" type="button" name="ClaimRouteDetails$DXHFP$TPCFCm1$O" style="opacity:0.01;">
+                                                                                        </div><span class="dx-vam">OK</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                               
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="dxHFBPS">
+
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="dxbButton_Moderno dxbButtonSys dxbTSys" id="ClaimRouteDetails_DXHFP_TPCFCm1_C" style="-webkit-user-select:none;">
+                                                                                    <div class="dxb" id="ClaimRouteDetails_DXHFP_TPCFCm1_C_CD">
+                                                                                        <div class="dxb-hbc">
+                                                                                            <input id="ClaimRouteDetails_DXHFP_TPCFCm1_C_I" class="dxb-hb" value="Cancel" type="button" name="ClaimRouteDetails$DXHFP$TPCFCm1$C" style="opacity:0.01;">
+                                                                                        </div><span class="dx-vam">Cancel</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                               
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div><img class="dxpc-sizeGrip dxGridView_WindowResizer_Moderno" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Resize"><b class="dx-clear"></b>
+                                                        </div>
+                                                    </div>
+                                                </div><div id="ClaimRouteDetails_DXHFP_LP" class="dx-ac" style="left:0px;top:0px;z-index:30000;display:none;">
+                                                    <table class="dxpcLoadingPanel_Moderno dxlpLoadingPanel_Moderno" style="height:100%;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="dx" style="padding-right:0px;"><img class="dxlp-loadingImage dxlp-imgPosLeft" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="" style="vertical-align:middle;"></td>
+                                                                <td class="dx" style="padding-left:0px;"><span id="ClaimRouteDetails_DXHFP_TL">Loading…</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div><div id="ClaimRouteDetails_DXHFP_LD" class="dxpcLoadingDiv_Moderno dxlpLoadingDiv_Moderno dx-ft" style="left:0px;top:0px;z-index:29999;display:none;position:absolute;">
+
+                                                </div>
+                                                <div id="ClaimRouteDetails_LP" class="dx-ac" style="left:0px;top:0px;z-index:30000;display:none;">
+                                                    <table class="dxgvLoadingPanel_Moderno" style="height:100%;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="dx" style="padding-right:0px;"><img class="dxlp-loadingImage dxlp-imgPosLeft" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="" style="vertical-align:middle;"></td>
+                                                                <td class="dx" style="padding-left:0px;"><span id="ClaimRouteDetails_TL">Loading…</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div><div id="ClaimRouteDetails_LD" class="dxgvLoadingDiv_Moderno" style="display:none;z-index:29999;position:absolute;">
+
+                                                </div><img id="ClaimRouteDetails_IADD" class="dxGridView_gvDragAndDropArrowDown_Moderno" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="|" style="position:absolute;visibility:hidden;top:-100px;"><img id="ClaimRouteDetails_IADU" class="dxGridView_gvDragAndDropArrowUp_Moderno" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="|" style="position:absolute;visibility:hidden;top:-100px;"><img id="ClaimRouteDetails_IADL" class="dxGridView_gvDragAndDropArrowLeft_Moderno" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="|" style="position:absolute;visibility:hidden;top:-100px;"><img id="ClaimRouteDetails_IADR" class="dxGridView_gvDragAndDropArrowRight_Moderno" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="|" style="position:absolute;visibility:hidden;top:-100px;"><img id="ClaimRouteDetails_IDHF" class="dxGridView_gvDragAndDropHideColumn_Moderno" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Hide" style="position:absolute;visibility:hidden;top:-100px;">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                           
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+                <label>Груз ЕТСНГ</label>
+                <input class="form-control" type="text" placeholder="Номер">
+                <input class="form-control" type="text" placeholder="Наименование">
+        </div>
+
+        <div class="row">
+            <label>Груз ГНГ</label>
+            <input class="form-control" type="text" placeholder="Номер">
+            <input class="form-control" type="text" placeholder="Наименование">
+        </div>
+        <div class="row">
+            <label>Грузоотправитель</label>
+            <input class="form-control" type="text" placeholder="Номер">
+            <input class="form-control" type="text" placeholder="Наименование">
+        </div>
+        <div class="row">
+            <label>Грузополучатель</label>
+            <input class="form-control" type="text" placeholder="Номер">
+            <input class="form-control" type="text" placeholder="Наименование">
+        </div>
+
+        <div class="row">
+            <div class="col-md-4" style="padding-left: 0;">
+                <input class="form-control" type="text" placeholder="Вес груза (тонн)">
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="text" placeholder="Количество контейнеров (шт.)">
+            </div>
+            <div class="col-md-4" style="padding-right: 0;">
+                <input class="form-control" type="text" placeholder="Количество вагонов (шт.)">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse5">
+                            Примечание
+                        </a>
+                    </div>
+                    <div id="collapse5" class="accordion-body collapse in">
+                        <div class="accordion-inner">
+                            <textarea class="form-control" cols="20" rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse6">
+                            Дополнительные условия
+                        </a>
+                    </div>
+                    <div id="collapse6" class="accordion-body collapse in">
+                        <div class="accordion-inner">
+                            <table class="dxgvControl_Moderno dxgv" id="DocumentConditionGrid" style="width:100%;border-collapse:separate;">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <table id="DocumentConditionGrid_DXMainTable" class="dxgvTable_Moderno" onclick="ASPx.GTableClick('DocumentConditionGrid', event);" ondblclick="ASPx.GVTableDblClick('DocumentConditionGrid', event);" oncontextmenu="return ASPx.GVContextMenu('DocumentConditionGrid',event);" style="width:100%;empty-cells:show;table-layout:fixed;overflow:hidden;text-overflow:ellipsis;">
+                                                <tbody>
+                                                    <tr class="dxgvArm">
+                                                        <td class="dxgvGI" style="width: 37px;"></td>
+                                                        <td style="width:33%;"></td>
+                                                        <td style="width:33%;"></td>
+                                                        <td style="width:33%;"></td>
+                                                    </tr>
+                                                    <tr id="DocumentConditionGrid_DXHeadersRow0">
+                                                        <td class="dxgvHeader_Moderno" style="text-align:Center;border-top-width:0px;border-left-width:0px;cursor:default;"><img class="dxGridView_gvExpandedButton_Moderno" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="" style="visibility:hidden;"></td>
+                                                        <td id="DocumentConditionGrid_col0" class="dxgvHeader_Moderno" style="text-align:Center;border-top-width:0px;border-left-width:0px;">
+                                                            <table style="width:100%;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="text-align:Center;">Условие</td>
+                                                                        <td style="width:1px;text-align:right;"><span class="dx-vam">&nbsp;</span><img class="dxGridView_gvHeaderFilter_Moderno dxgv__hfb dx-vam" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Not filtered" style="cursor:default;"></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                        <td id="DocumentConditionGrid_col1" class="dxgvHeader_Moderno" style="text-align:Center;border-top-width:0px;border-left-width:0px;">
+                                                            <table style="width:100%;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="text-align:Center;">Значение</td>
+                                                                        <td style="width:1px;text-align:right;"><span class="dx-vam">&nbsp;</span><img class="dxGridView_gvHeaderFilter_Moderno dxgv__hfb dx-vam" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Not filtered" style="cursor:default;"></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                        <td id="DocumentConditionGrid_col2" class="dxgvHeader_Moderno" style="text-align:Center;border-top-width:0px;border-left-width:0px;border-right-width:0px;">
+                                                            <table style="width:100%;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="text-align:Center;">Примечание</td>
+                                                                        <td style="width:1px;text-align:right;"><span class="dx-vam">&nbsp;</span><img class="dxGridView_gvHeaderFilter_Moderno dxgv__hfb dx-vam" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Not filtered" style="cursor:default;"></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="DocumentConditionGrid_DXFilterRow" class="dxgvFilterRow_Moderno">
+                                                        <td class="dxgvIndentCell dxgv" style="width:0px;border-left-width:0px;">&nbsp;</td>
+                                                        <td class="dxgv">
+                                                            <table class="dxeTextBoxSys dxeTextBox_Moderno dxeTextBoxDefaultWidthSys" id="DocumentConditionGrid_DXFREditorcol0" style="width:100%;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="dxic" style="width:100%;"><input class="dxeEditArea_Moderno dxeEditAreaSys" id="DocumentConditionGrid_DXFREditorcol0_I" name="DocumentConditionGrid$DXFREditorcol0" onfocus="ASPx.EGotFocus('DocumentConditionGrid_DXFREditorcol0')" onblur="ASPx.ELostFocus('DocumentConditionGrid_DXFREditorcol0')" onchange="ASPx.EValueChanged('DocumentConditionGrid_DXFREditorcol0')" type="text"></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            
+                                                        </td>
+                                                        <td class="dxgv">
+                                                            <table class="dxeTextBoxSys dxeTextBox_Moderno dxeTextBoxDefaultWidthSys" id="DocumentConditionGrid_DXFREditorcol1" style="width:100%;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="dxic" style="width:100%;"><input class="dxeEditArea_Moderno dxeEditAreaSys" id="DocumentConditionGrid_DXFREditorcol1_I" name="DocumentConditionGrid$DXFREditorcol1" onfocus="ASPx.EGotFocus('DocumentConditionGrid_DXFREditorcol1')" onblur="ASPx.ELostFocus('DocumentConditionGrid_DXFREditorcol1')" onchange="ASPx.EValueChanged('DocumentConditionGrid_DXFREditorcol1')" type="text"></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                           
+                                                        </td>
+                                                        <td class="dxgv" style="border-right-width:0px;">
+                                                            <table class="dxeTextBoxSys dxeTextBox_Moderno dxeTextBoxDefaultWidthSys" id="DocumentConditionGrid_DXFREditorcol2" style="width:100%;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="dxic" style="width:100%;"><input class="dxeEditArea_Moderno dxeEditAreaSys" id="DocumentConditionGrid_DXFREditorcol2_I" name="DocumentConditionGrid$DXFREditorcol2" onfocus="ASPx.EGotFocus('DocumentConditionGrid_DXFREditorcol2')" onblur="ASPx.ELostFocus('DocumentConditionGrid_DXFREditorcol2')" onchange="ASPx.EValueChanged('DocumentConditionGrid_DXFREditorcol2')" type="text"></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="DocumentConditionGrid_DXGroupRowExp0" class="dxgvGroupRow_Moderno">
+                                                        <td class="dxgv" style="border-right-width:0px;border-bottom-width:0px;"><img class="dxGridView_gvExpandedButton_Moderno" onclick="ASPx.GVCollapseRow('DocumentConditionGrid',0,event);event.cancelBubble = true" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Collapse" style="cursor:pointer;"></td>
+                                                        <td class="dxgv" colspan="3" style="border-right-width:0px;">Группа: Системные </td>
+                                                    </tr>
+                                                    <tr id="DocumentConditionGrid_DXDataRow1" class="dxgvDataRow_Moderno dxgvFocusedRow_Moderno">
+                                                        <td class="dxgvIndentCell dxgv" style="width:0px;border-left-width:0px;border-bottom-width:0px;">&nbsp;</td>
+                                                        <td class="dxgv" style="border-left-width:0px;border-bottom-width:0px;">Идентификатор ИРС Перевозки ЗАО "Русагротранс"</td>
+                                                        <td class="dxgv" style="border-bottom-width:0px;">5124762</td>
+                                                        <td class="dxgv" style="border-right-width:0px;border-bottom-width:0px;">&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table><div id="DocumentConditionGrid_DXHFP_PW-1" class="dxpcLite_Moderno dxpclW" style="height:200px;width:280px;cursor:default;z-index:10000;display:none;visibility:hidden;">
+                                                <div class="dxpc-mainDiv">
+                                                    <div class="dxpc-contentWrapper">
+                                                        <div class="dxpc-content" style="padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;overflow-x:hidden;overflow-y:auto;" id="DocumentConditionGrid_DXHFP_PWC-1">
+                                                            &nbsp;&nbsp;
+                                                        </div>
+                                                    </div><div class="dxpc-footer" id="DocumentConditionGrid_DXHFP_PWF-1">
+                                                        <div class="dxpc-footerContent">
+                                                            <table id="DocumentConditionGrid_DXHFP_TPCFCm1_P">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="dxbButton_Moderno dxbButtonSys dxbTSys" id="DocumentConditionGrid_DXHFP_TPCFCm1_O" style="-webkit-user-select:none;">
+                                                                                <div class="dxb" id="DocumentConditionGrid_DXHFP_TPCFCm1_O_CD">
+                                                                                    <div class="dxb-hbc">
+                                                                                        <input id="DocumentConditionGrid_DXHFP_TPCFCm1_O_I" class="dxb-hb" value="OK" type="button" name="DocumentConditionGrid$DXHFP$TPCFCm1$O" style="opacity:0.01;">
+                                                                                    </div><span class="dx-vam">OK</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="dxHFBPS">
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="dxbButton_Moderno dxbButtonSys dxbTSys" id="DocumentConditionGrid_DXHFP_TPCFCm1_C" style="-webkit-user-select:none;">
+                                                                                <div class="dxb" id="DocumentConditionGrid_DXHFP_TPCFCm1_C_CD">
+                                                                                    <div class="dxb-hbc">
+                                                                                        <input id="DocumentConditionGrid_DXHFP_TPCFCm1_C_I" class="dxb-hb" value="Cancel" type="button" name="DocumentConditionGrid$DXHFP$TPCFCm1$C" style="opacity:0.01;">
+                                                                                    </div><span class="dx-vam">Cancel</span>
+                                                                                </div>
+                                                                            </div>
+                                                                           
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div><img class="dxpc-sizeGrip dxGridView_WindowResizer_Moderno" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Resize"><b class="dx-clear"></b>
+                                                    </div>
+                                                </div>
+                                            </div><div id="DocumentConditionGrid_DXHFP_LP" class="dx-ac" style="left:0px;top:0px;z-index:30000;display:none;">
+                                                <table class="dxpcLoadingPanel_Moderno dxlpLoadingPanel_Moderno" style="height:100%;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="dx" style="padding-right:0px;"><img class="dxlp-loadingImage dxlp-imgPosLeft" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="" style="vertical-align:middle;"></td>
+                                                            <td class="dx" style="padding-left:0px;"><span id="DocumentConditionGrid_DXHFP_TL">Loading…</span></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div><div id="DocumentConditionGrid_DXHFP_LD" class="dxpcLoadingDiv_Moderno dxlpLoadingDiv_Moderno dx-ft" style="left:0px;top:0px;z-index:29999;display:none;position:absolute;">
+
+                                            </div>
+                                            <div id="DocumentConditionGrid_LP" class="dx-ac" style="left:0px;top:0px;z-index:30000;display:none;">
+                                                <table class="dxgvLoadingPanel_Moderno" style="height:100%;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="dx" style="padding-right:0px;"><img class="dxlp-loadingImage dxlp-imgPosLeft" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="" style="vertical-align:middle;"></td>
+                                                            <td class="dx" style="padding-left:0px;"><span id="DocumentConditionGrid_TL">Loading…</span></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div><div id="DocumentConditionGrid_LD" class="dxgvLoadingDiv_Moderno" style="display:none;z-index:29999;position:absolute;">
+
+                                            </div><img id="DocumentConditionGrid_IADD" class="dxGridView_gvDragAndDropArrowDown_Moderno" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="|" style="position:absolute;visibility:hidden;top:-100px;"><img id="DocumentConditionGrid_IADU" class="dxGridView_gvDragAndDropArrowUp_Moderno" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="|" style="position:absolute;visibility:hidden;top:-100px;"><img id="DocumentConditionGrid_IADL" class="dxGridView_gvDragAndDropArrowLeft_Moderno" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="|" style="position:absolute;visibility:hidden;top:-100px;"><img id="DocumentConditionGrid_IADR" class="dxGridView_gvDragAndDropArrowRight_Moderno" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="|" style="position:absolute;visibility:hidden;top:-100px;"><img id="DocumentConditionGrid_IDHF" class="dxGridView_gvDragAndDropHideColumn_Moderno" src="/NTI/DXR.axd?r=1_35-O5xSe" alt="Hide" style="position:absolute;visibility:hidden;top:-100px;">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse7">
+                            График погрузки
+                        </a>
+                    </div>
+                    <div id="collapse7" class="accordion-body collapse in">
+                        <div class="accordion-inner">
+                            <div class="row">
+                                <div class="col-md-6"><input class="form-control" type="text" placeholder="Версия графика"></div>
+                                <div class="col-md-6"><input class="form-control" type="text" placeholder="Состояние"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4"><input class="form-control" type="text" placeholder="Дата договора"></div>
+                                <div class="col-md-4"><input class="form-control" type="text" placeholder="Тонн"></div>
+                                <div class="col-md-4"><input class="form-control" type="text" placeholder="Вагонов"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}

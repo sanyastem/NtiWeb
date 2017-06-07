@@ -5,3 +5,10 @@ C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Domain\bin\Release\Microsoft.A
 C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Domain\obj\Release\ASUVP.Core.Domain.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Domain\obj\Release\ASUVP.Core.Domain.dll
 C:\Users\Admin\Documents\GitHub\NtiWeb\ASUVP.Core.Domain\obj\Release\ASUVP.Core.Domain.pdb
+f:\github\NtiWeb\ASUVP.Core.Domain\bin\Release\ASUVP.Core.Domain.dll
+f:\github\NtiWeb\ASUVP.Core.Domain\bin\Release\ASUVP.Core.Domain.pdb
+f:\github\NtiWeb\ASUVP.Core.Domain\bin\Release\Microsoft.AspNet.Identity.Core.dll
+f:\github\NtiWeb\ASUVP.Core.Domain\bin\Release\Microsoft.AspNet.Identity.Core.xml
+f:\github\NtiWeb\ASUVP.Core.Domain\obj\Release\ASUVP.Core.Domain.csprojResolveAssemblyReference.cache
+f:\github\NtiWeb\ASUVP.Core.Domain\obj\Release\ASUVP.Core.Domain.dll
+f:\github\NtiWeb\ASUVP.Core.Domain\obj\Release\ASUVP.Core.Domain.pdb
