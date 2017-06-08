@@ -13,6 +13,7 @@
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
     <NameOfLastUsedPublishProfile>NTI</NameOfLastUsedPublishProfile>
     <ToolsVersionPromptShown>2.3</ToolsVersionPromptShown>
+    <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

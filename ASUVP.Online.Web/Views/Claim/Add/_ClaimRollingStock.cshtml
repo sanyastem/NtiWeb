@@ -1,0 +1,16 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model Claim
+@Html.DevExpress().RoundPanel(settings =>
+{
+    settings.Name = "RollingStock";
+    settings.Width = Unit.Percentage(100);
+    settings.AllowCollapsingByHeaderClick = true;
+    settings.ShowCollapseButton = true;
+    settings.HeaderText = "Подвижной состав";
+    settings.Collapsed = true;
+    //settings.SetContent(() =>
+    //{
+    //    Html.RenderAction("ClaimRollingStockData", Model);
+    //});
+}).GetHtml()

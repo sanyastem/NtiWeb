@@ -1,0 +1,12 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model  Claim
+    <div style="width: 100%">
+@Html.DevExpress().Memo(s =>
+                {
+                    s.Width = Unit.Percentage(100);
+                    s.Name = nameof(Claim.ClaimNote);
+                    s.Properties.Rows = 6;
+                    s.ReadOnly = true;
+                }).GetHtml()
+        </div>

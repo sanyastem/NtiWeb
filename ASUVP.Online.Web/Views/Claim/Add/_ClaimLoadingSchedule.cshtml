@@ -1,0 +1,16 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model Claim
+@Html.DevExpress().RoundPanel(settings =>
+{
+    settings.Name = "LoadingSchedule";
+    settings.Width = Unit.Percentage(100);
+    settings.AllowCollapsingByHeaderClick = true;
+    settings.ShowCollapseButton = true;
+    settings.HeaderText = "График погрузки";
+    settings.Collapsed = true;
+    //settings.SetContent(() =>
+    //{
+    //    Html.RenderAction("ClaimLoadingScheduleData", new { id = Model.Id });
+    //});
+}).GetHtml()

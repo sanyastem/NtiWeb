@@ -16,14 +16,7 @@
     new StyleSheet { ExtensionSuite = ExtensionSuite.HtmlEditor }
     )
 
-@Html.DevExpress().GetScripts(
-    new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
-    new Script { ExtensionSuite = ExtensionSuite.HtmlEditor },
-    new Script { ExtensionSuite = ExtensionSuite.GridView },
-    new Script { ExtensionSuite = ExtensionSuite.RichEdit },
-    new Script { ExtensionSuite = ExtensionSuite.Spreadsheet },
-    new Script { ExtensionSuite = ExtensionSuite.HtmlEditor }
-    )
+
 <script src="~/Content/js/Claim.js"></script>
 <link href="@Url.Content("~/Content/css/CardStyle.css")" rel="stylesheet">
 
@@ -45,7 +38,7 @@
         </table>
 
         <div class="next">
-            @{ Html.RenderPartial("Details/_ClaimAgreement", Model); }
+            @{ Html.RenderPartial("Add/_ClaimAgreement", Model); }
         </div>
 
         <table style="width: 100%">
@@ -62,7 +55,7 @@
                                     {
                                         s.Width = Unit.Percentage(100);
                                         s.Name = nameof(Claim.DocNumber);
-                                    }).Bind(Model.DocNumber).Render();
+                                    }).Render();
                                 }
                             </td>
                             <td style="width:90px; padding-right: 5px" class="right-ali">Рег. номер</td>
@@ -71,17 +64,17 @@
                                        {
                                            s.Width = Unit.Percentage(100);
                                            s.Name = nameof(Claim.RegNumber);
-                                       }).Bind(Model.RegNumber).GetHtml()
+                                       }).GetHtml()
                             </td>
                             <td class="right-ali" style="width:60px; padding-right: 5px">Дата</td>
                             <td class="dateEditor">
                                 @Html.DevExpress().DateEdit(s =>
-                                   {
-                                       s.Width = Unit.Percentage(100);
-                                       
-                                       s.Enabled = false;
-                                       s.Name = nameof(Claim.DocDate);
-                                   }).Bind(Model.DocDate).GetHtml()
+                           {
+                               s.Width = Unit.Percentage(100);
+
+                               s.Enabled = true;
+                               s.Name = nameof(Claim.DocDate);
+                           }).GetHtml()
                             </td>
                             <td style="width:40px"></td>
                             <td>
@@ -90,7 +83,7 @@
                                        s.Width = Unit.Percentage(100);
                                        
                                        s.Name = nameof(Claim.DocStatusName);
-                                   }).Bind(Model.DocStatusName).GetHtml()
+                                   }).GetHtml()
                             </td>
                             <td></td>
                         </tr>
@@ -106,22 +99,22 @@
                         <tr>
                             <td class="dateEditor">
                                 @Html.DevExpress().DateEdit(s =>
-                                       {
-                                           s.Width = Unit.Percentage(100);
-                                           
-                                           s.Enabled = false;
-                                           s.Name = nameof(Claim.DateBeg);
-                                       }).Bind(Model.DateBeg).GetHtml()
+                           {
+                               s.Width = Unit.Percentage(100);
+
+                               s.Enabled = true;
+                               s.Name = nameof(Claim.DateBeg);
+                           }).GetHtml()
                             </td>
                             <td style="padding-right: 5px; width: 40px" class="right-ali">ПО</td>
                             <td class="dateEditor">
-                                @Html.DevExpress().DateEdit(s =>
+                                @*@Html.DevExpress().DateEdit(s =>
                                        {
                                            s.Width = Unit.Percentage(100);
                                            
-                                           s.Enabled = false;
+                                           s.Enabled = true;
                                            s.Name = nameof(Claim.DateEnd);
-                                       }).Bind(Model.DateEnd).GetHtml()
+                                       }).GetHtml()*@
                             </td>
                             <td style="width:40px"></td>
                             <td class="datePeriod">
@@ -130,7 +123,7 @@
                                         s.Width = Unit.Percentage(100);
                                         
                                         s.Name = nameof(Claim.ReportPeriodName);
-                                    }).Bind(Model.ReportPeriodName).GetHtml()
+                                    }).GetHtml()
                             </td>
                             <td style="padding-right: 5px; width: 90px" class="right-ali">Тип плана</td>
                             <td>
@@ -139,7 +132,7 @@
                                         s.Width = Unit.Percentage(100);
                                         
                                         s.Name = nameof(Claim.PlanType);
-                                    }).Bind(Model.PlanType).GetHtml()
+                                    }).GetHtml()
                             </td>
                         </tr>
                     </table>
@@ -148,10 +141,10 @@
         </table>
 
         <div class="next">
-            @{ Html.RenderPartial("Details/_ClaimState", Model); }
+            @{ Html.RenderPartial("Add/_ClaimState", Model); }
         </div>
         <div class="next">
-            @{ Html.RenderPartial("Details/_ClaimRollingStock", Model); }
+            @{ Html.RenderPartial("Add/_ClaimRollingStock", Model); }
         </div>
 
         <table style="width: 100%">
@@ -163,7 +156,7 @@
                         s.Width = Unit.Percentage(100);
                         
                         s.Name = nameof(Claim.CountryFromName);
-                    }).Bind(Model.CountryFromName).GetHtml()
+                    }).GetHtml()
                 </td>
                 <td style="width:25px"></td>
                 <td class="left-label">Страна назначения</td>
@@ -173,7 +166,7 @@
                         s.Width = Unit.Percentage(100);
                         
                         s.Name = nameof(Claim.CountryToName);
-                    }).Bind(Model.CountryToName).GetHtml()
+                    }).GetHtml()
                 </td>
             </tr>
             <tr>
@@ -184,7 +177,7 @@
                         s.Width = Unit.Percentage(100);
                         
                         s.Name = nameof(Claim.StationFromCode);
-                    }).Bind(Model.StationFromCode).GetHtml()
+                    }).GetHtml()
                 </td>
                 <td style="width:25px"></td>
                 <td class="railWayEditor">
@@ -193,7 +186,7 @@
                         s.Width = Unit.Percentage(100);
                         
                         s.Name = nameof(Claim.RailWayFromName);
-                    }).Bind(Model.RailWayFromName).GetHtml()
+                    }).GetHtml()
                 </td>
                 <td style="width:25px"></td>
                 <td style="min-width: 120px">
@@ -202,7 +195,7 @@
                         s.Width = Unit.Percentage(100);
                         
                         s.Name = nameof(Claim.StationFromName);
-                    }).Bind(Model.StationFromName).GetHtml()
+                    }).GetHtml()
                 </td>
                 <td style="width:40px"></td>
                 <td class="left-label">Станция назначения</td>
@@ -212,7 +205,7 @@
                         s.Width = Unit.Percentage(100);
                         
                         s.Name = nameof(Claim.StationToCode);
-                    }).Bind(Model.StationToCode).GetHtml()
+                    }).GetHtml()
                 </td>
                 <td style="width:25px"></td>
                 <td class="railWayEditor">
@@ -221,7 +214,7 @@
                         s.Width = Unit.Percentage(100);
                         
                         s.Name = nameof(Claim.RailWayToName);
-                    }).Bind(Model.RailWayToName).GetHtml()
+                    }).GetHtml()
                 </td>
                 <td style="width:25px"></td>
                 <td style="min-width: 120px">
@@ -230,7 +223,7 @@
                         s.Width = Unit.Percentage(100);
                         
                         s.Name = nameof(Claim.StationToName);
-                    }).Bind(Model.StationToName).GetHtml()
+                    }).GetHtml()
                 </td>
                 <td></td>
             </tr>
@@ -245,7 +238,7 @@
                                     s.Width = Unit.Percentage(100);
                                     
                                     s.Name = nameof(Claim.TransferTypeName);
-                                }).Bind(Model.TransferTypeName).GetHtml()
+                                }).GetHtml()
                             </td>
                             <td style="width: 230px; padding-right:5px" class="right-ali">Тарифное расстояние (км.)</td>
                             <td class="distanceEditor">
@@ -254,7 +247,7 @@
                                     s.Width = Unit.Percentage(100);
                                     
                                     s.Name = nameof(Claim.Distance);
-                                }).Bind(Model.Distance).GetHtml()
+                                }).GetHtml()
                             </td>
                             <td style="width: 230px" class="right-ali">Нормативный срок доставки (дней)</td>
                             <td class="daysEditor">
@@ -263,7 +256,7 @@
                                     s.Width = Unit.Percentage(100);
                                     
                                     s.Name = nameof(Claim.PeriodOfDelivery);
-                                }).Bind(Model.PeriodOfDelivery).GetHtml()
+                                }).GetHtml()
                             </td>
                         </tr>
                     </table>
@@ -272,7 +265,7 @@
         </table>
 
         <div class="next">
-            @{ Html.RenderPartial("Details/_ClaimRouteDetails", Model); }
+            @{ Html.RenderPartial("Add/_ClaimRouteDetails", Model); }
         </div>
 
         <div class="next">
@@ -285,7 +278,7 @@
                         s.Width = Unit.Percentage(100);
                         
                         s.Name = nameof(Claim.FrETSNGCode);
-                    }).Bind(Model.FrETSNGCode).GetHtml()
+                    }).GetHtml()
                     </td>
                     <td style="width:25px"></td>
                     <td>
@@ -294,7 +287,7 @@
                         s.Width = Unit.Percentage(100);
                         
                         s.Name = nameof(Claim.FrETSNGName);
-                    }).Bind(Model.FrETSNGName).GetHtml()
+                    }).GetHtml()
                     </td>
                 </tr>
                 <tr>
@@ -305,7 +298,7 @@
                         s.Width = Unit.Percentage(100);
                         
                         s.Name = nameof(Claim.FrGNGCode);
-                    }).Bind(Model.FrGNGCode).GetHtml()
+                    }).GetHtml()
                     </td>
                     <td style="width:25px"></td>
                     <td>
@@ -314,7 +307,7 @@
                         s.Width = Unit.Percentage(100);
                         
                         s.Name = nameof(Claim.FrGNGName);
-                    }).Bind(Model.FrGNGName).GetHtml()
+                    }).GetHtml()
                     </td>
                     <td></td>
                 </tr>
@@ -329,7 +322,7 @@
                         s.Width = Unit.Percentage(100);
                         
                         s.Name = nameof(Claim.LoadFromTGNL);
-                    }).Bind(Model.LoadFromTGNL).GetHtml()
+                    }).GetHtml()
                     </td>
                     <td style="width:25px"></td>
                     <td>
@@ -338,7 +331,7 @@
                         s.Width = Unit.Percentage(100);
                         
                         s.Name = nameof(Claim.LoadFromName);
-                    }).Bind(Model.LoadFromName).GetHtml()
+                    }).GetHtml()
                     </td>
                     <td></td>
                 </tr>
@@ -350,7 +343,7 @@
                         s.Width = Unit.Percentage(100);
                         
                         s.Name = nameof(Claim.LoadToTGNL);
-                    }).Bind(Model.LoadToTGNL).GetHtml()
+                    }).GetHtml()
                     </td>
                     <td style="width:25px"></td>
                     <td colspan="5">
@@ -359,7 +352,7 @@
                         s.Width = Unit.Percentage(100);
                         
                         s.Name = nameof(Claim.LoadToName);
-                    }).Bind(Model.LoadToName).GetHtml()
+                    }).GetHtml()
                     </td>
                     <td></td>
                 </tr>
@@ -372,7 +365,7 @@
                         
                         s.Name = nameof(Claim.FrWeight);
                         s.Properties.DisplayFormatString = DisplayFormatSettings.GetDisplayFormatString();
-                    }).Bind(Model.FrWeight).GetHtml()
+                    }).GetHtml()
                     </td>
                     <td colspan="7">
                         <table style="width: 100%">
@@ -384,7 +377,7 @@
                                     s.Width = Unit.Percentage(100);
                                     
                                     s.Name = nameof(Claim.ContCount);
-                                }).Bind(Model.ContCount).GetHtml()
+                                }).GetHtml()
                                 </td>
                                 <td style="width: 210px; padding-right:5px" class="right-ali">Количество вагонов (шт.)</td>
                                 <td class="daysEditor">
@@ -393,7 +386,7 @@
                                     s.Width = Unit.Percentage(100);
                                     
                                     s.Name = nameof(Claim.CarCount);
-                                }).Bind(Model.CarCount).GetHtml()
+                                }).GetHtml()
                                 </td>
                             </tr>
                         </table>
@@ -403,14 +396,14 @@
         </div>
 
         <div class="next">
-            @{ Html.RenderPartial("Details/_ClaimNote", Model); }
+            @{ Html.RenderPartial("Add/_ClaimNote", Model); }
         </div>
 
         <div class="next">
-            @{ Html.RenderPartial("Details/_ClaimCondition", Model); }
+            @{ Html.RenderPartial("Add/_ClaimCondition", Model); }
         </div>
         <div class="next">
-            @{ Html.RenderPartial("Details/_ClaimLoadingSchedule", Model); }
+            @{ Html.RenderPartial("Add/_ClaimLoadingSchedule", Model); }
         </div>
 
     </div>
@@ -436,6 +429,6 @@
 
     settings.SetContent(() =>
     {
-        ViewContext.Writer.Write(Html.Partial("Details/AuditEditData", Model));
+        ViewContext.Writer.Write(Html.Partial("Add/AuditEditData", Model));
     });
 }).GetHtml()
