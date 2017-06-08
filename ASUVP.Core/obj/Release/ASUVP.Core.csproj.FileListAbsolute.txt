@@ -16,3 +16,12 @@ f:\github\NtiWeb\ASUVP.Core\bin\Release\log4net.xml
 f:\github\NtiWeb\ASUVP.Core\obj\Release\ASUVP.Core.csprojResolveAssemblyReference.cache
 f:\github\NtiWeb\ASUVP.Core\obj\Release\ASUVP.Core.dll
 f:\github\NtiWeb\ASUVP.Core\obj\Release\ASUVP.Core.pdb
+d:\NtiWeb\ASUVP.Core\bin\Release\ASUVP.Core.dll
+d:\NtiWeb\ASUVP.Core\bin\Release\ASUVP.Core.pdb
+d:\NtiWeb\ASUVP.Core\bin\Release\Autofac.dll
+d:\NtiWeb\ASUVP.Core\bin\Release\log4net.dll
+d:\NtiWeb\ASUVP.Core\bin\Release\Autofac.xml
+d:\NtiWeb\ASUVP.Core\bin\Release\log4net.xml
+d:\NtiWeb\ASUVP.Core\obj\Release\ASUVP.Core.csprojResolveAssemblyReference.cache
+d:\NtiWeb\ASUVP.Core\obj\Release\ASUVP.Core.dll
+d:\NtiWeb\ASUVP.Core\obj\Release\ASUVP.Core.pdb

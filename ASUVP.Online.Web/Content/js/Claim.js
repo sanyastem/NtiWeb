@@ -83,7 +83,8 @@ $(function () {
     $('#addClaim').dialog({
         autoOpen: false,
         width: '50%',
-        closeText: "X"
+        closeText: "X",
+        dialogClass: 'formAddClaim'
     });
     $('#addClaimSend').dialog({
         autoOpen: false,

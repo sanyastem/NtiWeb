@@ -12,3 +12,10 @@ f:\github\NtiWeb\ASUVP.Core.Domain\bin\Release\Microsoft.AspNet.Identity.Core.xm
 f:\github\NtiWeb\ASUVP.Core.Domain\obj\Release\ASUVP.Core.Domain.csprojResolveAssemblyReference.cache
 f:\github\NtiWeb\ASUVP.Core.Domain\obj\Release\ASUVP.Core.Domain.dll
 f:\github\NtiWeb\ASUVP.Core.Domain\obj\Release\ASUVP.Core.Domain.pdb
+d:\NtiWeb\ASUVP.Core.Domain\bin\Release\ASUVP.Core.Domain.dll
+d:\NtiWeb\ASUVP.Core.Domain\bin\Release\ASUVP.Core.Domain.pdb
+d:\NtiWeb\ASUVP.Core.Domain\bin\Release\Microsoft.AspNet.Identity.Core.dll
+d:\NtiWeb\ASUVP.Core.Domain\bin\Release\Microsoft.AspNet.Identity.Core.xml
+d:\NtiWeb\ASUVP.Core.Domain\obj\Release\ASUVP.Core.Domain.csprojResolveAssemblyReference.cache
+d:\NtiWeb\ASUVP.Core.Domain\obj\Release\ASUVP.Core.Domain.dll
+d:\NtiWeb\ASUVP.Core.Domain\obj\Release\ASUVP.Core.Domain.pdb
