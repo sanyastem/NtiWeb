@@ -83,6 +83,18 @@ $(function () {
     $('#addClaim').dialog({
         autoOpen: false,
         width: '50%',
-        closeText: "X"
+        closeText: "X",
+        dialogClass: 'formAddClaim'
+    });
+    $('#addClaimSend').dialog({
+        autoOpen: false,
+        width: '80%',
+        closeText: "X",
+        dialogClass: 'formAdd1'
+    });
+    $('.collapse').collapse();
+    $(".date").datepicker();
+    $('#sub').click(function () {
+        $('#addClaimSend').dialog("open");
     });
 });

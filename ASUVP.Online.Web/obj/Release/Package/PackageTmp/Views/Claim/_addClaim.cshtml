@@ -3,7 +3,7 @@
 @using (Html.BeginForm("Action",
                         "Controller",
                         new { ReturnUrl = ViewBag.ReturnUrl },
-                        FormMethod.Post, new { @class = "addForm" }))
+                        FormMethod.Post, new { @class = "addForm", onsubmit= "return false;" }))
 {
 <p>Выбирете шаблон</p>
 <select class="template">
@@ -14,5 +14,5 @@
 
 </select>
 <br>
-<input class="btn sbmt" type="submit" value="Открыть">
+<input class="btn sbmt" id="sub" type="submit" value="Открыть">
 }

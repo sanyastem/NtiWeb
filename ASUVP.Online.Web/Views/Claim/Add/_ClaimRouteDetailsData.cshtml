@@ -1,0 +1,98 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model List<ClaimRouteDetails>
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.CallbackRouteValues = new
+        {
+            Action = "ClaimRouteDetailsData",
+            Controller = "Claim",
+            stTo = ViewBag.stTo,
+            stFrom = ViewBag.stFrom
+        };
+
+        settings.Name = "ClaimRouteDetails";
+        settings.Width = Unit.Percentage(100);
+        settings.KeyFieldName = nameof(ClaimRouteDetails.RouteId);
+        settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
+        settings.Styles.Header.HorizontalAlign = HorizontalAlign.Center;
+        // порядковый номер
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ClaimRouteDetails.Position);
+            column.Caption = "№";
+            column.Width = Unit.Percentage(5);
+            column.CellStyle.HorizontalAlign = HorizontalAlign.Left;
+        });
+        // страна
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ClaimRouteDetails.CountryName);
+            column.Caption = "Страна";
+            column.Width = Unit.Percentage(12);
+            column.CellStyle.HorizontalAlign = HorizontalAlign.Left;
+        });
+        // станция входа (код)
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = $"{nameof(ClaimRouteDetails.StationInCode)}";
+            column.Caption = "Станция входа (код)";
+            column.Width = Unit.Percentage(12);
+            column.ReadOnly = true;
+        });
+        // станция входа
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = $"{nameof(ClaimRouteDetails.StationInName)}";
+            column.Caption = "Станция входа";
+            column.Width = Unit.Percentage(12);
+            column.ReadOnly = true;
+        });
+        // дорога входа
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ClaimRouteDetails.RailWayInName);
+            column.Caption = "Дорога входа";
+            column.Width = Unit.Percentage(12);
+            column.ReadOnly = true;
+        });
+        // станция выхода (код)
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = $"{nameof(ClaimRouteDetails.StationOutCode)}";
+            column.Caption = "Станция выхода (код)";
+            column.Width = Unit.Percentage(12);
+            column.ReadOnly = true;
+        });
+        // станция выхода
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = $"{nameof(ClaimRouteDetails.StationOutName)}";
+            column.Caption = "Станция выхода";
+            column.Width = Unit.Percentage(12);
+            column.ReadOnly = true;
+        });
+        // дорога выхода
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ClaimRouteDetails.RailWayOutName);
+            column.Caption = "Дорога выхода";
+            column.Width = Unit.Percentage(12);
+            column.ReadOnly = true;
+        });
+        // расстояние (км)
+        settings.Columns.Add(column =>
+        {
+            column.FieldName = nameof(ClaimRouteDetails.Distance);
+            column.Caption = "Расстояние (км)";
+            column.Width = Unit.Percentage(12);
+            column.ReadOnly = true;
+        });
+
+        settings.ApplyBasicLayout();
+
+    }).GetHtml();
+}
+
+

@@ -1,0 +1,108 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@model ClaimRollingStock
+<style>
+    #ClaimRollingStock .ClaimRollingStockTr > td:first-child {
+        padding-left: 0px !important;
+    }
+
+    #ClaimRollingStock .ClaimRollingStockTr > td {
+        padding-top: .5em !important;
+        padding-bottom: .5em !important;
+        padding-right: 0 !important;
+        text-align: left !important;
+    }
+
+        #ClaimRollingStock .ClaimRollingStockTr > td:nth-child(2n) {
+            width: 24%;
+        }
+        .textPaddingLeft {
+            padding-left: 15px !important;
+        }
+</style>
+<table id="ClaimRollingStock" style="width: 100%">
+    <tr class="ClaimRollingStockTr">
+        <td>Парк контейнеров</td>
+        <td>
+            @{
+                Html.DevExpress().TextBox(s =>
+                {
+                    s.Width = Unit.Percentage(100);
+                    s.ReadOnly = true;
+                    s.Name = nameof(ClaimRollingStock.ContParkName);
+                }).Render();
+            }
+        </td>
+        <td class="textPaddingLeft">Род контейнеров</td>
+        <td>
+            @{
+                Html.DevExpress().TextBox(s =>
+                {
+                    s.Width = Unit.Percentage(100);
+                    s.ReadOnly = true;
+                    s.Name = nameof(ClaimRollingStock.ContKindName);
+                }).Render();
+            }
+        </td>
+    </tr>
+    <tr class="ClaimRollingStockTr">
+        <td>Парк вагонов</td>
+        <td>
+            @{
+                Html.DevExpress().TextBox(s =>
+                {
+                    s.Width = Unit.Percentage(100);
+                    s.ReadOnly = true;
+                    s.Name = nameof(ClaimRollingStock.CarParkName);
+                }).Render();
+            }
+        </td>
+        <td class="textPaddingLeft">Род вагонов</td>
+        <td>
+            @{
+                Html.DevExpress().TextBox(s =>
+                {
+                    s.Width = Unit.Percentage(100);
+                    s.ReadOnly = true;
+                    s.Name = nameof(ClaimRollingStock.CarKindName);
+                }).Render();
+            }
+        </td>
+        <td class="textPaddingLeft">Тип вагонов</td>
+        <td>
+            @{
+                Html.DevExpress().TextBox(s =>
+                {
+                    s.Width = Unit.Percentage(100);
+                    s.ReadOnly = true;
+                    s.Name = nameof(ClaimRollingStock.CarTypeName);
+                }).Render();
+            }
+        </td>
+    </tr>
+    <tr class="ClaimRollingStockTr">
+        <td>Вид группы</td>
+        <td>
+            @{
+                Html.DevExpress().TextBox(s =>
+                {
+                    s.Width = Unit.Percentage(100);
+                    s.ReadOnly = true;
+                    s.Name = nameof(ClaimRollingStock.GroupTypeName);
+                }).Render();
+            }
+        </td>
+        <td class="textPaddingLeft">Вид отправки</td>
+        <td>
+            @{
+                Html.DevExpress().TextBox(s =>
+                {
+                    s.Width = Unit.Percentage(100);
+                    s.ReadOnly = true;
+                    s.Name = nameof(ClaimRollingStock.ShipmentName);
+                }).Render();
+            }
+        </td>
+    </tr>
+
+</table>

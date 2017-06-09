@@ -1,0 +1,16 @@
+﻿@using ASUVP.Core.DataAccess.Model
+@using System.Web.UI.WebControls
+@model Claim
+@Html.DevExpress().RoundPanel(settings =>
+{
+    settings.Name = "ClaimAgreement";
+    settings.Width = Unit.Percentage(100);
+    settings.AllowCollapsingByHeaderClick = true;
+    settings.ShowCollapseButton = true;
+    settings.HeaderText = $"Договор: ";
+    settings.Collapsed = true;
+    settings.SetContent(() =>
+    {
+        Html.RenderPartial("Add/_ClaimAgreementData", Model);
+    });
+}).GetHtml()
