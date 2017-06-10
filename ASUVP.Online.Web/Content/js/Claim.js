@@ -96,5 +96,6 @@ $(function () {
     $(".date").datepicker();
     $('#sub').click(function () {
         $('#addClaimSend').dialog("open");
+        $('#addClaim').dialog("close");
     });
 });
