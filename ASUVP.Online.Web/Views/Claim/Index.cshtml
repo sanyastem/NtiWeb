@@ -311,9 +311,15 @@ div[aria-describedby="addClaimSend"]{
 #ui-datepicker-div{
     width: 250px!important;
 }
+
+.addForm p{
+    margin-top: 10px;
+    font-size: 19px;
+    font-weight: 700;
+}
 </style>
 
-<div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+<div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: initial;">
     <iframe name="frame" style="width: 30%; height: 30%; position: absolute; z-index: -1"></iframe>
 
     @if (ViewBag.MessageSuccess != null)
