@@ -741,7 +741,7 @@
     <Content Include="Views\Claim\Add\_ClaimLoadingSchedule.cshtml" />
     <Content Include="Views\Claim\Add\_ClaimLoadingScheduleData.cshtml" />
     <Content Include="Views\Claim\Add\_ClaimNote.cshtml" />
-    <Content Include="Views\Claim\Add\_ClaimNoteData.cshtml" />
+    <Content Include="Views\Claim\Add\_AddClaimNoteData.cshtml" />
     <Content Include="Views\Claim\Add\_ClaimRollingStock.cshtml" />
     <Content Include="Views\Claim\Add\_ClaimRollingStockData.cshtml" />
     <Content Include="Views\Claim\Add\_ClaimRouteDetails.cshtml" />

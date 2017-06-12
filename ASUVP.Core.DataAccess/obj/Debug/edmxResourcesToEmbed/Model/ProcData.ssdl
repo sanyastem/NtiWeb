@@ -147,6 +147,9 @@
     <Parameter Name="CompanyId" Type="uniqueidentifier" Mode="In" />
     <Parameter Name="UpdatedBy" Type="uniqueidentifier" Mode="In" />
   </Function>
+  <Function Name="DeleteClaim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdClaim" Type="uniqueidentifier" Mode="In" />
+  </Function>
   <Function Name="DocumentAttachDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
     <Parameter Name="UpdatedBy" Type="uniqueidentifier" Mode="In" />

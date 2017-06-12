@@ -1015,5 +1015,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DeleteClaim" FunctionName="ASUVP.Core.DataAccess.Model.Store.DeleteClaim" />
   </EntityContainerMapping>
 </Mapping>

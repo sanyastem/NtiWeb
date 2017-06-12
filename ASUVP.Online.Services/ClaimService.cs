@@ -46,7 +46,10 @@ namespace ASUVP.Online.Services
 
             foreach (var id in ids)
             {
-                //delete Claims
+                using (var context = new ProcData())
+                {
+                    context.DeleteClaim(id);
+                }
             }
         }
 
@@ -153,6 +156,11 @@ namespace ASUVP.Online.Services
             {
                 return context.TemplateGetClaim().ToList();
             }
+        }
+
+        public void DeleteClaim(Guid[] ids)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿function OnDeleteClaimClick(s, e) {
     $.ajax({
         type: "POST",
-        url: '@Url.Action("DeleteClaims", "Claim")',
+        url: "../Claim/DeleteClaims/" + e,
         data: { keys: e },
         success: function (data) { ClaimView.Refresh(); }
     });

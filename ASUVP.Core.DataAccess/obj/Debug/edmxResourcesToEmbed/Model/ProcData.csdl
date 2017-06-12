@@ -433,6 +433,9 @@
       <Parameter Name="OnlyActive" Mode="In" Type="Boolean" />
     </FunctionImport>
     <FunctionImport Name="TemplateGetClaim" ReturnType="Collection(ASUVP.Core.DataAccess.Model.TemplateGetClaim_Result)" />
+    <FunctionImport Name="DeleteClaim">
+      <Parameter Name="IdClaim" Mode="In" Type="Guid" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="Company">
     <Property Type="Guid" Name="Id" Nullable="false" />

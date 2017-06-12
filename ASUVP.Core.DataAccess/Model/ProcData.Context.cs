@@ -118,12 +118,7 @@ namespace ASUVP.Core.DataAccess.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AgreementUpdate", documentIdParameter, dateBegParameter, dateEndParameter, dateStopParameter, сustomerBankIdParameter, customerAddressIdParameter, performerBankIdParameter, performerAddressIdParameter, updatedByParameter);
         }
-
-        public object GetTemplate()
-        {
-            throw new NotImplementedException();
-        }
-
+    
         public virtual ObjectResult<ClaimDetails> ClaimDetailsGet(Nullable<System.Guid> id, Nullable<System.Guid> companyId, string protocolGroup)
         {
             var idParameter = id.HasValue ?
@@ -1550,6 +1545,15 @@ namespace ASUVP.Core.DataAccess.Model
         public virtual ObjectResult<TemplateGetClaim_Result> TemplateGetClaim()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TemplateGetClaim_Result>("TemplateGetClaim");
+        }
+    
+        public virtual int DeleteClaim(Nullable<System.Guid> idClaim)
+        {
+            var idClaimParameter = idClaim.HasValue ?
+                new ObjectParameter("IdClaim", idClaim) :
+                new ObjectParameter("IdClaim", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteClaim", idClaimParameter);
         }
     }
 }

@@ -209,7 +209,6 @@ namespace ASUVP.Online.Web.Controllers
 
             return Json(new { success = false, message = "Нет данных для выгрузки." }, JsonRequestBehavior.AllowGet);
         }
-
         [HttpGet]
         public ActionResult Download(string fileGuid, string fileName)
         {
@@ -235,6 +234,10 @@ namespace ASUVP.Online.Web.Controllers
         public PartialViewResult ClaimNoteData()
         {
             return PartialView("Details/_ClaimNoteData");
+        }
+        public PartialViewResult AddClaimNoteData()
+        {
+            return PartialView("Add/_AddClaimNoteData");
         }
 
         public PartialViewResult ClaimRouteDetailsData(string stTo, string stFrom)
