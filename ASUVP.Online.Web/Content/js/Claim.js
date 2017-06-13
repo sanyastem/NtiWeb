@@ -10,6 +10,11 @@
 function OnViewClaimClick(s, e) {
     window.open(ROOT_URL + "Claim/details/" + e);
 }
+
+function OnEditClaimClick(s, e) {
+    window.open(ROOT_URL + "Claim/edit/" + e);
+}
+
 function OnAddClaimClick(s, e) {
     
     $('#addClaim').dialog("open");

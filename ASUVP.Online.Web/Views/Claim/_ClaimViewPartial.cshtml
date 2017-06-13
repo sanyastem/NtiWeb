@@ -68,14 +68,14 @@
             }).Render();
             Html.DevExpress().Button(b =>
             {
-                b.Name = "btnEdit_" + c.VisibleIndex;
+                b.Name = "ed btnEdit_" + c.VisibleIndex;
                 b.Images.Image.Url = Url.Content("~/Content/img/doc_edit.png");
                 b.Images.Image.ToolTip = "Изменить";
                 b.Images.Image.AlternateText = "Изменить";
                 b.Images.Image.Height = 32;
                 b.EnableTheming = false;
                 b.Text = "";
-                b.ClientSideEvents.Click = "";
+                b.ClientSideEvents.Click = string.Format("function(s, e) {{ OnEditClaimClick('{0}','{1}'); }}", settings.Name, c.KeyValue);
                 b.ClientVisible = AuthManager.User.IsInRole("ClaimEdit");
             }).Render();
             Html.DevExpress().Button(b =>

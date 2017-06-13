@@ -52,7 +52,7 @@
         </table>
 
         <div class="next">
-            @{ Html.RenderPartial("Edit/_ClaimAgreement", Model); }
+            @{ Html.RenderPartial("Edit/_EditClaimAgreement", Model); }
         </div>
 
         <table style="width: 100%">
@@ -149,10 +149,10 @@
         </table>
 
         <div class="next">
-            @{ Html.RenderPartial("Edit/_ClaimState", Model); }
+            @{ Html.RenderPartial("Edit/_EditClaimState", Model); }
         </div>
         <div class="next">
-            @{ Html.RenderPartial("Edit/_ClaimRollingStock", Model); }
+            @{ Html.RenderPartial("Edit/_EditClaimRollingStock", Model); }
         </div>
 
         <table style="width: 100%">
@@ -262,7 +262,7 @@
         </table>
 
         <div class="next">
-            @{ Html.RenderPartial("Edit/_ClaimRouteDetails", Model); }
+            @{ Html.RenderPartial("Edit/_EditClaimRouteDetails", Model); }
         </div>
 
         <div class="next">
@@ -382,14 +382,14 @@
         </div>
 
         <div class="next">
-            @{ Html.RenderPartial("Edit/_ClaimNote", Model); }
+            @{ Html.RenderPartial("Edit/_EditClaimNote", Model); }
         </div>
 
         <div class="next">
-            @{ Html.RenderPartial("Edit/_ClaimCondition", Model); }
+            @{ Html.RenderPartial("Edit/_EditClaimCondition", Model); }
         </div>
         <div class="next">
-            @{ Html.RenderPartial("Edit/_ClaimLoadingSchedule", Model); }
+            @{ Html.RenderPartial("Edit/_EditClaimLoadingSchedule", Model); }
         </div>
 
     </div>
@@ -415,6 +415,6 @@
 
     settings.SetContent(() =>
     {
-        ViewContext.Writer.Write(Html.Partial("Edit/AuditEditData", Model));
+        ViewContext.Writer.Write(Html.Partial("Edit/EditAuditEditData", Model));
     });
 }).GetHtml()
