@@ -112,7 +112,7 @@
                     imageHint = DataBinder.Eval(c.DataItem, nameof(ClaimList.HasAttachmentHint)).ToString();
                     if (imageUrl != "/" && imageUrl != "/ASUVP.Online.Web/")
                     {
-                        ViewContext.Writer.Write($"<img style=\"float:none; display: block; margin-left: auto; margin-right: auto;\" width=\"32\" height=\"32\" alt=\"Нет данных\" src=\"{imageUrl}\" title=\"{imageHint}\" onclick=\"onDocAttachClick('{ c.KeyValue}')\" />");
+                        ViewContext.Writer.Write($"<p>-</p>");
                     }
                 }
                 catch
