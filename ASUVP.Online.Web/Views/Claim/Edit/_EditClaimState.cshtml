@@ -3,14 +3,14 @@
 @model Claim
 @Html.DevExpress().RoundPanel(settings =>
 {
-    settings.Name = "ClaimCondition";
+    settings.Name = "EditClaimCondition";
     settings.Width = Unit.Percentage(100);
     settings.AllowCollapsingByHeaderClick = true;
     settings.ShowCollapseButton = true;
     settings.HeaderText = "Состояние заявки";
     settings.Collapsed = true;
-    //settings.SetContent(() =>
-    //{
-    //    Html.RenderPartial("Add/_ClaimStateData", Model);
-    //});
+    settings.SetContent(() =>
+    {
+        Html.RenderPartial("Edit/_ClaimStateData", Model);
+    });
 }).GetHtml()

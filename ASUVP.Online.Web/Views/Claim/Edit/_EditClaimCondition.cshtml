@@ -3,14 +3,14 @@
 @model Claim
 @Html.DevExpress().RoundPanel(settings =>
 {
-    settings.Name = "ClaimConditions";
+    settings.Name = "EditClaimConditions";
     settings.Width = Unit.Percentage(100);
     settings.AllowCollapsingByHeaderClick = true;
     settings.ShowCollapseButton = true;
     settings.HeaderText = "Дополнительные условия";
     settings.Collapsed = true;
-    //settings.SetContent(() =>
-    //{
-    //    Html.RenderAction("ClaimConditionData", new { id = Model.Id });
-    //});
+    settings.SetContent(() =>
+    {
+        Html.RenderAction("EditClaimConditionData", new { id = Model.Id });
+    });
 }).GetHtml()

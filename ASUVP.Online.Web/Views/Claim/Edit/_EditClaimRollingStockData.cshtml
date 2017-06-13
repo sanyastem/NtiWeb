@@ -16,9 +16,10 @@
         #ClaimRollingStock .ClaimRollingStockTr > td:nth-child(2n) {
             width: 24%;
         }
-        .textPaddingLeft {
-            padding-left: 15px !important;
-        }
+
+    .textPaddingLeft {
+        padding-left: 15px !important;
+    }
 </style>
 <table id="ClaimRollingStock" style="width: 100%">
     <tr class="ClaimRollingStockTr">
@@ -28,9 +29,8 @@
                 Html.DevExpress().TextBox(s =>
                 {
                     s.Width = Unit.Percentage(100);
-                    s.ReadOnly = true;
                     s.Name = nameof(ClaimRollingStock.ContParkName);
-                }).Render();
+                }).Bind(Model?.ContParkName).Render();
             }
         </td>
         <td class="textPaddingLeft">Род контейнеров</td>
@@ -39,9 +39,8 @@
                 Html.DevExpress().TextBox(s =>
                 {
                     s.Width = Unit.Percentage(100);
-                    s.ReadOnly = true;
                     s.Name = nameof(ClaimRollingStock.ContKindName);
-                }).Render();
+                }).Bind(Model?.ContKindName).Render();
             }
         </td>
     </tr>
@@ -52,9 +51,8 @@
                 Html.DevExpress().TextBox(s =>
                 {
                     s.Width = Unit.Percentage(100);
-                    s.ReadOnly = true;
                     s.Name = nameof(ClaimRollingStock.CarParkName);
-                }).Render();
+                }).Bind(Model?.CarParkName).Render();
             }
         </td>
         <td class="textPaddingLeft">Род вагонов</td>
@@ -63,9 +61,8 @@
                 Html.DevExpress().TextBox(s =>
                 {
                     s.Width = Unit.Percentage(100);
-                    s.ReadOnly = true;
                     s.Name = nameof(ClaimRollingStock.CarKindName);
-                }).Render();
+                }).Bind(Model?.CarKindName).Render();
             }
         </td>
         <td class="textPaddingLeft">Тип вагонов</td>
@@ -74,9 +71,8 @@
                 Html.DevExpress().TextBox(s =>
                 {
                     s.Width = Unit.Percentage(100);
-                    s.ReadOnly = true;
                     s.Name = nameof(ClaimRollingStock.CarTypeName);
-                }).Render();
+                }).Bind(Model?.CarTypeName).Render();
             }
         </td>
     </tr>
@@ -87,9 +83,8 @@
                 Html.DevExpress().TextBox(s =>
                 {
                     s.Width = Unit.Percentage(100);
-                    s.ReadOnly = true;
                     s.Name = nameof(ClaimRollingStock.GroupTypeName);
-                }).Render();
+                }).Bind(Model?.GroupTypeName).Render();
             }
         </td>
         <td class="textPaddingLeft">Вид отправки</td>
@@ -98,9 +93,8 @@
                 Html.DevExpress().TextBox(s =>
                 {
                     s.Width = Unit.Percentage(100);
-                    s.ReadOnly = true;
                     s.Name = nameof(ClaimRollingStock.ShipmentName);
-                }).Render();
+                }).Bind(Model?.ShipmentName).Render();
             }
         </td>
     </tr>

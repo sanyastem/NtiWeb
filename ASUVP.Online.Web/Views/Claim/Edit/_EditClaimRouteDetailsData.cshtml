@@ -6,13 +6,13 @@
     {
         settings.CallbackRouteValues = new
         {
-            Action = "ClaimRouteDetailsData",
+            Action = "EditClaimRouteDetailsData",
             Controller = "Claim",
             stTo = ViewBag.stTo,
             stFrom = ViewBag.stFrom
         };
 
-        settings.Name = "ClaimRouteDetails";
+        settings.Name = "EditClaimRouteDetails";
         settings.Width = Unit.Percentage(100);
         settings.KeyFieldName = nameof(ClaimRouteDetails.RouteId);
         settings.SettingsResizing.ColumnResizeMode = ColumnResizeMode.Control;
@@ -92,7 +92,7 @@
 
         settings.ApplyBasicLayout();
 
-    }).GetHtml();
+    }).Bind(Model).GetHtml();
 }
 
 

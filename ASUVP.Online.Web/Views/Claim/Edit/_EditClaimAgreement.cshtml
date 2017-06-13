@@ -3,14 +3,14 @@
 @model Claim
 @Html.DevExpress().RoundPanel(settings =>
 {
-    settings.Name = "ClaimAgreement";
+    settings.Name = "EditClaimAgreement";
     settings.Width = Unit.Percentage(100);
     settings.AllowCollapsingByHeaderClick = true;
     settings.ShowCollapseButton = true;
-    settings.HeaderText = $"Договор: ";
+    settings.HeaderText = $"Договор: {Model.AgreementName}";
     settings.Collapsed = true;
     settings.SetContent(() =>
     {
-        Html.RenderPartial("Add/_ClaimAgreementData", Model);
+        Html.RenderPartial("Edit/_ClaimAgreementData", Model);
     });
 }).GetHtml()

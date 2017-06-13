@@ -3,7 +3,7 @@
 @model Claim
 @Html.DevExpress().RoundPanel(settings =>
 {
-    settings.Name = "ClaimNoteView";
+    settings.Name = "EditClaimNoteView";
     settings.Width = Unit.Percentage(100);
     settings.AllowCollapsingByHeaderClick = true;
     settings.ShowCollapseButton = true;
@@ -11,6 +11,6 @@
     settings.Collapsed = true;
     settings.SetContent(() =>
     {
-        Html.RenderAction("AddClaimNoteData");
+        Html.RenderAction("EditClaimNoteData");
     });
 }).GetHtml()

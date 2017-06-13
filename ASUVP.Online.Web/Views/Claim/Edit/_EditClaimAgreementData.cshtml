@@ -21,35 +21,32 @@
                 Html.DevExpress().TextBox(s =>
                 {
                     s.Width = Unit.Percentage(100);
-                    s.ReadOnly = false;
                     s.Name = nameof(Claim.AgreementName);
-                }).Render();
+                }).Bind(Model?.AgreementName).Render();
             }
         </td>
-        </tr>
+    </tr>
     <tr class="claimAgreementTr">
-        <td>Заказчик</td>
+        <td>@Model.CustomerCompanyLabel</td>
         <td>
             @{
                 Html.DevExpress().TextBox(s =>
                 {
                     s.Width = Unit.Percentage(100);
-                    s.ReadOnly = false;
                     s.Name = nameof(Claim.CustomerCompanyName);
-                }).Render();
+                }).Bind(Model?.CustomerCompanyName).Render();
             }
         </td>
-        </tr>
+    </tr>
     <tr class="claimAgreementTr">
-        <td>Исполнитель</td>
+        <td>@Model.PerformerCompanyLabel</td>
         <td>
             @{
                 Html.DevExpress().TextBox(s =>
                 {
                     s.Width = Unit.Percentage(100);
-                    s.ReadOnly = false;
                     s.Name = nameof(Claim.PerformerCompanyName);
-                }).Render();
+                }).Bind(Model?.PerformerCompanyName).Render();
             }
         </td>
     </tr>

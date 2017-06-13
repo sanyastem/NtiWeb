@@ -68,7 +68,6 @@
                                     Html.DevExpress().TextBox(s =>
                                     {
                                         s.Width = Unit.Percentage(100);
-                                        s.ReadOnly = true;
                                         s.Name = nameof(Claim.DocNumber);
                                     }).Bind(Model.DocNumber).Render();
                                 }
@@ -78,7 +77,6 @@
                                 @Html.DevExpress().TextBox(s =>
                                        {
                                            s.Width = Unit.Percentage(100);
-                                           s.ReadOnly = true;
                                            s.Name = nameof(Claim.RegNumber);
                                        }).Bind(Model.RegNumber).GetHtml()
                             </td>
@@ -87,7 +85,6 @@
                                 @Html.DevExpress().DateEdit(s =>
                                    {
                                        s.Width = Unit.Percentage(100);
-                                       s.ReadOnly = true;
                                        s.Enabled = false;
                                        s.Name = nameof(Claim.DocDate);
                                    }).Bind(Model.DocDate).GetHtml()
@@ -97,7 +94,6 @@
                                 @Html.DevExpress().TextBox(s =>
                                    {
                                        s.Width = Unit.Percentage(100);
-                                       s.ReadOnly = true;
                                        s.Name = nameof(Claim.DocStatusName);
                                    }).Bind(Model.DocStatusName).GetHtml()
                             </td>
@@ -117,7 +113,6 @@
                                 @Html.DevExpress().DateEdit(s =>
                                        {
                                            s.Width = Unit.Percentage(100);
-                                           s.ReadOnly = true;
                                            s.Enabled = false;
                                            s.Name = nameof(Claim.DateBeg);
                                        }).Bind(Model.DateBeg).GetHtml()
@@ -127,7 +122,6 @@
                                 @Html.DevExpress().DateEdit(s =>
                                        {
                                            s.Width = Unit.Percentage(100);
-                                           s.ReadOnly = true;
                                            s.Enabled = false;
                                            s.Name = nameof(Claim.DateEnd);
                                        }).Bind(Model.DateEnd).GetHtml()
@@ -137,7 +131,6 @@
                                 @Html.DevExpress().TextBox(s =>
                                     {
                                         s.Width = Unit.Percentage(100);
-                                        s.ReadOnly = true;
                                         s.Name = nameof(Claim.ReportPeriodName);
                                     }).Bind(Model.ReportPeriodName).GetHtml()
                             </td>
@@ -146,7 +139,6 @@
                                 @Html.DevExpress().TextBox(s =>
                                     {
                                         s.Width = Unit.Percentage(100);
-                                        s.ReadOnly = true;
                                         s.Name = nameof(Claim.PlanType);
                                     }).Bind(Model.PlanType).GetHtml()
                             </td>
@@ -170,7 +162,6 @@
                     @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.CountryFromName);
                     }).Bind(Model.CountryFromName).GetHtml()
                 </td>
@@ -180,7 +171,6 @@
                     @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.CountryToName);
                     }).Bind(Model.CountryToName).GetHtml()
                 </td>
@@ -191,7 +181,6 @@
                     @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.StationFromCode);
                     }).Bind(Model.StationFromCode).GetHtml()
                 </td>
@@ -200,7 +189,6 @@
                     @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.RailWayFromName);
                     }).Bind(Model.RailWayFromName).GetHtml()
                 </td>
@@ -209,7 +197,6 @@
                     @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.StationFromName);
                     }).Bind(Model.StationFromName).GetHtml()
                 </td>
@@ -219,7 +206,6 @@
                     @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.StationToCode);
                     }).Bind(Model.StationToCode).GetHtml()
                 </td>
@@ -228,7 +214,6 @@
                     @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.RailWayToName);
                     }).Bind(Model.RailWayToName).GetHtml()
                 </td>
@@ -237,7 +222,6 @@
                     @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.StationToName);
                     }).Bind(Model.StationToName).GetHtml()
                 </td>
@@ -252,7 +236,6 @@
                                 @Html.DevExpress().TextBox(s =>
                                 {
                                     s.Width = Unit.Percentage(100);
-                                    s.ReadOnly = true;
                                     s.Name = nameof(Claim.TransferTypeName);
                                 }).Bind(Model.TransferTypeName).GetHtml()
                             </td>
@@ -261,7 +244,6 @@
                                 @Html.DevExpress().TextBox(s =>
                                 {
                                     s.Width = Unit.Percentage(100);
-                                    s.ReadOnly = true;
                                     s.Name = nameof(Claim.Distance);
                                 }).Bind(Model.Distance).GetHtml()
                             </td>
@@ -270,7 +252,6 @@
                                 @Html.DevExpress().TextBox(s =>
                                 {
                                     s.Width = Unit.Percentage(100);
-                                    s.ReadOnly = true;
                                     s.Name = nameof(Claim.PeriodOfDelivery);
                                 }).Bind(Model.PeriodOfDelivery).GetHtml()
                             </td>
@@ -292,7 +273,6 @@
                         @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.FrETSNGCode);
                     }).Bind(Model.FrETSNGCode).GetHtml()
                     </td>
@@ -301,7 +281,6 @@
                         @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.FrETSNGName);
                     }).Bind(Model.FrETSNGName).GetHtml()
                     </td>
@@ -312,7 +291,6 @@
                         @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.FrGNGCode);
                     }).Bind(Model.FrGNGCode).GetHtml()
                     </td>
@@ -321,7 +299,6 @@
                         @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.FrGNGName);
                     }).Bind(Model.FrGNGName).GetHtml()
                     </td>
@@ -336,7 +313,6 @@
                         @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.LoadFromTGNL);
                     }).Bind(Model.LoadFromTGNL).GetHtml()
                     </td>
@@ -345,7 +321,6 @@
                         @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.LoadFromName);
                     }).Bind(Model.LoadFromName).GetHtml()
                     </td>
@@ -357,7 +332,6 @@
                         @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.LoadToTGNL);
                     }).Bind(Model.LoadToTGNL).GetHtml()
                     </td>
@@ -366,7 +340,6 @@
                         @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.LoadToName);
                     }).Bind(Model.LoadToName).GetHtml()
                     </td>
@@ -378,7 +351,6 @@
                         @Html.DevExpress().TextBox(s =>
                     {
                         s.Width = Unit.Percentage(100);
-                        s.ReadOnly = true;
                         s.Name = nameof(Claim.FrWeight);
                         s.Properties.DisplayFormatString = DisplayFormatSettings.GetDisplayFormatString();
                     }).Bind(Model.FrWeight).GetHtml()
@@ -391,7 +363,6 @@
                                     @Html.DevExpress().TextBox(s =>
                                 {
                                     s.Width = Unit.Percentage(100);
-                                    s.ReadOnly = true;
                                     s.Name = nameof(Claim.ContCount);
                                 }).Bind(Model.ContCount).GetHtml()
                                 </td>
@@ -400,7 +371,6 @@
                                     @Html.DevExpress().TextBox(s =>
                                 {
                                     s.Width = Unit.Percentage(100);
-                                    s.ReadOnly = true;
                                     s.Name = nameof(Claim.CarCount);
                                 }).Bind(Model.CarCount).GetHtml()
                                 </td>

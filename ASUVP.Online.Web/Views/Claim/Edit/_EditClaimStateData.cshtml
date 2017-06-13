@@ -2,51 +2,48 @@
 @using ASUVP.Core.DataAccess.Model
 @model Claim
 <style>
-    #ClaimState .claimStateTr>td:first-child {
+    #ClaimState .claimStateTr > td:first-child {
         width: 20%;
         text-align: left;
     }
 
-     #ClaimState .claimStateTr>td {
-         width: 80%;                
-         padding-top: .5em !important;
-         padding-bottom: .5em  !important;
-     }
-
-    .staus-image {
-         display: inline; 
-         margin-left: auto; 
-         margin-right: auto;
-         width:32px;
-         height:32px;
+    #ClaimState .claimStateTr > td {
+        width: 80%;
+        padding-top: .5em !important;
+        padding-bottom: .5em !important;
     }
 
+    .staus-image {
+        display: inline;
+        margin-left: auto;
+        margin-right: auto;
+        width: 32px;
+        height: 32px;
+    }
 </style>
-<table id ="ClaimState" style="width: 100%">
+<table id="ClaimState" style="width: 100%">
     <tr class="claimStateTr">
         <td>Согласование Заявки</td>
         <td>
-            @*@{
+            @{
                 Html.DevExpress().TextBox(s =>
                 {
                     s.Width = Unit.Percentage(100);
-                    s.ReadOnly = true;
                     s.Name = nameof(Claim.ClaimStatusName);
                 }).Render();
-            }*@
+            }
         </td>
     </tr>
     <tr class="claimStateTr">
         <td>Согласование графика погрузки</td>
         <td>
-            @*@{
+            @{
                 Html.DevExpress().TextBox(s =>
                 {
                     s.Width = Unit.Percentage(100);
-                    s.ReadOnly = true;
                     s.Name = nameof(Claim.LoadingScheduleStatusName);
                 }).Render();
-            }*@
+            }
         </td>
     </tr>
     <tr class="claimStateTr">
@@ -57,16 +54,16 @@
                     <tr>
                         <td style="width: 80%">
                             @*@{
-                                Html.DevExpress().TextBox(s =>
-                                {
-                                    s.Width = Unit.Percentage(100);
-                                    s.ReadOnly = true;
-                                    s.Name = nameof(Claim.ProtocolName);
-                                }).Render();
-                            }*@
+                                    Html.DevExpress().TextBox(s =>
+                                    {
+                                        s.Width = Unit.Percentage(100);
+                                        s.ReadOnly = true;
+                                        s.Name = nameof(Claim.ProtocolName);
+                                    }).Render();
+                                }*@
                         </td>
                         <td style="width: 20%; text-align:center">
-                            @{ 
+                            @{
                                 <img src="@Url.Content($"~{Model.ApprovalProtocolCustomerImgPath}")" style="display: inline; margin-left: auto; margin-right: auto; width:32px; height:32px;" alt="Нет данных" title="@Model.ApprovalProtocolCustomerHint" />
                                 <img src="@Url.Content($"~{Model.ApprovalProtocolPerformerImgPath}")" style="display: inline; margin-left: auto; margin-right: auto; width:32px; height:32px;" alt="Нет данных" title="@Model.ApprovalProtocolPerformerHint" />
 
@@ -76,7 +73,7 @@
                         </td>
                     </tr>
                 </table>
-              }
+            }
         </td>
     </tr>
     <tr class="claimStateTr">
@@ -90,9 +87,8 @@
                                 Html.DevExpress().TextBox(s =>
                                 {
                                     s.Width = Unit.Percentage(100);
-                                    s.ReadOnly = true;
                                     s.Name = nameof(Claim.AccountName);
-                                }).Bind(Model?.AccountName).Render();
+                                }).Render();
                             }
                         </td>
                         <td style="width: 20%; text-align:center">

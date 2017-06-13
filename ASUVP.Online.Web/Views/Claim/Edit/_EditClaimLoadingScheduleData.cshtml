@@ -7,8 +7,9 @@
         padding-top: .5em !important;
         padding-bottom: .5em !important;
     }
-        #ClaimCargoSchedule tr td:first-child {
-            text-align: left !important;
+
+    #ClaimCargoSchedule tr td:first-child {
+        text-align: left !important;
     }
 </style>
 <table id="ClaimCargoSchedule" class="ClaimCargoSchedule" style="width: 100%">
@@ -18,18 +19,16 @@
             @Html.DevExpress().TextBox(s =>
             {
                 s.Width = Unit.Percentage(100);
-                s.ReadOnly = true;
                 s.Name = nameof(ClaimLoadingSchedule.Version);
-            }).GetHtml()
+            }).Bind(Model?.Version).GetHtml()
         </td>
         <td style="width: 10%; text-align:right; padding-right:5px">Состояние</td>
         <td style="width: 45%">
             @Html.DevExpress().TextBox(s =>
             {
                 s.Width = Unit.Percentage(100);
-                s.ReadOnly = true;
                 s.Name = nameof(ClaimLoadingSchedule.StatusName);
-            }).GetHtml()
+            }).Bind(Model?.StatusName).GetHtml()
         </td>
     </tr>
     <tr>
@@ -43,10 +42,9 @@
                             @Html.DevExpress().DateEdit(s =>
                                {
                                    s.Width = Unit.Pixel(120);
-                                   s.ReadOnly = true;
                                    s.Enabled = false;
                                    s.Name = nameof(ClaimLoadingSchedule.LoadDate);
-                               }).GetHtml()
+                               }).Bind(Model?.LoadDate).GetHtml()
                             ;
                         }
                         else
@@ -54,7 +52,6 @@
                             @Html.DevExpress().TextBox(s =>
                             {
                                 s.Width = Unit.Pixel(120);
-                                s.ReadOnly = true;
                                 s.Name = nameof(ClaimLoadingSchedule.LoadDate);
                             }).GetHtml()
                         }
@@ -64,10 +61,9 @@
                         @Html.DevExpress().TextBox(s =>
                        {
                            s.Width = Unit.Percentage(100);
-                           s.ReadOnly = true;
                            s.Name = "Tonnes";
                            s.Properties.DisplayFormatString = DisplayFormatSettings.GetDisplayFormatString();
-                       }).GetHtml()
+                       }).Bind(Model?.FrWeight).GetHtml()
                     </td>
                     <td style="width:25px"></td>
                     <td style="width: 5%; padding-right: 5px" class="right-ali">Вагонов</td>
@@ -75,10 +71,9 @@
                         @Html.DevExpress().TextBox(s =>
                        {
                            s.Width = Unit.Percentage(100);
-                           s.ReadOnly = true;
                            s.Name = "Cars";
                            s.Properties.DisplayFormatString = "### ### ###";
-                       }).GetHtml()
+                       }).Bind(Model?.CarCount).GetHtml()
                     </td>
                 </tr>
             </table>

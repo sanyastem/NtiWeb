@@ -9,7 +9,7 @@
         settings.CallbackRouteValues = new
         {
             Controller = "Claim",
-            Action = "ClaimConditionData",
+            Action = "EditClaimConditionData",
             id = ViewBag.ClaimId
         };
         settings.Width = Unit.Percentage(100);
@@ -60,5 +60,5 @@
 
         settings.ApplyBasicLayout();
 
-    }).GetHtml();
+    }).Bind(Model).GetHtml();
 }

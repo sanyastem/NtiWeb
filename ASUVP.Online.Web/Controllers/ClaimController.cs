@@ -240,7 +240,11 @@ namespace ASUVP.Online.Web.Controllers
             var model = _service.GetClaimRollingStock(id);
             return PartialView("Details/_ClaimRollingStockData", model);
         }
-
+        public PartialViewResult EditClaimRollingStockData(Guid id)
+        {
+            var model = _service.GetClaimRollingStock(id);
+            return PartialView("Edit/_EditClaimRollingStockData", model);
+        }
         public PartialViewResult ClaimNoteData()
         {
             return PartialView("Details/_ClaimNoteData");
@@ -278,6 +282,71 @@ namespace ASUVP.Online.Web.Controllers
         {
             var model = _service.GetClaimLoadingSchedule(id);
             return PartialView("Details/_ClaimLoadingScheduleData", model);
+        }
+        public PartialViewResult EditClaimNoteData()
+        {
+            return PartialView("Edit/_EditClaimNoteData");
+        }
+
+        public PartialViewResult EditClaimRouteDetailsData(string stTo, string stFrom)
+        {
+            if (stTo != null && stFrom != null)
+            {
+                ViewBag.stTo = stTo;
+                ViewBag.stFrom = stFrom;
+            }
+
+            var model = _service.GetClaimRouteDetails(stFrom, stTo);
+
+            return PartialView("Edit/_EditClaimRouteDetailsData", model);
+        }
+
+        public PartialViewResult EditClaimConditionData(Guid id)
+        {
+            if (id != null)
+            {
+                ViewBag.ClaimId = id;
+            }
+
+            var model = _service.GetClaimConditions(id);
+            return PartialView("Edit/_EditClaimConditionData", model);
+        }
+
+        public PartialViewResult EditClaimLoadingScheduleData(Guid id)
+        {
+            var model = _service.GetClaimLoadingSchedule(id);
+            return PartialView("Edit/_EditClaimLoadingScheduleData", model);
+        }
+
+
+        public PartialViewResult AddClaimRouteDetailsData(string stTo, string stFrom)
+        {
+            if (stTo != null && stFrom != null)
+            {
+                ViewBag.stTo = stTo;
+                ViewBag.stFrom = stFrom;
+            }
+
+            var model = _service.GetClaimRouteDetails(stFrom, stTo);
+
+            return PartialView("Add/_ClaimRouteDetailsData", model);
+        }
+
+        public PartialViewResult AddClaimConditionData(Guid id)
+        {
+            if (id != null)
+            {
+                ViewBag.ClaimId = id;
+            }
+
+            var model = _service.GetClaimConditions(id);
+            return PartialView("Add/_ClaimConditionData", model);
+        }
+
+        public PartialViewResult AddClaimLoadingScheduleData(Guid id)
+        {
+            var model = _service.GetClaimLoadingSchedule(id);
+            return PartialView("Add/_ClaimLoadingScheduleData", model);
         }
     }
 }

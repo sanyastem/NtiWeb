@@ -9,8 +9,8 @@
     settings.ShowCollapseButton = true;
     settings.HeaderText = "Подвижной состав";
     settings.Collapsed = true;
-    //settings.SetContent(() =>
-    //{
-    //    Html.RenderAction("ClaimRollingStockData", Model);
-    //});
+    settings.SetContent(() =>
+    {
+        Html.RenderAction("EditClaimRollingStockData", Model);
+    });
 }).GetHtml()

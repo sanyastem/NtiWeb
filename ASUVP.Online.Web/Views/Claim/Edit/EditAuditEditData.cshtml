@@ -15,11 +15,10 @@
         @Html.DevExpress().ButtonEdit(settings =>
         {
             settings.Name = capt + nameof(Claim.Id);
-            settings.ReadOnly = true;
             settings.Width = Unit.Percentage(100);
             settings.Properties.Buttons.Add("Копировать");
             settings.Properties.ClientSideEvents.ButtonClick = "function(s,e) { ClaimAuditCopyIdToBuffer(s,e); }";
-        }).GetHtml()
+        }).Bind(Model?.Id).GetHtml()
     </div>
 </div>
 <div class="col-lg-12 auditPaddingRows">
@@ -28,9 +27,8 @@
         @Html.DevExpress().TextBox(s =>
         {
             s.Width = Unit.Percentage(25);
-            s.ReadOnly = true;
             s.Name = capt + nameof(Claim.CreatedOn);
-        }).GetHtml()
+        }).Bind(Model?.CreatedOn).GetHtml()
     </div>
 </div>
 <div class="col-lg-12 auditPaddingRows">
@@ -39,9 +37,8 @@
         @Html.DevExpress().TextBox(s =>
         {
             s.Width = Unit.Percentage(100);
-            s.ReadOnly = true;
             s.Name = capt + nameof(Claim.CreatedByName);
-        }).GetHtml()
+        }).Bind(Model?.CreatedByName).GetHtml()
     </div>
 </div>
 <div class="col-lg-12 auditPaddingRows">
@@ -50,9 +47,8 @@
         @Html.DevExpress().TextBox(s =>
         {
             s.Width = Unit.Percentage(25);
-            s.ReadOnly = true;
             s.Name = capt + nameof(Claim.UpdatedOn);
-        }).GetHtml()
+        }).Bind(Model?.UpdatedOn).GetHtml()
     </div>
 </div>
 <div class="col-lg-12 auditPaddingRows">
@@ -61,8 +57,7 @@
         @Html.DevExpress().TextBox(s =>
         {
             s.Width = Unit.Percentage(100);
-            s.ReadOnly = true;
             s.Name = capt + nameof(Claim.UpdatedByName);
-        }).GetHtml()
+        }).Bind(Model?.UpdatedByName).GetHtml()
     </div>
 </div>

@@ -6,11 +6,11 @@
     settings.Width = Unit.Percentage(100);
     settings.AllowCollapsingByHeaderClick = true;
     settings.ShowCollapseButton = true;
-    settings.HeaderText = $"Детализация маршрута";
+    settings.HeaderText = $"Детализация маршрута {Model.RouteName}";
     settings.Collapsed = true;
 
-    //settings.SetContent(() =>
-    //{
-    //    Html.RenderAction("ClaimRouteDetailsData", new { stFrom = Model.StationFromId, stTo = Model.StationToId });
-    //});
+    settings.SetContent(() =>
+    {
+        Html.RenderAction("EditClaimRouteDetailsData", new { stFrom = Model.StationFromId, stTo = Model.StationToId });
+    });
 }).GetHtml()
