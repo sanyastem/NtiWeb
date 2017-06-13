@@ -1,0 +1,450 @@
+﻿@using System.Web.UI.WebControls
+@using ASUVP.Core.DataAccess.Model
+@using ASUVP.Online.Web.Tools
+
+@model Claim
+@{
+    Layout = null;
+}
+
+@Html.DevExpress().GetStyleSheets(
+    new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.GridView },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.RichEdit },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Spreadsheet },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.HtmlEditor }
+    )
+
+
+<script src="~/Content/js/Claim.js"></script>
+<link href="@Url.Content("~/Content/css/CardStyle.css")" rel="stylesheet">
+
+<div id="content-inner" style="padding: 10px 30px 30px 30px; background: #ffffff; width: 100%">
+    <div class="container-fluid" style="width: inherit; max-width:none;">
+
+        @Html.DevExpress().Button(s =>
+           {
+               s.Name = $"btnSave";
+               s.ClientEnabled = true;
+               s.Images.Image.Url = Url.Content("~/Content/img/wizard/save.png");
+               s.Images.Image.UrlHottracked = Url.Content("~/Content/img/wizard/save-white.png");
+               s.Images.Image.Height = 32;
+               s.Text = "Сохранить";
+               s.ToolTip = "Сохранение изменений";
+               s.Height = Unit.Pixel(60);
+               s.ControlStyle.CssClass = "btn";
+               s.UseSubmitBehavior = true;
+           }).GetHtml()
+        <table style="width: 100%">
+            <tr>
+                <td class="left-label">
+                    Шаблон
+                </td>
+                <td>
+                    @Html.DevExpress().TextBox(s =>
+                           {
+                               s.Width = Unit.Percentage(100);
+                               s.Name = nameof(Claim.TemplateName);
+                           }).GetHtml()
+                </td>
+            </tr>
+        </table>
+
+        <div class="next">
+            @{ Html.RenderPartial("Edit/_ClaimAgreement", Model); }
+        </div>
+
+        <table style="width: 100%">
+            <tr>
+                <td class="left-label">
+                    Номер
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td class="numberEditor">
+                                @{
+                                    Html.DevExpress().TextBox(s =>
+                                    {
+                                        s.Width = Unit.Percentage(100);
+                                        s.ReadOnly = true;
+                                        s.Name = nameof(Claim.DocNumber);
+                                    }).Bind(Model.DocNumber).Render();
+                                }
+                            </td>
+                            <td style="width:90px; padding-right: 5px" class="right-ali">Рег. номер</td>
+                            <td class="numberEditor">
+                                @Html.DevExpress().TextBox(s =>
+                                       {
+                                           s.Width = Unit.Percentage(100);
+                                           s.ReadOnly = true;
+                                           s.Name = nameof(Claim.RegNumber);
+                                       }).Bind(Model.RegNumber).GetHtml()
+                            </td>
+                            <td class="right-ali" style="width:60px; padding-right: 5px">Дата</td>
+                            <td class="dateEditor">
+                                @Html.DevExpress().DateEdit(s =>
+                                   {
+                                       s.Width = Unit.Percentage(100);
+                                       s.ReadOnly = true;
+                                       s.Enabled = false;
+                                       s.Name = nameof(Claim.DocDate);
+                                   }).Bind(Model.DocDate).GetHtml()
+                            </td>
+                            <td style="width:40px"></td>
+                            <td>
+                                @Html.DevExpress().TextBox(s =>
+                                   {
+                                       s.Width = Unit.Percentage(100);
+                                       s.ReadOnly = true;
+                                       s.Name = nameof(Claim.DocStatusName);
+                                   }).Bind(Model.DocStatusName).GetHtml()
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="left-label">
+                    Погрузка С
+                </td>
+                <td>
+                    <table style="width: 100%">
+                        <tr>
+                            <td class="dateEditor">
+                                @Html.DevExpress().DateEdit(s =>
+                                       {
+                                           s.Width = Unit.Percentage(100);
+                                           s.ReadOnly = true;
+                                           s.Enabled = false;
+                                           s.Name = nameof(Claim.DateBeg);
+                                       }).Bind(Model.DateBeg).GetHtml()
+                            </td>
+                            <td style="padding-right: 5px; width: 40px" class="right-ali">ПО</td>
+                            <td class="dateEditor">
+                                @Html.DevExpress().DateEdit(s =>
+                                       {
+                                           s.Width = Unit.Percentage(100);
+                                           s.ReadOnly = true;
+                                           s.Enabled = false;
+                                           s.Name = nameof(Claim.DateEnd);
+                                       }).Bind(Model.DateEnd).GetHtml()
+                            </td>
+                            <td style="width:40px"></td>
+                            <td class="datePeriod">
+                                @Html.DevExpress().TextBox(s =>
+                                    {
+                                        s.Width = Unit.Percentage(100);
+                                        s.ReadOnly = true;
+                                        s.Name = nameof(Claim.ReportPeriodName);
+                                    }).Bind(Model.ReportPeriodName).GetHtml()
+                            </td>
+                            <td style="padding-right: 5px; width: 90px" class="right-ali">Тип плана</td>
+                            <td>
+                                @Html.DevExpress().TextBox(s =>
+                                    {
+                                        s.Width = Unit.Percentage(100);
+                                        s.ReadOnly = true;
+                                        s.Name = nameof(Claim.PlanType);
+                                    }).Bind(Model.PlanType).GetHtml()
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <div class="next">
+            @{ Html.RenderPartial("Edit/_ClaimState", Model); }
+        </div>
+        <div class="next">
+            @{ Html.RenderPartial("Edit/_ClaimRollingStock", Model); }
+        </div>
+
+        <table style="width: 100%">
+            <tr>
+                <td class="left-label">Страна отправления</td>
+                <td colspan="5">
+                    @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.CountryFromName);
+                    }).Bind(Model.CountryFromName).GetHtml()
+                </td>
+                <td style="width:25px"></td>
+                <td class="left-label">Страна назначения</td>
+                <td colspan="5">
+                    @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.CountryToName);
+                    }).Bind(Model.CountryToName).GetHtml()
+                </td>
+            </tr>
+            <tr>
+                <td class="left-label">Станция отправления</td>
+                <td class="stationCode">
+                    @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.StationFromCode);
+                    }).Bind(Model.StationFromCode).GetHtml()
+                </td>
+                <td style="width:25px"></td>
+                <td class="railWayEditor">
+                    @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.RailWayFromName);
+                    }).Bind(Model.RailWayFromName).GetHtml()
+                </td>
+                <td style="width:25px"></td>
+                <td style="min-width: 120px">
+                    @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.StationFromName);
+                    }).Bind(Model.StationFromName).GetHtml()
+                </td>
+                <td style="width:40px"></td>
+                <td class="left-label">Станция назначения</td>
+                <td class="stationCode">
+                    @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.StationToCode);
+                    }).Bind(Model.StationToCode).GetHtml()
+                </td>
+                <td style="width:25px"></td>
+                <td class="railWayEditor">
+                    @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.RailWayToName);
+                    }).Bind(Model.RailWayToName).GetHtml()
+                </td>
+                <td style="width:25px"></td>
+                <td style="min-width: 120px">
+                    @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.StationToName);
+                    }).Bind(Model.StationToName).GetHtml()
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="left-label">Вид сообщения</td>
+                <td colspan="12">
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="min-width: 120px">
+                                @Html.DevExpress().TextBox(s =>
+                                {
+                                    s.Width = Unit.Percentage(100);
+                                    s.ReadOnly = true;
+                                    s.Name = nameof(Claim.TransferTypeName);
+                                }).Bind(Model.TransferTypeName).GetHtml()
+                            </td>
+                            <td style="width: 230px; padding-right:5px" class="right-ali">Тарифное расстояние (км.)</td>
+                            <td class="distanceEditor">
+                                @Html.DevExpress().TextBox(s =>
+                                {
+                                    s.Width = Unit.Percentage(100);
+                                    s.ReadOnly = true;
+                                    s.Name = nameof(Claim.Distance);
+                                }).Bind(Model.Distance).GetHtml()
+                            </td>
+                            <td style="width: 230px" class="right-ali">Нормативный срок доставки (дней)</td>
+                            <td class="daysEditor">
+                                @Html.DevExpress().TextBox(s =>
+                                {
+                                    s.Width = Unit.Percentage(100);
+                                    s.ReadOnly = true;
+                                    s.Name = nameof(Claim.PeriodOfDelivery);
+                                }).Bind(Model.PeriodOfDelivery).GetHtml()
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <div class="next">
+            @{ Html.RenderPartial("Edit/_ClaimRouteDetails", Model); }
+        </div>
+
+        <div class="next">
+            <table style="width: 100%">
+                <tr>
+                    <td style="width: 90px">Груз ЕТСНГ</td>
+                    <td class="numberEditor">
+                        @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.FrETSNGCode);
+                    }).Bind(Model.FrETSNGCode).GetHtml()
+                    </td>
+                    <td style="width:25px"></td>
+                    <td>
+                        @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.FrETSNGName);
+                    }).Bind(Model.FrETSNGName).GetHtml()
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 90px">Груз ГНГ</td>
+                    <td class="numberEditor">
+                        @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.FrGNGCode);
+                    }).Bind(Model.FrGNGCode).GetHtml()
+                    </td>
+                    <td style="width:25px"></td>
+                    <td>
+                        @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.FrGNGName);
+                    }).Bind(Model.FrGNGName).GetHtml()
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+
+            <table style="width: 100%">
+                <tr>
+                    <td class="left-label">Грузоотправитель</td>
+                    <td class="numberEditor">
+                        @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.LoadFromTGNL);
+                    }).Bind(Model.LoadFromTGNL).GetHtml()
+                    </td>
+                    <td style="width:25px"></td>
+                    <td>
+                        @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.LoadFromName);
+                    }).Bind(Model.LoadFromName).GetHtml()
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left-label">Грузополучатель</td>
+                    <td class="numberEditor">
+                        @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.LoadToTGNL);
+                    }).Bind(Model.LoadToTGNL).GetHtml()
+                    </td>
+                    <td style="width:25px"></td>
+                    <td colspan="5">
+                        @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.LoadToName);
+                    }).Bind(Model.LoadToName).GetHtml()
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="left-label">Вес груза (тонн)</td>
+                    <td class="weightEditor">
+                        @Html.DevExpress().TextBox(s =>
+                    {
+                        s.Width = Unit.Percentage(100);
+                        s.ReadOnly = true;
+                        s.Name = nameof(Claim.FrWeight);
+                        s.Properties.DisplayFormatString = DisplayFormatSettings.GetDisplayFormatString();
+                    }).Bind(Model.FrWeight).GetHtml()
+                    </td>
+                    <td colspan="7">
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="width: 210px;padding-right:5px" class="right-ali">Количество контейнеров (шт.)</td>
+                                <td class="daysEditor">
+                                    @Html.DevExpress().TextBox(s =>
+                                {
+                                    s.Width = Unit.Percentage(100);
+                                    s.ReadOnly = true;
+                                    s.Name = nameof(Claim.ContCount);
+                                }).Bind(Model.ContCount).GetHtml()
+                                </td>
+                                <td style="width: 210px; padding-right:5px" class="right-ali">Количество вагонов (шт.)</td>
+                                <td class="daysEditor">
+                                    @Html.DevExpress().TextBox(s =>
+                                {
+                                    s.Width = Unit.Percentage(100);
+                                    s.ReadOnly = true;
+                                    s.Name = nameof(Claim.CarCount);
+                                }).Bind(Model.CarCount).GetHtml()
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="next">
+            @{ Html.RenderPartial("Edit/_ClaimNote", Model); }
+        </div>
+
+        <div class="next">
+            @{ Html.RenderPartial("Edit/_ClaimCondition", Model); }
+        </div>
+        <div class="next">
+            @{ Html.RenderPartial("Edit/_ClaimLoadingSchedule", Model); }
+        </div>
+
+    </div>
+</div>
+
+@Html.DevExpress().PopupControl(settings =>
+{
+    settings.Name = "claimAuditHistory";
+    settings.ShowHeader = true;
+    settings.ControlStyle.CssClass = "popupControl";
+    settings.AllowDragging = true;
+    settings.CloseOnEscape = true;
+    settings.ShowCloseButton = true;
+    settings.PopupAnimationType = AnimationType.None;
+    settings.Modal = true;
+    settings.CloseAction = CloseAction.CloseButton;
+    settings.PopupVerticalAlign = PopupVerticalAlign.WindowCenter;
+    settings.PopupHorizontalAlign = PopupHorizontalAlign.WindowCenter;
+
+    settings.Width = Unit.Pixel(900);
+
+    settings.HeaderText = "Создан/Изменен (Кем/Когда)";
+
+    settings.SetContent(() =>
+    {
+        ViewContext.Writer.Write(Html.Partial("Edit/AuditEditData", Model));
+    });
+}).GetHtml()

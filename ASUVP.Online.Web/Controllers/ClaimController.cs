@@ -16,6 +16,7 @@ using DevExpress.Data.Filtering.Helpers;
 using DevExpress.Web.Mvc;
 using ASUVP.Online.Web.Models.Notification;
 using ASUVP.Online.Web.Hubs;
+using System.Threading.Tasks;
 
 namespace ASUVP.Online.Web.Controllers
 {
@@ -127,7 +128,16 @@ namespace ASUVP.Online.Web.Controllers
             ViewBag.RootPageDetails = new string[] { "Index", "Claim", "Заявки" };
             return View("Details/Details", model);
         }
-
+        [HttpGet]
+        public ActionResult Edit(Guid id)
+        {
+            var model = new Claim();
+            model = _service.GetClaim(id);
+            //ViewBag.Title = $"Заявка №{model.RegNumber} от {model.DocDate.Value.ToShortDateString()}";
+            // Для перехода в Breadcrumb
+            //ViewBag.RootPageDetails = new string[] { "Index", "Claim", "Заявки" };
+            return PartialView("Edit/Edit", model);
+        }
         [AuthorizePermissions(Permissions = AuthPermissions.ClaimDelete)]
         public ActionResult DeleteClaims(Guid[] keys)
         {

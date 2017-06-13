@@ -748,6 +748,22 @@
     <Content Include="Views\Claim\Add\_ClaimRouteDetailsData.cshtml" />
     <Content Include="Views\Claim\Add\_ClaimState.cshtml" />
     <Content Include="Views\Claim\Add\_ClaimStateData.cshtml" />
+    <Content Include="Views\Claim\Edit\Edit.cshtml" />
+    <Content Include="Views\Claim\Edit\_EditClaimNoteData.cshtml" />
+    <Content Include="Views\Claim\Edit\_EditClaimAgreement.cshtml" />
+    <Content Include="Views\Claim\Edit\_EditClaimAgreementData.cshtml" />
+    <Content Include="Views\Claim\Edit\_EditClaimCondition.cshtml" />
+    <Content Include="Views\Claim\Edit\_EditClaimConditionData.cshtml" />
+    <Content Include="Views\Claim\Edit\_EditClaimLoadingSchedule.cshtml" />
+    <Content Include="Views\Claim\Edit\_EditClaimLoadingScheduleData.cshtml" />
+    <Content Include="Views\Claim\Edit\_EditClaimNote.cshtml" />
+    <Content Include="Views\Claim\Edit\_EditClaimRollingStock.cshtml" />
+    <Content Include="Views\Claim\Edit\_EditClaimRollingStockData.cshtml" />
+    <Content Include="Views\Claim\Edit\_EditClaimRouteDetails.cshtml" />
+    <Content Include="Views\Claim\Edit\_EditClaimRouteDetailsData.cshtml" />
+    <Content Include="Views\Claim\Edit\_EditClaimState.cshtml" />
+    <Content Include="Views\Claim\Edit\_EditClaimStateData.cshtml" />
+    <Content Include="Views\Claim\Edit\EditAuditEditData.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
