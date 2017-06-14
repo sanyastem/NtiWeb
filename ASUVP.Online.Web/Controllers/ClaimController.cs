@@ -116,7 +116,6 @@ namespace ASUVP.Online.Web.Controllers
             var model = _service.GetTemplate();
             return PartialView("Add/Add");
         }
-        
 
         [HttpGet]
         public ActionResult Details(Guid id)

@@ -9,10 +9,18 @@
 
 function OnViewClaimClick(s, e) {
     window.open(ROOT_URL + "Claim/details/" + e);
+    
 }
 
 function OnEditClaimClick(s, e) {
     window.open(ROOT_URL + "Claim/edit/" + e);
+    /*$.ajax({
+        url: ROOT_URL + "Claim/details/" + e,
+        success: function (data) {
+            $('#EditClaim').html(data);
+        }
+    });
+    $('#EditClaim').dialog("open");*/
 }
 
 function OnAddClaimClick(s, e) {
@@ -92,6 +100,12 @@ $(function () {
         dialogClass: 'formAddClaim'
     });
     $('#addClaimSend').dialog({
+        autoOpen: false,
+        width: '80%',
+        closeText: "X",
+        dialogClass: 'formAdd1'
+    });
+    $('#EditClaim').dialog({
         autoOpen: false,
         width: '80%',
         closeText: "X",
