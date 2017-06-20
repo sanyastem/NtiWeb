@@ -13,14 +13,14 @@ function OnViewClaimClick(s, e) {
 }
 
 function OnEditClaimClick(s, e) {
-    window.open(ROOT_URL + "Claim/edit/" + e);
-    /*$.ajax({
-        url: ROOT_URL + "Claim/details/" + e,
+    //window.open(ROOT_URL + "Claim/edit/" + e);
+    $.ajax({
+        url: ROOT_URL + "Claim/edit/" + e,
         success: function (data) {
             $('#EditClaim').html(data);
         }
     });
-    $('#EditClaim').dialog("open");*/
+    $('#EditClaim').dialog("open");
 }
 
 function OnAddClaimClick(s, e) {
@@ -109,7 +109,9 @@ $(function () {
         autoOpen: false,
         width: '80%',
         closeText: "X",
+        modal: true,
         dialogClass: 'formAdd1'
+        
     });
     $('.collapse').collapse();
     $(".date").datepicker();
